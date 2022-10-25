@@ -20,7 +20,10 @@ export class AuthController {
     return this.authService.signIn(authDto);
   }
 
-  //Extracting user object from request
+  /**
+   *
+   * @param req Extracting user object from request
+   */
   @UseGuards(AccessTokenGuard)
   @Get('logout')
   logout(@Req() req: Request) {
@@ -32,6 +35,6 @@ export class AuthController {
   refreshTokens(@Req() req: Request) {
     const userId = req.user['sub'];
     const refreshToken = req.user['refreshToken'];
-    return this.authService.refresTokens(userId, refreshToken);
+    return this.authService.refreshTokens(userId, refreshToken);
   }
 }

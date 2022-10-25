@@ -5,6 +5,7 @@ import { ConfigService } from '@nestjs/config';
 import { CreateUserDto } from '../users/dto/create-user.dto';
 import * as argon2 from 'argon2';
 import { AuthDto } from './dto/auth.dto';
+import { UserRoles } from '../users/schemas/user.schema';
 
 @Injectable()
 export class AuthService {
@@ -14,7 +15,12 @@ export class AuthService {
     private configService: ConfigService,
   ) {}
 
-  //Register method
+  /**
+   * Creates new user
+   * @param createUserDto
+   * @returns {string} refreshToken
+   * @returns {string} accessToken
+   */
   async signUp(createUserDto: CreateUserDto) {
     //Checking if user exists
     const userExists = await this.userService.findByUsername(
@@ -26,9 +32,11 @@ export class AuthService {
 
     //hashing password with argon
     const hash = await argon2.hash(createUserDto.password);
+    console.log(createUserDto);
     const newUser = await this.userService.create({
       ...createUserDto,
       password: hash,
+      role: UserRoles.PLAYER,
     });
 
     //generating tokens for client
@@ -37,7 +45,12 @@ export class AuthService {
     return tokens;
   }
 
-  //Login method
+  /**
+   * Sign in method
+   * @param authDto
+   * @return{string} refreshToken
+   * @return{string} accessToken
+   */
   async signIn(authDto: AuthDto) {
     //Checking if user exists
     const user = await this.userService.findByUsername(authDto.username);
@@ -59,13 +72,21 @@ export class AuthService {
     return tokens;
   }
 
-  //Logout method
+  /**
+   * Logout method
+   * Sets user refreshToken to NULL
+   * @param userId
+   */
   async logout(userId: string) {
     //Sets refresh token to NULL
     return this.userService.update(userId, { refreshToken: null });
   }
 
-  //Function to hash a refresh token and update it in user's document
+  /**
+   * Function used to hash a refresh token and update it in user's document
+   * @param userId
+   * @param refreshToken
+   */
   async updateRefreshToken(userId: string, refreshToken: string) {
     const hashedRefreshedToken = await argon2.hash(refreshToken);
     await this.userService.update(userId, {
@@ -73,6 +94,13 @@ export class AuthService {
     });
   }
 
+  /**
+   * Generates both tokens for user
+   * @param userId
+   * @param username
+   * @return{string} accessToken
+   * @return{string} refresToken
+   */
   async getTokens(userId: string, username: string) {
     const [accessToken, refreshToken] = await Promise.all([
       this.jwtService.signAsync(
@@ -102,7 +130,14 @@ export class AuthService {
     };
   }
 
-  async refresTokens(userId: string, refreshToken: string) {
+  /**
+   * Updates user's access Token
+   * @param userId
+   * @param refreshToken
+   * @return{string} accessToken
+   * @return{string} refresToken
+   */
+  async refreshTokens(userId: string, refreshToken: string) {
     const user = await this.userService.findByUsername(userId);
     if (!user || !user.refreshToken)
       throw new BadRequestException('Access Denied');

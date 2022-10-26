@@ -11,7 +11,7 @@ import {
 import { PlayerRoles, UserDetails, UserRoles } from '../schemas/user.schema';
 import { Type } from 'class-transformer';
 
-class DetailsDto {
+export class DetailsDto {
   @IsOptional()
   @IsString()
   firstname: string;
@@ -45,6 +45,8 @@ export class CreateUserDto {
   @IsNotEmpty()
   @IsString()
   password: string;
+
+  @IsEmpty()
   refreshToken: string;
 
   @IsEmpty()

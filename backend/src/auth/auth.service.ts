@@ -79,7 +79,7 @@ export class AuthService {
    */
   async logout(userId: string) {
     //Sets refresh token to NULL
-    return this.userService.update(userId, { refreshToken: null });
+    return await this.userService.update(userId, { refreshToken: null });
   }
 
   /**

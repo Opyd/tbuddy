@@ -1,11 +1,14 @@
-import { createApp } from 'vue'
-import App from './App.vue'
-import router from './router'
+import { createApp } from 'vue';
+import App from './App.vue';
+import router from './router';
+import './assets/main.css';
+import 'vfonts/Lato.css';
+import 'vfonts/FiraCode.css';
+import naive from 'naive-ui';
+import './styles/app.css';
+const app = createApp(App);
 
-import './assets/main.css'
+app.use(naive);
+app.use(router);
 
-const app = createApp(App)
-
-app.use(router)
-
-app.mount('#app')
+app.mount('#app');

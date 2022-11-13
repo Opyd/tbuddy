@@ -132,13 +132,13 @@ export class AuthService {
 
   /**
    * Updates user's access Token
-   * @param userId
+   * @param username
    * @param refreshToken
    * @return{string} accessToken
    * @return{string} refresToken
    */
-  async refreshTokens(userId: string, refreshToken: string) {
-    const user = await this.userService.findByUsername(userId);
+  async refreshTokens(username: string, refreshToken: string) {
+    const user = await this.userService.findByUsername(username);
     if (!user || !user.refreshToken)
       throw new BadRequestException('Access Denied');
 

@@ -22,14 +22,22 @@
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
       <v-toolbar-title>{{ title }}</v-toolbar-title>
       <v-spacer />
-      <v-btn v-if="!isLogged" color="primary">
-        <v-icon left>mdi-login</v-icon>
-        Login
-      </v-btn>
-      <v-btn v-if="isLogged" color="primary">
-        <v-icon left>mdi-account</v-icon>
-        My Account
-      </v-btn>
+      <div v-if="!loggedIn">
+        <nuxt-link to="/auth">
+          <v-btn color="primary">
+            <v-icon left>mdi-login</v-icon>
+            Login
+          </v-btn>
+        </nuxt-link>
+      </div>
+      <div v-if="loggedIn">
+        <nuxt-link to="/users/me">
+          <v-btn color="primary">
+            <v-icon left>mdi-account</v-icon>
+            My Account
+          </v-btn>
+        </nuxt-link>
+      </div>
     </v-app-bar>
     <v-main>
       <v-container>
@@ -50,7 +58,6 @@ export default {
       clipped: false,
       drawer: false,
       fixed: false,
-      isLogged: this.$auth.loggedIn,
       user: '',
       items: [
         {
@@ -67,11 +74,11 @@ export default {
       title: 'TBuddy',
     }
   },
-  created() {
-    if (this.$auth.loggedIn) {
-      this.isLogged = true
-      this.user = this.$auth.user.username
-    }
+  computed: {
+    loggedIn() {
+      return this.$auth.loggedIn
+    },
   },
+  created() {},
 }
 </script>

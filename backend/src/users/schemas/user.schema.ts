@@ -23,6 +23,14 @@ export class UserDetails {
   avatar: string;
   about: string;
   prefferedRoles: PlayerRoles[];
+
+  public constructor() {
+    this.firstname = '';
+    this.country = '';
+    this.avatar = null;
+    this.about = '';
+    this.prefferedRoles = [];
+  }
 }
 
 @Schema({ timestamps: true })
@@ -42,7 +50,7 @@ export class User {
   @Prop()
   refreshToken: string;
 
-  @Prop({ type: UserDetails })
+  @Prop({ type: UserDetails, default: new UserDetails() })
   details: UserDetails;
 }
 

@@ -26,14 +26,9 @@ export class UsersController {
   }
 
   @UseGuards(AccessTokenGuard)
-  @Get()
+  @Get('me')
   async findLogged(@Req() req: Request) {
-    const user = await this.usersService.findByUsername(req.user['username']);
-    return {
-      username: user.username,
-      _id: user._id,
-      role: user.role,
-    };
+    return await this.usersService.findLoggedUser(req.user['username']);
   }
 
   @Get(':id')
@@ -41,9 +36,10 @@ export class UsersController {
     return this.usersService.findOne(id);
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateUserDto: UserUpdateSelfDto) {
-    return this.usersService.update(id, updateUserDto);
+  @UseGuards(AccessTokenGuard)
+  @Patch('me')
+  update(@Req() req: Request, @Body() updateSelfDto: UserUpdateSelfDto) {
+    return this.usersService.updateSelf(req.user['username'], updateSelfDto);
   }
 
   @Delete(':id')

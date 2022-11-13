@@ -4,6 +4,7 @@ import { UpdateUserDto } from './dto/update-user.dto';
 import { InjectModel } from '@nestjs/mongoose';
 import { User, UserDocument } from './schemas/user.schema';
 import { Model } from 'mongoose';
+import { UserUpdateSelfDto } from './dto/user-update-self.dto';
 
 @Injectable()
 export class UsersService {
@@ -15,6 +16,13 @@ export class UsersService {
 
   async findAll(): Promise<UserDocument[]> {
     return this.userModel.find().exec();
+  }
+
+  async findLoggedUser(username: string): Promise<UserDocument> {
+    return this.userModel
+      .findOne({ username })
+      .select({ refreshToken: 0, password: 0, _v: 0 })
+      .exec();
   }
 
   async findOne(id: string): Promise<UserDocument> {
@@ -31,6 +39,21 @@ export class UsersService {
   ): Promise<UserDocument> {
     return this.userModel
       .findByIdAndUpdate(id, updateUserDto, { new: true })
+      .exec();
+  }
+
+  /**
+   * Update function for changes to account made by user
+   * @param username
+   * @param userUpdateSelfDto
+   */
+  async updateSelf(
+    username: string,
+    userUpdateSelfDto: UserUpdateSelfDto,
+  ): Promise<UserDocument> {
+    return this.userModel
+      .findOneAndUpdate({ username }, userUpdateSelfDto, { new: true })
+      .select({ refreshToken: 0, password: 0, _v: 0 })
       .exec();
   }
 

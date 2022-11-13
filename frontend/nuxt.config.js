@@ -70,7 +70,7 @@ export default {
         endpoints: {
           login: { url: '/auth/signin', method: 'post' },
           refresh: { url: '/auth/refresh', method: 'get' },
-          user: { url: '/users', method: 'get' },
+          user: { url: '/users/me', method: 'get' },
           logout: { url: '/auth/logout', method: 'get' },
         },
         // autoLogout: false

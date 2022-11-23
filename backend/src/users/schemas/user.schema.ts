@@ -1,5 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Document } from 'mongoose';
+import mongoose, { Document } from 'mongoose';
+import { Team } from '../../teams/schema/team.schema';
 
 export type UserDocument = User & Document;
 
@@ -49,6 +50,9 @@ export class User {
 
   @Prop()
   refreshToken: string;
+
+  @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'Team', defualt: null })
+  currentTeam: Team;
 
   @Prop({ type: UserDetails, default: new UserDetails() })
   details: UserDetails;

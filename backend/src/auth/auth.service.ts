@@ -37,6 +37,7 @@ export class AuthService {
       ...createUserDto,
       password: hash,
       role: UserRoles.PLAYER,
+      currentTeam: null,
     });
 
     //generating tokens for client

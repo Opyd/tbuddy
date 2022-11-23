@@ -17,6 +17,11 @@
           </v-list-item-content>
         </v-list-item>
       </v-list>
+      <template v-if="loggedIn" #append>
+        <div class="pa-2">
+          <v-btn block @click="logout"> Logout </v-btn>
+        </div>
+      </template>
     </v-navigation-drawer>
     <v-app-bar :clipped-left="clipped" fixed app>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
@@ -44,7 +49,7 @@
         <Nuxt />
       </v-container>
     </v-main>
-    <v-footer :absolute="!fixed" app>
+    <v-footer :absolute="!fixed" app class="tw-justify-end">
       <span>Daniel Opyd &copy; {{ new Date().getFullYear() }}</span>
     </v-footer>
   </v-app>
@@ -66,9 +71,24 @@ export default {
           to: '/',
         },
         {
-          icon: 'mdi-login',
-          title: 'Log in',
-          to: '/auth/login',
+          icon: 'mdi-trophy',
+          title: 'Tournaments',
+          // to: '/auth/login',
+        },
+        {
+          icon: 'mdi-account-group',
+          title: 'Teams',
+          // to: '/auth/login',
+        },
+        {
+          icon: 'mdi-account-search',
+          title: 'Users',
+          // to: '/auth/login',
+        },
+        {
+          icon: 'mdi-account-multiple-plus',
+          title: 'Looking for Team',
+          // to: '/auth/login',
         },
       ],
       title: 'TBuddy',
@@ -80,5 +100,19 @@ export default {
     },
   },
   created() {},
+  methods: {
+    async logout() {
+      try {
+        const res = await this.$axios.get('auth/logout')
+        if (res.status === 200) {
+          this.$toast.success('Successfully logged out')
+          await this.$auth.logout()
+          await this.$router.push('/')
+        }
+      } catch (e) {
+        this.$toast.error('Something went wrong')
+      }
+    },
+  },
 }
 </script>

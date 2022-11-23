@@ -11,7 +11,6 @@ import {
 } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
-import { UpdateUserDto } from './dto/update-user.dto';
 import { UserUpdateSelfDto } from './dto/user-update-self.dto';
 import { AccessTokenGuard } from '../common/guards/accessToken.guard';
 import { Request } from 'express';

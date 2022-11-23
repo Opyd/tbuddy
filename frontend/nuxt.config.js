@@ -24,7 +24,11 @@ export default {
   css: ['@/assets/css/main.css', 'vue-toastification/dist/index.css'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [],
+  plugins: [
+    {
+      src: '~/plugins/axiosInterceptor.js',
+    },
+  ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -69,7 +73,7 @@ export default {
         },
         endpoints: {
           login: { url: '/auth/signin', method: 'post' },
-          refresh: { url: '/auth/refresh', method: 'get' },
+          refresh: { url: '/auth/refresh', method: 'post' },
           user: { url: '/users/me', method: 'get' },
           logout: { url: '/auth/logout', method: 'get' },
         },

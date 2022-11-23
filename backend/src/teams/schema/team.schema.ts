@@ -39,6 +39,9 @@ export class Team {
   @Prop({ required: true })
   name: string;
 
+  @Prop()
+  icon: string;
+
   @Prop({ required: true, unique: true })
   tag: string;
 

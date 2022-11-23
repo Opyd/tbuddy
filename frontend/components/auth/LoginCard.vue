@@ -26,7 +26,14 @@
       <v-checkbox v-model="checkbox" label="Remember me" required></v-checkbox>
 
       <v-container class="d-flex flex-row justify-center">
-        <v-btn color="success" class="mr-4" @click="login"> Log In </v-btn>
+        <v-btn
+          color="success"
+          class="mr-4"
+          @click="login"
+          @keyup.enter.native="login"
+        >
+          Log In
+        </v-btn>
 
         <v-btn color="error" class="mr-4" @click="reset"> Reset Form </v-btn>
       </v-container>

@@ -13,18 +13,20 @@ export class TeamsService {
   }
 
   findAll() {
-    return `This action returns all teams`;
+    return this.teamModel.find({}).exec();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} team`;
+  findOne(id: string) {
+    return this.teamModel.findById(id).populate('owner').exec();
   }
 
-  update(id: number, updateTeamDto: UpdateTeamDto) {
-    return `This action updates a #${id} team`;
+  update(id: string, updateTeamDto: UpdateTeamDto) {
+    return this.teamModel
+      .findByIdAndUpdate(id, updateTeamDto, { new: true })
+      .exec();
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} team`;
+  remove(id: string) {
+    return this.teamModel.findByIdAndRemove(id).exec();
   }
 }

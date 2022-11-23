@@ -50,6 +50,9 @@ export class CreateUserDto {
   refreshToken: string;
 
   @IsEmpty()
+  currentTeam: string;
+
+  @IsEmpty()
   role: UserRoles;
 
   @IsOptional()

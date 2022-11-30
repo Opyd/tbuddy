@@ -14,7 +14,9 @@ import { CreateUserDto } from './dto/create-user.dto';
 import { UserUpdateSelfDto } from './dto/user-update-self.dto';
 import { AccessTokenGuard } from '../common/guards/accessToken.guard';
 import { Request } from 'express';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('users')
 @Controller('users')
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}

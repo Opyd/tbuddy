@@ -41,7 +41,11 @@ export class AuthService {
     });
 
     //generating tokens for client
-    const tokens = await this.getTokens(newUser._id, newUser.username);
+    const tokens = await this.getTokens(
+      newUser._id,
+      newUser.username,
+      newUser.role,
+    );
     await this.updateRefreshToken(newUser._id, tokens.refreshToken);
     return tokens;
   }
@@ -66,7 +70,7 @@ export class AuthService {
       throw new BadRequestException('Username or password is incorrect');
 
     //generating tokens for client
-    const tokens = await this.getTokens(user._id, user.username);
+    const tokens = await this.getTokens(user._id, user.username, user.role);
 
     //updating the user's refresh token
     await this.updateRefreshToken(user._id, tokens.refreshToken);
@@ -100,14 +104,15 @@ export class AuthService {
    * @param userId
    * @param username
    * @return{string} accessToken
-   * @return{string} refresToken
+   * @return{string} refreshToken
    */
-  async getTokens(userId: string, username: string) {
+  async getTokens(userId: string, username: string, role: string) {
     const [accessToken, refreshToken] = await Promise.all([
       this.jwtService.signAsync(
         {
           sub: userId,
           username,
+          role,
         },
         {
           secret: this.configService.get<string>('JWT_ACCESS_SECRET'),
@@ -118,6 +123,7 @@ export class AuthService {
         {
           sub: userId,
           username,
+          role,
         },
         {
           secret: this.configService.get<string>('JWT_REFRESH_SECRET'),
@@ -150,7 +156,7 @@ export class AuthService {
     );
     if (!refreshTokenMatches) throw new BadRequestException('Access Denied');
 
-    const tokens = await this.getTokens(user._id, user.username);
+    const tokens = await this.getTokens(user._id, user.username, user.role);
     await this.updateRefreshToken(user._id, tokens.refreshToken);
     return tokens;
   }

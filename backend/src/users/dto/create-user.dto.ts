@@ -10,6 +10,7 @@ import {
 } from 'class-validator';
 import { PlayerRoles, UserDetails, UserRoles } from '../schemas/user.schema';
 import { Type } from 'class-transformer';
+import { ApiHideProperty, ApiProduces, ApiProperty } from '@nestjs/swagger';
 
 export class DetailsDto {
   @IsOptional()
@@ -34,30 +35,37 @@ export class DetailsDto {
 }
 
 export class CreateUserDto {
+  @ApiProperty()
   @IsString()
   @IsNotEmpty()
   username: string;
 
+  @ApiProperty()
   @IsEmail()
   @IsNotEmpty()
   email: string;
 
+  @ApiProperty()
   @IsNotEmpty()
   @IsString()
   password: string;
 
+  @ApiHideProperty()
   @IsEmpty()
   refreshToken: string;
 
+  @ApiProperty()
   @IsEmpty()
   currentTeam: string;
 
+  @ApiHideProperty()
   @IsEmpty()
   role: UserRoles;
 
+  @ApiProperty({ type: DetailsDto })
   @IsOptional()
   @IsDefined()
   @Type(() => DetailsDto)
   @ValidateNested()
-  details: DetailsDto;
+  details?: DetailsDto;
 }

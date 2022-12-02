@@ -87,7 +87,8 @@
                                 <a href="#create" >create</a>
                             </li>
                             <li>
-                                <a href="#findAll" >findAll</a>
+                                    <span class="modifier">Async</span>
+                                <a href="#findLogged" >findLogged</a>
                             </li>
                             <li>
                                 <a href="#findOne" >findOne</a>
@@ -142,14 +143,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="19"
-                            class="link-to-prism">src/users/users.controller.ts:19</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="33"
+                            class="link-to-prism">src/users/users.controller.ts:33</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Creates user</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -185,7 +188,8 @@
 
                     </div>
                     <div class="io-description">
-                        
+                        <p>user</p>
+
                     </div>
                 </td>
             </tr>
@@ -195,16 +199,18 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="findAll"></a>
+                    <a name="findLogged"></a>
                     <span class="name">
-                        <span ><b>findAll</b></span>
-                        <a href="#findAll"><span class="icon ion-ios-link"></span></a>
+                        <span class="modifier">Async</span>
+                        <span ><b>findLogged</b></span>
+                        <a href="#findLogged"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>findAll()</code>
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>findLogged(req: Request)</code>
                 </td>
             </tr>
 
@@ -212,23 +218,65 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@Get()<br /></code>
+                    <code>@UseGuards(AccessTokenGuard)<br />@Get(&#x27;me&#x27;)<br /></code>
                 </td>
             </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="24"
-                            class="link-to-prism">src/users/users.controller.ts:24</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="44"
+                            class="link-to-prism">src/users/users.controller.ts:44</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Returns logged user&#39;s data</p>
+</div>
 
                     <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>req</td>
+                                    <td>
+                                            <code>Request</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <ul>
+<li>from AccessTokenGuard</li>
+</ul>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>unknown</code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>user data of the token owner</p>
 
                     </div>
                 </td>
@@ -262,14 +310,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="29"
-                            class="link-to-prism">src/users/users.controller.ts:29</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="54"
+                            class="link-to-prism">src/users/users.controller.ts:54</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Returns specified user&#39;s data</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -280,6 +330,7 @@
                                     <td>Name</td>
                                     <td>Type</td>
                                     <td>Optional</td>
+                                    <td>Description</td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -294,6 +345,12 @@
                                     </td>
 
 
+                                    <td>
+                                        <ul>
+<li>ID of user</li>
+</ul>
+
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -305,7 +362,10 @@
 
                     </div>
                     <div class="io-description">
-                        
+                        <ul>
+<li>user data</li>
+</ul>
+
                     </div>
                 </td>
             </tr>
@@ -332,14 +392,14 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@Delete(&#x27;:id&#x27;)<br /></code>
+                    <code>@Roles(&#x27;ADMIN&#x27;)<br />@UseGuards(AccessTokenGuard, RolesGuard)<br />@Delete(&#x27;:id&#x27;)<br /></code>
                 </td>
             </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="39"
-                            class="link-to-prism">src/users/users.controller.ts:39</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="67"
+                            class="link-to-prism">src/users/users.controller.ts:67</a></div>
                 </td>
             </tr>
 
@@ -400,7 +460,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>update(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, updateUserDto: <a href="../classes/UpdateUserDto.html" target="_self">UpdateUserDto</a>)</code>
+<code>update(req: Request, updateSelfDto: <a href="../injectables/UserUpdateSelfDto.html" target="_self">UserUpdateSelfDto</a>)</code>
                 </td>
             </tr>
 
@@ -408,14 +468,14 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@Patch(&#x27;:id&#x27;)<br /></code>
+                    <code>@UseGuards(AccessTokenGuard)<br />@Patch(&#x27;me&#x27;)<br /></code>
                 </td>
             </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="34"
-                            class="link-to-prism">src/users/users.controller.ts:34</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="60"
+                            class="link-to-prism">src/users/users.controller.ts:60</a></div>
                 </td>
             </tr>
 
@@ -436,9 +496,9 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>id</td>
+                                    <td>req</td>
                                     <td>
-                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            <code>Request</code>
                                     </td>
 
                                     <td>
@@ -448,9 +508,9 @@
 
                                 </tr>
                                 <tr>
-                                    <td>updateUserDto</td>
+                                    <td>updateSelfDto</td>
                                     <td>
-                                                <code><a href="../classes/UpdateUserDto.html" target="_self" >UpdateUserDto</a></code>
+                                                <code><a href="../injectables/UserUpdateSelfDto.html" target="_self" >UserUpdateSelfDto</a></code>
                                     </td>
 
                                     <td>
@@ -487,35 +547,63 @@
   Patch,
   Param,
   Delete,
+  UseGuards,
+  Req,
 } from &#x27;@nestjs/common&#x27;;
 import { UsersService } from &#x27;./users.service&#x27;;
 import { CreateUserDto } from &#x27;./dto/create-user.dto&#x27;;
-import { UpdateUserDto } from &#x27;./dto/update-user.dto&#x27;;
+import { UserUpdateSelfDto } from &#x27;./dto/user-update-self.dto&#x27;;
+import { AccessTokenGuard } from &#x27;../common/guards/accessToken.guard&#x27;;
+import { Request } from &#x27;express&#x27;;
+import { ApiTags } from &#x27;@nestjs/swagger&#x27;;
+import { RolesGuard } from &#x27;../common/guards/roles.guard&#x27;;
+import { Roles } from &#x27;../common/decorators/roles.decorator&#x27;;
 
+@ApiTags(&#x27;users&#x27;)
 @Controller(&#x27;users&#x27;)
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
+  /**
+   * Creates user
+   * @param {CreateUserDto} createUserDto
+   * @returns {UserDocument} user
+   *
+   */
   @Post()
   create(@Body() createUserDto: CreateUserDto) {
     return this.usersService.create(createUserDto);
   }
 
-  @Get()
-  findAll() {
-    return this.usersService.findAll();
+  /**
+   * Returns logged user&#x27;s data
+   * @returns {UserDocument} user data of the token owner
+   * @param req - from AccessTokenGuard
+   */
+  @UseGuards(AccessTokenGuard)
+  @Get(&#x27;me&#x27;)
+  async findLogged(@Req() req: Request) {
+    return await this.usersService.findLoggedUser(req.user[&#x27;username&#x27;]);
   }
 
+  /**
+   * Returns specified user&#x27;s data
+   * @returns {mongoose.document} - user data
+   * @param id {string} - ID of user
+   */
   @Get(&#x27;:id&#x27;)
   findOne(@Param(&#x27;id&#x27;) id: string) {
     return this.usersService.findOne(id);
   }
 
-  @Patch(&#x27;:id&#x27;)
-  update(@Param(&#x27;id&#x27;) id: string, @Body() updateUserDto: UpdateUserDto) {
-    return this.usersService.update(id, updateUserDto);
+  @UseGuards(AccessTokenGuard)
+  @Patch(&#x27;me&#x27;)
+  update(@Req() req: Request, @Body() updateSelfDto: UserUpdateSelfDto) {
+    return this.usersService.updateSelf(req.user[&#x27;username&#x27;], updateSelfDto);
   }
 
+  @Roles(&#x27;ADMIN&#x27;)
+  @UseGuards(AccessTokenGuard, RolesGuard)
   @Delete(&#x27;:id&#x27;)
   remove(@Param(&#x27;id&#x27;) id: string) {
     return this.usersService.remove(id);

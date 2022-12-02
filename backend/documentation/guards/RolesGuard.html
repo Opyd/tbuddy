@@ -28,7 +28,7 @@
                    <compodoc-menu mode="normal"></compodoc-menu>
                </div>
                <!-- START CONTENT -->
-               <div class="content injectable">
+               <div class="content guard">
                    <div class="content-data">
 
 
@@ -38,9 +38,11 @@
 
 
 
+
+
 <ol class="breadcrumb">
-  <li>Injectables</li>
-  <li >RefreshTokenStrategy</li>
+    <li>Guards</li>
+    <li >RolesGuard</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -53,19 +55,20 @@
 </ul>
 
 <div class="tab-content">
-    <div class="tab-pane fade active in" id="c-info">
-        <p class="comment">
+        <div class="tab-pane fade active in" id="c-info">
+            <p class="comment">
             <h3>File</h3>
-        </p>
-        <p class="comment">
-            <code>src/auth/strategies/refreshToken.strategy.ts</code>
-        </p>
+            </p>
+            <p class="comment">
+                <code>src/common/guards/roles.guard.ts</code>
+            </p>
 
 
 
 
 
-            <section>
+
+                <section>
     <h3 id="index">Index</h3>
     <table class="table table-sm table-bordered index-table">
         <tbody>
@@ -79,7 +82,7 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#validate" >validate</a>
+                                <a href="#canActivate" >canActivate</a>
                             </li>
                         </ul>
                     </td>
@@ -93,18 +96,18 @@
     </table>
 </section>
 
-            <section>
+                <section>
     <h3 id="constructor">Constructor</h3>
         <table class="table table-sm table-bordered">
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(config: ConfigService)</code>
+<code>constructor(reflector: Reflector)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/auth/strategies/refreshToken.strategy.ts:11</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="5" class="link-to-prism">src/common/guards/roles.guard.ts:5</a></div>
                             </td>
                         </tr>
 
@@ -122,10 +125,10 @@
                                         </thead>
                                         <tbody>
                                                 <tr>
-                                                        <td>config</td>
+                                                        <td>reflector</td>
                                                   
                                                         <td>
-                                                                    <code>ConfigService</code>
+                                                                    <code>Reflector</code>
                                                         </td>
                                                   
                                                     <td>
@@ -142,7 +145,7 @@
         </table>
 </section>
 
-            <section>
+                <section>
     
     <h3 id="methods">
         Methods
@@ -151,24 +154,24 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="validate"></a>
+                    <a name="canActivate"></a>
                     <span class="name">
-                        <span ><b>validate</b></span>
-                        <a href="#validate"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>canActivate</b></span>
+                        <a href="#canActivate"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>validate(req: Request, payload: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+<code>canActivate(context: ExecutionContext)</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="20"
-                            class="link-to-prism">src/auth/strategies/refreshToken.strategy.ts:20</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="8"
+                            class="link-to-prism">src/common/guards/roles.guard.ts:8</a></div>
                 </td>
             </tr>
 
@@ -189,21 +192,9 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>req</td>
+                                    <td>context</td>
                                     <td>
-                                            <code>Request</code>
-                                    </td>
-
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                </tr>
-                                <tr>
-                                    <td>payload</td>
-                                    <td>
-                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            <code>ExecutionContext</code>
                                     </td>
 
                                     <td>
@@ -218,7 +209,7 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
 
                     </div>
                     <div class="io-description">
@@ -229,41 +220,30 @@
         </tbody>
     </table>
 </section>
+        </div>
 
-    </div>
 
-
-    <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@nestjs/common&#x27;;
-import { PassportStrategy } from &#x27;@nestjs/passport&#x27;;
-import { ExtractJwt, Strategy } from &#x27;passport-jwt&#x27;;
-import { Request } from &#x27;express&#x27;;
-import { ConfigService } from &#x27;@nestjs/config&#x27;;
+        <div class="tab-pane fade  tab-source-code" id="c-source">
+            <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable, CanActivate, ExecutionContext } from &#x27;@nestjs/common&#x27;;
+import { Reflector } from &#x27;@nestjs/core&#x27;;
 
 @Injectable()
-export class RefreshTokenStrategy extends PassportStrategy(
-  Strategy,
-  &#x27;jwt-refresh&#x27;,
-) {
-  constructor(private config: ConfigService) {
-    super({
-      jwtFromRequest: ExtractJwt.fromBodyField(&#x27;refreshToken&#x27;),
-      secretOrKey: config.get(&#x27;JWT_REFRESH_SECRET&#x27;),
-      passReqToCallback: true,
-    });
-  }
+export class RolesGuard implements CanActivate {
+  constructor(private reflector: Reflector) {}
 
-  validate(req: Request, payload: any) {
-    const refreshToken &#x3D; req.body.refreshToken;
-    return { ...payload, refreshToken };
+  canActivate(context: ExecutionContext): boolean {
+    const roles &#x3D; this.reflector.get&lt;string[]&gt;(&#x27;roles&#x27;, context.getHandler());
+    if (!roles) {
+      return true;
+    }
+    const request &#x3D; context.switchToHttp().getRequest();
+    const user &#x3D; request.user;
+    return roles.includes(user.role);
   }
 }
 </code></pre>
-    </div>
-
+        </div>
 </div>
-
-
 
 
 
@@ -300,8 +280,8 @@ export class RefreshTokenStrategy extends PassportStrategy(
 
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
-            var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
-            var COMPODOC_CURRENT_PAGE_URL = 'RefreshTokenStrategy.html';
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'guard';
+            var COMPODOC_CURRENT_PAGE_URL = 'RolesGuard.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 

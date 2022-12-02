@@ -44,7 +44,7 @@
 
 <ol class="breadcrumb">
   <li>Classes</li>
-  <li >CreateUserDto</li>
+  <li >UserDetails</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -62,7 +62,7 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/users/dto/create-user.dto.ts</code>
+            <code>src/users/schemas/user.schema.ts</code>
         </p>
 
 
@@ -83,26 +83,19 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#currentTeam" >currentTeam</a>
+                                <a href="#about" >about</a>
                             </li>
                             <li>
-                                    <span class="modifier">Optional</span>
-                                <a href="#details" >details</a>
+                                <a href="#avatar" >avatar</a>
                             </li>
                             <li>
-                                <a href="#email" >email</a>
+                                <a href="#country" >country</a>
                             </li>
                             <li>
-                                <a href="#password" >password</a>
+                                <a href="#firstname" >firstname</a>
                             </li>
                             <li>
-                                <a href="#refreshToken" >refreshToken</a>
-                            </li>
-                            <li>
-                                <a href="#role" >role</a>
-                            </li>
-                            <li>
-                                <a href="#username" >username</a>
+                                <a href="#prefferedRoles" >prefferedRoles</a>
                             </li>
                         </ul>
                     </td>
@@ -117,6 +110,25 @@
     </table>
 </section>
 
+            <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                                <span class="modifier">Public</span>
+                        <code>constructor()</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/users/schemas/user.schema.ts:26</a></div>
+                            </td>
+                        </tr>
+
+            </tbody>
+        </table>
+</section>
 
             <section>
     
@@ -127,10 +139,10 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="currentTeam"></a>
+                    <a name="about"></a>
                     <span class="name">
-                        <span ><b>currentTeam</b></span>
-                        <a href="#currentTeam"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>about</b></span>
+                        <a href="#about"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
@@ -140,18 +152,9 @@
 
                     </td>
                 </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <b>Decorators : </b>
-                        <br />
-                        <code>
-                            @ApiProperty()<br />@IsEmpty()<br />
-                        </code>
-                    </td>
-                </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="59" class="link-to-prism">src/users/dto/create-user.dto.ts:59</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/users/schemas/user.schema.ts:25</a></div>
                         </td>
                     </tr>
 
@@ -162,46 +165,10 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="details"></a>
+                    <a name="avatar"></a>
                     <span class="name">
-                            <span class="modifier">Optional</span>
-                        <span ><b>details</b></span>
-                        <a href="#details"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="../classes/DetailsDto.html" target="_self" >DetailsDto</a></code>
-
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <b>Decorators : </b>
-                        <br />
-                        <code>
-                            @ApiProperty({type: DetailsDto})<br />@IsOptional()<br />@IsDefined()<br />@Type(undefined)<br />@ValidateNested()<br />
-                        </code>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="70" class="link-to-prism">src/users/dto/create-user.dto.ts:70</a></div>
-                        </td>
-                    </tr>
-
-
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="email"></a>
-                    <span class="name">
-                        <span ><b>email</b></span>
-                        <a href="#email"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>avatar</b></span>
+                        <a href="#avatar"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
@@ -211,18 +178,9 @@
 
                     </td>
                 </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <b>Decorators : </b>
-                        <br />
-                        <code>
-                            @ApiProperty()<br />@IsEmail()<br />@IsNotEmpty()<br />
-                        </code>
-                    </td>
-                </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">src/users/dto/create-user.dto.ts:46</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/users/schemas/user.schema.ts:24</a></div>
                         </td>
                     </tr>
 
@@ -233,10 +191,10 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="password"></a>
+                    <a name="country"></a>
                     <span class="name">
-                        <span ><b>password</b></span>
-                        <a href="#password"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>country</b></span>
+                        <a href="#country"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
@@ -246,18 +204,9 @@
 
                     </td>
                 </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <b>Decorators : </b>
-                        <br />
-                        <code>
-                            @ApiProperty()<br />@IsNotEmpty()<br />@IsString()<br />
-                        </code>
-                    </td>
-                </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="51" class="link-to-prism">src/users/dto/create-user.dto.ts:51</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/users/schemas/user.schema.ts:23</a></div>
                         </td>
                     </tr>
 
@@ -268,10 +217,10 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="refreshToken"></a>
+                    <a name="firstname"></a>
                     <span class="name">
-                        <span ><b>refreshToken</b></span>
-                        <a href="#refreshToken"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>firstname</b></span>
+                        <a href="#firstname"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
@@ -281,18 +230,9 @@
 
                     </td>
                 </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <b>Decorators : </b>
-                        <br />
-                        <code>
-                            @ApiHideProperty()<br />@IsEmpty()<br />
-                        </code>
-                    </td>
-                </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="55" class="link-to-prism">src/users/dto/create-user.dto.ts:55</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/users/schemas/user.schema.ts:22</a></div>
                         </td>
                     </tr>
 
@@ -303,66 +243,22 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="role"></a>
+                    <a name="prefferedRoles"></a>
                     <span class="name">
-                        <span ><b>role</b></span>
-                        <a href="#role"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>prefferedRoles</b></span>
+                        <a href="#prefferedRoles"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="../classes/User.html" target="_self" >UserRoles</a></code>
+                        <i>Type : </i>        <code><a href="../miscellaneous/variables.html#Roles" target="_self" >PlayerRoles[]</a></code>
 
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <b>Decorators : </b>
-                        <br />
-                        <code>
-                            @ApiHideProperty()<br />@IsEmpty()<br />
-                        </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="63" class="link-to-prism">src/users/dto/create-user.dto.ts:63</a></div>
-                        </td>
-                    </tr>
-
-
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="username"></a>
-                    <span class="name">
-                        <span ><b>username</b></span>
-                        <a href="#username"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <b>Decorators : </b>
-                        <br />
-                        <code>
-                            @ApiProperty()<br />@IsString()<br />@IsNotEmpty()<br />
-                        </code>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">src/users/dto/create-user.dto.ts:41</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/users/schemas/user.schema.ts:26</a></div>
                         </td>
                     </tr>
 
@@ -381,77 +277,70 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
-  IsDefined,
-  IsEmail,
-  IsEmpty,
-  IsEnum,
-  IsNotEmpty,
-  IsOptional,
-  IsString,
-  ValidateNested,
-} from &#x27;class-validator&#x27;;
-import { PlayerRoles, UserDetails, UserRoles } from &#x27;../schemas/user.schema&#x27;;
-import { Type } from &#x27;class-transformer&#x27;;
-import { ApiHideProperty, ApiProduces, ApiProperty } from &#x27;@nestjs/swagger&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Prop, Schema, SchemaFactory } from &#x27;@nestjs/mongoose&#x27;;
+import mongoose, { Document } from &#x27;mongoose&#x27;;
+import { Team } from &#x27;../../teams/schema/team.schema&#x27;;
 
-export class DetailsDto {
-  @IsOptional()
-  @IsString()
-  firstname: string;
+export type UserDocument &#x3D; User &amp; Document;
 
-  @IsOptional()
-  @IsString()
-  country: string;
-
-  @IsOptional()
-  @IsString()
-  avatar: string;
-
-  @IsOptional()
-  @IsString()
-  about: string;
-
-  @IsOptional()
-  @IsEnum(PlayerRoles, { each: true })
-  prefferedRoles: PlayerRoles[];
+export enum PlayerRoles {
+  MID &#x3D; &#x27;MID&#x27;,
+  TOP &#x3D; &#x27;TOP&#x27;,
+  JUNGLE &#x3D; &#x27;JUNGLE&#x27;,
+  BOT &#x3D; &#x27;BOT&#x27;,
+  SUPPORT &#x3D; &#x27;SUPPORT&#x27;,
 }
 
-export class CreateUserDto {
-  @ApiProperty()
-  @IsString()
-  @IsNotEmpty()
+export enum UserRoles {
+  PLAYER &#x3D; &#x27;PLAYER&#x27;,
+  ORGANIZER &#x3D; &#x27;ORGANIZER&#x27;,
+  ADMIN &#x3D; &#x27;ADMIN&#x27;,
+}
+
+export class UserDetails {
+  firstname: string;
+  country: string;
+  avatar: string;
+  about: string;
+  prefferedRoles: PlayerRoles[];
+
+  public constructor() {
+    this.firstname &#x3D; &#x27;&#x27;;
+    this.country &#x3D; &#x27;&#x27;;
+    this.avatar &#x3D; null;
+    this.about &#x3D; &#x27;&#x27;;
+    this.prefferedRoles &#x3D; [];
+  }
+}
+
+/**
+ * @class User
+ */
+@Schema({ timestamps: true })
+export class User {
+  @Prop({ required: true, unique: true })
   username: string;
 
-  @ApiProperty()
-  @IsEmail()
-  @IsNotEmpty()
+  @Prop({ required: true, unique: true })
   email: string;
 
-  @ApiProperty()
-  @IsNotEmpty()
-  @IsString()
+  @Prop({ required: true })
   password: string;
 
-  @ApiHideProperty()
-  @IsEmpty()
-  refreshToken: string;
-
-  @ApiProperty()
-  @IsEmpty()
-  currentTeam: string;
-
-  @ApiHideProperty()
-  @IsEmpty()
+  @Prop({ required: true })
   role: UserRoles;
 
-  @ApiProperty({ type: DetailsDto })
-  @IsOptional()
-  @IsDefined()
-  @Type(() &#x3D;&gt; DetailsDto)
-  @ValidateNested()
-  details?: DetailsDto;
+  @Prop()
+  refreshToken: string;
+
+  @Prop({ type: mongoose.Schema.Types.ObjectId, ref: &#x27;Team&#x27;, defualt: null })
+  currentTeam: Team;
+
+  @Prop({ type: UserDetails, default: new UserDetails() })
+  details: UserDetails;
 }
+
+export const UserSchema &#x3D; SchemaFactory.createForClass(User);
 </code></pre>
     </div>
 </div>
@@ -490,7 +379,7 @@ export class CreateUserDto {
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'class';
-            var COMPODOC_CURRENT_PAGE_URL = 'CreateUserDto.html';
+            var COMPODOC_CURRENT_PAGE_URL = 'UserDetails.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 

@@ -15,8 +15,6 @@ import { UpdateTeamDto } from './dto/update-team.dto';
 import { ApiTags } from '@nestjs/swagger';
 import { Request } from 'express';
 import { AccessTokenGuard } from '../common/guards/accessToken.guard';
-import { Roles } from '../common/decorators/roles.decorator';
-import { RolesGuard } from '../common/guards/roles.guard';
 
 @ApiTags('teams')
 @Controller('teams')
@@ -29,6 +27,7 @@ export class TeamsController {
     return req.user;
   }
 
+  @UseGuards(AccessTokenGuard)
   @Post()
   create(@Body() createTeamDto: CreateTeamDto) {
     return this.teamsService.create(createTeamDto);
@@ -44,11 +43,13 @@ export class TeamsController {
     return this.teamsService.findOne(id);
   }
 
+  @UseGuards(AccessTokenGuard)
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateTeamDto: UpdateTeamDto) {
     return this.teamsService.update(id, updateTeamDto);
   }
 
+  @UseGuards(AccessTokenGuard)
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.teamsService.remove(id);

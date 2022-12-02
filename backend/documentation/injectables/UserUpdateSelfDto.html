@@ -28,7 +28,7 @@
                    <compodoc-menu mode="normal"></compodoc-menu>
                </div>
                <!-- START CONTENT -->
-               <div class="content miscellaneous-variables">
+               <div class="content injectable">
                    <div class="content-data">
 
 
@@ -38,88 +38,102 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
 <ol class="breadcrumb">
-  <li>Miscellaneous</li>
-  <li>Variables</li>
+  <li>Injectables</li>
+  <li >UserUpdateSelfDto</li>
 </ol>
 
-<section>
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/users/dto/user-update-self.dto.ts</code>
+        </p>
+
+
+
+
+
+            <section>
     <h3 id="index">Index</h3>
     <table class="table table-sm table-bordered index-table">
         <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <ul class="index-list">
-                        <li>
-                            <a href="#Roles" title="src/common/decorators/roles.decorator.ts" ><b>Roles</b>&nbsp;&nbsp;&nbsp;(src/.../roles.decorator.ts)</a>
-                        </li>
-                        <li>
-                            <a href="#TeamHistorySchema" title="src/teams/schema/team.schema.ts" ><b>TeamHistorySchema</b>&nbsp;&nbsp;&nbsp;(src/.../team.schema.ts)</a>
-                        </li>
-                        <li>
-                            <a href="#TeamSchema" title="src/teams/schema/team.schema.ts" ><b>TeamSchema</b>&nbsp;&nbsp;&nbsp;(src/.../team.schema.ts)</a>
-                        </li>
-                        <li>
-                            <a href="#UserSchema" title="src/users/schemas/user.schema.ts" ><b>UserSchema</b>&nbsp;&nbsp;&nbsp;(src/.../user.schema.ts)</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</section>
-
-    <h3>src/common/decorators/roles.decorator.ts</h3>
-    <section>
-    <h3></h3>    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="Roles"></a>
-                    <span class="name">
-                        <span ><b>Roles</b></span>
-                        <a href="#Roles"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Default value : </i><code>(...roles: string[]) &#x3D;&gt; SetMetadata(&#x27;roles&#x27;, roles)</code>
+                        <h6><b>Properties</b></h6>
                     </td>
                 </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#details" >details</a>
+                            </li>
+                            <li>
+                                <a href="#password" >password</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
 
 
         </tbody>
     </table>
 </section>
-    <h3>src/teams/schema/team.schema.ts</h3>
-    <section>
-    <h3></h3>    <table class="table table-sm table-bordered">
+
+
+
+            <section>
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="TeamHistorySchema"></a>
+                    <a name="details"></a>
                     <span class="name">
-                        <span ><b>TeamHistorySchema</b></span>
-                        <a href="#TeamHistorySchema"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>details</b></span>
+                        <a href="#details"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Default value : </i><code>SchemaFactory.createForClass(TeamHistory)</code>
+                        <i>Type : </i>        <code><a href="../classes/DetailsDto.html" target="_self" >DetailsDto</a></code>
+
                     </td>
                 </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @IsOptional()<br />@IsDefined()<br />@Type(undefined)<br />@ValidateNested()<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">src/users/dto/user-update-self.dto.ts:21</a></div>
+                        </td>
+                    </tr>
 
 
         </tbody>
@@ -128,46 +142,79 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="TeamSchema"></a>
+                    <a name="password"></a>
                     <span class="name">
-                        <span ><b>TeamSchema</b></span>
-                        <a href="#TeamSchema"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>password</b></span>
+                        <a href="#password"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Default value : </i><code>SchemaFactory.createForClass(Team)</code>
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
                     </td>
                 </tr>
-
-
-        </tbody>
-    </table>
-</section>
-    <h3>src/users/schemas/user.schema.ts</h3>
-    <section>
-    <h3></h3>    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="UserSchema"></a>
-                    <span class="name">
-                        <span ><b>UserSchema</b></span>
-                        <a href="#UserSchema"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Default value : </i><code>SchemaFactory.createForClass(User)</code>
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @IsOptional()<br />@IsString()<br />
+                        </code>
                     </td>
                 </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/users/dto/user-update-self.dto.ts:15</a></div>
+                        </td>
+                    </tr>
 
 
         </tbody>
     </table>
 </section>
+
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@nestjs/common&#x27;;
+import {
+  IsDefined,
+  IsOptional,
+  IsString,
+  ValidateNested,
+} from &#x27;class-validator&#x27;;
+import { Type } from &#x27;class-transformer&#x27;;
+import { DetailsDto } from &#x27;./create-user.dto&#x27;;
+
+@Injectable()
+export class UserUpdateSelfDto {
+  @IsOptional()
+  @IsString()
+  password: string;
+
+  @IsOptional()
+  @IsDefined()
+  @Type(() &#x3D;&gt; DetailsDto)
+  @ValidateNested()
+  details: DetailsDto;
+}
+</code></pre>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -196,8 +243,8 @@
 
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
-            var COMPODOC_CURRENT_PAGE_CONTEXT = 'miscellaneous-variables';
-            var COMPODOC_CURRENT_PAGE_URL = 'variables.html';
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
+            var COMPODOC_CURRENT_PAGE_URL = 'UserUpdateSelfDto.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 

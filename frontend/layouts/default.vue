@@ -7,8 +7,7 @@
           :key="i"
           :to="item.to"
           router
-          exact
-        >
+          exact>
           <v-list-item-action>
             <v-icon>{{ item.icon }}</v-icon>
           </v-list-item-action>
@@ -56,63 +55,63 @@
 </template>
 
 <script>
-export default {
-  name: 'DefaultLayout',
-  data() {
-    return {
-      clipped: false,
-      drawer: false,
-      fixed: false,
-      user: '',
-      items: [
-        {
-          icon: 'mdi-apps',
-          title: 'Welcome',
-          to: '/',
-        },
-        {
-          icon: 'mdi-trophy',
-          title: 'Tournaments',
-          // to: '/auth/login',
-        },
-        {
-          icon: 'mdi-account-group',
-          title: 'Teams',
-          // to: '/auth/login',
-        },
-        {
-          icon: 'mdi-account-search',
-          title: 'Users',
-          // to: '/auth/login',
-        },
-        {
-          icon: 'mdi-account-multiple-plus',
-          title: 'Looking for Team',
-          // to: '/auth/login',
-        },
-      ],
-      title: 'TBuddy',
-    }
-  },
-  computed: {
-    loggedIn() {
-      return this.$auth.loggedIn
+  export default {
+    name: 'DefaultLayout',
+    data() {
+      return {
+        clipped: false,
+        drawer: false,
+        fixed: false,
+        user: '',
+        items: [
+          {
+            icon: 'mdi-apps',
+            title: 'Welcome',
+            to: '/',
+          },
+          {
+            icon: 'mdi-trophy',
+            title: 'Tournaments',
+            // to: '/auth/login',
+          },
+          {
+            icon: 'mdi-account-group',
+            title: 'Teams',
+            to: '/teams',
+          },
+          {
+            icon: 'mdi-account-search',
+            title: 'Users',
+            // to: '/auth/login',
+          },
+          {
+            icon: 'mdi-account-multiple-plus',
+            title: 'Looking for Team',
+            // to: '/auth/login',
+          },
+        ],
+        title: 'TBuddy',
+      };
     },
-  },
-  created() {},
-  methods: {
-    async logout() {
-      try {
-        const res = await this.$axios.get('auth/logout')
-        if (res.status === 200) {
-          this.$toast.success('Successfully logged out')
-          await this.$auth.logout()
-          await this.$router.push('/')
+    computed: {
+      loggedIn() {
+        return this.$auth.loggedIn;
+      },
+    },
+    created() {},
+    methods: {
+      async logout() {
+        try {
+          const res = await this.$axios.get('auth/logout');
+          if (res.status === 200) {
+            this.$toast.success('Successfully logged out');
+            await this.$auth.logout();
+            await this.$router.push('/');
+          }
+        } catch (e) {
+          this.$toast.error('Something went wrong');
         }
-      } catch (e) {
-        this.$toast.error('Something went wrong')
-      }
+      },
     },
-  },
-}
+  };
 </script>

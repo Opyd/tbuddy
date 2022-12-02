@@ -3,14 +3,17 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
 import { TeamsModule } from './teams/teams.module';
-import { APP_GUARD } from '@nestjs/core';
-import { RolesGuard } from './common/guards/roles.guard';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 
 @Module({
   imports: [
-    MongooseModule.forRoot(
-      'mongodb://mongoadmin:mongoadmin@localhost:27017/praca',
-    ),
+    MongooseModule.forRootAsync({
+      imports: [ConfigModule],
+      inject: [ConfigService],
+      useFactory: async (config: ConfigService) => ({
+        uri: config.get<string>('MONGODB_URI'),
+      }),
+    }),
     UsersModule,
     AuthModule,
     TeamsModule,

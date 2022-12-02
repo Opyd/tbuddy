@@ -9,6 +9,7 @@ import { UserUpdateSelfDto } from './dto/user-update-self.dto';
 @Injectable()
 export class UsersService {
   constructor(@InjectModel(User.name) private userModel: Model<UserDocument>) {}
+
   async create(createUserDto: CreateUserDto) {
     const createdUser = await new this.userModel(createUserDto);
     return createdUser.save();
@@ -44,8 +45,8 @@ export class UsersService {
 
   /**
    * Update function for changes to account made by user
-   * @param username
-   * @param userUpdateSelfDto
+   * @param {string} username
+   * @param {UserUpdateSelfDto} userUpdateSelfDto
    */
   async updateSelf(
     username: string,

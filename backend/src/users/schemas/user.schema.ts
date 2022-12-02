@@ -34,6 +34,9 @@ export class UserDetails {
   }
 }
 
+/**
+ * @class User
+ */
 @Schema({ timestamps: true })
 export class User {
   @Prop({ required: true, unique: true })

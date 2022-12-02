@@ -34,12 +34,16 @@ interface TeamHistoryInterface {
 
 export const TeamHistorySchema = SchemaFactory.createForClass(TeamHistory);
 
+/**
+ * @class Team
+ */
+
 @Schema({ timestamps: true })
 export class Team {
   @Prop({ required: true })
   name: string;
 
-  @Prop()
+  @Prop({ default: 'mdi-account-group' })
   icon: string;
 
   @Prop({ required: true, unique: true })

@@ -125,7 +125,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">src/auth/auth.service.ts:10</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/auth/auth.service.ts:11</a></div>
                             </td>
                         </tr>
 
@@ -207,15 +207,15 @@
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>getTokens(userId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, username: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                    <code>getTokens(userId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, username: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, role: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="101"
-                            class="link-to-prism">src/auth/auth.service.ts:101</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="109"
+                            class="link-to-prism">src/auth/auth.service.ts:109</a></div>
                 </td>
             </tr>
 
@@ -251,6 +251,18 @@
                                 </tr>
                                 <tr>
                                     <td>username</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>role</td>
                                     <td>
                                                 <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
                                     </td>
@@ -300,8 +312,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="77"
-                            class="link-to-prism">src/auth/auth.service.ts:77</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="85"
+                            class="link-to-prism">src/auth/auth.service.ts:85</a></div>
                 </td>
             </tr>
 
@@ -367,15 +379,15 @@ Sets user refreshToken to NULL</p>
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>refreshTokens(userId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, refreshToken: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                    <code>refreshTokens(username: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, refreshToken: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="137"
-                            class="link-to-prism">src/auth/auth.service.ts:137</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="147"
+                            class="link-to-prism">src/auth/auth.service.ts:147</a></div>
                 </td>
             </tr>
 
@@ -398,7 +410,7 @@ Sets user refreshToken to NULL</p>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>userId</td>
+                                    <td>username</td>
                                     <td>
                                                 <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
                                     </td>
@@ -460,8 +472,8 @@ Sets user refreshToken to NULL</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="51"
-                            class="link-to-prism">src/auth/auth.service.ts:51</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="59"
+                            class="link-to-prism">src/auth/auth.service.ts:59</a></div>
                 </td>
             </tr>
 
@@ -534,8 +546,8 @@ Sets user refreshToken to NULL</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="23"
-                            class="link-to-prism">src/auth/auth.service.ts:23</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="24"
+                            class="link-to-prism">src/auth/auth.service.ts:24</a></div>
                 </td>
             </tr>
 
@@ -608,8 +620,8 @@ Sets user refreshToken to NULL</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="87"
-                            class="link-to-prism">src/auth/auth.service.ts:87</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="95"
+                            class="link-to-prism">src/auth/auth.service.ts:95</a></div>
                 </td>
             </tr>
 
@@ -684,6 +696,7 @@ import { ConfigService } from &#x27;@nestjs/config&#x27;;
 import { CreateUserDto } from &#x27;../users/dto/create-user.dto&#x27;;
 import * as argon2 from &#x27;argon2&#x27;;
 import { AuthDto } from &#x27;./dto/auth.dto&#x27;;
+import { UserRoles } from &#x27;../users/schemas/user.schema&#x27;;
 
 @Injectable()
 export class AuthService {
@@ -710,13 +723,20 @@ export class AuthService {
 
     //hashing password with argon
     const hash &#x3D; await argon2.hash(createUserDto.password);
+    console.log(createUserDto);
     const newUser &#x3D; await this.userService.create({
       ...createUserDto,
       password: hash,
+      role: UserRoles.PLAYER,
+      currentTeam: null,
     });
 
     //generating tokens for client
-    const tokens &#x3D; await this.getTokens(newUser._id, newUser.username);
+    const tokens &#x3D; await this.getTokens(
+      newUser._id,
+      newUser.username,
+      newUser.role,
+    );
     await this.updateRefreshToken(newUser._id, tokens.refreshToken);
     return tokens;
   }
@@ -741,7 +761,7 @@ export class AuthService {
       throw new BadRequestException(&#x27;Username or password is incorrect&#x27;);
 
     //generating tokens for client
-    const tokens &#x3D; await this.getTokens(user._id, user.username);
+    const tokens &#x3D; await this.getTokens(user._id, user.username, user.role);
 
     //updating the user&#x27;s refresh token
     await this.updateRefreshToken(user._id, tokens.refreshToken);
@@ -755,7 +775,7 @@ export class AuthService {
    */
   async logout(userId: string) {
     //Sets refresh token to NULL
-    return this.userService.update(userId, { refreshToken: null });
+    return await this.userService.update(userId, { refreshToken: null });
   }
 
   /**
@@ -775,28 +795,30 @@ export class AuthService {
    * @param userId
    * @param username
    * @return{string} accessToken
-   * @return{string} refresToken
+   * @return{string} refreshToken
    */
-  async getTokens(userId: string, username: string) {
+  async getTokens(userId: string, username: string, role: string) {
     const [accessToken, refreshToken] &#x3D; await Promise.all([
       this.jwtService.signAsync(
         {
           sub: userId,
           username,
+          role,
         },
         {
           secret: this.configService.get&lt;string&gt;(&#x27;JWT_ACCESS_SECRET&#x27;),
-          expiresIn: &#x27;15min&#x27;,
+          expiresIn: &#x27;30min&#x27;,
         },
       ),
       this.jwtService.signAsync(
         {
           sub: userId,
           username,
+          role,
         },
         {
           secret: this.configService.get&lt;string&gt;(&#x27;JWT_REFRESH_SECRET&#x27;),
-          expiresIn: &#x27;7d&#x27;,
+          expiresIn: &#x27;30d&#x27;,
         },
       ),
     ]);
@@ -808,13 +830,13 @@ export class AuthService {
 
   /**
    * Updates user&#x27;s access Token
-   * @param userId
+   * @param username
    * @param refreshToken
    * @return{string} accessToken
    * @return{string} refresToken
    */
-  async refreshTokens(userId: string, refreshToken: string) {
-    const user &#x3D; await this.userService.findByUsername(userId);
+  async refreshTokens(username: string, refreshToken: string) {
+    const user &#x3D; await this.userService.findByUsername(username);
     if (!user || !user.refreshToken)
       throw new BadRequestException(&#x27;Access Denied&#x27;);
 
@@ -825,7 +847,7 @@ export class AuthService {
     );
     if (!refreshTokenMatches) throw new BadRequestException(&#x27;Access Denied&#x27;);
 
-    const tokens &#x3D; await this.getTokens(user._id, user.username);
+    const tokens &#x3D; await this.getTokens(user._id, user.username, user.role);
     await this.updateRefreshToken(user._id, tokens.refreshToken);
     return tokens;
   }

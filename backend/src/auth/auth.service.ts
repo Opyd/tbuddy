@@ -7,6 +7,12 @@ import * as argon2 from 'argon2';
 import { AuthDto } from './dto/auth.dto';
 import { UserRoles } from '../users/schemas/user.schema';
 
+/**
+ * @typedef {Object} Tokens
+ * @property {number} accessToken - Access Token
+ * @property {number} refreshToken - Refresh Token
+ */
+
 @Injectable()
 export class AuthService {
   constructor(
@@ -17,9 +23,8 @@ export class AuthService {
 
   /**
    * Creates new user
-   * @param createUserDto
-   * @returns {string} refreshToken
-   * @returns {string} accessToken
+   * @param {CreateUserDto} createUserDto
+   * @returns {Tokens} refreshToken
    */
   async signUp(createUserDto: CreateUserDto) {
     //Checking if user exists
@@ -52,9 +57,8 @@ export class AuthService {
 
   /**
    * Sign in method
-   * @param authDto
-   * @return{string} refreshToken
-   * @return{string} accessToken
+   * @param {AuthDto} authDto
+   * @return{Tokens} tokens
    */
   async signIn(authDto: AuthDto) {
     //Checking if user exists
@@ -80,7 +84,7 @@ export class AuthService {
   /**
    * Logout method
    * Sets user refreshToken to NULL
-   * @param userId
+   * @param {string} userId
    */
   async logout(userId: string) {
     //Sets refresh token to NULL
@@ -89,8 +93,8 @@ export class AuthService {
 
   /**
    * Function used to hash a refresh token and update it in user's document
-   * @param userId
-   * @param refreshToken
+   * @param {string} userId
+   * @param {string} refreshToken
    */
   async updateRefreshToken(userId: string, refreshToken: string) {
     const hashedRefreshedToken = await argon2.hash(refreshToken);
@@ -141,8 +145,7 @@ export class AuthService {
    * Updates user's access Token
    * @param username
    * @param refreshToken
-   * @return{string} accessToken
-   * @return{string} refresToken
+   * @return{Tokens} tokens
    */
   async refreshTokens(username: string, refreshToken: string) {
     const user = await this.userService.findByUsername(username);

@@ -20,4 +20,7 @@ export class CreateTeamDto {
   @IsString()
   @IsNotEmpty()
   owner: string;
+
+  @IsString()
+  color: string;
 }

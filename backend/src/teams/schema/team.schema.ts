@@ -60,6 +60,9 @@ export class Team {
 
   @Prop({ type: [{ type: TeamHistorySchema }] })
   history: TeamHistoryInterface[];
+
+  @Prop({ type: String })
+  color: string;
 }
 
 export const TeamSchema = SchemaFactory.createForClass(Team);

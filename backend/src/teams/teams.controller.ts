@@ -8,6 +8,8 @@ import {
   Delete,
   Req,
   UseGuards,
+  HttpException,
+  HttpStatus,
 } from '@nestjs/common';
 import { TeamsService } from './teams.service';
 import { CreateTeamDto } from './dto/create-team.dto';
@@ -36,6 +38,11 @@ export class TeamsController {
   @Get()
   findAll() {
     return this.teamsService.findAll();
+  }
+
+  @Get('tag/:tag')
+  findByTag(@Param('tag') tag: string) {
+    return this.teamsService.findOneByTag(tag);
   }
 
   @Get(':id')

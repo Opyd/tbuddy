@@ -30,7 +30,11 @@
           </v-icon>
         </div>
         <div class="tw-flex tw-w-full tw-justify-end">
-          <p class="tw-text-2xl tw-text-center tw-w-full">Details</p>
+          <p
+            class="tw-text-2xl tw-text-center tw-w-full"
+            style="font-family: 'Unbounded', sans-serif">
+            Details
+          </p>
         </div>
         <v-dialog v-model="dialog" persistent max-width="600px">
           <details-dialog
@@ -38,7 +42,7 @@
             @close="dialog = false" />
         </v-dialog>
         <v-divider></v-divider>
-        <div class="tw-flex tw-flex-nowrap tw-w-full tw-p-1">
+        <div class="tw-flex tw-flex-nowrap tw-w-full tw-pt-4">
           <div class="tw-w-1/2 text-center">First Name</div>
           <div class="tw-w-1/2 text-center">
             {{ user.details.firstname ? user.details.firstname : '-' }}
@@ -75,45 +79,33 @@
           </div>
         </div>
       </v-card>
-      <!--      <v-card v-if="isTeamLoaded" key="1" class="tw-w-1/2 tw-ml-5">-->
-      <!--          <div class="tw-flex tw-flex-nowrap tw-flex-col tw-w-full tw-h-full">-->
-      <!--            <div class="tw-w-full tw-h-fit">-->
-      <!--              <p class="tw-text-2xl tw-text-center tw-pt-3">My Team</p>-->
-      <!--            </div>-->
-      <!--            <v-divider></v-divider>-->
-      <!--            <div-->
-      <!--              v-if="user.currentTeam === null"-->
-      <!--              class="tw-w-full tw-h-full tw-flex tw-items-center tw-justify-center">-->
-      <!--              <p>You are currently not in any team</p>-->
-      <!--            </div>-->
-      <!--            <div-->
-      <!--              v-else-->
-      <!--              class="tw-w-full tw-flex tw-flex-col tw-items-center tw-justify-center">-->
-      <!--              <v-icon>{{ team.icon }}</v-icon>-->
-      <!--              <p class="tw-w-full tw-font-bold tw-text-3xl tw-text-center">-->
-      <!--                [{{ team.tag }}]-->
-      <!--              </p>-->
-      <!--              <p class="tw-w-full tw-text-center">{{ team.name }}</p>-->
-      <!--              <p class="tw-w-full tw-text-center">-->
-      <!--                Owner:-->
-      <!--                {{-->
-      <!--                  team.owner.username === user.username-->
-      <!--                    ? 'You'-->
-      <!--                    : team.owner.username-->
-      <!--                }}-->
-      <!--              </p>-->
-      <!--            </div>-->
-      <!--          </div>-->
-      <!--      </v-card>-->
-
-      <v-card v-if="isTeamLoaded" class="tw-w-1/2 tw-ml-5">
+      <v-card v-if="user.currentTeam === null" class="tw-w-1/2 tw-ml-5">
+        <div
+          class="tw-w-full tw-flex tw-flex-col tw-justify-center tw-h-full tw-items-center">
+          <p>You are not in team</p>
+          <nuxt-link to="/teams">
+            <v-btn color="success">Join one!</v-btn></nuxt-link
+          >
+        </div>
+      </v-card>
+      <v-card
+        v-if="isTeamLoaded && user.currentTeam !== null"
+        class="tw-w-1/2 tw-ml-5">
         <div class="tw-w-full">
-          <p class="tw-text-2xl tw-text-center tw-pt-3">My Team</p>
+          <p
+            class="tw-text-2xl tw-text-center tw-pt-3"
+            style="font-family: 'Unbounded', sans-serif">
+            My Team
+          </p>
         </div>
         <v-divider></v-divider>
         <v-list-item three-line>
           <v-list-item-content>
-            <div class="text-overline mb-4">[{{ team.tag }}]</div>
+            <div class="text-overline mb-4">
+              <span style="font-family: 'Unbounded', cursive">{{
+                team.tag
+              }}</span>
+            </div>
             <v-list-item-title class="text-h5 mb-1">
               {{ team.name }}
             </v-list-item-title>
@@ -125,17 +117,22 @@
             >
           </v-list-item-content>
 
-          <v-list-item-avatar size="40" color="grey" rounded>
+          <v-list-item-avatar size="40" :color="team.color" rounded>
             <v-icon>{{ team.icon }}</v-icon>
           </v-list-item-avatar>
         </v-list-item>
 
         <v-card-actions>
-          <v-btn outlined rounded text> More </v-btn>
+          <nuxt-link :to="`/teams/${team.tag}`">
+            <v-btn outlined rounded text> More </v-btn></nuxt-link
+          >
         </v-card-actions>
       </v-card>
 
-      <v-card v-if="!isTeamLoaded" key="2" class="tw-w-1/2 tw-ml-5">
+      <v-card
+        v-if="!isTeamLoaded && user.currentTeam !== null"
+        key="2"
+        class="tw-w-1/2 tw-ml-5">
         <v-skeleton-loader class="mx-auto" type="article"></v-skeleton-loader>
       </v-card>
     </div>

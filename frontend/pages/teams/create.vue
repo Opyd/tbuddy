@@ -3,12 +3,20 @@
     <v-card class="tw-w-1/2 tw-p-5">
       <p class="tw-text-3xl tw-text-center">Create your own Team</p>
 
-      <v-form>
-        <v-text-field :counter="20" label="Team Name" required></v-text-field>
+      <v-form ref="form" v-model="valid" lazy-validation>
+        <v-text-field
+          v-model="name"
+          :counter="20"
+          :rules="nameRules"
+          label="Team Name"
+          required></v-text-field>
         <v-row class="flex tw-items-center">
           <v-col align="center">
             <v-text-field
+              v-model.lazy="tag"
               :counter="4"
+              :rules="tagRules"
+              :error-messages="notUniqueTag ? 'Tag is already taken' : ''"
               class="mx-auto"
               label="Team Tag"
               required></v-text-field>
@@ -33,7 +41,9 @@
         <v-row justify="center" class="my-2">
           <v-color-picker v-model="color" elevation="15"></v-color-picker>
         </v-row>
-        <v-btn color="primary" class="tw-w-full tw-mt-5">Create Team</v-btn>
+        <v-btn color="primary" class="tw-w-full tw-mt-5" @click="validate"
+          >Create Team</v-btn
+        >
       </v-form>
     </v-card>
   </div>
@@ -43,6 +53,11 @@
   export default {
     name: 'CreateTeam',
     data: () => ({
+      notUniqueTag: false,
+      valid: true,
+      name: '',
+      tag: '',
+      color: '',
       items: [
         'mdi-robot-angry',
         'mdi-flash-outline',
@@ -58,11 +73,33 @@
         name: '',
         index: '',
       },
-      color: '',
+
+      nameRules: [v => !!v || 'Team Name is required'],
+      tagRules: [
+        v => !!v || 'Tag is required',
+        v =>
+          /^([A-Z1-9]){4}$/.test(v) ||
+          'Tag must consists of 4 letters/digits !',
+      ],
     }),
     head: () => ({
       title: 'Create your Team',
     }),
+    watch: {
+      async tag(newValue) {
+        if (!(newValue.length === 4)) {
+          return;
+        }
+        try {
+          const res = await this.$axios.get(`teams/tag/${newValue}`);
+          if (res.data.msg === 'Not Found') {
+            this.notUniqueTag = false;
+            return;
+          }
+          this.notUniqueTag = true;
+        } catch (e) {}
+      },
+    },
     created() {
       this.currentIcon = {
         name: this.items[0],
@@ -70,6 +107,38 @@
       };
     },
     methods: {
+      async validate() {
+        await this.$refs.form.validate();
+        if (!this.valid) {
+          this.$toast.error('Check if data is correct');
+          return;
+        }
+        await this.create();
+      },
+      reset() {
+        this.$refs.form.reset();
+      },
+      resetValidation() {
+        this.$refs.form.resetValidation();
+      },
+
+      async create() {
+        try {
+          const res = await this.$axios.post('teams', {
+            name: this.name,
+            tag: this.tag.toUpperCase(),
+            owner: this.$auth.user._id,
+            color: this.color,
+            icon: this.currentIcon.name,
+          });
+          if (res.status === 201) {
+            this.$toast.success('Successfully created new Team!');
+          }
+        } catch (e) {
+          this.$toast('Something went wrong');
+        }
+      },
+
       changeIcon(direction) {
         if (this.currentIcon.index + direction > this.items.length - 1) {
           this.currentIcon = {

@@ -27,7 +27,9 @@ export class UsersService {
   }
 
   async findOne(id: string): Promise<UserDocument> {
-    return this.userModel.findById(id).select({ refreshToken: 0, password: 0, _v: 0 })
+    return this.userModel
+      .findById(id)
+      .select({ refreshToken: 0, password: 0, _v: 0 });
   }
 
   async findByUsername(username: string): Promise<UserDocument> {

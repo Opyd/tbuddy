@@ -46,13 +46,13 @@ export class Team {
   @Prop({ default: 'mdi-account-group' })
   icon: string;
 
-  @Prop({ required: true, unique: true })
+  @Prop({ required: true, unique: true, minlength: 4, maxlength: 4 })
   tag: string;
 
-  @Prop({ type: mongoose.Schema.Types.String, ref: 'User' })
-  owner: string;
+  @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'User' })
+  owner: User;
 
-  @Prop({ type: [{ type: mongoose.Schema.Types.String, ref: 'User' }] })
+  @Prop({ type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }] })
   members: User[];
 
   @Prop({ default: null })
@@ -60,6 +60,9 @@ export class Team {
 
   @Prop({ type: [{ type: TeamHistorySchema }] })
   history: TeamHistoryInterface[];
+
+  @Prop({ type: String })
+  color: string;
 }
 
 export const TeamSchema = SchemaFactory.createForClass(Team);

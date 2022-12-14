@@ -1,4 +1,9 @@
-import { Injectable } from '@nestjs/common';
+import {
+  BadRequestException,
+  HttpException,
+  HttpStatus,
+  Injectable,
+} from '@nestjs/common';
 import { CreateTeamDto } from './dto/create-team.dto';
 import { UpdateTeamDto } from './dto/update-team.dto';
 import { InjectModel } from '@nestjs/mongoose';
@@ -14,6 +19,16 @@ export class TeamsService {
 
   findAll() {
     return this.teamModel.find({}).exec();
+  }
+
+  async findOneByTag(tag: string) {
+    const team = await this.teamModel.findOne({ tag }).exec();
+    if (!team) {
+      return {
+        msg: 'Not Found',
+      };
+    }
+    return team;
   }
 
   findOne(id: string) {

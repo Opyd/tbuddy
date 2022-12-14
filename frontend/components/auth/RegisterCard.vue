@@ -6,8 +6,7 @@
         v-model="username"
         :rules="usernameRules"
         label="Username"
-        required
-      >
+        required>
         <v-icon slot="prepend"> mdi-account </v-icon>
       </v-text-field>
       <div class="tw-flex tw-flex-nowrap tw-w-full tw-justify-center tw-gap-10">
@@ -15,8 +14,7 @@
           v-model="email"
           :rules="emailRules"
           label="E-mail"
-          required
-        >
+          required>
           <v-icon slot="prepend"> mdi-email </v-icon>
         </v-text-field>
 
@@ -25,8 +23,7 @@
           :rules="emailRules"
           label="Repeat e-mail"
           required
-          :error-messages="areEmailsSame ? '' : 'Email must match'"
-        >
+          :error-messages="areEmailsSame ? '' : 'Email must match'">
           <v-icon slot="prepend"> mdi-email </v-icon>
         </v-text-field>
       </div>
@@ -37,8 +34,7 @@
           label="Password"
           required
           type="password"
-          class=""
-        >
+          class="">
           <v-icon slot="prepend"> mdi-lock </v-icon>
         </v-text-field>
 
@@ -48,15 +44,13 @@
           required
           type="password"
           :rules="passwordRules"
-          :error-messages="arePasswordsSame ? '' : 'Passwords must match'"
-        >
+          :error-messages="arePasswordsSame ? '' : 'Passwords must match'">
           <v-icon slot="prepend"> mdi-lock </v-icon>
         </v-text-field>
       </div>
       <v-checkbox
         v-model="checkbox"
-        label="Accept Terms and Conditions"
-      ></v-checkbox>
+        label="Accept Terms and Conditions"></v-checkbox>
       <v-container class="d-flex flex-row justify-center tw-mt-3">
         <v-btn color="success" class="mr-4" @click="validate">
           Create account
@@ -68,68 +62,68 @@
 </template>
 
 <script>
-export default {
-  name: 'RegisterCard',
-  data() {
-    return {
-      valid: true,
-      status: false,
-      username: '',
-      errors: [],
-      usernameRules: [(v) => !!v || 'Username is required'],
-      password: '',
-      passwordRepeated: '',
-      passwordRules: [(v) => !!v || 'Password is required'],
-      email: '',
-      passwordMismatch: false,
-      emailRepeated: '',
-      emailRules: [
-        (v) => !!v || 'E-mail is required',
-        (v) => /.+@.+\..+/.test(v) || 'E-mail must be valid',
-      ],
-      checkbox: false,
-    }
-  },
-  computed: {
-    arePasswordsSame() {
-      return this.password === this.passwordRepeated
+  export default {
+    name: 'RegisterCard',
+    data() {
+      return {
+        valid: true,
+        status: false,
+        username: '',
+        errors: [],
+        usernameRules: [v => !!v || 'Username is required'],
+        password: '',
+        passwordRepeated: '',
+        passwordRules: [v => !!v || 'Password is required'],
+        email: '',
+        passwordMismatch: false,
+        emailRepeated: '',
+        emailRules: [
+          v => !!v || 'E-mail is required',
+          v => /.+@.+\..+/.test(v) || 'E-mail must be valid',
+        ],
+        checkbox: false,
+      };
     },
-    areEmailsSame() {
-      return this.email === this.emailRepeated
+    computed: {
+      arePasswordsSame() {
+        return this.password === this.passwordRepeated;
+      },
+      areEmailsSame() {
+        return this.email === this.emailRepeated;
+      },
     },
-  },
-  methods: {
-    async validate() {
-      await this.$refs.form.validate()
-      if (!this.valid) {
-        this.$toast.error('Check if data is correct')
-        return
-      }
-      this.register()
-    },
-    reset() {
-      this.$refs.form.reset()
-    },
-    resetValidation() {
-      this.$refs.form.resetValidation()
-    },
-
-    async register() {
-      try {
-        const res = await this.$axios.post('auth/signup', {
-          username: this.username,
-          password: this.password,
-          email: this.email,
-        })
-        if (res.status === 201) {
-          this.$toast.success('Successfully created an account')
+    methods: {
+      async validate() {
+        await this.$refs.form.validate();
+        if (!this.valid) {
+          this.$toast.error('Check if data is correct');
+          return;
         }
-      } catch (e) {
-        this.$toast('test')
-      }
+        await this.register();
+      },
+      reset() {
+        this.$refs.form.reset();
+      },
+      resetValidation() {
+        this.$refs.form.resetValidation();
+      },
+
+      async register() {
+        try {
+          const res = await this.$axios.post('auth/signup', {
+            username: this.username,
+            password: this.password,
+            email: this.email,
+          });
+          if (res.status === 201) {
+            this.$toast.success('Successfully created an account');
+          }
+        } catch (e) {
+          this.$toast('Something went wrong');
+        }
+      },
     },
-  },
-}
+  };
 </script>
 
 <style scoped></style>

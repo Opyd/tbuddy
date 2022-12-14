@@ -115,3 +115,9 @@
     },
   };
 </script>
+
+<style>
+  body {
+    overflow-y: auto;
+  }
+</style>

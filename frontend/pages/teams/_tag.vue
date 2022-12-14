@@ -89,7 +89,7 @@
     async fetch() {
       const res = await this.$axios.get(`/teams/tag/${this.$route.params.tag}`);
       if (res.data.msg === 'Not Found') {
-        return this.$nuxt.error({statusCode: 404, message: 'Not found'});
+        return this.$nuxt.error({statusCode: 404, message: 'Team Not found'});
       }
       this.team = res.data;
     },

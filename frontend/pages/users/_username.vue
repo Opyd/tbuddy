@@ -1,5 +1,11 @@
 <template>
   <div>
+    <div v-if="$fetchState.pending" class="tw-w-full">
+      <v-skeleton-loader
+        class="tw-w-full"
+        type="list-item-avatar-three-line, image, article"></v-skeleton-loader>
+    </div>
+    <div v-else>
     <v-card elevation="2">
       <div
         class="tw-flex-nowrap tw-flex tw-w-full tw-p-5 tw-items-center tw-gap-10">
@@ -11,7 +17,6 @@
               alt="My profile picture" />
             <v-icon v-else size="128">mdi-account-cowboy-hat</v-icon>
           </v-avatar>
-          <v-btn class="tw-w-full tw-mt-2">Change</v-btn>
         </div>
         <p class="tw-text-4xl tw-w-3/5">{{ user.username }}'s Profile</p>
         <p class="tw-self-start tw-justify-self-end">
@@ -22,13 +27,6 @@
     </v-card>
     <div class="tw-mt-5 tw-w-full tw-flex">
       <v-card elevation="2" class="tw-w-1/2 tw-py-3">
-        <div class="tw-absolute tw-right-0">
-          <v-icon
-            class="tw-m-1 hover:tw-animate-spin hover:tw-cursor-pointer"
-            @click="dialog = true">
-            mdi-cog
-          </v-icon>
-        </div>
         <div class="tw-flex tw-w-full tw-justify-end">
           <p
             class="tw-text-2xl tw-text-center tw-w-full"
@@ -36,11 +34,6 @@
             Details
           </p>
         </div>
-        <v-dialog v-model="dialog" persistent max-width="600px">
-          <details-dialog
-            :user-details="user.details"
-            @close="dialog = false" />
-        </v-dialog>
         <v-divider></v-divider>
         <div class="tw-flex tw-flex-nowrap tw-w-full tw-pt-4">
           <div class="tw-w-1/2 text-center">First Name</div>
@@ -103,14 +96,14 @@
           <v-list-item-content>
             <div class="text-overline mb-4">
               <span style="font-family: 'Unbounded', cursive">{{
-                team.tag
-              }}</span>
+                  team.tag
+                }}</span>
             </div>
             <v-list-item-title class="text-h5 mb-1">
               {{ team.name }}
             </v-list-item-title>
             <v-list-item-subtitle
-              >Created:
+            >Created:
               {{
                 new Date(team.createdAt).toDateString()
               }}</v-list-item-subtitle
@@ -137,52 +130,44 @@
       </v-card>
     </div>
   </div>
+  </div>
 </template>
 
 <script>
-  import DetailsDialog from '@/components/user/detailsDialog';
-
-  export default {
-    name: 'LoggedUsersPage',
-    components: {DetailsDialog},
-    data: () => ({
-      user: {},
-      team: {},
-      dialog: false,
-      isTeamLoaded: false,
-    }),
-    head: () => ({
-      title: 'My Account',
-    }),
-    created() {
-      this.user = this.$auth.user;
+export default {
+  name: 'UsersPage',
+  data: () => ({
+    user: {},
+    team: {},
+    isTeamLoaded: false,
+  }),
+  async fetch() {
+    try {
+      const res = await this.$axios.get(`/users/name/${this.$route.params.username}`)
+      this.user = res.data
       if (this.user.currentTeam !== null) {
-        this.getTeam();
+       await this.getTeam();
+      }
+    } catch (e) {
+      if(e.response.status === 404){
+        return this.$nuxt.error({statusCode: 404, message: 'User Not found'});
+      }
+    }
+  },
+  methods: {
+    async getTeam() {
+      try {
+        const res = await this.$axios.get(`/teams/${this.user.currentTeam}`);
+        this.team = res.data;
+        this.isTeamLoaded = true;
+      } catch (e) {
+        console.log(e);
       }
     },
-
-    methods: {
-      async getTeam() {
-        try {
-          const res = await this.$axios.get(`/teams/${this.user.currentTeam}`);
-          this.team = res.data;
-          this.isTeamLoaded = true;
-        } catch (e) {
-          console.log(e);
-        }
-      },
-    },
-  };
+  },
+}
 </script>
 
 <style scoped>
-  .fade-enter-active,
-  .fade-leave-active {
-    transition: opacity 0.5s;
-  }
 
-  .fade-enter,
-  .fade-leave-to {
-    opacity: 0;
-  }
 </style>

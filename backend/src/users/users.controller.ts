@@ -56,6 +56,15 @@ export class UsersController {
   }
 
   /**
+   * Return specified user's data
+   * @param username {string} - user's username
+   */
+  @Get('name/:username')
+  findOneByUsername(@Param('username') username: string) {
+    return this.usersService.findByUsername(username);
+  }
+
+  /**
    * Allows user to modify his data
    * @param req - passed from request by AccessTokenGuard
    * @param updateSelfDto

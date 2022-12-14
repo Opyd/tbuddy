@@ -33,21 +33,43 @@
           </p>
         </div>
       </v-card>
-      <div class="tw-w-full tw-flex tw-mt-3">
-        <v-card class="tw-w-1/2">
-          <div
-            class="tw-w-full tw-flex tw-justify-center tw-items-center tw-my-3">
-            <span style="font-family: 'Unbounded', sans-serif">Members</span>
+      <v-row >
+        <v-col cols='6'>
+          <div class='tw-mt-5' >
+            <v-card class="tw-w-full">
+              <div
+                class="tw-w-full tw-flex tw-justify-center tw-items-center tw-my-3">
+                <span style="font-family: 'Unbounded', sans-serif">Members</span>
+              </div>
+              <v-divider></v-divider>
+              <div
+                class="tw-w-full tw-flex tw-flex-col tw-justify-center tw-items-center">
+                <div v-for="member in team.members" :key="member" class="tw-w-full">
+                  <TeamMember :user-id="member" />
+                </div>
+              </div>
+            </v-card>
           </div>
-          <v-divider></v-divider>
-          <div
-            class="tw-w-full tw-flex tw-flex-col tw-justify-center tw-items-center">
-            <div v-for="member in team.members" :key="member" class="tw-w-full">
-              <TeamMember :user-id="member" />
-            </div>
+        </v-col>
+        <v-col cols='6'>
+          <div class='tw-mt-5'>
+            <v-card class="tw-w-full">
+              <div
+                class="tw-w-full tw-flex tw-justify-center tw-items-center tw-my-3">
+                <span style="font-family: 'Unbounded', sans-serif">Last Matches</span>
+              </div>
+              <v-divider></v-divider>
+              <div
+                class="tw-w-full tw-flex tw-flex-col tw-justify-center tw-items-center">
+                <span>Yeahbuć disa</span>
+              </div>
+            </v-card>
           </div>
-        </v-card>
-      </div>
+        </v-col>
+      </v-row>
+
+
+
     </div>
   </div>
 </template>

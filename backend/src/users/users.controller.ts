@@ -8,6 +8,7 @@ import {
   Delete,
   UseGuards,
   Req,
+  NotFoundException,
 } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
@@ -60,8 +61,12 @@ export class UsersController {
    * @param username {string} - user's username
    */
   @Get('name/:username')
-  findOneByUsername(@Param('username') username: string) {
-    return this.usersService.findByUsername(username);
+  async findOneByUsername(@Param('username') username: string) {
+    const user = await this.usersService.findByUsername(username);
+    if (!user) {
+      throw new NotFoundException();
+    }
+    return user;
   }
 
   /**

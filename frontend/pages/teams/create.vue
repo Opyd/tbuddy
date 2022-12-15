@@ -52,6 +52,7 @@
 <script>
   export default {
     name: 'CreateTeam',
+    error: false,
     data: () => ({
       notUniqueTag: false,
       valid: true,
@@ -78,7 +79,7 @@
       tagRules: [
         v => !!v || 'Tag is required',
         v =>
-          /^([A-Z1-9]){4}$/.test(v) ||
+          /^([A-Za-z1-9]){4}$/.test(v) ||
           'Tag must consists of 4 letters/digits !',
       ],
     }),
@@ -91,13 +92,15 @@
           return;
         }
         try {
-          const res = await this.$axios.get(`teams/tag/${newValue}`);
-          if (res.data.msg === 'Not Found') {
-            this.notUniqueTag = false;
+          const res = await this.$axios.get(`teams/exists/${newValue}`);
+          if (res.data.exists === true) {
+            this.notUniqueTag = true;
             return;
           }
-          this.notUniqueTag = true;
-        } catch (e) {}
+          this.notUniqueTag = false;
+        } catch (e) {
+          this.$toast.error('Something went wrong');
+        }
       },
     },
     created() {
@@ -133,6 +136,7 @@
           });
           if (res.status === 201) {
             this.$toast.success('Successfully created new Team!');
+            this.$router.go(`/teams/${this.tag}`);
           }
         } catch (e) {
           this.$toast('Something went wrong');

@@ -55,6 +55,12 @@ export class Team {
   @Prop({ type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }] })
   members: User[];
 
+  @Prop({
+    type: [{ type: String, ref: 'User' }],
+    default: null,
+  })
+  invites: User[];
+
   @Prop({ default: null })
   activeTournament: string;
 

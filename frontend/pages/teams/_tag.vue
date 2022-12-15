@@ -24,7 +24,7 @@
           </div>
           <div class="tw-w-3/5">
             <p class="tw-text-4xl tw-w-3/5">{{ team.name }}</p>
-            <TeamOwner :owner-id='team.owner' />
+            <TeamOwner :owner-id="team.owner" />
           </div>
 
           <p class="tw-self-start tw-justify-self-end">
@@ -33,30 +33,37 @@
           </p>
         </div>
       </v-card>
-      <v-row >
-        <v-col cols='6'>
-          <div class='tw-mt-5' >
+      <v-row>
+        <v-col cols="6">
+          <div class="tw-mt-5">
             <v-card class="tw-w-full">
               <div
                 class="tw-w-full tw-flex tw-justify-center tw-items-center tw-my-3">
-                <span style="font-family: 'Unbounded', sans-serif">Members</span>
+                <span style="font-family: 'Unbounded', sans-serif"
+                  >Members</span
+                >
               </div>
               <v-divider></v-divider>
               <div
                 class="tw-w-full tw-flex tw-flex-col tw-justify-center tw-items-center">
-                <div v-for="member in team.members" :key="member" class="tw-w-full">
+                <div
+                  v-for="member in team.members"
+                  :key="member"
+                  class="tw-w-full">
                   <TeamMember :user-id="member" />
                 </div>
               </div>
             </v-card>
           </div>
         </v-col>
-        <v-col cols='6'>
-          <div class='tw-mt-5'>
+        <v-col cols="6">
+          <div class="tw-mt-5">
             <v-card class="tw-w-full">
               <div
                 class="tw-w-full tw-flex tw-justify-center tw-items-center tw-my-3">
-                <span style="font-family: 'Unbounded', sans-serif">Last Matches</span>
+                <span style="font-family: 'Unbounded', sans-serif"
+                  >Last Matches</span
+                >
               </div>
               <v-divider></v-divider>
               <div
@@ -67,9 +74,6 @@
           </div>
         </v-col>
       </v-row>
-
-
-
     </div>
   </div>
 </template>
@@ -87,11 +91,16 @@
       loading: true,
     }),
     async fetch() {
-      const res = await this.$axios.get(`/teams/tag/${this.$route.params.tag}`);
-      if (res.data.msg === 'Not Found') {
-        return this.$nuxt.error({statusCode: 404, message: 'Team Not found'});
+      try {
+        const res = await this.$axios.get(
+          `/teams/tag/${this.$route.params.tag}`,
+        );
+        this.team = res.data;
+      } catch (e) {
+        if (e.response.status === 404) {
+          return this.$nuxt.error({statusCode: 404, message: 'Team Not found'});
+        }
       }
-      this.team = res.data;
     },
   };
 </script>

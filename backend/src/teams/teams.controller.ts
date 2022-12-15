@@ -17,17 +17,12 @@ import { UpdateTeamDto } from './dto/update-team.dto';
 import { ApiTags } from '@nestjs/swagger';
 import { Request } from 'express';
 import { AccessTokenGuard } from '../common/guards/accessToken.guard';
+import { InviteUserDto } from './dto/invite-user.dto';
 
 @ApiTags('teams')
 @Controller('teams')
 export class TeamsController {
   constructor(private readonly teamsService: TeamsService) {}
-
-  @UseGuards(AccessTokenGuard)
-  @Get('test')
-  test(@Req() req: Request) {
-    return req.user;
-  }
 
   @UseGuards(AccessTokenGuard)
   @Post()
@@ -45,9 +40,25 @@ export class TeamsController {
     return this.teamsService.findOneByTag(tag);
   }
 
+  /**
+   * Checks if given team exists (used in create team page)
+   * @param tag
+   * @return {boolean} exists
+   */
+  @Get('exists/:tag')
+  checkIfTeamExists(@Param('tag') tag: string) {
+    return this.teamsService.checkIfTeamExists(tag);
+  }
+
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.teamsService.findOne(id);
+  }
+
+  @UseGuards(AccessTokenGuard)
+  @Post('invite')
+  inviteUserToTeam(@Req() req: Request, @Body() inviteUserDto: InviteUserDto) {
+    return this.teamsService.inviteUser(req.user['username'], inviteUserDto);
   }
 
   @UseGuards(AccessTokenGuard)

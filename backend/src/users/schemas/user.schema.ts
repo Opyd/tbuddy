@@ -45,7 +45,6 @@ export class User {
   @Prop({ required: true, unique: true })
   email: string;
 
-
   @Prop({ required: true })
   password: string;
 
@@ -57,6 +56,9 @@ export class User {
 
   @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'Team', defualt: null })
   currentTeam: Team;
+
+  @Prop({ type: [{ type: mongoose.Schema.Types.String, ref: 'Team' }] })
+  invites: Team[];
 
   @Prop({ type: UserDetails, default: new UserDetails() })
   details: UserDetails;

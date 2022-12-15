@@ -21,8 +21,11 @@ export class TeamsService {
     private userService: UsersService,
   ) {}
 
-  create(createTeamDto: CreateTeamDto) {
-    return new this.teamModel(createTeamDto).save();
+  async create(createTeamDto: CreateTeamDto) {
+    const user = await this.userService.findOne(createTeamDto.owner);
+    const team = await new this.teamModel(createTeamDto).save();
+    await user.updateOne({ currentTeam: team._id }).exec();
+    return team;
   }
 
   findAll() {
@@ -39,6 +42,14 @@ export class TeamsService {
 
   findOne(id: string) {
     return this.teamModel.findById(id).populate('owner').exec();
+  }
+
+  async isTeamOwnedByUser(userId: string) {
+    const team = await this.teamModel.find({ owner: userId });
+    if (!team) {
+      return false;
+    }
+    return true;
   }
 
   async checkIfTeamExists(tag: string) {

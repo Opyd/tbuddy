@@ -10,6 +10,7 @@ import {
   UseGuards,
   HttpException,
   HttpStatus,
+  BadRequestException,
 } from '@nestjs/common';
 import { TeamsService } from './teams.service';
 import { CreateTeamDto } from './dto/create-team.dto';
@@ -18,15 +19,29 @@ import { ApiTags } from '@nestjs/swagger';
 import { Request } from 'express';
 import { AccessTokenGuard } from '../common/guards/accessToken.guard';
 import { InviteUserDto } from './dto/invite-user.dto';
+import { UsersService } from '../users/users.service';
 
 @ApiTags('teams')
 @Controller('teams')
 export class TeamsController {
-  constructor(private readonly teamsService: TeamsService) {}
+  constructor(
+    private readonly teamsService: TeamsService,
+    private userService: UsersService,
+  ) {}
 
   @UseGuards(AccessTokenGuard)
   @Post()
-  create(@Body() createTeamDto: CreateTeamDto) {
+  async create(@Req() req: Request, @Body() createTeamDto: CreateTeamDto) {
+    const user = await this.userService.findByUsername(req.user['username']);
+    if (user._id.toString() !== createTeamDto.owner) {
+      throw new BadRequestException("User id's mismatch");
+    }
+    if (user.currentTeam !== null) {
+      throw new BadRequestException(
+        'User already in team. Leave current team first',
+      );
+    }
+
     return this.teamsService.create(createTeamDto);
   }
 

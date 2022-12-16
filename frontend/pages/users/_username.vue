@@ -159,7 +159,9 @@
     methods: {
       async getTeam() {
         try {
-          const res = await this.$axios.get(`/teams/${this.user.currentTeam}`);
+          const res = await this.$axios.get(
+            `/teams/tag/${this.user.currentTeam}`,
+          );
           this.team = res.data;
           this.isTeamLoaded = true;
         } catch (e) {

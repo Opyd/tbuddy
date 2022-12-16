@@ -18,6 +18,7 @@ import { Request } from 'express';
 import { ApiTags } from '@nestjs/swagger';
 import { RolesGuard } from '../common/guards/roles.guard';
 import { Roles } from '../common/decorators/roles.decorator';
+import { HandleInviteDto } from './dto/handle-invite.dto';
 
 @ApiTags('users')
 @Controller('users')
@@ -66,7 +67,19 @@ export class UsersController {
     if (!user) {
       throw new NotFoundException();
     }
-    return user;
+    const cleared = user.toObject();
+    delete cleared.refreshToken;
+    delete cleared.password;
+    return cleared;
+  }
+
+  @UseGuards(AccessTokenGuard)
+  @Post('handleinvite')
+  handleInvite(@Req() req: Request, @Body() handleInviteDto: HandleInviteDto) {
+    return this.usersService.handleInvite(
+      req.user['username'],
+      handleInviteDto,
+    );
   }
 
   /**

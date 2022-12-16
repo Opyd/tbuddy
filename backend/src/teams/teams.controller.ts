@@ -33,8 +33,8 @@ export class TeamsController {
   @Post()
   async create(@Req() req: Request, @Body() createTeamDto: CreateTeamDto) {
     const user = await this.userService.findByUsername(req.user['username']);
-    if (user._id.toString() !== createTeamDto.owner) {
-      throw new BadRequestException("User id's mismatch");
+    if (user.username !== createTeamDto.owner) {
+      throw new BadRequestException('Usernames mismatch');
     }
     if (user.currentTeam !== null) {
       throw new BadRequestException(

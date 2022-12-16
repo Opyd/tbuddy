@@ -1,7 +1,9 @@
 import {
   BadRequestException,
+  forwardRef,
   HttpException,
   HttpStatus,
+  Inject,
   Injectable,
   NotFoundException,
 } from '@nestjs/common';
@@ -13,18 +15,20 @@ import { Model } from 'mongoose';
 import { UsersService } from '../users/users.service';
 import { InviteUserDto } from './dto/invite-user.dto';
 import { User } from '../users/schemas/user.schema';
+import { UsersModule } from '../users/users.module';
 
 @Injectable()
 export class TeamsService {
   constructor(
     @InjectModel(Team.name) private teamModel: Model<TeamDocument>,
+    @Inject(forwardRef(() => UsersService))
     private userService: UsersService,
   ) {}
 
   async create(createTeamDto: CreateTeamDto) {
-    const user = await this.userService.findOne(createTeamDto.owner);
+    const user = await this.userService.findByUsername(createTeamDto.owner);
     const team = await new this.teamModel(createTeamDto).save();
-    await user.updateOne({ currentTeam: team._id }).exec();
+    await user.updateOne({ currentTeam: team.tag }).exec();
     return team;
   }
 
@@ -54,13 +58,9 @@ export class TeamsService {
 
   async checkIfTeamExists(tag: string) {
     const team = await this.teamModel.findOne({ tag }).exec();
-    if (!team) {
-      return {
-        exists: false,
-      };
-    }
+
     return {
-      data: true,
+      exists: !!team,
     };
   }
 
@@ -73,13 +73,13 @@ export class TeamsService {
   async inviteUser(inviter: string, inviteUserDto: InviteUserDto) {
     const user = await this.userService.findByUsername(inviteUserDto.username);
 
-    const team = await this.teamModel
-      .findOne({
-        teamtag: inviteUserDto.teamtag,
-      })
-      .populate('owner');
+    const team = await this.teamModel.findOne({
+      teamtag: inviteUserDto.teamtag,
+    });
 
-    if (team.owner.username !== inviter) {
+    console.log(team.owner.toString());
+
+    if (team.owner.toString() !== inviter) {
       throw new BadRequestException('You are not the owner');
     }
 
@@ -92,10 +92,9 @@ export class TeamsService {
     }
 
     await user.updateOne({ $push: { invites: team.tag } }).exec();
-    await team
+    return await team
       .updateOne({ $push: { invites: user.username } }, { new: true })
       .exec();
-    return team;
   }
 
   remove(id: string) {

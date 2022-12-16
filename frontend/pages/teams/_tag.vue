@@ -24,7 +24,7 @@
           </div>
           <div class="tw-w-3/5">
             <p class="tw-text-4xl tw-w-3/5">{{ team.name }}</p>
-            <TeamOwner :owner-id="team.owner" />
+            <TeamOwner :ownername="team.owner" />
           </div>
 
           <p class="tw-self-start tw-justify-self-end">
@@ -50,7 +50,7 @@
                   v-for="member in team.members"
                   :key="member"
                   class="tw-w-full">
-                  <TeamMember :user-id="member" />
+                  <TeamMember :username="member" />
                 </div>
               </div>
             </v-card>

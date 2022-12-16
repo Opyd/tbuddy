@@ -8,9 +8,10 @@ import {
   IsString,
   ValidateNested,
 } from 'class-validator';
-import { PlayerRoles, UserDetails, UserRoles } from '../schemas/user.schema';
+import { UserRoles } from '../schemas/user.schema';
 import { Type } from 'class-transformer';
 import { ApiHideProperty, ApiProduces, ApiProperty } from '@nestjs/swagger';
+import { PlayerRoles } from '../schemas/user-details';
 
 export class DetailsDto {
   @IsOptional()

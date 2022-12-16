@@ -1,6 +1,7 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import mongoose, { Document } from 'mongoose';
 import { User } from '../../users/schemas/user.schema';
+import { TeamHistoryInterface } from './team.interface';
 
 export type TeamDocument = Team & Document;
 
@@ -24,14 +25,6 @@ export class TeamHistory extends Document {
   date: Date;
 }
 
-interface TeamHistoryInterface {
-  matchId: string;
-  oponnent: string;
-  oponnentId: string;
-  result: string;
-  date: Date;
-}
-
 export const TeamHistorySchema = SchemaFactory.createForClass(TeamHistory);
 
 /**
@@ -49,10 +42,10 @@ export class Team {
   @Prop({ required: true, unique: true, minlength: 4, maxlength: 4 })
   tag: string;
 
-  @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'User' })
+  @Prop({ type: String, ref: 'User' })
   owner: User;
 
-  @Prop({ type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }] })
+  @Prop({ type: [{ type: String, ref: 'User' }] })
   members: User[];
 
   @Prop({

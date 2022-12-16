@@ -32,7 +32,7 @@ export class DetailsDto {
 
   @IsOptional()
   @IsEnum(PlayerRoles, { each: true })
-  prefferedRoles: PlayerRoles[];
+  preferredRoles: PlayerRoles[];
 }
 
 export class CreateUserDto {

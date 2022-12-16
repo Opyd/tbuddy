@@ -11,7 +11,7 @@
         <span>{{ user.username }}</span>
       </div>
       <div
-        v-if="user.details.prefferedRoles.length !== 0"
+        v-if="user.details.preferredRoles.length !== 0"
         class="tw-w-1/3 tw-flex tw-justify-center tw-items-center">
         <span class="tw-italic">
           {{ roles }}
@@ -44,7 +44,7 @@
 
     computed: {
       roles() {
-        const roles = this.user.details.prefferedRoles;
+        const roles = this.user.details.preferredRoles;
         return roles.join(', ');
       },
     },

@@ -65,16 +65,13 @@
           <div class="tw-w-1/2 text-center">
             <p
               v-if="
-                user.details.prefferedRoles === undefined ||
-                user.details.prefferedRoles?.length === 0
+                user.details.preferredRoles === undefined ||
+                user.details.preferredRoles?.length === 0
               ">
               -
             </p>
-            <span
-              v-for="role in user.details.prefferedRoles"
-              v-else
-              :key="role">
-              {{ role }}
+            <span>
+              {{ roles }}
             </span>
           </div>
         </div>
@@ -154,13 +151,18 @@
     head: () => ({
       title: 'My Account',
     }),
+    computed: {
+      roles() {
+        const roles = this.user.details.preferredRoles;
+        return roles.join(', ');
+      },
+    },
     created() {
       this.user = this.$auth.user;
       if (this.user.currentTeam !== null) {
         this.getTeam();
       }
     },
-
     methods: {
       async getTeam() {
         try {

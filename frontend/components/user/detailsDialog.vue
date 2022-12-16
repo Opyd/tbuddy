@@ -56,7 +56,7 @@
       this.countries = countryList;
       this.newFirstname = this.userDetails.firstname;
       this.newAbout = this.userDetails.about;
-      this.newRoles = this.userDetails.prefferedRoles;
+      this.newRoles = this.userDetails.preferredRoles;
       this.newCountry = this.userDetails.country;
     },
     methods: {
@@ -66,7 +66,7 @@
             details: {
               firstname: this.newFirstname,
               about: this.newAbout,
-              prefferedRoles: this.newRoles,
+              preferredRoles: this.newRoles,
               country: this.newCountry,
             },
           });

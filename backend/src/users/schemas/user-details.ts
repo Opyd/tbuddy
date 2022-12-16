@@ -1,4 +1,3 @@
-
 export enum PlayerRoles {
   MID = 'MID',
   TOP = 'TOP',
@@ -7,19 +6,18 @@ export enum PlayerRoles {
   SUPPORT = 'SUPPORT',
 }
 
-
 export class UserDetails {
   firstname: string;
   country: string;
   avatar: string;
   about: string;
-  prefferedRoles: PlayerRoles[];
+  preferredRoles: PlayerRoles[];
 
   public constructor() {
     this.firstname = '';
     this.country = '';
     this.avatar = null;
     this.about = '';
-    this.prefferedRoles = [];
+    this.preferredRoles = [];
   }
 }

@@ -58,16 +58,13 @@
             <div class="tw-w-1/2 text-center">
               <p
                 v-if="
-                  user.details.prefferedRoles === undefined ||
-                  user.details.prefferedRoles?.length === 0
+                  user.details.preferredRoles === undefined ||
+                  user.details.preferredRoles?.length === 0
                 ">
                 -
               </p>
-              <span
-                v-for="role in user.details.prefferedRoles"
-                v-else
-                :key="role">
-                {{ role }}
+              <span>
+                {{ roles }}
               </span>
             </div>
           </div>
@@ -155,6 +152,12 @@
           return this.$nuxt.error({statusCode: 404, message: 'User Not found'});
         }
       }
+    },
+    computed: {
+      roles() {
+        const roles = this.user.details.preferredRoles;
+        return roles.join(', ');
+      },
     },
     methods: {
       async getTeam() {

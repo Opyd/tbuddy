@@ -72,10 +72,7 @@
         <v-card v-if="user.currentTeam === null" class="tw-w-1/2 tw-ml-5">
           <div
             class="tw-w-full tw-flex tw-flex-col tw-justify-center tw-h-full tw-items-center">
-            <p>You are not in team</p>
-            <nuxt-link to="/teams">
-              <v-btn color="success">Join one!</v-btn></nuxt-link
-            >
+            <p>{{ user.username }} is not currently in any team</p>
           </div>
         </v-card>
         <v-card

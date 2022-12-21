@@ -86,6 +86,16 @@ export class UsersService {
     return user;
   }
 
+  async findLikeUsername(query: string) {
+    return this.userModel
+      .find({
+        username: new RegExp('.*' + query + '.*', 'i'),
+        currentTeam: null,
+      })
+      .select({ username: 1 })
+      .limit(5);
+  }
+
   async update(
     id: string,
     updateUserDto: UpdateUserDto,

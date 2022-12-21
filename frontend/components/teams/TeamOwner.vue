@@ -13,7 +13,11 @@
           type="list-item"></v-skeleton-loader>
       </div>
       <div v-else class="tw-w-full">
-        <p>{{ owner.username }}</p>
+        <NuxtLink
+          :to="`/users/${owner.username}`"
+          style="text-decoration: none; color: inherit"
+          ><p>{{ owner.username }}</p></NuxtLink
+        >
       </div>
     </div>
   </div>

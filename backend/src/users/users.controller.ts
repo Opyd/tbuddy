@@ -82,6 +82,11 @@ export class UsersController {
     );
   }
 
+  @Get('search/:username')
+  searchByUsername(@Param('username') username: string) {
+    return this.usersService.findLikeUsername(username);
+  }
+
   /**
    * Allows user to modify his data
    * @param req - passed from request by AccessTokenGuard

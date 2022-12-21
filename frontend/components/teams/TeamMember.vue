@@ -8,7 +8,11 @@
         <v-icon>mdi-account</v-icon>
       </div>
       <div class="tw-w-1/3 tw-flex tw-justify-center tw-items-center">
-        <span>{{ user.username }}</span>
+        <NuxtLink
+          :to="`/users/${user.username}`"
+          style="text-decoration: none; color: inherit"
+          ><span>{{ user.username }}</span></NuxtLink
+        >
       </div>
       <div
         v-if="user.details.preferredRoles.length !== 0"

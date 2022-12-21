@@ -27,14 +27,21 @@
             <TeamOwner :ownername="team.owner" />
           </div>
 
-          <p class="tw-self-start tw-justify-self-end">
+          <div class="tw-self-start tw-justify-self-end">
             <v-icon> mdi-calendar</v-icon>
             <i>Created: {{ new Date(team.createdAt).toDateString() }} </i>
-          </p>
+            <div
+              v-if="$auth.user.username === team.owner"
+              class="tw-mt-5 tw-flex tw-justify-center">
+              <NuxtLink :to="`${$route.params.tag}/manage`"
+                ><v-btn color="green" outlined>Manage</v-btn></NuxtLink
+              >
+            </div>
+          </div>
         </div>
       </v-card>
       <v-row>
-        <v-col cols="6">
+        <v-col md="6" sm="12">
           <div class="tw-mt-5">
             <v-card class="tw-w-full">
               <div
@@ -56,7 +63,7 @@
             </v-card>
           </div>
         </v-col>
-        <v-col cols="6">
+        <v-col md="6" sm="12">
           <div class="tw-mt-5">
             <v-card class="tw-w-full">
               <div
@@ -68,7 +75,7 @@
               <v-divider></v-divider>
               <div
                 class="tw-w-full tw-flex tw-flex-col tw-justify-center tw-items-center">
-                <span>Yeahbuć disa</span>
+                <span></span>
               </div>
             </v-card>
           </div>

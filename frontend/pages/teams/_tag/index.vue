@@ -100,7 +100,7 @@
     async fetch() {
       try {
         const res = await this.$axios.get(
-          `/teams/tag/${this.$route.params.tag}`,
+          `/teams/tag/${this.$route.params.tag.toUpperCase()}`,
         );
         this.team = res.data;
       } catch (e) {

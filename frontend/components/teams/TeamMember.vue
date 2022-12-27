@@ -1,30 +1,33 @@
 <template>
-  <div class="tw-mt-5 tw-mb-5 tw-w-full">
+  <div class="tw-mt-5 tw-mb-5 tw-w-full tw-hover:tw-bg-amber-300">
     <div v-if="$fetchState.pending" class="tw-w-full">
       <v-skeleton-loader class="tw-w-full" type="list-item"></v-skeleton-loader>
     </div>
-    <div v-else class="tw-w-full tw-flex tw-justify-center tw-px-5">
-      <div class="tw-w-1/3 tw-flex tw-justify-center tw-items-center">
-        <v-icon>mdi-account</v-icon>
+
+    <NuxtLink
+      v-else
+      :to="`/users/${user.username}`"
+      class=""
+      style="text-decoration: none; color: inherit">
+      <div class="tw-w-full tw-flex tw-justify-center tw-px-5">
+        <div class="tw-w-1/3 tw-flex tw-justify-center tw-items-center">
+          <v-icon>mdi-account</v-icon>
+        </div>
+        <div class="tw-w-1/3 tw-flex tw-justify-center tw-items-center">
+          <span>{{ user.username }}</span>
+        </div>
+        <div
+          v-if="user.details.preferredRoles.length !== 0"
+          class="tw-w-1/3 tw-flex tw-justify-center tw-items-center">
+          <span class="tw-italic">
+            {{ roles }}
+          </span>
+        </div>
+        <div v-else class="tw-w-1/3 tw-flex tw-justify-center tw-items-center">
+          <small>No roles</small>
+        </div>
       </div>
-      <div class="tw-w-1/3 tw-flex tw-justify-center tw-items-center">
-        <NuxtLink
-          :to="`/users/${user.username}`"
-          style="text-decoration: none; color: inherit"
-          ><span>{{ user.username }}</span></NuxtLink
-        >
-      </div>
-      <div
-        v-if="user.details.preferredRoles.length !== 0"
-        class="tw-w-1/3 tw-flex tw-justify-center tw-items-center">
-        <span class="tw-italic">
-          {{ roles }}
-        </span>
-      </div>
-      <div v-else class="tw-w-1/3 tw-flex tw-justify-center tw-items-center">
-        <small>No roles</small>
-      </div>
-    </div>
+    </NuxtLink>
   </div>
 </template>
 

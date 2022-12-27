@@ -14,7 +14,7 @@ export enum UserRoles {
 /**
  * @class User
  */
-@Schema({ timestamps: true })
+@Schema({ timestamps: true, toObject: { virtuals: true, getters: true } })
 export class User {
   @Prop({ required: true, unique: true })
   username: string;
@@ -38,10 +38,18 @@ export class User {
   currentTeam: Team;
 
   @Prop({ type: [{ type: mongoose.Schema.Types.String, ref: 'Team' }] })
-  invites: Team[];
+  invitesTags: Team[];
 
   @Prop({ type: UserDetails, default: new UserDetails() })
   details: UserDetails;
 }
+const UserSchema = SchemaFactory.createForClass(User);
 
-export const UserSchema = SchemaFactory.createForClass(User);
+UserSchema.virtual('invites', {
+  type: 'String',
+  ref: 'Team',
+  localField: 'invitesTags',
+  foreignField: 'tag',
+});
+
+export { UserSchema };

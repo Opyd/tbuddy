@@ -31,7 +31,7 @@ export const TeamHistorySchema = SchemaFactory.createForClass(TeamHistory);
  * @class Team
  */
 
-@Schema({ timestamps: true })
+@Schema({ timestamps: true, toObject: { virtuals: true, getters: true } })
 export class Team {
   @Prop({ required: true })
   name: string;
@@ -52,7 +52,8 @@ export class Team {
     type: [{ type: String, ref: 'User' }],
     default: null,
   })
-  invites: User[];
+  @Prop({ type: [{ type: mongoose.Schema.Types.String, ref: 'User' }] })
+  invitedUsernames: User[];
 
   @Prop({ default: null })
   activeTournament: string;
@@ -64,4 +65,13 @@ export class Team {
   color: string;
 }
 
-export const TeamSchema = SchemaFactory.createForClass(Team);
+const TeamSchema = SchemaFactory.createForClass(Team);
+
+TeamSchema.virtual('invitedUsers', {
+  type: 'String',
+  ref: 'User',
+  localField: 'invitedUsernames',
+  foreignField: 'username',
+});
+
+export { TeamSchema };

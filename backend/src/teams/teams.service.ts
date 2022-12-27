@@ -77,8 +77,6 @@ export class TeamsService {
       teamtag: inviteUserDto.teamtag,
     });
 
-    console.log(team.owner.toString());
-
     if (team.owner.toString() !== inviter) {
       throw new BadRequestException('You are not the owner');
     }
@@ -86,14 +84,19 @@ export class TeamsService {
     if (!user || !team) {
       throw new BadRequestException('Team or User doesnt exists');
     }
+    const userInvites = JSON.stringify(user.invitesTags);
+    const usersInvitedByTeam = JSON.stringify(team.invitedUsernames);
 
-    if (user.invites.includes(team) || team.invites.includes(user)) {
+    if (
+      userInvites.includes(team.tag) ||
+      usersInvitedByTeam.includes(user.username)
+    ) {
       throw new BadRequestException('Already invited');
     }
 
-    await user.updateOne({ $push: { invites: team.tag } }).exec();
+    await user.updateOne({ $push: { invitesTags: team.tag } }).exec();
     return await team
-      .updateOne({ $push: { invites: user.username } }, { new: true })
+      .updateOne({ $push: { invitedUsernames: user.username } }, { new: true })
       .exec();
   }
 

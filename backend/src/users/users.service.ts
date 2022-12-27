@@ -62,26 +62,36 @@ export class UsersService {
       await team
         .updateOne({
           $push: { members: user.username },
-          $pull: { invites: user.username },
+          $pull: { invitedUsernames: user.username },
         })
         .exec();
       await user
-        .updateOne({ $pull: { invites: team.tag }, currentTeam: team.tag })
+        .updateOne({ $pull: { invitesTags: team.tag }, currentTeam: team.tag })
         .select({ refreshToken: 0, password: 0, _v: 0 })
         .exec();
     }
     //if user declines
     if (!handleInviteDto.decision) {
-      team.updateOne({
-        $pull: { invites: user.username },
+      await team.updateOne({
+        $pull: { invitedUsernames: user.username },
       });
-      await user.updateOne({ $pull: { invites: team.tag } }).exec();
+      await user.updateOne({ $pull: { invitesTags: team.tag } }).exec();
     }
 
     return user;
   }
 
-  async findByUsername(username: string): Promise<UserDocument> {
+  async findByUsername(
+    username: string,
+    populate?: boolean,
+  ): Promise<UserDocument> {
+    if (populate) {
+      const user = await this.userModel
+        .findOne({ username })
+        .populate('invites')
+        .exec();
+      return user;
+    }
     const user = await this.userModel.findOne({ username }).exec();
     return user;
   }

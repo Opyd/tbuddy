@@ -98,6 +98,12 @@ export class UsersController {
     return this.usersService.updateSelf(req.user['username'], updateSelfDto);
   }
 
+  @UseGuards(AccessTokenGuard)
+  @Delete('msg/:index')
+  deleteMsgAtIndex(@Req() req: Request, @Param('index') index: number) {
+    return this.usersService.deleteMsgAtIndex(index, req.user['username']);
+  }
+
   /**
    * Lets Admin remove user account
    * @param id

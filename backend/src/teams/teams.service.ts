@@ -78,7 +78,7 @@ export class TeamsService {
     }
     console.log(user.currentTeam);
     console.log(team);
-    if (user.currentTeam !== team) {
+    if (user.currentTeam !== team.tag) {
       throw new BadRequestException('User is not in team');
     }
     await team.updateOne({ $pull: { members: user.username } }).exec();
@@ -110,7 +110,14 @@ export class TeamsService {
       throw new BadRequestException('Already invited');
     }
 
-    await user.updateOne({ $push: { invitesTags: team.tag } }).exec();
+    await user
+      .updateOne({
+        $push: {
+          invitesTags: team.tag,
+          inbox: `You have been removed from ${team.tag}`,
+        },
+      })
+      .exec();
     return await team
       .updateOne({ $push: { invitedUsernames: user.username } }, { new: true })
       .exec();

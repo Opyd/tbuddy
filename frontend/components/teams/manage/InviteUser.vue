@@ -22,7 +22,7 @@
             height="300"
             item-height="64">
             <template #default="{item}">
-              <v-list-item :key="item">
+              <v-list-item :key="item.username">
                 <v-list-item-action>
                   <v-icon> mdi-account </v-icon>
                 </v-list-item-action>

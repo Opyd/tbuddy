@@ -1,5 +1,6 @@
 <template>
   <div class="tw-my-2">
+    <v-divider />
     <v-row>
       <v-col sm="4">
         <div

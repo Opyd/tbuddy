@@ -34,6 +34,13 @@
           </v-btn>
         </nuxt-link>
       </div>
+      <v-btn
+        class="tw-mr-2"
+        fab
+        small
+        @click="$vuetify.theme.dark = !$vuetify.theme.dark">
+        <v-icon>mdi-theme-light-dark</v-icon>
+      </v-btn>
       <div v-if="loggedIn">
         <nuxt-link to="/users/me">
           <v-btn color="primary">

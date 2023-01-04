@@ -35,7 +35,7 @@ export class User {
   refreshToken: string;
 
   @Prop({ type: mongoose.Schema.Types.String, ref: 'Team', defualt: null })
-  currentTeam: Team;
+  currentTeam: string;
 
   @Prop({ type: [{ type: mongoose.Schema.Types.String, ref: 'Team' }] })
   invitesTags: Team[];

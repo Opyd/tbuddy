@@ -18,7 +18,7 @@
           <v-col sm="4" class="text-center">Action</v-col>
         </v-row>
         <v-divider />
-        <v-row v-if="user.invitesTags.length === 0">
+        <v-row v-if="user.invitesTags.length === 0 && user.inbox.length === 0">
           <v-col
             sm="12"
             md="12"
@@ -31,6 +31,11 @@
           :key="invite"
           :username="user.username"
           :team-tag="invite"></InviteRequestToTeam>
+        <InboxMsg
+          v-for="(msg, index) in user.inbox"
+          :key="msg"
+          :msg="msg"
+          :index="index" />
       </v-card>
     </v-col>
   </v-row>
@@ -38,10 +43,11 @@
 
 <script>
   import InviteRequestToTeam from '@/components/user/InviteRequestToTeam.vue';
+  import InboxMsg from '@/components/user/InboxMsg.vue';
 
   export default {
     name: 'IndexPage',
-    components: {InviteRequestToTeam},
+    components: {InboxMsg, InviteRequestToTeam},
     data: () => ({
       user: {},
     }),
@@ -51,5 +57,6 @@
     head: () => ({
       title: 'Dashboard',
     }),
+    methods: {},
   };
 </script>

@@ -139,11 +139,12 @@
           const res = await this.$axios.get(`teams/removeuser/${username}`);
           if (res.status === 200) {
             this.$toast.success(`Successfully removed ${username}`);
-            this.team.members = this.team.members.filter(username);
+            this.team.members = this.team.members.filter(
+              member => member !== username,
+            );
           }
         } catch (e) {
           this.$toast.error('Something went wrong');
-          console.log(e.response.data);
         }
         this.dialog = false;
       },

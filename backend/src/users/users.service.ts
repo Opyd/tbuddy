@@ -48,6 +48,20 @@ export class UsersService {
       .select({ refreshToken: 0, password: 0, _v: 0 });
   }
 
+  async deleteMsgAtIndex(index: number, username: string) {
+    const user = await this.userModel.findOne({ username });
+    if (!user) {
+      throw new BadRequestException();
+    }
+    if (user.inbox.length - 1 < index) {
+      throw new BadRequestException('Out of bounds index');
+    }
+    const position = 'inbox.' + index;
+    await user.updateOne({ $unset: { [position]: 1 } });
+    await user.updateOne({ $pull: { inbox: null } });
+    return user;
+  }
+
   async handleInvite(username: string, handleInviteDto: HandleInviteDto) {
     const user = await this.findByUsername(username);
     if (user.currentTeam !== null) {

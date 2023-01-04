@@ -79,7 +79,7 @@
       tagRules: [
         v => !!v || 'Tag is required',
         v =>
-          /^([A-Za-z1-9]){4}$/.test(v) ||
+          /^[a-zA-Z0-9]{4}$/.test(v) ||
           'Tag must consists of 4 letters/digits !',
       ],
     }),
@@ -130,16 +130,17 @@
           const res = await this.$axios.post('teams', {
             name: this.name,
             tag: this.tag.toUpperCase(),
-            owner: this.$auth.user._id,
+            owner: this.$auth.user.username,
             color: this.color,
             icon: this.currentIcon.name,
           });
           if (res.status === 201) {
             this.$toast.success('Successfully created new Team!');
-            this.$router.go(`/teams/${this.tag}`);
+            await this.$router.push(`/teams/${this.tag}`);
           }
         } catch (e) {
-          this.$toast('Something went wrong');
+          this.$toast.error('Something went wrong');
+          console.log(e.response.data);
         }
       },
 

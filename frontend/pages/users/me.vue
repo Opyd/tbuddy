@@ -62,7 +62,8 @@
         </div>
         <div class="tw-flex tw-flex-nowrap tw-w-full tw-p-1">
           <div class="tw-w-1/2 text-center">Preffered Role(s)</div>
-          <div class="tw-w-1/2 text-center">
+          <div
+            class="tw-w-1/2 text-center tw-flex tw-justify-center tw-items-center">
             <p
               v-if="
                 user.details.preferredRoles === undefined ||
@@ -70,9 +71,10 @@
               ">
               -
             </p>
-            <span>
-              {{ roles }}
-            </span>
+            <RoleIcon
+              v-for="role in user.details.preferredRoles"
+              :key="role"
+              :role="role"></RoleIcon>
           </div>
         </div>
       </v-card>
@@ -138,10 +140,11 @@
 
 <script>
   import DetailsDialog from '@/components/user/detailsDialog';
+  import RoleIcon from '@/components/user/roles/RoleIcon.vue';
 
   export default {
     name: 'LoggedUsersPage',
-    components: {DetailsDialog},
+    components: {RoleIcon, DetailsDialog},
     data: () => ({
       user: {},
       team: {},

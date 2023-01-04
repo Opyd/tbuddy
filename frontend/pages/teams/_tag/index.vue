@@ -59,6 +59,9 @@
                   class="tw-w-full">
                   <TeamMember :username="member" />
                 </div>
+                <div v-if="team.members.length === 0" class="tw-p-3">
+                  <small><i>There are currently no members</i></small>
+                </div>
               </div>
             </v-card>
           </div>
@@ -75,7 +78,9 @@
               <v-divider></v-divider>
               <div
                 class="tw-w-full tw-flex tw-flex-col tw-justify-center tw-items-center">
-                <span></span>
+                <div v-if="team.history.length === 0" class="tw-p-3">
+                  <small><i>The team's match history is empty</i></small>
+                </div>
               </div>
             </v-card>
           </div>

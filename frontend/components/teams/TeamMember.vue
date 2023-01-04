@@ -19,9 +19,10 @@
         <div
           v-if="user.details.preferredRoles.length !== 0"
           class="tw-w-1/3 tw-flex tw-justify-center tw-items-center">
-          <span class="tw-italic">
-            {{ roles }}
-          </span>
+          <RoleIcon
+            v-for="role in user.details.preferredRoles"
+            :key="role"
+            :role="role"></RoleIcon>
         </div>
         <div v-else class="tw-w-1/3 tw-flex tw-justify-center tw-items-center">
           <small>No roles</small>
@@ -32,8 +33,11 @@
 </template>
 
 <script>
+  import RoleIcon from '@/components/user/roles/RoleIcon.vue';
+
   export default {
     name: 'TeamMember',
+    components: {RoleIcon},
     props: ['username'],
     data: () => ({
       user: {},

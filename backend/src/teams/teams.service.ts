@@ -70,6 +70,22 @@ export class TeamsService {
       .exec();
   }
 
+  async removeUserFromTeam(owner: string, username: string) {
+    const team = await this.teamModel.findOne({ owner: owner });
+    const user = await this.userService.findByUsername(username);
+    if (!team || !user) {
+      throw new BadRequestException('Not Found');
+    }
+    console.log(user.currentTeam);
+    console.log(team);
+    if (user.currentTeam !== team) {
+      throw new BadRequestException('User is not in team');
+    }
+    await team.updateOne({ $pull: { members: user.username } }).exec();
+    await user.updateOne({ currentTeam: null });
+    return team;
+  }
+
   async inviteUser(inviter: string, inviteUserDto: InviteUserDto) {
     const user = await this.userService.findByUsername(inviteUserDto.username);
 

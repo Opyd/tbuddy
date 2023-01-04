@@ -1,5 +1,13 @@
 <template>
-  <div>
+  <div v-if="$fetchState.pending" class="tw-w-full tw-flex tw-gap-3">
+    <v-skeleton-loader
+      class="tw-w-1/2"
+      type="list-item-three-line, article"></v-skeleton-loader>
+    <v-skeleton-loader
+      class="tw-w-1/2"
+      type="list-item-three-line, article"></v-skeleton-loader>
+  </div>
+  <div v-else>
     <v-btn @click="inviteDialog = true">Invite to Team</v-btn>
     <v-dialog v-model="inviteDialog" max-width="600px">
       <invite-user
@@ -20,8 +28,42 @@
               <div
                 v-for="member in team.members"
                 :key="member"
-                class="tw-w-full">
-                <TeamMember :username="member" />
+                class="tw-w-full tw-flex tw-justify-evenly tw-items-center">
+                <TeamMember :username="member" class="tw-w-5/6" />
+                <v-dialog v-model="dialog" persistent max-width="290">
+                  <template #activator="{on, attrs}">
+                    <v-btn color="error" fab small v-bind="attrs" v-on="on">
+                      <v-icon> mdi-minus </v-icon>
+                    </v-btn>
+                  </template>
+                  <v-card>
+                    <v-card-title class="text-h5">
+                      Remove user from the team?
+                    </v-card-title>
+                    <v-card-text
+                      >Are you sure you want to remove <b>{{ member }}</b> from
+                      the team</v-card-text
+                    >
+                    <v-card-actions>
+                      <v-spacer></v-spacer>
+                      <v-btn
+                        color="green darken-1"
+                        text
+                        @click="dialog = false">
+                        Disagree
+                      </v-btn>
+                      <v-btn
+                        color="green darken-1"
+                        text
+                        @click="removeUserFromTeam(member)">
+                        Agree
+                      </v-btn>
+                    </v-card-actions>
+                  </v-card>
+                </v-dialog>
+              </div>
+              <div v-if="team.members.length === 0" class="tw-p-3">
+                <small><i>There are currently no members</i></small>
               </div>
             </div>
           </v-card>
@@ -45,6 +87,9 @@
                 class="tw-w-full">
                 <TeamMember :username="user" />
               </div>
+              <div v-if="team.invitedUsernames.length === 0" class="tw-p-3">
+                <small><i>There are currently no invited users</i></small>
+              </div>
             </div>
           </v-card>
         </div>
@@ -64,6 +109,7 @@
       team: {},
       user: {},
       inviteDialog: false,
+      dialog: false,
     }),
     async fetch() {
       try {
@@ -87,6 +133,19 @@
     methods: {
       addInvitedToArray(username) {
         this.team.invitedUsernames.push(username);
+      },
+      async removeUserFromTeam(username) {
+        try {
+          const res = await this.$axios.get(`teams/removeuser/${username}`);
+          if (res.status === 200) {
+            this.$toast.success(`Successfully removed ${username}`);
+            this.team.members = this.team.members.filter(username);
+          }
+        } catch (e) {
+          this.$toast.error('Something went wrong');
+          console.log(e.response.data);
+        }
+        this.dialog = false;
       },
     },
   };

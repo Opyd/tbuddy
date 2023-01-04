@@ -40,6 +40,9 @@ export class User {
   @Prop({ type: [{ type: mongoose.Schema.Types.String, ref: 'Team' }] })
   invitesTags: Team[];
 
+  @Prop()
+  inbox: string[];
+
   @Prop({ type: UserDetails, default: new UserDetails() })
   details: UserDetails;
 }

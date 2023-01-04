@@ -9,15 +9,16 @@ export enum PlayerRoles {
 export class UserDetails {
   firstname: string;
   country: string;
-  avatar: string;
   about: string;
   preferredRoles: PlayerRoles[];
+
+  lookingForTeam: boolean;
 
   public constructor() {
     this.firstname = '';
     this.country = '';
-    this.avatar = null;
     this.about = '';
     this.preferredRoles = [];
+    this.lookingForTeam = true;
   }
 }

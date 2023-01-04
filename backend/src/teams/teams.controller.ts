@@ -83,6 +83,12 @@ export class TeamsController {
   }
 
   @UseGuards(AccessTokenGuard)
+  @Get('removeuser/:username')
+  removeUserFromTeam(@Req() req: Request, @Param('username') username: string) {
+    return this.teamsService.removeUserFromTeam(req.user['username'], username);
+  }
+
+  @UseGuards(AccessTokenGuard)
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.teamsService.remove(id);

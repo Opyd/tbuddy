@@ -11,7 +11,6 @@ export class UserDetails {
   country: string;
   about: string;
   preferredRoles: PlayerRoles[];
-
   lookingForTeam: boolean;
 
   public constructor() {

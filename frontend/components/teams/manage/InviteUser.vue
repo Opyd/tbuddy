@@ -60,6 +60,7 @@
 <script>
   export default {
     name: 'InviteUser',
+    components: {},
     props: ['invitedUsernames'],
     data: () => ({
       query: '',

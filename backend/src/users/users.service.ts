@@ -3,7 +3,6 @@ import {
   forwardRef,
   Inject,
   Injectable,
-  NotFoundException,
 } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
@@ -12,7 +11,6 @@ import { User, UserDocument } from './schemas/user.schema';
 import { Model } from 'mongoose';
 import { UserUpdateSelfDto } from './dto/user-update-self.dto';
 import { TeamsService } from '../teams/teams.service';
-import { TeamsModule } from '../teams/teams.module';
 import { HandleInviteDto } from './dto/handle-invite.dto';
 
 @Injectable()
@@ -117,7 +115,7 @@ export class UsersService {
         currentTeam: null,
       })
       .select({ username: 1 })
-      .limit(5);
+      .limit(10);
   }
 
   async update(

@@ -142,6 +142,7 @@
   export default {
     name: 'Manage',
     components: {TeamMember, InviteUser},
+    middleware: ['auth'],
     data: () => ({
       team: {},
       user: {},

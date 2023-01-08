@@ -52,6 +52,7 @@
 <script>
   export default {
     name: 'CreateTeam',
+    middleware: ['auth'],
     error: false,
     data: () => ({
       notUniqueTag: false,

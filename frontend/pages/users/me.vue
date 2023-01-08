@@ -139,12 +139,13 @@
 </template>
 
 <script>
-  import DetailsDialog from '@/components/user/detailsDialog';
+  import DetailsDialog from '@/components/user/DetailsDialog.vue';
   import RoleIcon from '@/components/user/roles/RoleIcon.vue';
 
   export default {
     name: 'LoggedUsersPage',
     components: {RoleIcon, DetailsDialog},
+    middleware: ['auth'],
     data: () => ({
       user: {},
       team: {},

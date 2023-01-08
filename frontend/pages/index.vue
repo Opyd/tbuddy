@@ -58,6 +58,7 @@
   export default {
     name: 'IndexPage',
     components: {InboxMsg, InviteRequestToTeam},
+    middleware: ['auth'],
     data: () => ({
       user: {},
     }),

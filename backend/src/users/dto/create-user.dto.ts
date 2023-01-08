@@ -1,4 +1,5 @@
 import {
+  IsBoolean,
   IsDefined,
   IsEmail,
   IsEmpty,
@@ -33,6 +34,10 @@ export class DetailsDto {
   @IsOptional()
   @IsEnum(PlayerRoles, { each: true })
   preferredRoles: PlayerRoles[];
+
+  @IsOptional()
+  @IsBoolean()
+  lookingForTeam: boolean;
 }
 
 export class CreateUserDto {

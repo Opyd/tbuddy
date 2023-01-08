@@ -28,6 +28,9 @@
               :items="countries"
               label="Country"></v-autocomplete>
           </v-col>
+          <v-col cols="12" sm="12">
+            <v-switch v-model="newLFT" label="Looking for Team" />
+          </v-col>
         </v-row>
       </v-container>
     </v-card-text>
@@ -51,6 +54,7 @@
       newAbout: '',
       newRoles: [],
       newCountry: '',
+      newLFT: false,
     }),
     created() {
       this.countries = countryList;
@@ -58,6 +62,7 @@
       this.newAbout = this.userDetails.about;
       this.newRoles = this.userDetails.preferredRoles;
       this.newCountry = this.userDetails.country;
+      this.newLFT = this.userDetails.lookingForTeam;
     },
     methods: {
       async updateDetails() {
@@ -68,6 +73,7 @@
               about: this.newAbout,
               preferredRoles: this.newRoles,
               country: this.newCountry,
+              lookingForTeam: this.newLFT,
             },
           });
           if (res.status === 200) {

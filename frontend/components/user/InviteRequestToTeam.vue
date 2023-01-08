@@ -1,6 +1,5 @@
 <template>
   <div class="tw-my-2">
-    <v-divider />
     <v-row>
       <v-col sm="4">
         <div
@@ -39,6 +38,7 @@
         </div>
       </v-col>
     </v-row>
+    <v-divider />
   </div>
 </template>
 

@@ -75,7 +75,10 @@
         <v-card v-if="user.currentTeam === null" class="tw-w-1/2 tw-ml-5">
           <div
             class="tw-w-full tw-flex tw-flex-col tw-justify-center tw-h-full tw-items-center">
-            <p>{{ user.username }} is not currently in any team</p>
+            <looking-for-team
+              v-if="user.details.lookingForTeam"
+              :username="user.username" />
+            <span v-else>{{ user.username }} is not in any team</span>
           </div>
         </v-card>
         <v-card
@@ -132,10 +135,11 @@
 
 <script>
   import RoleIcon from '@/components/user/roles/RoleIcon.vue';
+  import LookingForTeam from '@/components/user/LookingForTeam.vue';
 
   export default {
     name: 'UsersPage',
-    components: {RoleIcon},
+    components: {LookingForTeam, RoleIcon},
     data: () => ({
       user: {},
       team: {},

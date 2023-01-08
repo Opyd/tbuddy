@@ -76,13 +76,17 @@ export class TeamsService {
     if (!team || !user) {
       throw new BadRequestException('Not Found');
     }
-    console.log(user.currentTeam);
-    console.log(team);
+
     if (user.currentTeam !== team.tag) {
       throw new BadRequestException('User is not in team');
     }
     await team.updateOne({ $pull: { members: user.username } }).exec();
-    await user.updateOne({ currentTeam: null });
+    await user.updateOne({
+      currentTeam: null,
+      $push: {
+        inbox: `You have been removed from ${team.tag}`,
+      },
+    });
     return team;
   }
 
@@ -114,12 +118,40 @@ export class TeamsService {
       .updateOne({
         $push: {
           invitesTags: team.tag,
-          inbox: `You have been removed from ${team.tag}`,
         },
       })
       .exec();
     return await team
       .updateOne({ $push: { invitedUsernames: user.username } }, { new: true })
+      .exec();
+  }
+
+  async removeInvite(owner: string, username: string) {
+    const team = await this.teamModel.findOne({ owner: owner });
+    const user = await this.userService.findByUsername(username);
+    if (!team || !user) {
+      throw new BadRequestException('Not Found');
+    }
+
+    const userInvites = JSON.stringify(user.invitesTags);
+    const usersInvitedByTeam = JSON.stringify(team.invitedUsernames);
+
+    if (
+      !userInvites.includes(team.tag) ||
+      !usersInvitedByTeam.includes(user.username)
+    ) {
+      throw new BadRequestException('Not invited');
+    }
+
+    await user
+      .updateOne({
+        $pull: {
+          invitesTags: team.tag,
+        },
+      })
+      .exec();
+    return await team
+      .updateOne({ $pull: { invitedUsernames: user.username } }, { new: true })
       .exec();
   }
 

@@ -48,6 +48,7 @@ export default {
     // https://go.nuxtjs.dev/vuetify
     '@nuxtjs/vuetify',
     '@nuxt/postcss8',
+    '@nuxtjs/date-fns',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules

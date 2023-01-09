@@ -12,6 +12,7 @@ import { Model } from 'mongoose';
 import { UserUpdateSelfDto } from './dto/user-update-self.dto';
 import { TeamsService } from '../teams/teams.service';
 import { HandleInviteDto } from './dto/handle-invite.dto';
+import { EventEnum } from '../teams/schema/team-events-history.schema';
 
 @Injectable()
 export class UsersService {
@@ -73,7 +74,14 @@ export class UsersService {
     if (handleInviteDto.decision) {
       await team
         .updateOne({
-          $push: { members: user.username },
+          $push: {
+            members: user.username,
+            events: {
+              type: EventEnum.JOINED,
+              date: Date.now(),
+              msg: `${user.username} joined the team`,
+            },
+          },
           $pull: { invitedUsernames: user.username },
         })
         .exec();

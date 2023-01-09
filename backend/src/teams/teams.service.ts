@@ -14,8 +14,7 @@ import { Team, TeamDocument } from './schema/team.schema';
 import { Model } from 'mongoose';
 import { UsersService } from '../users/users.service';
 import { InviteUserDto } from './dto/invite-user.dto';
-import { User } from '../users/schemas/user.schema';
-import { UsersModule } from '../users/users.module';
+import { EventEnum } from './schema/team-events-history.schema';
 
 @Injectable()
 export class TeamsService {
@@ -28,6 +27,16 @@ export class TeamsService {
   async create(createTeamDto: CreateTeamDto) {
     const user = await this.userService.findByUsername(createTeamDto.owner);
     const team = await new this.teamModel(createTeamDto).save();
+    await team
+      .updateOne({
+        $push: {
+          events: {
+            type: EventEnum.CREATED,
+            date: Date.now(),
+          },
+        },
+      })
+      .exec();
     await user.updateOne({ currentTeam: team.tag }).exec();
     return team;
   }
@@ -80,7 +89,18 @@ export class TeamsService {
     if (user.currentTeam !== team.tag) {
       throw new BadRequestException('User is not in team');
     }
-    await team.updateOne({ $pull: { members: user.username } }).exec();
+    await team
+      .updateOne({
+        $pull: { members: user.username },
+        $push: {
+          events: {
+            type: EventEnum.LEFT,
+            date: Date.now(),
+            msg: `${user.username} left the team`,
+          },
+        },
+      })
+      .exec();
     await user.updateOne({
       currentTeam: null,
       $push: {

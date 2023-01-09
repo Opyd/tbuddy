@@ -1,36 +1,15 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import mongoose, { Document } from 'mongoose';
 import { User } from '../../users/schemas/user.schema';
-import { TeamHistoryInterface } from './team.interface';
+import { TeamEventsInterface, TeamHistoryInterface } from './team.interface';
+import { TeamHistorySchema } from './team-history.schema';
+import { TeamEventsHistorySchema } from './team-events-history.schema';
 
 export type TeamDocument = Team & Document;
-
-@Schema()
-export class TeamHistory extends Document {
-  @Prop({
-    required: true,
-    type: mongoose.Schema.Types.ObjectId /* TODO: ref: History */,
-  })
-  matchId: string;
-  @Prop({ required: true })
-  oponnent: string;
-
-  @Prop({ required: true, type: mongoose.Schema.Types.ObjectId, ref: 'Team' })
-  oponnentId: string;
-
-  @Prop({ required: true })
-  result: string;
-
-  @Prop({ required: true })
-  date: Date;
-}
-
-export const TeamHistorySchema = SchemaFactory.createForClass(TeamHistory);
 
 /**
  * @class Team
  */
-
 @Schema({ timestamps: true, toObject: { virtuals: true, getters: true } })
 export class Team {
   @Prop({ required: true })
@@ -53,6 +32,9 @@ export class Team {
 
   @Prop({ default: null })
   activeTournament: string;
+
+  @Prop({ type: [{ type: TeamEventsHistorySchema }] })
+  events: TeamEventsInterface[];
 
   @Prop({ type: [{ type: TeamHistorySchema }] })
   history: TeamHistoryInterface[];

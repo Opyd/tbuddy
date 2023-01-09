@@ -72,6 +72,28 @@
               <div
                 class="tw-w-full tw-flex tw-justify-center tw-items-center tw-my-3">
                 <span style="font-family: 'Unbounded', sans-serif"
+                  >Team History</span
+                >
+              </div>
+              <v-divider></v-divider>
+              <div class="tw-w-full tw-max-h-72 tw-overflow-y-auto">
+                <div
+                  class="tw-w-full tw-justify-center tw-p-3 tw-flex tw-flex-col">
+                  <HistoryEvent
+                    v-for="event in team.events"
+                    :key="event.date"
+                    :event="event" />
+                </div>
+              </div>
+            </v-card>
+          </div>
+        </v-col>
+        <v-col md="12" sm="12">
+          <div class="tw-mt-5">
+            <v-card class="tw-w-full">
+              <div
+                class="tw-w-full tw-flex tw-justify-center tw-items-center tw-my-3">
+                <span style="font-family: 'Unbounded', sans-serif"
                   >Last Matches</span
                 >
               </div>
@@ -93,10 +115,11 @@
 <script>
   import TeamMember from '@/components/teams/TeamMember.vue';
   import TeamOwner from '@/components/teams/TeamOwner.vue';
+  import HistoryEvent from '@/components/teams/HistoryEvent.vue';
 
   export default {
     name: 'TeamTag',
-    components: {TeamOwner, TeamMember},
+    components: {HistoryEvent, TeamOwner, TeamMember},
 
     data: () => ({
       team: {},

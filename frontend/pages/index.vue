@@ -31,7 +31,7 @@
           <v-col
             sm="12"
             md="12"
-            class="tw-w-full tw-flex tw-h-full tw-items-center tw-justify-center">
+            class="tw-w-full tw-h-full tw-flex tw-items-center tw-justify-center">
             <small class="tw-p-3"><i>No new messages</i></small>
           </v-col>
         </v-row>
@@ -42,7 +42,7 @@
           :username="user.username"
           :team-tag="invite"></InviteRequestToTeam>
         <InboxMsg
-          v-for="(msg, index) in user.inbox.reverse()"
+          v-for="(msg, index) in user.inbox"
           :key="msg"
           :msg="msg"
           :index="index" />
@@ -74,9 +74,9 @@
         }
       }
     },
+
     head: () => ({
       title: 'Dashboard',
     }),
-    methods: {},
   };
 </script>

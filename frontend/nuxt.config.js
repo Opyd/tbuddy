@@ -54,7 +54,7 @@ export default {
   modules: ['@nuxtjs/axios', '@nuxtjs/auth-next', 'vue-toastification/nuxt'],
 
   axios: {
-    baseURL: 'http://172.25.176.249:3100/api',
+    baseURL: 'http://172.25.186.140:3100/api',
   },
 
   auth: {

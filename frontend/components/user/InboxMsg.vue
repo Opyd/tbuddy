@@ -39,6 +39,7 @@
         try {
           await this.$axios.delete(`users/msg/${this.index}`);
           this.$el.parentNode.removeChild(this.$el);
+          this.$emit('removeMsg', this.msg);
         } catch (e) {
           this.$toast.error('Something went wrong');
         }

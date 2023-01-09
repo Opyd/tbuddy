@@ -1,9 +1,9 @@
 <template>
   <div class="tw-w-flex tw-p-3">
     <div class="tw-w-full tw-mb-2 tw-flex tw-justify-center">
-      <v-icon size="32" color="green" class="tw-animate-bounce"
-        >mdi-flag-triangle</v-icon
-      >
+      <v-avatar rounded color="green" class="tw-animate-bounce">
+        <v-icon size="32">mdi-flag-triangle</v-icon>
+      </v-avatar>
     </div>
     <div class="tw-w-full">
       <span>{{ username }} is looking for a Team!</span>

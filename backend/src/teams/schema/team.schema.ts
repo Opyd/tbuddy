@@ -43,17 +43,13 @@ export class Team {
   tag: string;
 
   @Prop({ type: String, ref: 'User' })
-  owner: User;
+  owner: string;
 
   @Prop({ type: [{ type: String, ref: 'User' }] })
-  members: User[];
+  members: string[];
 
-  @Prop({
-    type: [{ type: String, ref: 'User' }],
-    default: null,
-  })
   @Prop({ type: [{ type: mongoose.Schema.Types.String, ref: 'User' }] })
-  invitedUsernames: User[];
+  invitedUsernames: string[];
 
   @Prop({ default: null })
   activeTournament: string;

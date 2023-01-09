@@ -38,7 +38,6 @@
         </div>
       </v-col>
     </v-row>
-    <v-divider />
   </div>
 </template>
 

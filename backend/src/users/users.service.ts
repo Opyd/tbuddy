@@ -122,7 +122,7 @@ export class UsersService {
         username: new RegExp('.*' + query + '.*', 'i'),
         currentTeam: null,
       })
-      .select({ username: 1 })
+      .select({ username: 1, 'details.preferredRoles': 1 })
       .limit(10);
   }
 

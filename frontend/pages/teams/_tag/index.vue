@@ -120,7 +120,6 @@
   export default {
     name: 'TeamTag',
     components: {HistoryEvent, TeamOwner, TeamMember},
-
     data: () => ({
       team: {},
       loading: true,
@@ -137,6 +136,10 @@
         }
       }
     },
+
+    head: () => ({
+      title: 'Users',
+    }),
   };
 </script>
 

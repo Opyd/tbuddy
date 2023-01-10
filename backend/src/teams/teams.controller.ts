@@ -70,6 +70,11 @@ export class TeamsController {
     return this.teamsService.findOne(id);
   }
 
+  @Get('search/:query')
+  search(@Param('query') query: string) {
+    return this.teamsService.searchTeam(query);
+  }
+
   @UseGuards(AccessTokenGuard)
   @Post('invite')
   inviteUserToTeam(@Req() req: Request, @Body() inviteUserDto: InviteUserDto) {

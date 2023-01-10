@@ -3,7 +3,7 @@
     <v-container class="tw-w-full">
       <v-tabs
         v-model="tab"
-        :color="$vuetify.theme.dark ? 'white' : 'black'"
+        :color="$vuetify.theme.dark ? 'white' : 'blue'"
         fixed-tabs
         class="tw-w-full">
         <v-tab>Log in</v-tab>

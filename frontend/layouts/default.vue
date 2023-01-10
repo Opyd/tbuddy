@@ -89,7 +89,7 @@
           {
             icon: 'mdi-account-search',
             title: 'Users',
-            // to: '/auth/login',
+            to: '/users',
           },
           {
             icon: 'mdi-account-multiple-plus',

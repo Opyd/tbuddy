@@ -57,6 +57,18 @@ export class TeamsService {
     return this.teamModel.findById(id).populate('owner').exec();
   }
 
+  async searchTeam(query: string) {
+    return this.teamModel
+      .find({
+        $or: [
+          { name: new RegExp('.*' + query + '.*', 'i') },
+          { tag: new RegExp('.*' + query + '.*', 'i') },
+        ],
+      })
+      .select({ tag: 1, name: 1, icon: 1, color: 1, members: 1 })
+      .limit(10);
+  }
+
   async isTeamOwnedByUser(userId: string) {
     const team = await this.teamModel.find({ owner: userId });
     if (!team) {

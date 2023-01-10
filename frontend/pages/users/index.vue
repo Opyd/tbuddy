@@ -53,15 +53,7 @@
       </div>
       <div class="tw-w-full tw-flex tw-flex-col tw-justify-center tw-mt-10">
         <v-row justify="center">
-          <v-col cols="12" sm="6">
-            <div class="tw-w-full tw-flex tw-justify-center">
-              <v-chip>Results</v-chip>
-            </div>
-          </v-col>
-        </v-row>
-
-        <v-row justify="center">
-          <v-col md="8" sm="8">
+          <v-col v-if="filtered.length > 0" md="8" sm="8">
             <div class="tw-w-full tw-flex tw-flex-col tw-justify-center">
               <div v-if="loading">
                 <v-skeleton-loader
@@ -107,6 +99,13 @@
                   <v-divider></v-divider>
                 </template>
               </v-virtual-scroll>
+            </div>
+          </v-col>
+          <v-col v-else md="8" sm="8">
+            <div
+              class="tw-w-full tw-flex tw-flex-col tw-justify-center tw-mt-10">
+              <small class="text-center">No results</small>
+              <v-icon size="64" class="tw-mt-5">mdi-robot</v-icon>
             </div>
           </v-col>
         </v-row>

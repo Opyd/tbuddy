@@ -1,8 +1,12 @@
 <template>
   <v-main>
     <v-container class="tw-w-full">
-      <v-tabs v-model="tab" fixed-tabs class="tw-w-full">
-        <v-tab align-with-title>Log in</v-tab>
+      <v-tabs
+        v-model="tab"
+        :color="$vuetify.theme.dark ? 'white' : 'black'"
+        fixed-tabs
+        class="tw-w-full">
+        <v-tab>Log in</v-tab>
         <v-tab align-with-title>Create new account</v-tab>
       </v-tabs>
       <v-tabs-items v-model="tab">
@@ -18,22 +22,22 @@
 </template>
 
 <script>
-import LoginCard from '@/components/auth/LoginCard'
-import RegisterCard from '@/components/auth/RegisterCard'
-export default {
-  components: { RegisterCard, LoginCard },
-  data() {
-    return {
-      tab: null,
-    }
-  },
+  import LoginCard from '@/components/auth/LoginCard';
+  import RegisterCard from '@/components/auth/RegisterCard';
+  export default {
+    components: {RegisterCard, LoginCard},
+    data() {
+      return {
+        tab: null,
+      };
+    },
 
-  head() {
-    return {
-      title: 'Authorize',
-    }
-  },
-}
+    head() {
+      return {
+        title: 'Authorize',
+      };
+    },
+  };
 </script>
 
 <style scoped></style>

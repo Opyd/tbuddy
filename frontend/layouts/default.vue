@@ -26,6 +26,13 @@
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
       <v-toolbar-title>{{ title }}</v-toolbar-title>
       <v-spacer />
+      <v-btn
+        class="tw-mr-2"
+        rounded
+        small
+        @click="$vuetify.theme.dark = !$vuetify.theme.dark">
+        <v-icon>mdi-theme-light-dark</v-icon>
+      </v-btn>
       <div v-if="!loggedIn">
         <nuxt-link to="/auth">
           <v-btn color="primary">
@@ -34,13 +41,6 @@
           </v-btn>
         </nuxt-link>
       </div>
-      <v-btn
-        class="tw-mr-2"
-        fab
-        small
-        @click="$vuetify.theme.dark = !$vuetify.theme.dark">
-        <v-icon>mdi-theme-light-dark</v-icon>
-      </v-btn>
       <div v-if="loggedIn">
         <nuxt-link to="/users/me">
           <v-btn color="primary">
@@ -113,7 +113,7 @@
           if (res.status === 200) {
             this.$toast.success('Successfully logged out');
             await this.$auth.logout();
-            await this.$router.push('/');
+            await this.$router.push('/auth');
           }
         } catch (e) {
           this.$toast.error('Something went wrong');
@@ -123,8 +123,4 @@
   };
 </script>
 
-<style>
-  body {
-    overflow-y: auto;
-  }
-</style>
+<style></style>

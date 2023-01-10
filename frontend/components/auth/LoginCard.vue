@@ -1,6 +1,9 @@
 <template>
   <div>
     <v-form ref="form" @submit.prevent="login">
+      <v-alert v-if="alert" border="bottom" color="red darken-3">
+        Username or password is incorrect!
+      </v-alert>
       <p class="tw-text-2xl tw-text-center tw-font-bold">
         Log in to existing account
       </p>
@@ -8,8 +11,7 @@
         v-model="username"
         :rules="nameRules"
         label="Username"
-        required
-      >
+        required>
         <v-icon slot="prepend"> mdi-account </v-icon>
       </v-text-field>
 
@@ -18,8 +20,7 @@
         :rules="passwordRules"
         label="Password"
         required
-        type="password"
-      >
+        type="password">
         <v-icon slot="prepend"> mdi-lock </v-icon>
       </v-text-field>
 
@@ -30,8 +31,7 @@
           color="success"
           class="mr-4"
           @click="login"
-          @keyup.enter.native="login"
-        >
+          @keyup.enter.native="login">
           Log In
         </v-btn>
 
@@ -42,44 +42,45 @@
 </template>
 
 <script>
-export default {
-  name: 'LoginCard',
-  data() {
-    return {
-      valid: true,
-      username: '',
-      nameRules: [(v) => !!v || 'Username is required'],
-      password: '',
-      passwordRules: [(v) => !!v || 'Password is required'],
-      checkbox: false,
-    }
-  },
-  methods: {
-    validate() {
-      this.$refs.form.validate()
+  export default {
+    name: 'LoginCard',
+    data() {
+      return {
+        valid: true,
+        username: '',
+        nameRules: [v => !!v || 'Username is required'],
+        password: '',
+        passwordRules: [v => !!v || 'Password is required'],
+        checkbox: false,
+        alert: false,
+      };
     },
-    reset() {
-      this.$refs.form.reset()
+    methods: {
+      validate() {
+        this.$refs.form.validate();
+      },
+      reset() {
+        this.$refs.form.reset();
+      },
+      resetValidation() {
+        this.$refs.form.resetValidation();
+      },
+      async login() {
+        this.validate();
+        try {
+          await this.$auth.loginWith('local', {
+            data: {
+              username: this.username,
+              password: this.password,
+            },
+          });
+          this.alert = false;
+        } catch (e) {
+          this.alert = true;
+        }
+      },
     },
-    resetValidation() {
-      this.$refs.form.resetValidation()
-    },
-    async login() {
-      this.validate()
-      try {
-        await this.$auth.loginWith('local', {
-          data: {
-            username: this.username,
-            password: this.password,
-          },
-        })
-        console.log(this.$auth.user)
-      } catch (e) {
-        console.log(e)
-      }
-    },
-  },
-}
+  };
 </script>
 
 <style scoped></style>

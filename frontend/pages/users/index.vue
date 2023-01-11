@@ -105,7 +105,7 @@
             <div
               class="tw-w-full tw-flex tw-flex-col tw-justify-center tw-mt-10">
               <small class="text-center">No results</small>
-              <v-icon size="64" class="tw-mt-5">mdi-robot</v-icon>
+              <v-icon size="64" class="tw-mt-5">mdi-robot-confused</v-icon>
             </div>
           </v-col>
         </v-row>

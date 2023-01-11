@@ -10,13 +10,19 @@ export class Tournament {
   @Prop({ required: true })
   title: string;
 
+  @Prop({ required: true })
+  nrOfTeams: number;
+
+  @Prop({ required: true, default: false })
+  started: boolean;
+
   @Prop()
   description: string;
 
   @Prop({ required: true, type: String, ref: 'User' })
   organizer: string;
 
-  @Prop({ type: String, ref: 'Team' })
+  @Prop({ type: [{ type: String, ref: 'Team' }] })
   participants: string[];
 
   @Prop({ type: [{ type: StageSchema }] })

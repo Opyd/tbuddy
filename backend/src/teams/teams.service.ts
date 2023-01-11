@@ -65,7 +65,7 @@ export class TeamsService {
           { tag: new RegExp('.*' + query + '.*', 'i') },
         ],
       })
-      .select({ tag: 1, name: 1, icon: 1, color: 1, members: 1 })
+      .select({ tag: 1, name: 1, icon: 1, color: 1, members: 1, owner: 1 })
       .limit(10);
   }
 

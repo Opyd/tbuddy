@@ -3,19 +3,22 @@ import { Document } from 'mongoose';
 
 export type MatchDocument = Match & Document;
 
-@Schema({ _id: false })
+@Schema()
 export class Match {
-  @Prop({ required: true, type: String, ref: 'Team' })
+  @Prop({ type: String, ref: 'Team' })
   teamA: string;
 
-  @Prop({ required: true, type: String, ref: 'Team' })
+  @Prop({ type: String, ref: 'Team' })
   teamB: string;
 
-  @Prop({ required: true, type: String, ref: 'Team' })
+  @Prop({ type: String, ref: 'Team' })
   winner: string;
 
   @Prop()
   result: string;
+
+  @Prop()
+  finished: boolean;
 }
 
 const MatchSchema = SchemaFactory.createForClass(Match);

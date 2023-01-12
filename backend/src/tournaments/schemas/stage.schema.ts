@@ -1,6 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
-import { MatchSchema } from './match.schema';
+import { Match, MatchSchema } from './match.schema';
 import { MatchInterface } from './match.interface';
 
 export type StageDocument = Stage & Document;
@@ -14,7 +14,7 @@ export class Stage {
   stageNr: number;
 
   @Prop({ type: [{ type: MatchSchema }] })
-  matches: MatchInterface[];
+  matches: Match[];
 }
 
 const StageSchema = SchemaFactory.createForClass(Stage);

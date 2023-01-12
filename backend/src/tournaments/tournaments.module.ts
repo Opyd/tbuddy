@@ -5,6 +5,8 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { Tournament, TournamentSchema } from './schemas/tournament.schema';
 import { UsersModule } from '../users/users.module';
 import { TeamsModule } from '../teams/teams.module';
+import { Match, MatchSchema } from './schemas/match.schema';
+import { Stage, StageSchema } from './schemas/stage.schema';
 
 @Module({
   controllers: [TournamentsController],
@@ -13,6 +15,7 @@ import { TeamsModule } from '../teams/teams.module';
     MongooseModule.forFeature([
       { name: Tournament.name, schema: TournamentSchema },
     ]),
+
     UsersModule,
     TeamsModule,
   ],

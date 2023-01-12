@@ -7,12 +7,17 @@ import { Tournament, TournamentDocument } from './schemas/tournament.schema';
 import { UsersService } from '../users/users.service';
 import { TeamsService } from '../teams/teams.service';
 import { UserRoles } from '../users/schemas/user.schema';
+import { Match, MatchDocument } from './schemas/match.schema';
+import { Stage, StageDocument, StageSchema } from './schemas/stage.schema';
+import { MatchResultDto } from './dto/match-result.dto';
+import * as stream from 'stream';
 
 @Injectable()
 export class TournamentsService {
   constructor(
     @InjectModel(Tournament.name)
     private tournamentModel: Model<TournamentDocument>,
+
     private userService: UsersService,
     private teamsService: TeamsService,
   ) {}
@@ -55,6 +60,10 @@ export class TournamentsService {
       throw new BadRequestException('Team doesnt exists');
     }
 
+    // if (team.members.length + 1 < 5) {
+    //   throw new BadRequestException('Not enough members');
+    // }
+
     if (team.owner !== teamOwner.username) {
       throw new BadRequestException('Users is not the teams owner');
     }
@@ -81,6 +90,9 @@ export class TournamentsService {
     if (!tournament) {
       throw new BadRequestException('Tournament doesnt exists');
     }
+    if (tournament.started) {
+      throw new BadRequestException('Tournament already started');
+    }
     const user = await this.userService.findByUsername(organizer['username']);
 
     if (user.username !== tournament.organizer) {
@@ -91,7 +103,7 @@ export class TournamentsService {
       throw new BadRequestException('Not enough teams');
     }
 
-    const stagesNr = Math.log(tournament.participants.length) / Math.log(2);
+    let stagesNr = Math.log(tournament.participants.length) / Math.log(2);
 
     const stages = [];
 
@@ -99,19 +111,93 @@ export class TournamentsService {
       () => Math.random() - 0.5,
     );
 
-    for (let i = 0; i < stagesNr; i++) {
-      stages.push({ matches: [], finished: false, stageNr: i });
+    /**
+     * Creates whole bracket with empty matches, used later for transferring winners to next stage
+     */
+
+    let stageCounter = 0;
+    let matchesPerRound = participants.length / 2;
+    while (stagesNr > 0) {
+      const newStage = { finished: false, stageNr: stageCounter, matches: [] };
+      for (let i = 0; i < matchesPerRound / 2; i++) {
+        newStage.matches.push({
+          teamA: null,
+          teamB: null,
+          winner: null,
+          result: null,
+          finished: false,
+        });
+      }
+      matchesPerRound = matchesPerRound / 2;
+      stages.push(newStage);
+      stageCounter++;
+      stagesNr--;
     }
 
+    const firstStage = [];
+
     for (let i = 0; i < participants.length; i += 2) {
-      stages[0].matches.push({
+      firstStage.push({
         teamA: participants[i],
         teamB: participants[i + 1],
-        winner: 'null',
-        result: '',
+        winner: null,
+        result: null,
+        finished: false,
       });
     }
 
-    return await tournament.updateOne({ stages }, { new: true }).exec();
+    stages[0].matches = firstStage;
+
+    await tournament.updateOne({ stages, started: true }, { new: true }).exec();
+    return tournament;
+  }
+
+  async setMatchResult(
+    tournamentid: string,
+    organizer: Express.User,
+    matchResultDto: MatchResultDto,
+  ) {
+    const tournament = await this.findTournamentById(tournamentid);
+    if (!tournament) {
+      throw new BadRequestException('Tournament doesnt exists');
+    }
+    if (!tournament.started) {
+      throw new BadRequestException('Tournament didnt start');
+    }
+    const user = await this.userService.findByUsername(organizer['username']);
+
+    if (user.username !== tournament.organizer) {
+      throw new BadRequestException('User is not a tournament organizer');
+    }
+
+    const { stageNr, winner, result } = matchResultDto;
+    let matchIndex = 0;
+    const matches = tournament.stages[stageNr].matches;
+
+    matches.map((match, index) => {
+      if (match['id'] === matchResultDto.matchId) {
+        matchIndex = index;
+        if (match.teamA !== winner && match.teamB !== winner) {
+          throw new BadRequestException('Invalid winner');
+        }
+        match.winner = winner;
+        match.result = result;
+        match.finished = true;
+      }
+    });
+    const abab = `stages.${stageNr}.matches`;
+
+    tournament.stages[stageNr].matches = matches;
+
+    if (stageNr < tournament.stages.length - 1) {
+      const nextStage = stageNr + 1;
+      const nextRoundMatchIndex = Math.floor(matchIndex / 2);
+      const team = matchIndex % 2 === 0 ? 'teamA' : 'teamB';
+      tournament.stages[nextStage].matches[nextRoundMatchIndex][team] = winner;
+    }
+
+    await tournament.save();
+
+    return tournament;
   }
 }

@@ -1,6 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
-import { StageSchema } from './stage.schema';
+import { Stage, StageSchema } from './stage.schema';
 import { StageInterface } from './stage.interface';
 
 export type TournamentDocument = Tournament & Document;
@@ -26,7 +26,7 @@ export class Tournament {
   participants: string[];
 
   @Prop({ type: [{ type: StageSchema }] })
-  stages: StageInterface[];
+  stages: Stage[];
 }
 
 const TournamentSchema = SchemaFactory.createForClass(Tournament);

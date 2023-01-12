@@ -14,6 +14,7 @@ import { AccessTokenGuard } from '../common/guards/accessToken.guard';
 import { Request } from 'express';
 import { CreateTournamentDto } from './dto/create-tournament.dto';
 import { ApiTags } from '@nestjs/swagger';
+import { MatchResultDto } from './dto/match-result.dto';
 
 @ApiTags('tournaments')
 @Controller('tournaments')
@@ -50,6 +51,11 @@ export class TournamentsController {
     return this.tournamentsService.joinTournament(req['user'], tournamentid);
   }
 
+  /**
+   * Starts tournament (seeding brackets)
+   * @param req
+   * @param tournamentid {string}
+   */
   @UseGuards(AccessTokenGuard)
   @Patch('start/:tournamentid')
   async startTournament(
@@ -57,6 +63,26 @@ export class TournamentsController {
     @Param('tournamentid') tournamentid: string,
   ) {
     return this.tournamentsService.startTournament(req['user'], tournamentid);
+  }
+
+  /**
+   * Allows to set match result and pick a winner
+   * @param req {Request}
+   * @param matchResultDto {MatchResultDto}
+   * @param tournamentid {string}
+   */
+  @UseGuards(AccessTokenGuard)
+  @Patch(':tournamentid/match')
+  async setMatchResult(
+    @Req() req: Request,
+    @Body() matchResultDto: MatchResultDto,
+    @Param('tournamentid') tournamentid: string,
+  ) {
+    return this.tournamentsService.setMatchResult(
+      tournamentid,
+      req['user'],
+      matchResultDto,
+    );
   }
 
   /**

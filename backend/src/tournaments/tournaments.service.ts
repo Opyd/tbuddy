@@ -91,6 +91,27 @@ export class TournamentsService {
       throw new BadRequestException('Not enough teams');
     }
 
-    return { msg: 'elol' };
+    const stagesNr = Math.log(tournament.participants.length) / Math.log(2);
+
+    const stages = [];
+
+    const participants = tournament.participants.sort(
+      () => Math.random() - 0.5,
+    );
+
+    for (let i = 0; i < stagesNr; i++) {
+      stages.push({ matches: [], finished: false, stageNr: i });
+    }
+
+    for (let i = 0; i < participants.length; i += 2) {
+      stages[0].matches.push({
+        teamA: participants[i],
+        teamB: participants[i + 1],
+        winner: 'null',
+        result: '',
+      });
+    }
+
+    return await tournament.updateOne({ stages }, { new: true }).exec();
   }
 }

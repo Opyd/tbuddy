@@ -97,8 +97,8 @@ export class TournamentsController {
    * Returns specific tournament
    * @param id
    */
-  @Get(':tournamentid')
-  async findById(@Param('tournamentid') tournamentid: string) {
-    return await this.tournamentsService.findTournamentById(tournamentid);
+  @Get(':slug')
+  async findById(@Param('slug') slug: string) {
+    return await this.tournamentsService.findTournamentBySlug(slug);
   }
 }

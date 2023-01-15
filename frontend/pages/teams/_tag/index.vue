@@ -123,6 +123,7 @@
     data: () => ({
       team: {},
       loading: true,
+      title: '',
     }),
     async fetch() {
       try {
@@ -130,6 +131,7 @@
           `/teams/tag/${this.$route.params.tag.toUpperCase()}`,
         );
         this.team = res.data;
+        this.title = res.name;
       } catch (e) {
         if (e.response.status === 404) {
           return this.$nuxt.error({statusCode: 404, message: 'Team Not found'});
@@ -137,9 +139,11 @@
       }
     },
 
-    head: () => ({
-      title: 'Users',
-    }),
+    head() {
+      return {
+        title: this.team.name,
+      };
+    },
   };
 </script>
 

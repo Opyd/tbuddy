@@ -160,6 +160,11 @@
         }
       }
     },
+    head() {
+      return {
+        title: this.user.username,
+      };
+    },
     computed: {
       roles() {
         const roles = this.user.details.preferredRoles;

@@ -166,9 +166,11 @@
         }
       }
     },
-    head: () => ({
-      title: 'Manage Team',
-    }),
+    head() {
+      return {
+        title: 'Manage -' + this.team.name,
+      };
+    },
     methods: {
       addInvitedToArray(username) {
         this.team.invitedUsernames.push(username);

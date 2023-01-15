@@ -11,6 +11,7 @@ import { Match, MatchDocument } from './schemas/match.schema';
 import { Stage, StageDocument, StageSchema } from './schemas/stage.schema';
 import { MatchResultDto } from './dto/match-result.dto';
 import * as stream from 'stream';
+import slugify from 'slugify';
 
 @Injectable()
 export class TournamentsService {
@@ -30,10 +31,13 @@ export class TournamentsService {
 
     const { title, description, nrOfTeams } = createTournamentDto;
 
+    const slug: string = slugify(title) + Math.floor(Math.random() * 90 + 10);
+
     await organizer.updateOne({ role: UserRoles.ORGANIZER }).exec();
 
     return await new this.tournamentModel({
       title,
+      slug,
       description,
       nrOfTeams,
       organizer: organizer.username,
@@ -42,6 +46,10 @@ export class TournamentsService {
 
   async findTournamentById(id: string) {
     return await this.tournamentModel.findById(id).exec();
+  }
+
+  async findTournamentBySlug(slug: string) {
+    return await this.tournamentModel.findOne({ slug }).exec();
   }
 
   async findAll() {
@@ -171,8 +179,17 @@ export class TournamentsService {
     }
 
     const { stageNr, winner, result } = matchResultDto;
+
+    if (stageNr > 0 && !tournament.stages[stageNr - 1].finished) {
+      throw new BadRequestException('Previous stage is not yet finished');
+    }
+
     let matchIndex = 0;
     const matches = tournament.stages[stageNr].matches;
+
+    /**
+     * Looks for a match that will be updated
+     */
 
     matches.map((match, index) => {
       if (match['id'] === matchResultDto.matchId) {
@@ -185,9 +202,12 @@ export class TournamentsService {
         match.finished = true;
       }
     });
-    const abab = `stages.${stageNr}.matches`;
 
     tournament.stages[stageNr].matches = matches;
+
+    /**
+     * Moves winner to next round
+     */
 
     if (stageNr < tournament.stages.length - 1) {
       const nextStage = stageNr + 1;
@@ -195,6 +215,17 @@ export class TournamentsService {
       const team = matchIndex % 2 === 0 ? 'teamA' : 'teamB';
       tournament.stages[nextStage].matches[nextRoundMatchIndex][team] = winner;
     }
+
+    /**
+     * Marks stage as finished, if every match has been finished
+     */
+
+    let allFinishedFlag = true;
+    tournament.stages[stageNr].matches.forEach((match) => {
+      if (!match.finished) allFinishedFlag = false;
+    });
+
+    tournament.stages[stageNr].finished = allFinishedFlag;
 
     await tournament.save();
 

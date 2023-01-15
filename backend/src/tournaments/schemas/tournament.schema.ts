@@ -1,7 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 import { Stage, StageSchema } from './stage.schema';
-import { StageInterface } from './stage.interface';
 
 export type TournamentDocument = Tournament & Document;
 
@@ -9,6 +8,9 @@ export type TournamentDocument = Tournament & Document;
 export class Tournament {
   @Prop({ required: true })
   title: string;
+
+  @Prop({ required: true, unique: true })
+  slug: string;
 
   @Prop({ required: true })
   nrOfTeams: number;

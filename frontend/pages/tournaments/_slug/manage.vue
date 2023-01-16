@@ -11,8 +11,12 @@
       >
       <v-row>
         <v-col>
-          <v-tabs v-model="tab" align-with-title grow>
-            <v-tabs-slider color="yellow"></v-tabs-slider>
+          <v-tabs
+            v-model="tab"
+            align-with-title
+            grow
+            :color="$vuetify.theme.dark ? 'white' : 'blue'">
+            <v-tabs-slider></v-tabs-slider>
 
             <v-tab v-for="stage in tournament.stages" :key="stage.stageNr">
               Round {{ stage.stageNr + 1 }}
@@ -117,8 +121,10 @@
     methods: {
       async startTournament() {
         try {
-          await this.$axios.patch(`tournaments/start/${this.tournament._id}`);
-          this.tournament.started = true;
+          const res = await this.$axios.patch(
+            `tournaments/start/${this.tournament._id}`,
+          );
+          this.tournament = res.data;
           this.$toast.success('Successfully started the tournament');
         } catch (e) {
           this.$toast.error(e.response.data.message);

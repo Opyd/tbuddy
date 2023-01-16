@@ -18,6 +18,9 @@ export class Tournament {
   @Prop({ required: true, default: false })
   started: boolean;
 
+  @Prop({ required: true, default: false })
+  finished: boolean;
+
   @Prop()
   description: string;
 

@@ -31,7 +31,7 @@
             <v-icon> mdi-calendar</v-icon>
             <i>Created: {{ new Date(team.createdAt).toDateString() }} </i>
             <div
-              v-if="$auth.user.username === team.owner"
+              v-if="$auth.user !== null && $auth.user.username === team.owner"
               class="tw-mt-5 tw-flex tw-justify-center">
               <NuxtLink :to="`${$route.params.tag}/manage`"
                 ><v-btn color="green" outlined>Manage</v-btn></NuxtLink

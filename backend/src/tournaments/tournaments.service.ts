@@ -227,6 +227,10 @@ export class TournamentsService {
 
     tournament.stages[stageNr].finished = allFinishedFlag;
 
+    if (stageNr === tournament.stages.length - 1) {
+      tournament.finished = tournament.stages[stageNr].finished;
+    }
+
     await tournament.save();
 
     return tournament;

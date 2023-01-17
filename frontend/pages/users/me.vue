@@ -6,8 +6,8 @@
         <div class="tw-flex tw-justify-center tw-flex-col">
           <v-avatar color="primary" size="128" rounded class="tw-w-full">
             <img
-              v-if="user.details.avatar !== null"
-              src="http://papajleba.pl/wp-content/uploads/elementor/thumbs/papaj-pq7m2ikjylbcmgb4fo8rja936ujjq85i64try0irao.png"
+              v-if="user.avatar !== null"
+              :src="user.avatar"
               alt="My profile picture" />
             <v-icon v-else size="128">mdi-account-cowboy-hat</v-icon>
           </v-avatar>

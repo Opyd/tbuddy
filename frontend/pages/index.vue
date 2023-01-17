@@ -61,6 +61,7 @@
     middleware: ['auth'],
     data: () => ({
       user: {},
+      avatar: '',
     }),
     async fetch() {
       try {
@@ -74,7 +75,6 @@
         }
       }
     },
-
     head: () => ({
       title: 'Dashboard',
     }),

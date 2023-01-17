@@ -1,12 +1,12 @@
 <template>
-  <div>
+  <v-container fluid>
     <div v-if="$fetchState.pending" class="tw-w-full">
       <v-skeleton-loader
         class="tw-w-full"
         type="list-item-avatar-three-line, image, article"></v-skeleton-loader>
     </div>
     <div v-else>
-      <v-card elevation="2">
+      <v-card elevation="2" class="tw-mb-5">
         <div
           class="tw-w-full tw-h-10 tw-flex tw-justify-center tw-items-center tw-rounded"
           style="font-family: 'Unbounded', cursive"
@@ -22,14 +22,22 @@
               }}</v-icon>
             </v-avatar>
           </div>
-          <div class="tw-w-3/5">
-            <p class="tw-text-4xl tw-w-3/5">{{ team.name }}</p>
-            <TeamOwner :ownername="team.owner" />
-          </div>
+          <v-row class="tw-w-3/5" no-gutters>
+            <v-col cols="12">
+              <small>Team</small>
+            </v-col>
+            <v-col cols="12">
+              <p class="sm:tw-text-4xl md:tw-text-4xl xs:tw-text-xl tw-w-3/5">
+                {{ team.name }}
+              </p>
+            </v-col>
+          </v-row>
 
           <div class="tw-self-start tw-justify-self-end">
-            <v-icon> mdi-calendar</v-icon>
-            <i>Created: {{ new Date(team.createdAt).toDateString() }} </i>
+            <v-icon size="18"> mdi-calendar</v-icon>
+            <small
+              ><i>{{ $dateFns.format(team.createdAt, 'yyy-MM-dd') }} </i>
+            </small>
             <div
               v-if="$auth.user !== null && $auth.user.username === team.owner"
               class="tw-mt-5 tw-flex tw-justify-center">
@@ -41,85 +49,80 @@
         </div>
       </v-card>
       <v-row>
-        <v-col md="6" sm="12">
-          <div class="tw-mt-5">
-            <v-card class="tw-w-full">
-              <div
-                class="tw-w-full tw-flex tw-justify-center tw-items-center tw-my-3">
-                <span style="font-family: 'Unbounded', sans-serif"
-                  >Members</span
-                >
+        <v-col cols="12" md="6" sm="12">
+          <v-card class="fill-height">
+            <div
+              class="tw-w-full tw-flex tw-justify-center tw-items-center tw-my-3">
+              <span style="font-family: 'Unbounded', sans-serif">Members</span>
+            </div>
+            <v-divider></v-divider>
+            <div
+              id="style-2"
+              class="tw-w-full tw-max-h-52 tw-overflow-y-auto tw-flex tw-flex-col tw-justify-center tw-items-center">
+              <div class="tw-w-full">
+                <TeamMember :username="team.owner" />
               </div>
-              <v-divider></v-divider>
+
               <div
-                class="tw-w-full tw-flex tw-flex-col tw-justify-center tw-items-center">
-                <div
-                  v-for="member in team.members"
-                  :key="member"
-                  class="tw-w-full">
-                  <TeamMember :username="member" />
-                </div>
-                <div v-if="team.members.length === 0" class="tw-p-3">
-                  <small><i>There are currently no members</i></small>
-                </div>
+                v-for="member in team.members"
+                id="alternateColorsMembers"
+                :key="member"
+                class="tw-w-full">
+                <TeamMember :username="member" />
               </div>
-            </v-card>
-          </div>
+            </div>
+          </v-card>
         </v-col>
-        <v-col md="6" sm="12">
-          <div class="tw-mt-5">
-            <v-card class="tw-w-full">
+        <v-col cols="12" md="6" sm="12">
+          <v-card>
+            <div
+              class="tw-w-full tw-flex tw-justify-center tw-items-center tw-my-3">
+              <span style="font-family: 'Unbounded', sans-serif"
+                >Team History</span
+              >
+            </div>
+            <v-divider></v-divider>
+            <div id="style-2" class="tw-w-full tw-max-h-52 tw-overflow-y-auto">
               <div
-                class="tw-w-full tw-flex tw-justify-center tw-items-center tw-my-3">
-                <span style="font-family: 'Unbounded', sans-serif"
-                  >Team History</span
-                >
+                class="tw-w-full tw-justify-center tw-p-3 tw-flex tw-flex-col">
+                <HistoryEvent
+                  v-for="event in team.events"
+                  id="alternateColors"
+                  :key="event.date"
+                  :event="event" />
               </div>
-              <v-divider></v-divider>
-              <div class="tw-w-full tw-max-h-72 tw-overflow-y-auto">
-                <div
-                  class="tw-w-full tw-justify-center tw-p-3 tw-flex tw-flex-col">
-                  <HistoryEvent
-                    v-for="event in team.events"
-                    :key="event.date"
-                    :event="event" />
-                </div>
-              </div>
-            </v-card>
-          </div>
+            </div>
+          </v-card>
         </v-col>
-        <v-col md="12" sm="12">
-          <div class="tw-mt-5">
-            <v-card class="tw-w-full">
-              <div
-                class="tw-w-full tw-flex tw-justify-center tw-items-center tw-my-3">
-                <span style="font-family: 'Unbounded', sans-serif"
-                  >Last Matches</span
-                >
+        <v-col cols="12" md="6" sm="12">
+          <v-card>
+            <div
+              class="tw-w-full tw-flex tw-justify-center tw-items-center tw-my-3">
+              <span style="font-family: 'Unbounded', sans-serif"
+                >Last Matches</span
+              >
+            </div>
+            <v-divider></v-divider>
+            <div
+              class="tw-w-full tw-flex tw-flex-col tw-justify-center tw-items-center">
+              <div v-if="team.history.length === 0" class="tw-p-3">
+                <small><i>The team's match history is empty</i></small>
               </div>
-              <v-divider></v-divider>
-              <div
-                class="tw-w-full tw-flex tw-flex-col tw-justify-center tw-items-center">
-                <div v-if="team.history.length === 0" class="tw-p-3">
-                  <small><i>The team's match history is empty</i></small>
-                </div>
-              </div>
-            </v-card>
-          </div>
+            </div>
+          </v-card>
         </v-col>
       </v-row>
     </div>
-  </div>
+  </v-container>
 </template>
 
 <script>
   import TeamMember from '@/components/teams/TeamMember.vue';
-  import TeamOwner from '@/components/teams/TeamOwner.vue';
   import HistoryEvent from '@/components/teams/HistoryEvent.vue';
 
   export default {
     name: 'TeamTag',
-    components: {HistoryEvent, TeamOwner, TeamMember},
+    components: {HistoryEvent, TeamMember},
     data: () => ({
       team: {},
       loading: true,
@@ -147,4 +150,11 @@
   };
 </script>
 
-<style scoped></style>
+<style scoped>
+  #alternateColors:nth-child(odd) {
+    background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1));
+  }
+  #alternateColorsMembers:nth-child(even) {
+    background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1));
+  }
+</style>

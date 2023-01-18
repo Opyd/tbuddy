@@ -98,7 +98,16 @@ export class TournamentsController {
    * @param id
    */
   @Get(':slug')
-  async findById(@Param('slug') slug: string) {
+  async findBySlug(@Param('slug') slug: string) {
     return await this.tournamentsService.findTournamentBySlug(slug);
+  }
+  @Get('/id/:id')
+  async findById(@Param('id') id: string) {
+    return await this.tournamentsService.findTournamentById(id);
+  }
+
+  @Get('/:id/team/:tag')
+  async getTeamMatches(@Param('id') id: string, @Param('tag') tag: string) {
+    return await this.tournamentsService.getTeamMatches(id, tag);
   }
 }

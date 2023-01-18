@@ -6,169 +6,143 @@
         type="list-item-avatar-three-line, image, article"></v-skeleton-loader>
     </div>
     <div v-else>
-      <v-row>
-        <v-col cols="12">
-          <v-card elevation="2">
-            <div
-              class="tw-flex-nowrap tw-flex tw-w-full tw-p-5 tw-items-center tw-gap-10">
-              <div class="tw-flex tw-justify-center tw-flex-col">
-                <v-avatar size="128" rounded class="tw-w-full">
-                  <img
-                    v-if="user.avatar !== null"
-                    :src="user.avatar"
-                    alt="My profile picture" />
-                  <v-icon v-else size="128">mdi-account-cowboy-hat</v-icon>
-                </v-avatar>
-              </div>
-              <v-row class="tw-w-3/5" no-gutters>
-                <v-col cols="12">
-                  <small>User</small>
-                </v-col>
-                <v-col cols="12">
-                  <p class="md:tw-text-4xl xs:tw-text-xl">
-                    {{ user.username }}
-                  </p>
-                </v-col>
-              </v-row>
-              <small class="tw-self-start">
-                <i>
-                  <v-icon size="18" left> mdi-calendar</v-icon
-                  >{{ $dateFns.format(user.createdAt, 'yyy-MM-dd') }}
-                </i>
-              </small>
-            </div>
-          </v-card>
-        </v-col>
-      </v-row>
-      <v-row>
-        <v-col cols="12" sm="12" md="6" lg="6">
-          <v-card elevation="2" class="tw-pt-3">
-            <div class="tw-flex tw-w-full tw-justify-end">
-              <div
-                v-if="$auth.user !== null && $auth.user.username === team.owner"
-                class="tw-absolute tw-right-0">
-                <v-icon
-                  class="tw-m-1 hover:tw-animate-spin hover:tw-cursor-pointer"
-                  @click="dialog = true">
-                  mdi-cog
-                </v-icon>
-              </div>
-              <v-dialog v-model="dialog" persistent max-width="600px">
-                <details-dialog
-                  :user-details="user.details"
-                  @close="dialog = false" />
-              </v-dialog>
-              <p
-                class="tw-text-2xl tw-text-center tw-w-full"
-                style="font-family: 'Unbounded', sans-serif">
-                Details
-              </p>
-            </div>
-            <v-divider></v-divider>
-            <div class="tw-flex tw-flex-nowrap tw-w-full tw-py-2 lol">
-              <div class="tw-w-1/2 text-center">First Name</div>
-              <div class="tw-w-1/2 text-center">
-                {{ user.details.firstname ? user.details.firstname : '-' }}
-              </div>
-            </div>
-            <div class="tw-flex tw-flex-nowrap tw-w-full tw-py-2">
-              <div class="tw-w-1/2 text-center">Country</div>
-              <div class="tw-w-1/2 text-center">
-                {{ user.details.country ? user.details.country : '-' }}
-              </div>
-            </div>
-            <div class="tw-flex tw-flex-nowrap tw-w-full tw-py-2 lol">
-              <div class="tw-w-1/2 text-center">About</div>
-              <div class="tw-w-1/2 text-center">
-                {{ user.details.about ? user.details.about : '-' }}
-              </div>
-            </div>
-            <div class="tw-flex tw-flex-nowrap tw-w-full tw-py-2">
-              <div class="tw-w-1/2 text-center">Preffered Role(s)</div>
-              <div
-                class="tw-w-1/2 text-center tw-flex tw-justify-center tw-items-center">
-                <p
-                  v-if="
-                    user.details.preferredRoles === undefined ||
-                    user.details.preferredRoles?.length === 0
-                  ">
-                  -
-                </p>
-
-                <RoleIcon
-                  v-for="role in user.details.preferredRoles"
-                  :key="role"
-                  :role="role"></RoleIcon>
-              </div>
-            </div>
-            <div class="tw-flex tw-flex-nowrap tw-w-full tw-py-2 lol">
-              <div class="tw-w-1/2 text-center">Looking For Team</div>
-              <div
-                class="tw-w-1/2 text-center tw-flex tw-justify-center tw-items-center">
-                <v-icon>{{
-                  user.details.lookingForTeam ? 'mdi-check-bold' : 'mdi-close'
-                }}</v-icon>
-              </div>
-            </div>
-          </v-card>
-        </v-col>
-        <v-col md="6" lg="6" sm="12" cols="12">
-          <v-card v-if="user.currentTeam === null">
-            <div
-              class="tw-w-full tw-flex tw-flex-col tw-justify-center tw-h-36 tw-items-center">
-              <looking-for-team
-                v-if="user.details.lookingForTeam"
-                :username="user.username" />
-              <span v-else>{{ user.username }} is not in any team</span>
-            </div>
-          </v-card>
-          <v-card v-if="isTeamLoaded && user.currentTeam !== null" class="">
-            <div class="tw-w-full">
-              <p
-                class="tw-text-2xl tw-text-center tw-pt-3"
-                style="font-family: 'Unbounded', sans-serif">
-                My Team
-              </p>
-            </div>
-            <v-divider></v-divider>
-            <v-list-item three-line>
-              <v-list-item-content>
-                <div class="text-overline mb-4">
-                  <span style="font-family: 'Unbounded', cursive">{{
-                    team.tag
-                  }}</span>
+      <v-row justify="center">
+        <v-col xl="8" lg="12" md="12" sm="12" cols="12">
+          <v-row>
+            <v-col cols="12">
+              <v-card elevation="2">
+                <div
+                  class="tw-flex-nowrap tw-flex tw-w-full tw-p-5 tw-items-center tw-gap-10">
+                  <div class="tw-flex tw-justify-center tw-flex-col">
+                    <v-avatar size="128" rounded class="tw-w-full">
+                      <img
+                        v-if="user.avatar !== null"
+                        :src="user.avatar"
+                        alt="My profile picture" />
+                      <v-icon v-else size="128">mdi-account-cowboy-hat</v-icon>
+                    </v-avatar>
+                  </div>
+                  <v-row class="tw-w-3/5" no-gutters>
+                    <v-col cols="12">
+                      <small>User</small>
+                    </v-col>
+                    <v-col cols="12">
+                      <p class="md:tw-text-4xl xs:tw-text-xl">
+                        {{ user.username }}
+                      </p>
+                    </v-col>
+                  </v-row>
+                  <small class="tw-self-start">
+                    <i>
+                      <v-icon size="18" left> mdi-calendar</v-icon
+                      >{{ $dateFns.format(user.createdAt, 'yyy-MM-dd') }}
+                    </i>
+                  </small>
                 </div>
-                <v-list-item-title class="text-h5 mb-1">
-                  {{ team.name }}
-                </v-list-item-title>
-                <v-list-item-subtitle
-                  >Created:
-                  {{
-                    $dateFns.format(team.createdAt, 'yyy-MM-dd')
-                  }}</v-list-item-subtitle
-                >
-              </v-list-item-content>
+              </v-card>
+            </v-col>
+          </v-row>
+          <v-row>
+            <v-col cols="12" sm="12" md="6" lg="6">
+              <v-card elevation="2" class="tw-pt-3">
+                <div class="tw-flex tw-w-full tw-justify-end">
+                  <div
+                    v-if="
+                      $auth.user !== null &&
+                      $auth.user.username === user.username
+                    "
+                    class="tw-absolute tw-right-0">
+                    <v-icon
+                      class="tw-m-1 hover:tw-animate-spin hover:tw-cursor-pointer"
+                      @click="dialog = true">
+                      mdi-cog
+                    </v-icon>
+                  </div>
+                  <v-dialog v-model="dialog" persistent max-width="600px">
+                    <details-dialog
+                      :user-details="user.details"
+                      @close="dialog = false" />
+                  </v-dialog>
+                  <p
+                    class="tw-text-2xl tw-text-center tw-w-full"
+                    style="font-family: 'Unbounded', sans-serif">
+                    Details
+                  </p>
+                </div>
+                <v-divider></v-divider>
+                <div class="tw-flex tw-flex-nowrap tw-w-full tw-py-2 lol">
+                  <div class="tw-w-1/2 text-center">First Name</div>
+                  <div class="tw-w-1/2 text-center">
+                    {{ user.details.firstname ? user.details.firstname : '-' }}
+                  </div>
+                </div>
+                <div class="tw-flex tw-flex-nowrap tw-w-full tw-py-2">
+                  <div class="tw-w-1/2 text-center">Country</div>
+                  <div class="tw-w-1/2 text-center">
+                    {{ user.details.country ? user.details.country : '-' }}
+                  </div>
+                </div>
+                <div class="tw-flex tw-flex-nowrap tw-w-full tw-py-2 lol">
+                  <div class="tw-w-1/2 text-center">About</div>
+                  <div class="tw-w-1/2 text-center">
+                    {{ user.details.about ? user.details.about : '-' }}
+                  </div>
+                </div>
+                <div class="tw-flex tw-flex-nowrap tw-w-full tw-py-2">
+                  <div class="tw-w-1/2 text-center">Preffered Role(s)</div>
+                  <div
+                    class="tw-w-1/2 text-center tw-flex tw-justify-center tw-items-center">
+                    <p
+                      v-if="
+                        user.details.preferredRoles === undefined ||
+                        user.details.preferredRoles?.length === 0
+                      ">
+                      -
+                    </p>
 
-              <v-list-item-avatar size="40" :color="team.color" rounded>
-                <v-icon>{{ team.icon }}</v-icon>
-              </v-list-item-avatar>
-            </v-list-item>
-
-            <v-card-actions>
-              <nuxt-link :to="`/teams/${team.tag}`">
-                <v-btn outlined rounded text> More </v-btn></nuxt-link
-              >
-            </v-card-actions>
-          </v-card>
-
-          <v-card
-            v-if="!isTeamLoaded && user.currentTeam !== null"
-            key="2"
-            class="">
-            <v-skeleton-loader
-              class="mx-auto"
-              type="article"></v-skeleton-loader>
-          </v-card>
+                    <RoleIcon
+                      v-for="role in user.details.preferredRoles"
+                      :key="role"
+                      :role="role"></RoleIcon>
+                  </div>
+                </div>
+                <div class="tw-flex tw-flex-nowrap tw-w-full tw-py-2 lol">
+                  <div class="tw-w-1/2 text-center">Looking For Team</div>
+                  <div
+                    class="tw-w-1/2 text-center tw-flex tw-justify-center tw-items-center">
+                    <v-icon>{{
+                      user.details.lookingForTeam
+                        ? 'mdi-check-bold'
+                        : 'mdi-close'
+                    }}</v-icon>
+                  </div>
+                </div>
+              </v-card>
+            </v-col>
+            <v-col md="6" lg="6" sm="12" cols="12">
+              <v-card v-if="user.currentTeam === null">
+                <div
+                  class="tw-w-full tw-flex tw-flex-col tw-justify-center tw-h-36 tw-items-center">
+                  <looking-for-team
+                    v-if="user.details.lookingForTeam"
+                    :username="user.username" />
+                  <span v-else>{{ user.username }} is not in any team</span>
+                </div>
+              </v-card>
+              <UserTeam
+                v-if="isTeamLoaded && user.currentTeam !== null"
+                :team="team"
+                class="" />
+              <v-card
+                v-if="!isTeamLoaded && user.currentTeam !== null"
+                key="2"
+                class="">
+                <v-skeleton-loader
+                  class="mx-auto"
+                  type="article"></v-skeleton-loader>
+              </v-card>
+            </v-col>
+          </v-row>
         </v-col>
       </v-row>
     </div>
@@ -179,10 +153,11 @@
   import RoleIcon from '@/components/user/roles/RoleIcon.vue';
   import LookingForTeam from '@/components/user/LookingForTeam.vue';
   import DetailsDialog from '@/components/user/DetailsDialog.vue';
+  import UserTeam from '@/pages/users/UserTeam.vue';
 
   export default {
     name: 'UsersPage',
-    components: {DetailsDialog, LookingForTeam, RoleIcon},
+    components: {UserTeam, DetailsDialog, LookingForTeam, RoleIcon},
     data: () => ({
       user: {},
       team: {},
@@ -223,9 +198,7 @@
           );
           this.team = res.data;
           this.isTeamLoaded = true;
-        } catch (e) {
-          console.log(e);
-        }
+        } catch (e) {}
       },
     },
   };

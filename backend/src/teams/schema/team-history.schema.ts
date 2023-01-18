@@ -3,16 +3,11 @@ import mongoose, { Document } from 'mongoose';
 
 @Schema({ _id: false })
 export class TeamHistory extends Document {
-  @Prop({
-    required: true,
-    type: mongoose.Schema.Types.ObjectId /* TODO: ref: History */,
-  })
-  matchId: string;
   @Prop({ required: true })
-  oponnent: string;
+  matchId: string;
 
-  @Prop({ required: true, type: mongoose.Schema.Types.ObjectId, ref: 'Team' })
-  oponnentId: string;
+  @Prop({ required: true })
+  opponent: string;
 
   @Prop({ required: true })
   result: string;

@@ -53,7 +53,7 @@
       </div>
       <div class="tw-w-full tw-flex tw-flex-col tw-justify-center tw-mt-10">
         <v-row justify="center">
-          <v-col v-if="filtered.length > 0" md="8" sm="8">
+          <v-col v-if="filtered.length > 0" md="8" sm="8" lg="5">
             <div class="tw-w-full tw-flex tw-flex-col tw-justify-center">
               <div v-if="loading">
                 <v-skeleton-loader
@@ -61,44 +61,13 @@
                   class="tw-mb-3"></v-skeleton-loader>
                 <v-skeleton-loader type="table-heading"></v-skeleton-loader>
               </div>
-              <v-virtual-scroll
-                id="style-2"
-                bench="2"
-                :items="filtered"
-                class="tw-mt-3"
-                height="300"
-                item-height="64">
-                <template #default="{item}">
-                  <v-list-item :key="item.username">
-                    <v-list-item-action>
-                      <v-icon> mdi-account </v-icon>
-                    </v-list-item-action>
-
-                    <v-list-item-content>
-                      <v-list-item-title>
-                        {{ item.username }}
-                      </v-list-item-title>
-                    </v-list-item-content>
-
-                    <v-list-item-content>
-                      <div style="display: flex">
-                        <RoleIcon
-                          v-for="role in item.details.preferredRoles"
-                          :key="role"
-                          :role="role" />
-                      </div>
-                    </v-list-item-content>
-
-                    <v-list-item-action>
-                      <nuxt-link :to="`/users/${item.username}`"
-                        ><v-icon small> mdi-open-in-new </v-icon></nuxt-link
-                      >
-                    </v-list-item-action>
-                  </v-list-item>
-
-                  <v-divider></v-divider>
-                </template>
-              </v-virtual-scroll>
+              <div id="style-2" class="tw-max-h-96 tw-overflow-y-auto">
+                <UserCard
+                  v-for="user in results"
+                  :key="user.username"
+                  :item="user"
+                  class="tw-my-1" />
+              </div>
             </div>
           </v-col>
           <v-col v-else md="8" sm="8">
@@ -156,7 +125,9 @@
         }
         try {
           this.loading = true;
-          const res = await this.$axios.get(`/users/search/${newValue}`);
+          const res = await this.$axios.get(
+            `/users/search/user?username=${newValue}&team=true`,
+          );
           this.results = res.data;
           this.loading = false;
         } catch (e) {

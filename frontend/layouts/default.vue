@@ -42,7 +42,7 @@
         </nuxt-link>
       </div>
       <div v-if="loggedIn">
-        <nuxt-link to="/users/me">
+        <nuxt-link :to="`/users/${$auth.user.username}`">
           <v-btn color="primary">
             <v-icon left>mdi-account</v-icon>
             My Account
@@ -77,7 +77,7 @@
             to: '/',
           },
           {
-            icon: 'mdi-trophy',
+            icon: 'mdi-tournament',
             title: 'Tournaments',
             // to: '/auth/login',
           },

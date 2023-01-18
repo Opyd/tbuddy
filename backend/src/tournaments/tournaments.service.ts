@@ -1,4 +1,8 @@
-import { BadRequestException, Injectable } from '@nestjs/common';
+import {
+  BadRequestException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { CreateTournamentDto } from './dto/create-tournament.dto';
 import { InjectModel } from '@nestjs/mongoose';
 import { Team, TeamDocument } from '../teams/schema/team.schema';
@@ -45,7 +49,11 @@ export class TournamentsService {
   }
 
   async findTournamentById(id: string) {
-    return await this.tournamentModel.findById(id).exec();
+    const tournament = await this.tournamentModel.findById(id).exec();
+    if (!tournament) {
+      throw new NotFoundException();
+    }
+    return tournament;
   }
 
   async findTournamentBySlug(slug: string) {
@@ -178,7 +186,7 @@ export class TournamentsService {
       throw new BadRequestException('User is not a tournament organizer');
     }
 
-    const { stageNr, winner, result } = matchResultDto;
+    const { stageNr, winner, result, matchId } = matchResultDto;
 
     if (stageNr > 0 && !tournament.stages[stageNr - 1].finished) {
       throw new BadRequestException('Previous stage is not yet finished');
@@ -190,13 +198,16 @@ export class TournamentsService {
     /**
      * Looks for a match that will be updated
      */
-
+    let teamAtag = '';
+    let teamBtag = '';
     matches.map((match, index) => {
-      if (match['id'] === matchResultDto.matchId) {
+      if (match['id'] === matchId) {
         matchIndex = index;
         if (match.teamA !== winner && match.teamB !== winner) {
           throw new BadRequestException('Invalid winner');
         }
+        teamAtag = match.teamA;
+        teamBtag = match.teamB;
         match.winner = winner;
         match.result = result;
         match.finished = true;
@@ -231,8 +242,73 @@ export class TournamentsService {
       tournament.finished = tournament.stages[stageNr].finished;
     }
 
+    /**
+     * Adding matches to teams' history
+     */
+
+    const teamA = await this.teamsService.findOneByTag(teamAtag);
+    const teamB = await this.teamsService.findOneByTag(teamBtag);
+
+    teamA.history.push({
+      opponent: teamBtag,
+      result: teamAtag === winner ? 'win' : 'loss',
+      date: new Date(),
+      matchId,
+    });
+
+    teamB.history.push({
+      opponent: teamAtag,
+      result: teamBtag === winner ? 'win' : 'loss',
+      date: new Date(),
+      matchId,
+    });
+
+    await teamA.save();
+    await teamB.save();
+
     await tournament.save();
 
     return tournament;
+  }
+
+  async getTeamMatches(id: string, tag: string) {
+    const tournament = await this.findTournamentById(id);
+    if (!tournament) {
+      throw new BadRequestException('Tournament doesnt exists');
+    }
+    if (!tournament.started) {
+      throw new BadRequestException('Tournament didnt start');
+    }
+    const team = await this.teamsService.findOneByTag(tag);
+    if (!team) {
+      throw new BadRequestException('Team doesnt exists');
+    }
+    if (team.activeTournament !== tournament._id.toString()) {
+      throw new BadRequestException(
+        'Team doesnt participate in this tournament',
+      );
+    }
+    const opponents = [];
+    tournament.stages.forEach((stage) => {
+      stage.matches.forEach((match) => {
+        if (match.teamA === team.tag || match.teamB === team.tag) {
+          if (match.finished !== true) {
+            opponents.push(
+              team.tag === match.teamA &&
+                match.teamA !== '' &&
+                match.teamB !== ''
+                ? match.teamB
+                : match.teamA,
+            );
+          }
+        }
+      });
+    });
+    const opponentsObjects = [];
+    for (let i = 0; i < opponents.length; i++) {
+      const team = await this.teamsService.findOneByTag(opponents[i]);
+      opponentsObjects.push(team);
+    }
+    return opponentsObjects;
   }
 }

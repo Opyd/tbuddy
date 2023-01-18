@@ -11,7 +11,7 @@
       style="text-decoration: none; color: inherit">
       <div class="tw-w-full tw-flex tw-justify-center tw-px-5">
         <div class="tw-w-1/3 tw-flex tw-justify-center tw-items-center">
-          <v-icon v-if="teamOwner" color="#f59e0b">mdi-crown</v-icon>
+          <v-icon v-if="owner" color="#f59e0b">mdi-crown</v-icon>
           <v-icon v-else>mdi-account</v-icon>
         </div>
         <div class="tw-w-1/3 tw-flex tw-justify-center tw-items-center">
@@ -35,7 +35,6 @@
 
 <script>
   import RoleIcon from '@/components/user/roles/RoleIcon.vue';
-  import teamOwner from '@/components/teams/TeamOwner.vue';
 
   export default {
     name: 'TeamMember',
@@ -59,9 +58,6 @@
     },
 
     computed: {
-      teamOwner() {
-        return teamOwner;
-      },
       roles() {
         const roles = this.user.details.preferredRoles;
         return roles.join(', ');

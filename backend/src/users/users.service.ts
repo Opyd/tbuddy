@@ -116,13 +116,13 @@ export class UsersService {
     return user;
   }
 
-  async findLikeUsername(query: string) {
+  async findLikeUsername(query: string, team?: boolean) {
     return this.userModel
       .find({
         username: new RegExp('.*' + query + '.*', 'i'),
-        currentTeam: null,
+        currentTeam: team ? { $in: [null, new RegExp('.*')] } : null,
       })
-      .select({ username: 1, 'details.preferredRoles': 1 })
+      .select({ username: 1, 'details.preferredRoles': 1, avatar: 1 })
       .limit(10);
   }
 

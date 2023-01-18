@@ -76,7 +76,9 @@
         }
         try {
           this.loading = true;
-          const res = await this.$axios.get(`/users/search/${newValue}`);
+          const res = await this.$axios.get(
+            `/users/search/user?username=${newValue}`,
+          );
           this.found = res.data;
           this.loading = false;
         } catch (e) {

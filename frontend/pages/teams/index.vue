@@ -12,7 +12,7 @@
       </div>
       <div class="tw-w-full">
         <v-row justify="center">
-          <v-col sm="12" md="6">
+          <v-col sm="12" md="6" lg="8" xl="5">
             <v-text-field
               v-model.lazy="query"
               prepend-inner-icon="mdi-account-group"
@@ -25,7 +25,7 @@
       </div>
       <div class="tw-w-full tw-flex tw-flex-col tw-justify-center tw-mt-10">
         <v-row justify="center">
-          <v-col v-if="results.length > 0" md="8" sm="8">
+          <v-col v-if="results.length > 0" md="8" sm="8" lg="8" xl="5">
             <div class="tw-w-full tw-flex tw-flex-col tw-justify-center">
               <div v-if="loading">
                 <v-skeleton-loader
@@ -33,50 +33,13 @@
                   class="tw-mb-3"></v-skeleton-loader>
                 <v-skeleton-loader type="table-heading"></v-skeleton-loader>
               </div>
-              <v-virtual-scroll
-                id="style-2"
-                bench="2"
-                :items="results"
-                class="tw-mt-3"
-                height="300"
-                item-height="64">
-                <template #default="{item}">
-                  <v-list-item :key="item.tag">
-                    <v-list-item-action>
-                      <v-avatar rounded :color="item.color">
-                        <v-icon> {{ item.icon }} </v-icon>
-                      </v-avatar>
-                    </v-list-item-action>
-
-                    <v-list-item-content>
-                      <v-list-item-title>
-                        {{ item.tag }}
-                      </v-list-item-title>
-                    </v-list-item-content>
-                    <v-list-item-content>
-                      <v-list-item-title>
-                        {{ item.name }}
-                      </v-list-item-title>
-                    </v-list-item-content>
-                    <v-list-item-content>
-                      <v-list-item-title>
-                        <v-icon>mdi-account</v-icon>
-                        {{ item.members.length + 1 }}
-                      </v-list-item-title>
-                    </v-list-item-content>
-
-                    <v-list-item-content> </v-list-item-content>
-
-                    <v-list-item-action>
-                      <nuxt-link :to="`/teams/${item.tag}`"
-                        ><v-icon small> mdi-open-in-new </v-icon></nuxt-link
-                      >
-                    </v-list-item-action>
-                  </v-list-item>
-
-                  <v-divider></v-divider>
-                </template>
-              </v-virtual-scroll>
+              <div id="style-2" class="tw-max-h-96 tw-overflow-y-auto">
+                <TeamCard
+                  v-for="team in results"
+                  :key="team._id"
+                  :item="team"
+                  class="tw-my-1" />
+              </div>
             </div>
           </v-col>
           <v-col v-else md="8" sm="8">
@@ -93,8 +56,11 @@
 </template>
 
 <script>
+  import TeamCard from '@/components/teams/index/TeamCard.vue';
+
   export default {
     name: 'TeamsIndex',
+    components: {TeamCard},
     data: () => ({
       query: '',
       loading: false,

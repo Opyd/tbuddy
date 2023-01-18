@@ -9,6 +9,7 @@ import {
   UseGuards,
   Req,
   NotFoundException,
+  Query,
 } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
@@ -82,9 +83,13 @@ export class UsersController {
     );
   }
 
-  @Get('search/:username')
-  searchByUsername(@Param('username') username: string) {
-    return this.usersService.findLikeUsername(username);
+  @Get('search/user')
+  searchByUsername(
+    @Query('username') username: string,
+    @Query('team') team: boolean,
+  ) {
+    // return { username, team };
+    return this.usersService.findLikeUsername(username, team);
   }
 
   /**

@@ -1,12 +1,18 @@
 <script>
+  // import TeamCell from '@/components/tournaments/TeamCell.vue';
+
+  import TeamCell from '@/components/tournaments/TeamCell.vue';
+
   const defaultRounds = [256, 128, 64, 32, 16, 8, 4, 2, 1];
   export default {
     name: 'TournamentBracket',
+    components: {TeamCell},
     props: {
       bracketSize: {
         type: Number,
         default: 8,
       },
+      roundTournament: [],
       matchStyle: {
         type: Object,
         default: () => ({
@@ -21,25 +27,56 @@
         return defaultRounds.filter(rounds => rounds <= this.bracketSize);
       },
     },
+    methods: {
+      roundTitle(round) {
+        if (round === 4) return 'Semifinals';
+        if (round === 2) return 'Final';
+        if (round === 1) return 'Winner';
+        else return `1 / ${round / 2}`;
+      },
+    },
   };
 </script>
 
 <template>
-  <div class="tournament-brackets">
+  <div id="style-2" class="tournament-brackets">
     <div class="bracket">
       <template v-for="(round, index) in rounds">
-        <div :key="index" class="round" :class="['round-' + round]">
-          1 / {{ round }}
+        <div
+          :key="index"
+          class="round"
+          style="text-align: center; font-family: 'Unbounded', sans-serif"
+          :class="['round-' + round]">
+          {{ roundTitle(round) }}
           <template v-for="(match, matchIndex) in round">
             <div :key="matchIndex" class="match">
-              <div
-                class="match__content"
+              <TeamCell
+                v-if="rounds.indexOf(round) < roundTournament.length"
+                class="match__content tw-border tw-rounded"
                 :style="matchStyle"
+                :team-tag="
+                  matchIndex % 2 === 0
+                    ? roundTournament[rounds.indexOf(round)].matches[
+                        Math.floor(matchIndex / 2)
+                      ].teamA
+                    : roundTournament[rounds.indexOf(round)].matches[
+                        Math.floor(matchIndex / 2)
+                      ].teamB
+                "
                 :class="
-                  $vuetify.theme.dark
-                    ? 'tw-border tw-border-white'
-                    : 'tw-border tw-border-black'
-                "></div>
+                  $vuetify.theme.dark ? 'tw-border-white' : 'tw-border-black'
+                ">
+              </TeamCell>
+              <TeamCell
+                v-else
+                class="match__content tw-border tw-rounded"
+                :style="matchStyle"
+                :team-tag="
+                  roundTournament[roundTournament.length - 1].matches[0].winner
+                " />
+
+              <!--              rounds.indexOf(round)-->
+              <!--              Math.floor(matchIndex / 2) -->
             </div>
           </template>
         </div>

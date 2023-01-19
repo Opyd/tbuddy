@@ -25,20 +25,27 @@
         </v-col>
       </v-row>
       <v-row>
-        <v-col cols="6" sm="3" md="3" lg="3">
+        <v-col cols="6" sm="6" md="3" lg="3">
           <v-card>
             <v-card-title
               >Teams: {{ tournament.participants.length }} /
               {{ tournament.nrOfTeams }}</v-card-title
             >
-            <v-list>
-              <v-list-item v-for="team in tournament.participants" :key="team">
-                {{ team }}
-                <v-list-item-action>
-                  <nuxt-link :to="`/teams/${team}`"
-                    ><v-icon small> mdi-open-in-new </v-icon></nuxt-link
-                  >
-                </v-list-item-action>
+            <v-list
+              id="style-2"
+              class="tw-max-h-52 tw-overflow-y-auto tw-overflow-x-hidden">
+              <v-list-item
+                v-for="team in tournament.participants"
+                id="alternateColors"
+                :key="team">
+                <v-col cols="10"
+                  ><span>{{ team }}</span></v-col
+                >
+                <v-col cols="2"
+                  ><nuxt-link :to="`/teams/${team}`"
+                    ><v-icon right small> mdi-open-in-new </v-icon></nuxt-link
+                  ></v-col
+                >
               </v-list-item>
             </v-list>
           </v-card>
@@ -46,10 +53,12 @@
         <v-col cols="6" sm="6" md="6" lg="6">
           <v-card class="fill-height">
             <v-card-title> Description </v-card-title>
-            <v-card-text>{{ tournament.description }}</v-card-text>
+            <v-card-text id="style-2" class="tw-max-h-52 tw-overflow-y-auto">{{
+              tournament.description
+            }}</v-card-text>
           </v-card>
         </v-col>
-        <v-col cols="12" sm="3" md="3" lg="3">
+        <v-col cols="12" sm="12" md="3" lg="3">
           <v-card class="fill-height">
             <v-card-title> Details </v-card-title>
             <v-card-text
@@ -78,9 +87,16 @@
             </v-card-text>
           </v-card>
         </v-col>
-        <v-col cols="12">
-          <v-card class="tw-p-3">
-            <TournamentBracket :bracket-size="tournament.nrOfTeams" />
+        <v-col cols="12" align="center">
+          <v-card id="style-2" class="tw-overflow-x-auto tw-w-fit">
+            <div
+              class="tw-p-3"
+              :style="{width: `${(tournament.stages.length + 2) * 200}px`}">
+              <TournamentBracket
+                class="tw-w-full"
+                :bracket-size="tournament.nrOfTeams"
+                :round-tournament="tournament.stages" />
+            </div>
           </v-card>
         </v-col>
       </v-row>
@@ -121,4 +137,8 @@
   };
 </script>
 
-<style scoped></style>
+<style scoped>
+  #alternateColors:nth-child(odd) {
+    background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1));
+  }
+</style>

@@ -20,7 +20,7 @@
         <v-col
           md="12"
           sm="12"
-          class="tw-w-full tw-flex tw-flex-col tw-items-center tw-justify-center">
+          class="tw-w-full tw-flex tw-flex-col tw-items-center tw-justify-center tw-max-h-52 tw-overflow-y-auto">
           <v-list-item
             v-for="item in matches"
             id="alternateColors"
@@ -42,8 +42,8 @@
             </v-list-item-content>
             <v-list-item-content>
               <v-list-item-title>
-                <v-icon>mdi-account</v-icon>
-                {{ item.members.length + 1 }}
+                <v-icon color="#f59e0b">mdi-crown</v-icon>
+                {{ item.owner }}
               </v-list-item-title>
             </v-list-item-content>
 

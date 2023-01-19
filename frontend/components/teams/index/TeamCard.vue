@@ -19,8 +19,8 @@
       </v-list-item-content>
       <v-list-item-content>
         <v-list-item-title>
-          <v-icon>mdi-account</v-icon>
-          {{ item.members.length + 1 }}
+          <v-icon color="#f59e0b">mdi-crown</v-icon>
+          {{ item.owner }}
         </v-list-item-title>
       </v-list-item-content>
 

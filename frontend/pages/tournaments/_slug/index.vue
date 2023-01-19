@@ -21,34 +21,11 @@
               class="tw-text-center tw-text-3xl"
               >{{ tournament.title }}</span
             >
-            <span class="tw-text-center"
-              ><v-icon>mdi-account</v-icon> {{ tournament.organizer }}</span
-            >
-            <span v-if="!tournament.started" class="tw-text-center">
-              Not started yet <v-icon>mdi-checkbox-blank-circle</v-icon>
-            </span>
-            <span
-              v-if="tournament.started && !tournament.finished"
-              class="tw-text-center">
-              In progress
-              <v-icon color="yellow" class="tw-animate-pulse"
-                >mdi-checkbox-blank-circle</v-icon
-              >
-            </span>
-            <span v-if="tournament.finished" class="tw-text-center">
-              Finished
-              <v-icon color="green">mdi-checkbox-blank-circle</v-icon>
-            </span>
           </div>
-        </v-col>
-        <v-col cols="12">
-          <v-card>
-            {{ tournament.description }}
-          </v-card>
         </v-col>
       </v-row>
       <v-row>
-        <v-col sm="6" md="3">
+        <v-col cols="6" sm="3" md="3" lg="3">
           <v-card>
             <v-card-title
               >Teams: {{ tournament.participants.length }} /
@@ -66,75 +43,45 @@
             </v-list>
           </v-card>
         </v-col>
-        <v-col>
-          <v-tabs
-            v-model="tab"
-            align-with-title
-            grow
-            :color="$vuetify.theme.dark ? 'white' : 'blue'">
-            <v-tabs-slider></v-tabs-slider>
-
-            <v-tab v-for="stage in tournament.stages" :key="stage.stageNr">
-              Round {{ stage.stageNr + 1 }}
-            </v-tab>
-          </v-tabs>
-
-          <v-tabs-items v-model="tab">
-            <v-tab-item
-              v-for="(stage, index) in tournament.stages"
-              :key="stage.stageNr">
-              <v-card
-                v-for="match in stage.matches"
-                :key="match._id"
-                flat
-                class="tw-p-3">
-                <v-row align="center">
-                  <v-col cols="3">
-                    <p
-                      class="text-center"
-                      :class="
-                        match.winner === (match.teamA ?? '')
-                          ? 'tw-border-b tw-border-b-green-500'
-                          : ''
-                      ">
-                      <v-icon
-                        v-if="
-                          index === tournament.stages.length - 1 &&
-                          match.winner === (match.teamA ?? '')
-                        "
-                        color="#f59e0b"
-                        >mdi-crown</v-icon
-                      >
-                      {{ match.teamA ?? 'TBD' }}
-                    </p>
-                  </v-col>
-                  <v-col cols="1"><p class="text-center">VS</p></v-col>
-                  <v-col cols="3">
-                    <p
-                      class="text-center"
-                      :class="
-                        match.winner === (match.teamB ?? '')
-                          ? 'tw-border-b tw-border-b-green-500'
-                          : ''
-                      ">
-                      <v-icon
-                        v-if="
-                          index === tournament.stages.length - 1 &&
-                          match.winner === (match.teamB ?? '')
-                        "
-                        color="#f59e0b"
-                        >mdi-crown</v-icon
-                      >
-                      {{ match.teamB ?? 'TBD' }}
-                    </p>
-                  </v-col>
-                  <v-col cols="5">
-                    <p class="text-center">Finished: {{ match.finished }}</p>
-                  </v-col>
-                </v-row>
-              </v-card>
-            </v-tab-item>
-          </v-tabs-items>
+        <v-col cols="6" sm="6" md="6" lg="6">
+          <v-card class="fill-height">
+            <v-card-title> Description </v-card-title>
+            <v-card-text>{{ tournament.description }}</v-card-text>
+          </v-card>
+        </v-col>
+        <v-col cols="12" sm="3" md="3" lg="3">
+          <v-card class="fill-height">
+            <v-card-title> Details </v-card-title>
+            <v-card-text
+              ><v-icon left>mdi-calendar-plus</v-icon
+              >{{
+                $dateFns.format(tournament.createdAt, 'yyy-MM-dd')
+              }}</v-card-text
+            >
+            <v-card-text
+              ><v-icon left>mdi-account-tie</v-icon
+              >{{ tournament.organizer }}</v-card-text
+            >
+            <v-card-text>
+              <span>Status: </span>
+              <span v-if="!tournament.started">
+                <v-icon left>mdi-checkbox-blank-circle</v-icon>Not started yet
+              </span>
+              <span v-if="tournament.started && !tournament.finished">
+                <v-icon color="yellow" left>mdi-checkbox-blank-circle</v-icon>In
+                progress
+              </span>
+              <span v-if="tournament.finished">
+                <v-icon color="green" left>mdi-checkbox-blank-circle</v-icon
+                ><span>Finished</span>
+              </span>
+            </v-card-text>
+          </v-card>
+        </v-col>
+        <v-col cols="12">
+          <v-card class="tw-p-3">
+            <TournamentBracket :bracket-size="tournament.nrOfTeams" />
+          </v-card>
         </v-col>
       </v-row>
     </div>
@@ -142,8 +89,11 @@
 </template>
 
 <script>
+  import TournamentBracket from '@/components/tournaments/TournamentBracket.vue';
+
   export default {
     name: 'TournamentPage',
+    components: {TournamentBracket},
     data: () => ({
       tournament: {},
       slug: '',

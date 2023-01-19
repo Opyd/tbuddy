@@ -55,12 +55,13 @@ export default {
   modules: ['@nuxtjs/axios', '@nuxtjs/auth-next', 'vue-toastification/nuxt'],
 
   axios: {
-    baseURL: 'http://172.27.96.53:3100/api',
+    baseURL: 'http://172.27.107.156:3100/api',
   },
 
   auth: {
     redirect: {
       login: '/auth/',
+      home: '/dashboard',
     },
     strategies: {
       local: {

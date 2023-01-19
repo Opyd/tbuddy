@@ -58,7 +58,7 @@
             </div>
           </v-card>
           <v-row>
-            <v-col cols="12" md="6" sm="12">
+            <v-col cols="12" md="6" sm="6">
               <v-card class="fill-height">
                 <div
                   class="tw-w-full tw-flex tw-justify-center tw-items-center tw-my-3">
@@ -84,7 +84,7 @@
                 </div>
               </v-card>
             </v-col>
-            <v-col cols="12" md="6" sm="12">
+            <v-col cols="12" md="6" sm="6">
               <v-card>
                 <div
                   class="tw-w-full tw-flex tw-justify-center tw-items-center tw-my-3">
@@ -107,8 +107,8 @@
                 </div>
               </v-card>
             </v-col>
-            <v-col cols="12" md="6" sm="12" lg="6">
-              <v-card>
+            <v-col cols="12" md="6" sm="6" lg="6">
+              <v-card class="">
                 <div
                   class="tw-w-full tw-flex tw-justify-center tw-items-center tw-my-3">
                   <span style="font-family: 'Unbounded', sans-serif"
@@ -146,6 +146,9 @@
                 </div>
               </v-card>
             </v-col>
+            <v-col cols="12" md="6" sm="6" lg="6">
+              <ActiveTournament :tournament-id="team.activeTournament" />
+            </v-col>
           </v-row>
         </v-col>
       </v-row>
@@ -157,10 +160,11 @@
   import TeamMember from '@/components/teams/TeamMember.vue';
   import HistoryEvent from '@/components/teams/tag/HistoryEvent.vue';
   import MatchHistory from '@/components/teams/tag/MatchHistory.vue';
+  import ActiveTournament from '@/components/teams/ActiveTournament.vue';
 
   export default {
     name: 'TeamTag',
-    components: {MatchHistory, HistoryEvent, TeamMember},
+    components: {ActiveTournament, MatchHistory, HistoryEvent, TeamMember},
     data: () => ({
       team: {},
       loading: true,

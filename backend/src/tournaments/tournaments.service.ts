@@ -294,11 +294,7 @@ export class TournamentsService {
         if (match.teamA === team.tag || match.teamB === team.tag) {
           if (match.finished !== true) {
             opponents.push(
-              team.tag === match.teamA &&
-                match.teamA !== '' &&
-                match.teamB !== ''
-                ? match.teamB
-                : match.teamA,
+              team.tag === match.teamA ? match.teamB : match.teamA,
             );
           }
         }
@@ -306,6 +302,9 @@ export class TournamentsService {
     });
     const opponentsObjects = [];
     for (let i = 0; i < opponents.length; i++) {
+      if (opponents[i] === '') {
+        continue;
+      }
       const team = await this.teamsService.findOneByTag(opponents[i]);
       opponentsObjects.push(team);
     }

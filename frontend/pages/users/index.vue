@@ -12,7 +12,7 @@
       </div>
       <div class="tw-w-full">
         <v-row justify="center">
-          <v-col sm="12" md="6">
+          <v-col sm="12" md="8" lg="8" xl="5">
             <v-text-field
               v-model.lazy="query"
               prepend-inner-icon="mdi-account-search"
@@ -53,7 +53,7 @@
       </div>
       <div class="tw-w-full tw-flex tw-flex-col tw-justify-center tw-mt-10">
         <v-row justify="center">
-          <v-col v-if="filtered.length > 0" md="8" sm="8" lg="5">
+          <v-col v-if="filtered.length > 0" md="8" sm="8" lg="8" xl="5">
             <div class="tw-w-full tw-flex tw-flex-col tw-justify-center">
               <div v-if="loading">
                 <v-skeleton-loader
@@ -70,7 +70,7 @@
               </div>
             </div>
           </v-col>
-          <v-col v-else md="8" sm="8">
+          <v-col v-if="filtered.length == 0 && query.length > 0" md="8" sm="8">
             <div
               class="tw-w-full tw-flex tw-flex-col tw-justify-center tw-mt-10">
               <small class="text-center">No results</small>
@@ -94,6 +94,9 @@
       query: '',
       results: [],
       loading: false,
+    }),
+    head: () => ({
+      title: 'Find Users',
     }),
     computed: {
       filtered() {

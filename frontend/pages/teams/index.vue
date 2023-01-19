@@ -1,5 +1,17 @@
 <template>
   <v-main>
+    <v-tooltip bottom>
+      <template #activator="{on, attrs}">
+        <v-btn dark fab color="indigo" v-bind="attrs" v-on="on">
+          <NuxtLink
+            to="/teams/create"
+            style="text-decoration: none; color: inherit"
+            ><v-icon dark> mdi-plus </v-icon></NuxtLink
+          >
+        </v-btn>
+      </template>
+      <span>Create new team</span>
+    </v-tooltip>
     <div class="tw-w-full tw-flex tw-flex-col tw-justify-center">
       <div class="tw-w-full tw-flex tw-justify-center tw-mb-10">
         <v-badge bottom color="purple" content="Teams">
@@ -12,7 +24,7 @@
       </div>
       <div class="tw-w-full">
         <v-row justify="center">
-          <v-col sm="12" md="6" lg="8" xl="5">
+          <v-col sm="12" md="8" lg="8" xl="5">
             <v-text-field
               v-model.lazy="query"
               prepend-inner-icon="mdi-account-group"
@@ -42,7 +54,7 @@
               </div>
             </div>
           </v-col>
-          <v-col v-else md="8" sm="8">
+          <v-col v-if="results.length == 0 && query.length > 0" md="8" sm="8">
             <div
               class="tw-w-full tw-flex tw-flex-col tw-justify-center tw-mt-10">
               <small class="text-center">No results</small>
@@ -67,7 +79,7 @@
       results: [],
     }),
     head: () => ({
-      title: 'Teams',
+      title: 'Find Teams',
     }),
     watch: {
       async query(newValue) {

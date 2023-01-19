@@ -43,7 +43,7 @@
             </v-col>
           </v-row>
           <v-row>
-            <v-col cols="12" sm="12" md="6" lg="6">
+            <v-col cols="12" sm="6" md="6" lg="6">
               <v-card elevation="2" class="tw-pt-3">
                 <div class="tw-flex tw-w-full tw-justify-end">
                   <div
@@ -119,14 +119,28 @@
                 </div>
               </v-card>
             </v-col>
-            <v-col md="6" lg="6" sm="12" cols="12">
+            <v-col md="6" lg="6" sm="6" cols="12">
               <v-card v-if="user.currentTeam === null">
                 <div
                   class="tw-w-full tw-flex tw-flex-col tw-justify-center tw-h-36 tw-items-center">
                   <looking-for-team
                     v-if="user.details.lookingForTeam"
                     :username="user.username" />
-                  <span v-else>{{ user.username }} is not in any team</span>
+                  <span
+                    v-if="
+                      !user.details.lookingForTeam &&
+                      $auth.user !== null &&
+                      !($auth.user.username === user.username)
+                    "
+                    >{{ user.username }} is not in any team</span
+                  >
+                  <span
+                    v-if="
+                      $auth.user !== null &&
+                      $auth.user.username === user.username
+                    "
+                    >You are not in any team</span
+                  >
                 </div>
               </v-card>
               <UserTeam
@@ -153,7 +167,7 @@
   import RoleIcon from '@/components/user/roles/RoleIcon.vue';
   import LookingForTeam from '@/components/user/LookingForTeam.vue';
   import DetailsDialog from '@/components/user/DetailsDialog.vue';
-  import UserTeam from '@/pages/users/UserTeam.vue';
+  import UserTeam from '@/components/user/UserTeam.vue';
 
   export default {
     name: 'UsersPage',

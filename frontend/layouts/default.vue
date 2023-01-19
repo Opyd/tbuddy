@@ -1,5 +1,5 @@
 <template>
-  <v-app dark>
+  <v-app dark :style="$vuetify.theme.dark ? imageDark : image">
     <v-navigation-drawer v-model="drawer" :clipped="clipped" fixed app>
       <v-list>
         <v-list-item
@@ -55,13 +55,22 @@
         <Nuxt />
       </v-container>
     </v-main>
-    <v-footer :absolute="!fixed" app class="tw-justify-end">
+    <v-footer
+      :absolute="!fixed"
+      app
+      style="
+        background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2));
+      "
+      class="tw-justify-end">
       <span>Daniel Opyd &copy; {{ new Date().getFullYear() }}</span>
     </v-footer>
   </v-app>
 </template>
 
 <script>
+  import waves from 'assets/waves.svg';
+  import wavesDark from 'assets/waves-dark.svg';
+
   export default {
     name: 'DefaultLayout',
     data() {
@@ -69,12 +78,25 @@
         clipped: false,
         drawer: false,
         fixed: false,
+        image: {
+          backgroundImage: `url(${waves})`,
+          backgroundSize: 'cover',
+        },
+        imageDark: {
+          backgroundImage: `url(${wavesDark})`,
+          backgroundSize: 'cover',
+        },
         user: '',
         items: [
           {
             icon: 'mdi-apps',
             title: 'Welcome',
             to: '/',
+          },
+          {
+            icon: 'mdi-view-dashboard',
+            title: 'Dashboard',
+            to: '/dashboard',
           },
           {
             icon: 'mdi-tournament',
@@ -90,11 +112,6 @@
             icon: 'mdi-account-search',
             title: 'Users',
             to: '/users',
-          },
-          {
-            icon: 'mdi-account-multiple-plus',
-            title: 'Looking for Team',
-            // to: '/auth/login',
           },
         ],
         title: 'TBuddy',

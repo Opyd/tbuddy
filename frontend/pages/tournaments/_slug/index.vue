@@ -90,6 +90,7 @@
         <v-col cols="12" align="center">
           <v-card id="style-2" class="tw-overflow-x-auto tw-w-fit">
             <div
+              v-if="tournament.started || tournament.finished"
               class="tw-p-3"
               :style="{width: `${(tournament.stages.length + 2) * 200}px`}">
               <TournamentBracket

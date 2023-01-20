@@ -3,7 +3,7 @@ import mongoose, { Document } from 'mongoose';
 
 @Schema({ _id: false })
 export class TeamHistory extends Document {
-  @Prop({ required: true })
+  @Prop()
   matchId: string;
 
   @Prop({ required: true })

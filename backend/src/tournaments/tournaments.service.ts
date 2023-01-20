@@ -57,7 +57,11 @@ export class TournamentsService {
   }
 
   async findTournamentBySlug(slug: string) {
-    return await this.tournamentModel.findOne({ slug }).exec();
+    const tournament = await this.tournamentModel.findOne({ slug }).exec();
+    if (!tournament) {
+      throw new NotFoundException();
+    }
+    return tournament;
   }
 
   async findAll() {
@@ -186,6 +190,10 @@ export class TournamentsService {
       throw new BadRequestException('User is not a tournament organizer');
     }
 
+    if (tournament.finished) {
+      throw new BadRequestException('Tournament ended');
+    }
+
     const { stageNr, winner, result, matchId } = matchResultDto;
 
     if (stageNr > 0 && !tournament.stages[stageNr - 1].finished) {
@@ -253,14 +261,14 @@ export class TournamentsService {
       opponent: teamBtag,
       result: teamAtag === winner ? 'win' : 'loss',
       date: new Date(),
-      matchId,
+      matchId: matchId,
     });
 
     teamB.history.push({
       opponent: teamAtag,
       result: teamBtag === winner ? 'win' : 'loss',
       date: new Date(),
-      matchId,
+      matchId: matchId,
     });
 
     await teamA.save();

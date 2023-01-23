@@ -45,7 +45,7 @@
                   class="tw-mb-3"></v-skeleton-loader>
                 <v-skeleton-loader type="table-heading"></v-skeleton-loader>
               </div>
-              <div id="style-2" class="tw-max-h-96 tw-overflow-y-auto">
+              <div v-else id="style-2" class="tw-max-h-96 tw-overflow-y-auto">
                 <TeamCard
                   v-for="team in results"
                   :key="team._id"

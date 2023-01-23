@@ -12,7 +12,10 @@
         type: Number,
         default: 8,
       },
-      roundTournament: [],
+      roundTournament: {
+        type: Array,
+        default: null,
+      },
       matchStyle: {
         type: Object,
         default: () => ({
@@ -52,7 +55,7 @@
             <div :key="matchIndex" class="match">
               <TeamCell
                 v-if="rounds.indexOf(round) < roundTournament.length"
-                class="match__content tw-border tw-rounded"
+                class="match__content"
                 :style="matchStyle"
                 :team-tag="
                   matchIndex % 2 === 0
@@ -69,7 +72,7 @@
               </TeamCell>
               <TeamCell
                 v-else
-                class="match__content tw-border tw-rounded"
+                class="match__content tw-rounded"
                 :style="matchStyle"
                 :team-tag="
                   roundTournament[roundTournament.length - 1].matches[0].winner

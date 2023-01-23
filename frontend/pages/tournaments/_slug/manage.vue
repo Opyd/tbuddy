@@ -1,16 +1,61 @@
 <template>
   <v-main>
-    <div v-if="$fetchState.pending" class="tw-w-full">Loading...</div>
+    <div v-if="$fetchState.pending" class="tw-w-full">
+      <v-skeleton-loader
+        type="list-item-avatar-three-line, article, article"></v-skeleton-loader>
+    </div>
     <div v-else>
-      <p>
-        Participants: {{ tournament.participants.length }} /
-        {{ tournament.nrOfTeams }}
-      </p>
-      <v-btn :disabled="!canStartTournament" @click="startTournament"
-        >Start the tournament</v-btn
-      >
       <v-row>
-        <v-col>
+        <v-col v-if="!tournament.started" cols="12" align="center">
+          <v-btn :disabled="!canStartTournament" @click="startTournament"
+            >Start the tournament</v-btn
+          >
+        </v-col>
+        <v-col cols="6" sm="6" md="3" lg="3">
+          <v-card class="fill-height">
+            <v-card-title>
+              <span
+                >Teams: {{ tournament.participants.length }} /
+                {{ tournament.nrOfTeams }}</span
+              >
+            </v-card-title>
+            <v-list
+              id="style-2"
+              class="tw-max-h-52 tw-overflow-y-auto tw-overflow-x-hidden">
+              <v-list-item
+                v-for="team in tournament.participants"
+                id="alternateColors"
+                :key="team">
+                <v-col cols="10"
+                  ><span>{{ team }}</span></v-col
+                >
+                <v-col cols="2"
+                  ><nuxt-link :to="`/teams/${team}`"
+                    ><v-icon right small> mdi-open-in-new </v-icon></nuxt-link
+                  ></v-col
+                >
+              </v-list-item>
+            </v-list>
+          </v-card>
+        </v-col>
+        <v-col cols="12" sm="6" md="9" lg="9">
+          <v-card align="right">
+            <v-card-title>Description</v-card-title>
+            <v-textarea v-model="tournament.description" filled />
+            <v-btn class="tw-right-0 tw-m-1" @click="changeDescription"
+              >Change</v-btn
+            >
+          </v-card>
+        </v-col>
+        <v-col v-if="!tournament.started" cols="12">
+          <v-card class="fill-height">
+            <div
+              class="tw-flex tw-justify-center tw-h-full tw-items-center tw-p-3">
+              <i>To select winners/losers, please start the tournament first</i>
+            </div>
+          </v-card>
+        </v-col>
+        <v-col v-if="tournament.started" cols="12">
           <v-tabs
             v-model="tab"
             align-with-title
@@ -76,6 +121,7 @@
             </v-tab-item>
           </v-tabs-items>
         </v-col>
+        <v-col cols="12"> </v-col>
       </v-row>
     </div>
   </v-main>
@@ -84,6 +130,7 @@
 <script>
   export default {
     name: 'Manage',
+    components: {},
     middleware: ['auth'],
     data: () => ({
       tournament: {},
@@ -126,6 +173,19 @@
           );
           this.tournament = res.data;
           this.$toast.success('Successfully started the tournament');
+        } catch (e) {
+          this.$toast.error(e.response.data.message);
+        }
+      },
+      async changeDescription() {
+        try {
+          await this.$axios.patch(
+            `tournaments/description/${this.tournament._id}`,
+            {
+              description: this.tournament.description,
+            },
+          );
+          this.$toast.success('Successfully changed description');
         } catch (e) {
           this.$toast.error(e.response.data.message);
         }

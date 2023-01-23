@@ -1,6 +1,11 @@
 <template>
   <v-app dark :style="$vuetify.theme.dark ? imageDark : image">
-    <v-navigation-drawer v-model="drawer" :clipped="clipped" fixed app>
+    <v-navigation-drawer
+      v-model="drawer"
+      disable-resize-watcher
+      :clipped="clipped"
+      fixed
+      app>
       <v-list>
         <v-list-item
           v-for="(item, i) in items"
@@ -101,7 +106,7 @@
           {
             icon: 'mdi-tournament',
             title: 'Tournaments',
-            // to: '/auth/login',
+            to: '/tournaments',
           },
           {
             icon: 'mdi-account-group',

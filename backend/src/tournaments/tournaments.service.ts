@@ -5,17 +5,14 @@ import {
 } from '@nestjs/common';
 import { CreateTournamentDto } from './dto/create-tournament.dto';
 import { InjectModel } from '@nestjs/mongoose';
-import { Team, TeamDocument } from '../teams/schema/team.schema';
 import { Model } from 'mongoose';
 import { Tournament, TournamentDocument } from './schemas/tournament.schema';
 import { UsersService } from '../users/users.service';
 import { TeamsService } from '../teams/teams.service';
 import { UserRoles } from '../users/schemas/user.schema';
-import { Match, MatchDocument } from './schemas/match.schema';
-import { Stage, StageDocument, StageSchema } from './schemas/stage.schema';
 import { MatchResultDto } from './dto/match-result.dto';
-import * as stream from 'stream';
 import slugify from 'slugify';
+import { UpdateTournamentDto } from './dto/update-tournament.dto';
 
 @Injectable()
 export class TournamentsService {
@@ -37,7 +34,7 @@ export class TournamentsService {
 
     const slug: string = slugify(title) + Math.floor(Math.random() * 90 + 10);
 
-    await organizer.updateOne({ role: UserRoles.ORGANIZER }).exec();
+    await organizer.update({ role: UserRoles.ORGANIZER }).exec();
 
     return await new this.tournamentModel({
       title,
@@ -100,9 +97,11 @@ export class TournamentsService {
 
     await team.updateOne({ activeTournament: tournament._id }).exec();
 
-    return await tournament
-      .updateOne({ $push: { participants: team.tag } }, { new: true })
-      .exec();
+    await tournament.updateOne(
+      { $push: { participants: team.tag } },
+      { new: true },
+    );
+    return team;
   }
 
   async startTournament(organizer: Express.User, tournamentid: string) {
@@ -317,5 +316,54 @@ export class TournamentsService {
       opponentsObjects.push(team);
     }
     return opponentsObjects;
+  }
+
+  async changeDescription(
+    organizer: Express.User,
+    tournamentid: string,
+    updateTournamentDto: UpdateTournamentDto,
+  ) {
+    const tournament = await this.findTournamentById(tournamentid);
+    if (!tournament) {
+      throw new BadRequestException('Tournament doesnt exists');
+    }
+    if (tournament.started) {
+      throw new BadRequestException('Tournament already started');
+    }
+    const user = await this.userService.findByUsername(organizer['username']);
+
+    if (user.username !== tournament.organizer) {
+      throw new BadRequestException('User is not a tournament organizer');
+    }
+
+    tournament.description = updateTournamentDto.description;
+    await tournament.save();
+    return tournament;
+  }
+
+  async getNewestTournament() {
+    return await this.tournamentModel.findOne().sort({ created_at: -1 }).exec();
+  }
+  async getFinishedTournament() {
+    return await this.tournamentModel
+      .findOne({ finished: true })
+      .sort({ created_at: -1 })
+      .exec();
+  }
+
+  async searchTournament(query: string) {
+    return this.tournamentModel
+      .find({
+        title: new RegExp('.*' + query + '.*', 'i'),
+      })
+      .select({
+        title: 1,
+        organizer: 1,
+        slug: 1,
+        finished: 1,
+        started: 1,
+        participants: 1,
+        nrOfTeams: 1,
+      });
   }
 }

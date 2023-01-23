@@ -2,21 +2,15 @@
   <v-card>
     <div class="tw-w-full">
       <p
-        class="tw-text-2xl tw-text-center tw-pt-3"
+        class="tw-text-xl tw-text-center tw-pt-3"
         style="font-family: 'Unbounded', sans-serif">
-        Active Tournament
+        Just Finished
       </p>
     </div>
     <v-divider></v-divider>
+
     <v-col
-      v-if="tournamentId === null"
-      md="12"
-      sm="12"
-      class="tw-w-full tw-flex tw-justify-center tw-items-center tw-gap-3">
-      <span>No active tournament</span>
-    </v-col>
-    <v-col
-      v-if="$fetchState.pending && !(tournamentId === null)"
+      v-if="$fetchState.pending"
       md="12"
       sm="12"
       class="tw-w-full tw-flex tw-gap-3">
@@ -24,19 +18,19 @@
         class="tw-w-full"
         type="article, list-item-three-line"></v-skeleton-loader>
     </v-col>
-    <v-col
-      v-if="!$fetchState.pending && !(tournamentId === null)"
-      md="12"
-      sm="12">
+    <v-col v-if="!$fetchState.pending && tournament !== ''" md="12" sm="12">
       <v-row justify="center" no-gutters>
-        <v-col cols="12" class="tw-flex tw-justify-center">
-          <small>Title</small>
-        </v-col>
         <v-col cols="12" class="tw-flex tw-justify-center tw-items-center">
           <span class="tw-text-xl tw-text-center">{{ tournament.title }}</span>
         </v-col>
         <v-col cols="12" class="tw-flex tw-justify-center">
-          <v-icon size="64" class="tw-my-3 tw-p-1 tw-border tw-rounded"
+          <small
+            ><v-icon small left>mdi-account-tie</v-icon>
+            {{ tournament.organizer }}</small
+          >
+        </v-col>
+        <v-col cols="12" class="tw-flex tw-justify-center">
+          <v-icon size="32" class="tw-my-3 tw-p-1 tw-border tw-rounded"
             >mdi-tournament</v-icon
           >
         </v-col>
@@ -49,26 +43,22 @@
         </v-col>
       </v-row>
     </v-col>
+    <v-col v-else md="12" sm="12" align="center">
+      <small><i>No finished tournaments</i></small>
+    </v-col>
   </v-card>
 </template>
 
 <script>
   export default {
-    name: 'ActiveTournament',
-    props: {
-      tournamentId: String,
-    },
+    name: 'FinishedTournamentCard',
     data: () => ({
       tournament: {},
     }),
     async fetch() {
-      if (this.tournamentId === null) {
-        return;
-      }
       try {
-        const res = await this.$axios.get(
-          `tournaments/id/${this.tournamentId}`,
-        );
+        const res = await this.$axios.get(`tournaments/finished
+        `);
         this.tournament = res.data;
       } catch (e) {}
     },

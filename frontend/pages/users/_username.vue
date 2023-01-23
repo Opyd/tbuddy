@@ -124,7 +124,10 @@
                 <div
                   class="tw-w-full tw-flex tw-flex-col tw-justify-center tw-h-36 tw-items-center">
                   <looking-for-team
-                    v-if="user.details.lookingForTeam"
+                    v-if="
+                      user.details.lookingForTeam &&
+                      !($auth.user.username === user.username)
+                    "
                     :username="user.username" />
                   <span
                     v-if="
@@ -139,7 +142,7 @@
                       $auth.user !== null &&
                       $auth.user.username === user.username
                     "
-                    >You are not in any team</span
+                    >You are not a member of any team</span
                   >
                 </div>
               </v-card>

@@ -15,6 +15,7 @@ import { Request } from 'express';
 import { CreateTournamentDto } from './dto/create-tournament.dto';
 import { ApiTags } from '@nestjs/swagger';
 import { MatchResultDto } from './dto/match-result.dto';
+import { UpdateTournamentDto } from './dto/update-tournament.dto';
 
 @ApiTags('tournaments')
 @Controller('tournaments')
@@ -43,7 +44,7 @@ export class TournamentsController {
    * @returns {Tournament} updated tournament document
    */
   @UseGuards(AccessTokenGuard)
-  @Patch('join/:tournamentid')
+  @Post('join/:tournamentid')
   async joinTournaments(
     @Req() req: Request,
     @Param('tournamentid') tournamentid: string,
@@ -63,6 +64,20 @@ export class TournamentsController {
     @Param('tournamentid') tournamentid: string,
   ) {
     return this.tournamentsService.startTournament(req['user'], tournamentid);
+  }
+
+  @UseGuards(AccessTokenGuard)
+  @Patch('description/:tournamentid')
+  async changeDescription(
+    @Req() req: Request,
+    @Param('tournamentid') tournamentid: string,
+    @Body() updateTournamentDto: UpdateTournamentDto,
+  ) {
+    return this.tournamentsService.changeDescription(
+      req['user'],
+      tournamentid,
+      updateTournamentDto,
+    );
   }
 
   /**
@@ -97,7 +112,7 @@ export class TournamentsController {
    * Returns specific tournament
    * @param id
    */
-  @Get(':slug')
+  @Get('slug/:slug')
   async findBySlug(@Param('slug') slug: string) {
     return await this.tournamentsService.findTournamentBySlug(slug);
   }
@@ -109,5 +124,20 @@ export class TournamentsController {
   @Get('/:id/team/:tag')
   async getTeamMatches(@Param('id') id: string, @Param('tag') tag: string) {
     return await this.tournamentsService.getTeamMatches(id, tag);
+  }
+
+  @Get('new')
+  async getNewestTournament() {
+    return await this.tournamentsService.getNewestTournament();
+  }
+
+  @Get('finished')
+  async getFinishedTournament() {
+    return await this.tournamentsService.getFinishedTournament();
+  }
+
+  @Get('search/:query')
+  async searchByQuery(@Param('query') query: string) {
+    return await this.tournamentsService.searchTournament(query);
   }
 }

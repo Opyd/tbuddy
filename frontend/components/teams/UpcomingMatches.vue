@@ -1,5 +1,5 @@
 <template>
-  <v-card>
+  <v-card class="fill-height">
     <div class="tw-w-full">
       <p
         class="tw-text-2xl tw-text-center tw-pt-3"
@@ -17,6 +17,11 @@
     </div>
     <div v-else>
       <v-row>
+        <v-col v-if="matches.length === 0" cols="12" align="center">
+          <div class="tw-mt-5">
+            <small><i>No upcoming matches</i></small>
+          </div>
+        </v-col>
         <v-col
           md="12"
           sm="12"
@@ -72,6 +77,14 @@
     }),
     async fetch() {
       try {
+        let tournament = await this.$axios.get(
+          `/tournaments/id/${this.tournamentId}`,
+        );
+        tournament = tournament.data;
+        if (!tournament.started) {
+          return;
+        }
+
         const res = await this.$axios.get(
           `/tournaments/${this.tournamentId}/team/${this.teamtag}`,
         );

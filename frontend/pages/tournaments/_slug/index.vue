@@ -75,19 +75,19 @@
                 >
                 <v-card-text>
                   <span>Status: </span>
-                  <span v-if="!tournament.started">
+                  <small v-if="!tournament.started">
                     <v-icon left>mdi-checkbox-blank-circle</v-icon>Not started
                     yet
-                  </span>
-                  <span v-if="tournament.started && !tournament.finished">
+                  </small>
+                  <small v-if="tournament.started && !tournament.finished">
                     <v-icon color="yellow" left
                       >mdi-checkbox-blank-circle</v-icon
                     >In progress
-                  </span>
-                  <span v-if="tournament.finished">
+                  </small>
+                  <small v-if="tournament.finished">
                     <v-icon color="green" left>mdi-checkbox-blank-circle</v-icon
                     ><span>Finished</span>
-                  </span>
+                  </small>
                 </v-card-text>
                 <v-card-actions
                   v-if="

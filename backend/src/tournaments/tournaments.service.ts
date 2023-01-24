@@ -13,6 +13,7 @@ import { UserRoles } from '../users/schemas/user.schema';
 import { MatchResultDto } from './dto/match-result.dto';
 import slugify from 'slugify';
 import { UpdateTournamentDto } from './dto/update-tournament.dto';
+import { EventEnum } from '../teams/schema/team-events-history.schema';
 
 @Injectable()
 export class TournamentsService {
@@ -245,33 +246,48 @@ export class TournamentsService {
 
     tournament.stages[stageNr].finished = allFinishedFlag;
 
+    const teamA = await this.teamsService.findOneByTag(teamAtag);
+    const teamB = await this.teamsService.findOneByTag(teamBtag);
+    const winnerTeam = teamA.tag === winner ? teamA : teamB;
+    const loserTeam = teamA.tag !== winner ? teamA : teamB;
+
     if (stageNr === tournament.stages.length - 1) {
       tournament.finished = tournament.stages[stageNr].finished;
+      winnerTeam.events.push({
+        type: EventEnum.TOURNAMENT_WIN,
+        date: new Date(),
+        msg: `Team won "${tournament.title}" tournament!`,
+      });
     }
 
     /**
      * Adding matches to teams' history
      */
 
-    const teamA = await this.teamsService.findOneByTag(teamAtag);
-    const teamB = await this.teamsService.findOneByTag(teamBtag);
-
-    teamA.history.push({
-      opponent: teamBtag,
-      result: teamAtag === winner ? 'win' : 'loss',
+    winnerTeam.history.push({
+      opponent: loserTeam.tag,
+      result: 'win',
       date: new Date(),
       matchId: matchId,
     });
 
-    teamB.history.push({
-      opponent: teamAtag,
-      result: teamBtag === winner ? 'win' : 'loss',
+    loserTeam.history.push({
+      opponent: winnerTeam.tag,
+      result: 'loss',
       date: new Date(),
       matchId: matchId,
     });
 
-    await teamA.save();
-    await teamB.save();
+    loserTeam.events.push({
+      type: EventEnum.TOURNAMENT_DROPPED,
+      date: new Date(),
+      msg: `Team dropped out from "${tournament.title}" in stage ${
+        stageNr + 1
+      } `,
+    });
+
+    await winnerTeam.save();
+    await loserTeam.save();
 
     await tournament.save();
 

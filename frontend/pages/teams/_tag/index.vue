@@ -115,17 +115,7 @@
                     >Last Matches</span
                   >
                 </div>
-                <v-row class="tw-py-2">
-                  <v-col cols="4" class="tw-flex tw-justify-center">
-                    <small>Date</small>
-                  </v-col>
-                  <v-col cols="4" class="tw-flex tw-justify-center">
-                    <small>Opponent</small>
-                  </v-col>
-                  <v-col cols="4" class="tw-flex tw-justify-center">
-                    <small>Result</small>
-                  </v-col>
-                </v-row>
+
                 <v-divider></v-divider>
 
                 <div

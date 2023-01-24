@@ -4,6 +4,8 @@
       <v-icon v-if="event.type == 'CREATED'">mdi-calendar</v-icon>
       <v-icon v-if="event.type == 'JOINED'" color="green">mdi-plus</v-icon>
       <v-icon v-if="event.type == 'LEFT'" color="red">mdi-minus</v-icon>
+      <v-icon v-if="event.type == 'TOURNAMENT_DROPPED'">mdi-skull</v-icon>
+      <v-icon v-if="event.type == 'TOURNAMENT_WIN'">mdi-crown</v-icon>
     </v-col>
     <v-col cols="4">
       <span>

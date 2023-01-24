@@ -4,6 +4,11 @@ import mongoose, { Document } from 'mongoose';
 export enum EventEnum {
   CREATED = 'CREATED',
   JOINED = 'JOINED',
+
+  TOURNAMENT_WIN = 'TOURNAMENT_WIN',
+
+  TOURNAMENT_DROPPED = 'TOURNAMENT_DROPPED',
+
   LEFT = 'LEFT',
 }
 

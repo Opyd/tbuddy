@@ -20,7 +20,6 @@
 
       <v-list-item-action>
         <v-list-item-action-text>
-          <span>Status: </span>
           <span v-if="!tournament.started">
             <v-icon left>mdi-checkbox-blank-circle</v-icon>Not started yet
           </span>

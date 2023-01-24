@@ -20,19 +20,21 @@
         <v-form ref="form" v-model="valid" lazy-validation>
           <v-text-field
             v-model="name"
+            outlined
             :counter="20"
             :rules="nameRules"
-            label="Team Name"
+            label="Team name"
             required></v-text-field>
           <v-row class="flex tw-items-center">
             <v-col cols="12" md="6">
               <v-text-field
                 v-model.lazy="tag"
+                outlined
                 :counter="4"
                 :rules="tagRules"
                 :error-messages="notUniqueTag ? 'Tag is already taken' : ''"
                 class="mx-auto"
-                label="Team Tag"
+                label="Team tag"
                 required></v-text-field>
             </v-col>
             <v-col cols="12" md="6" align="center">

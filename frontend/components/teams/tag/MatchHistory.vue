@@ -4,9 +4,9 @@
     :class="match.result === 'win' ? 'tw-bg-green-700' : 'tw-bg-red-700'">
     <v-row>
       <v-col class="tw-flex tw-justify-center" cols="4">
-        <span class="text-center">{{
+        <small class="text-center">{{
           $dateFns.format(match.date, 'yyyy-MM-dd HH:mm')
-        }}</span>
+        }}</small>
       </v-col>
       <v-col class="tw-flex tw-justify-center" cols="4">
         <span class="text-center">{{ match.opponent }}</span>

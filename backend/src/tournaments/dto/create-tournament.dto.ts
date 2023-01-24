@@ -21,7 +21,7 @@ export class CreateTournamentDto {
 
   @ApiProperty()
   @IsNumber()
-  @IsIn([14, 8, 16, 32])
+  @IsIn([8, 16, 32, 4, 64])
   @IsNotEmpty()
   nrOfTeams: number;
 }

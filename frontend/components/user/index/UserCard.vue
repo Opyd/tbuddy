@@ -1,5 +1,5 @@
 <template>
-  <v-card>
+  <v-card outlined elevation="2">
     <v-list-item :key="item.username">
       <v-list-item-action>
         <v-icon v-if="item.avatar === null"> mdi-account </v-icon>

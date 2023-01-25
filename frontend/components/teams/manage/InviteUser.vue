@@ -1,5 +1,5 @@
 <template>
-  <v-card>
+  <v-card outlined elevation="2">
     <div class="tw-w-full tw-flex tw-p-3 tw-justify-center">
       <div class="tw-w-full">
         <p class="tw-text-center" style="font-family: 'Unbounded', sans-serif">

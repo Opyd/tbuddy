@@ -6,13 +6,13 @@
       sm="8"
       md="8"
       lg="7">
-      <v-card align="center" class="tw-p-10">
+      <v-card outlined elevation="2" align="center" class="tw-p-10">
         <p>You are already in a team, first leave it to create a new one.</p>
         <a href="" @click.prevent="$router.back()"><v-btn>Go back</v-btn> </a>
       </v-card>
     </v-col>
     <v-col v-else cols="12" sm="8" md="8" lg="7">
-      <v-card class="tw-p-5">
+      <v-card outlined elevation="2" class="tw-p-5">
         <p class="md:tw-text-3xl tw-text-center sm:tw-text-xl xs:tw-text-sm">
           Create your own Team
         </p>

@@ -14,7 +14,7 @@
               >
             </v-col>
             <v-col cols="6" sm="6" md="3" lg="3">
-              <v-card class="fill-height">
+              <v-card outlined elevation="2" class="fill-height">
                 <v-card-title>
                   <span
                     >Teams: {{ tournament.participants.length }} /
@@ -43,16 +43,20 @@
               </v-card>
             </v-col>
             <v-col cols="12" sm="6" md="9" lg="9">
-              <v-card align="right">
+              <v-card outlined elevation="2" align="right">
                 <v-card-title>Description</v-card-title>
-                <v-textarea v-model="tournament.description" filled />
-                <v-btn class="tw-right-0 tw-m-1" @click="changeDescription"
+                <v-card-text
+                  ><v-textarea v-model="tournament.description" outlined filled
+                /></v-card-text>
+                <v-btn
+                  class="tw-right-0 tw-mb-2 tw-mr-2"
+                  @click="changeDescription"
                   >Change</v-btn
                 >
               </v-card>
             </v-col>
             <v-col v-if="!tournament.started" cols="12">
-              <v-card class="fill-height">
+              <v-card outlined elevation="2" class="fill-height">
                 <div
                   class="tw-flex tw-justify-center tw-h-full tw-items-center tw-p-3">
                   <i
@@ -63,74 +67,84 @@
               </v-card>
             </v-col>
             <v-col v-if="tournament.started" cols="12">
-              <v-tabs
-                v-model="tab"
-                align-with-title
-                grow
-                :color="$vuetify.theme.dark ? 'white' : 'blue'">
-                <v-tabs-slider></v-tabs-slider>
+              <v-card outlined elevation="2">
+                <v-tabs
+                  v-model="tab"
+                  align-with-title
+                  grow
+                  :color="$vuetify.theme.dark ? 'white' : 'blue'">
+                  <v-tabs-slider></v-tabs-slider>
 
-                <v-tab v-for="stage in tournament.stages" :key="stage.stageNr">
-                  Round {{ stage.stageNr + 1 }}
-                </v-tab>
-              </v-tabs>
+                  <v-tab
+                    v-for="stage in tournament.stages"
+                    :key="stage.stageNr">
+                    Round {{ stage.stageNr + 1 }}
+                  </v-tab>
+                </v-tabs>
 
-              <v-tabs-items v-model="tab">
-                <v-tab-item
-                  v-for="stage in tournament.stages"
-                  :key="stage.stageNr">
-                  <v-card
-                    v-for="match in stage.matches"
-                    :key="match._id"
-                    flat
-                    class="tw-p-3">
-                    <v-row align="center">
-                      <v-col cols="3">
-                        <p
-                          class="text-center"
-                          :class="
-                            match.winner === (match.teamA ?? '')
-                              ? 'tw-border-b tw-border-b-green-500'
-                              : ''
-                          ">
-                          {{ match.teamA ?? 'TBD' }}
-                        </p>
-                      </v-col>
-                      <v-col cols="1"><p class="text-center">VS</p></v-col>
-                      <v-col cols="3">
-                        <p
-                          class="text-center"
-                          :class="
-                            match.winner === (match.teamB ?? '')
-                              ? 'tw-border-b tw-border-b-green-500'
-                              : ''
-                          ">
-                          {{ match.teamB ?? 'TBD' }}
-                        </p>
-                      </v-col>
-                      <v-col cols="5">
-                        <p class="text-center">
-                          Finished: {{ match.finished }}
-                        </p>
-                        <v-row align="center">
-                          <v-col cols="6">
-                            <v-select
-                              v-model="selectedTeam"
-                              placeholder="Choose winner"
-                              :items="[match.teamA, match.teamB]"
-                              :values="[match.teamA, match.teamB]"></v-select>
-                          </v-col>
-                          <v-col cols="6">
-                            <v-btn @click="setWinner(stage.stageNr, match._id)"
-                              >Accept</v-btn
-                            >
-                          </v-col>
-                        </v-row>
-                      </v-col>
-                    </v-row>
-                  </v-card>
-                </v-tab-item>
-              </v-tabs-items>
+                <v-tabs-items v-model="tab">
+                  <v-tab-item
+                    v-for="stage in tournament.stages"
+                    :key="stage.stageNr">
+                    <v-card
+                      v-for="match in stage.matches"
+                      :key="match._id"
+                      flat
+                      class="tw-p-3">
+                      <v-row align="center">
+                        <v-col cols="3" align="center">
+                          <span
+                            class="text-center tw-pb-2"
+                            :class="
+                              match.winner === (match.teamA ?? '')
+                                ? 'tw-border-b-2 tw-border-b-green-500'
+                                : 'tw-border-b-2 tw-border-b-red-500'
+                            ">
+                            {{ match.teamA ?? 'TBD' }}
+                          </span>
+                        </v-col>
+                        <v-col cols="1" align="center"
+                          ><span class="text-center">VS</span></v-col
+                        >
+                        <v-col cols="3" align="center">
+                          <span
+                            class="text-center tw-pb-2"
+                            :class="
+                              match.winner === (match.teamB ?? '')
+                                ? 'tw-border-b-2 tw-border-b-green-500'
+                                : 'tw-border-b-2 tw-border-b-red-500'
+                            ">
+                            {{ match.teamB ?? 'TBD' }}
+                          </span>
+                        </v-col>
+                        <v-col cols="5">
+                          <p class="text-center">
+                            Finished: {{ match.finished }}
+                          </p>
+                          <v-row justify="center">
+                            <v-col cols="6">
+                              <v-select
+                                v-model="selectedTeam"
+                                outlined
+                                label="Choose winner"
+                                :disabled="match.finished"
+                                :items="[match.teamA, match.teamB]"
+                                :values="[match.teamA, match.teamB]"></v-select>
+                            </v-col>
+                            <v-col cols="6">
+                              <v-btn
+                                :disabled="match.finished"
+                                @click="setWinner(stage.stageNr, match._id)"
+                                >Accept</v-btn
+                              >
+                            </v-col>
+                          </v-row>
+                        </v-col>
+                      </v-row>
+                    </v-card>
+                  </v-tab-item>
+                </v-tabs-items>
+              </v-card>
             </v-col>
             <v-col cols="12"> </v-col>
           </v-row>

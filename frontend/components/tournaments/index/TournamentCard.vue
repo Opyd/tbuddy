@@ -1,5 +1,5 @@
 <template>
-  <v-card>
+  <v-card outlined elevation="2">
     <v-list-item>
       <v-list-item-action>
         <v-icon color="white"> mdi-tournament </v-icon>

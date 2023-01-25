@@ -48,9 +48,21 @@
           <v-icon slot="prepend"> mdi-lock </v-icon>
         </v-text-field>
       </div>
-      <v-checkbox
-        v-model="checkbox"
-        label="Accept Terms and Conditions"></v-checkbox>
+      <v-checkbox v-model="checkbox" :rules="checkboxRules">
+        <template #label>
+          <div>
+            I agree to
+            <v-tooltip bottom>
+              <template #activator="{on}">
+                <a target="_blank" href="/terms" @click.stop v-on="on">
+                  Terms and Privacy Policy
+                </a>
+              </template>
+              Opens in new window
+            </v-tooltip>
+          </div>
+        </template>
+      </v-checkbox>
       <v-container class="d-flex flex-row justify-center tw-mt-3">
         <v-btn color="success" class="mr-4" @click="validate">
           Create account
@@ -74,6 +86,7 @@
         username: '',
         errors: [],
         usernameRules: [v => !!v || 'Username is required'],
+        checkboxRules: [v => !!v || 'Agreeing is required'],
         password: '',
         passwordRepeated: '',
         passwordRules: [v => !!v || 'Password is required'],

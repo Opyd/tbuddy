@@ -1,5 +1,5 @@
 <template>
-  <v-card>
+  <v-card outlined elevation="2">
     <v-list-item :key="item.tag">
       <v-list-item-action>
         <v-avatar rounded :color="item.color">

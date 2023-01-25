@@ -22,46 +22,7 @@
           </v-row>
           <v-row>
             <v-col cols="6" sm="6" md="3" lg="3">
-              <v-card>
-                <v-card-title>
-                  <span
-                    >Teams: {{ tournament.participants.length }} /
-                    {{ tournament.nrOfTeams }}</span
-                  >
-                </v-card-title>
-                <v-list
-                  id="style-2"
-                  class="tw-max-h-52 tw-overflow-y-auto tw-overflow-x-hidden">
-                  <v-list-item
-                    v-for="team in tournament.participants"
-                    id="alternateColors"
-                    :key="team">
-                    <v-col cols="10"
-                      ><span>{{ team }}</span></v-col
-                    >
-                    <v-col cols="2"
-                      ><nuxt-link :to="`/teams/${team}`"
-                        ><v-icon right small>
-                          mdi-open-in-new
-                        </v-icon></nuxt-link
-                      ></v-col
-                    >
-                  </v-list-item>
-                </v-list>
-              </v-card>
-            </v-col>
-            <v-col cols="6" sm="6" md="6" lg="6">
-              <v-card class="fill-height">
-                <v-card-title> Description </v-card-title>
-                <v-card-text
-                  id="style-2"
-                  class="tw-max-h-52 tw-overflow-y-auto"
-                  >{{ tournament.description }}</v-card-text
-                >
-              </v-card>
-            </v-col>
-            <v-col cols="12" sm="12" md="3" lg="3">
-              <v-card class="fill-height">
+              <v-card outlined elevation="2" class="fill-height">
                 <v-card-title> Details </v-card-title>
                 <v-card-text
                   ><v-icon left>mdi-calendar-plus</v-icon
@@ -71,7 +32,11 @@
                 >
                 <v-card-text
                   ><v-icon left>mdi-account-tie</v-icon
-                  >{{ tournament.organizer }}</v-card-text
+                  ><NuxtLink
+                    style="color: inherit"
+                    :to="`/users/${tournament.organizer}`"
+                    >{{ tournament.organizer }}</NuxtLink
+                  ></v-card-text
                 >
                 <v-card-text>
                   <span>Status: </span>
@@ -113,16 +78,66 @@
                     $auth.user !== null &&
                     tournament.organizer === $auth.user.username
                   ">
-                  <NuxtLink class="mx-auto tw-w-1/2" :to="`${slug}/manage`"
-                    ><v-btn class="tw-w-full" color="primary" outlined
+                  <NuxtLink
+                    class="mx-auto tw-w-1/2"
+                    :to="`/tournaments/${slug}/manage`"
+                    ><v-btn class="tw-w-full" color="primary"
                       >Manage</v-btn
                     ></NuxtLink
                   >
                 </v-card-actions>
               </v-card>
             </v-col>
+            <v-col cols="6" sm="6" md="3" lg="3">
+              <v-card outlined elevation="2" class="fill-height">
+                <v-card-title>
+                  <span
+                    >Teams: {{ tournament.participants.length }} /
+                    {{ tournament.nrOfTeams }}</span
+                  >
+                </v-card-title>
+                <v-list
+                  v-if="tournament.participants.length > 0"
+                  id="style-2"
+                  class="tw-max-h-52 tw-overflow-y-auto tw-overflow-x-hidden">
+                  <v-list-item
+                    v-for="team in tournament.participants"
+                    id="alternateColors"
+                    :key="team">
+                    <v-col cols="10"
+                      ><span>{{ team }}</span></v-col
+                    >
+                    <v-col cols="2"
+                      ><nuxt-link :to="`/teams/${team}`"
+                        ><v-icon right small>
+                          mdi-open-in-new
+                        </v-icon></nuxt-link
+                      ></v-col
+                    >
+                  </v-list-item>
+                </v-list>
+                <v-card-text v-else class="tw-mt-5 text-center">
+                  No signed teams yet
+                </v-card-text>
+              </v-card>
+            </v-col>
+
+            <v-col cols="12" sm="12" md="6" lg="6">
+              <v-card outlined elevation="2" class="fill-height">
+                <v-card-title> Description </v-card-title>
+                <v-card-text
+                  id="style-2"
+                  class="tw-max-h-52 tw-overflow-y-auto"
+                  >{{ tournament.description }}</v-card-text
+                >
+              </v-card>
+            </v-col>
             <v-col cols="12" align="center">
-              <v-card id="style-2" class="tw-overflow-x-auto tw-w-fit">
+              <v-card
+                id="style-2"
+                outlined
+                elevation="2"
+                class="tw-overflow-x-auto tw-w-fit">
                 <div
                   v-if="tournament.started || tournament.finished"
                   class="tw-p-3"

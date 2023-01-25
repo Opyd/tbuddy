@@ -1,5 +1,5 @@
 <template>
-  <v-card>
+  <v-card outlined elevation="2">
     <v-card-title>
       <span class="text-h5">Edit details</span>
     </v-card-title>
@@ -9,14 +9,19 @@
           <v-col cols="12">
             <v-text-field
               v-model="newFirstname"
+              outlined
               label="First name"></v-text-field>
           </v-col>
           <v-col cols="12">
-            <v-text-field v-model="newAbout" label="About"></v-text-field>
+            <v-text-field
+              v-model="newAbout"
+              outlined
+              label="About"></v-text-field>
           </v-col>
           <v-col cols="12" sm="6">
             <v-select
               v-model="newRoles"
+              outlined
               :items="['TOP', 'JUNGLE', 'MID', 'BOT', 'SUPPORT']"
               label="Role"
               multiple
@@ -25,6 +30,7 @@
           <v-col cols="12" sm="6">
             <v-autocomplete
               v-model="newCountry"
+              outlined
               :items="countries"
               label="Country"></v-autocomplete>
           </v-col>

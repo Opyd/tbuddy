@@ -10,7 +10,7 @@
         <v-col xl="8" lg="12" md="12" sm="12" cols="12">
           <v-row>
             <v-col cols="12">
-              <v-card elevation="2">
+              <v-card outlined elevation="2">
                 <div
                   class="tw-flex-nowrap tw-flex tw-w-full tw-p-5 tw-items-center tw-gap-10">
                   <div class="tw-flex tw-justify-center tw-flex-col">
@@ -44,7 +44,7 @@
           </v-row>
           <v-row>
             <v-col cols="12" sm="6" md="6" lg="6">
-              <v-card elevation="2" class="tw-pt-3">
+              <v-card outlined elevation="2" class="tw-pt-3">
                 <div class="tw-flex tw-w-full tw-justify-end">
                   <div
                     v-if="
@@ -120,7 +120,7 @@
               </v-card>
             </v-col>
             <v-col md="6" lg="6" sm="6" cols="12">
-              <v-card v-if="user.currentTeam === null">
+              <v-card v-if="user.currentTeam === null" outlined elevation="2">
                 <div
                   class="tw-w-full tw-flex tw-flex-col tw-justify-center tw-h-36 tw-items-center">
                   <looking-for-team

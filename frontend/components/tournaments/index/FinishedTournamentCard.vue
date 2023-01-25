@@ -1,5 +1,5 @@
 <template>
-  <v-card>
+  <v-card outlined elevation="2">
     <div class="tw-w-full">
       <p
         class="tw-text-xl tw-text-center tw-pt-3"

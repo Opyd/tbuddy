@@ -17,7 +17,7 @@
     <v-row>
       <v-col md="6" sm="12">
         <div class="tw-mt-5">
-          <v-card class="tw-w-full">
+          <v-card outlined elevation="2" class="tw-w-full">
             <div
               class="tw-w-full tw-flex tw-justify-center tw-items-center tw-my-3">
               <span style="font-family: 'Unbounded', sans-serif">Members</span>
@@ -39,7 +39,7 @@
                       <v-icon> mdi-minus </v-icon>
                     </v-btn>
                   </template>
-                  <v-card>
+                  <v-card outlined elevation="2">
                     <v-card-title class="text-h5">
                       Remove user from the team?
                     </v-card-title>
@@ -74,7 +74,7 @@
       </v-col>
       <v-col md="6" sm="12">
         <div class="tw-mt-5">
-          <v-card class="tw-w-full">
+          <v-card outlined elevation="2" class="tw-w-full">
             <div
               class="tw-w-full tw-flex tw-justify-center tw-items-center tw-my-3">
               <span style="font-family: 'Unbounded', sans-serif"
@@ -98,7 +98,7 @@
                       <v-icon> mdi-minus </v-icon>
                     </v-btn>
                   </template>
-                  <v-card>
+                  <v-card outlined elevation="2">
                     <v-card-title class="text-h5">
                       Remove user from the team?
                     </v-card-title>

@@ -1,7 +1,7 @@
 <template>
   <div>
-    <v-card v-if="$fetchState.pending" loading></v-card>
-    <v-card else>
+    <v-card v-if="$fetchState.pending" outlined elevation="2" loading></v-card>
+    <v-card outlined elevation="2" else>
       <v-row>
         <v-col cols="3">
           <v-avatar rounded max-height="20px" :color="team.color">

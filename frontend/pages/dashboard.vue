@@ -13,7 +13,7 @@
               type="article, list-item-three-line"></v-skeleton-loader>
           </v-col>
           <v-col v-else md="6" sm="6" cols="12">
-            <v-card class="fill-height">
+            <v-card outlined elevation="2" class="fill-height">
               <div class="tw-w-full">
                 <v-icon
                   style="position: absolute"
@@ -62,7 +62,7 @@
             </v-card>
           </v-col>
           <v-col md="6" lg="6" sm="6" cols="12">
-            <v-card v-if="user.currentTeam === null">
+            <v-card v-if="user.currentTeam === null" outlined elevation="2">
               <div
                 class="tw-w-full tw-flex tw-flex-col tw-justify-center tw-h-36 tw-items-center">
                 <p>You are not in any team</p>
@@ -78,6 +78,8 @@
             <v-card
               v-if="!isTeamLoaded && user.currentTeam !== null"
               key="2"
+              outlined
+              elevation="2"
               class="">
               <v-skeleton-loader
                 class="mx-auto"

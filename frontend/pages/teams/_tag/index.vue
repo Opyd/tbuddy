@@ -8,7 +8,7 @@
     <div v-else>
       <v-row justify="center">
         <v-col xl="8" lg="12" md="12" sm="12" cols="12">
-          <v-card elevation="2" class="tw-mb-5">
+          <v-card outlined elevation="2" class="tw-mb-5">
             <div
               class="tw-w-full tw-h-10 tw-flex tw-justify-center tw-items-center tw-rounded"
               style="font-family: 'Unbounded', cursive"
@@ -51,7 +51,7 @@
                   "
                   class="tw-mt-5 tw-flex tw-justify-center">
                   <NuxtLink :to="`${$route.params.tag}/manage`"
-                    ><v-btn color="green" outlined>Manage</v-btn></NuxtLink
+                    ><v-btn color="primary">Manage</v-btn></NuxtLink
                   >
                 </div>
               </div>
@@ -59,7 +59,7 @@
           </v-card>
           <v-row>
             <v-col cols="12" md="6" sm="6">
-              <v-card class="fill-height">
+              <v-card outlined elevation="2" class="fill-height">
                 <div
                   class="tw-w-full tw-flex tw-justify-center tw-items-center tw-my-3">
                   <span style="font-family: 'Unbounded', sans-serif"
@@ -85,7 +85,7 @@
               </v-card>
             </v-col>
             <v-col cols="12" md="6" sm="6">
-              <v-card>
+              <v-card outlined elevation="2">
                 <div
                   class="tw-w-full tw-flex tw-justify-center tw-items-center tw-my-3">
                   <span style="font-family: 'Unbounded', sans-serif"
@@ -108,7 +108,7 @@
               </v-card>
             </v-col>
             <v-col cols="12" md="6" sm="6" lg="6">
-              <v-card class="">
+              <v-card outlined elevation="2" class="">
                 <div
                   class="tw-w-full tw-flex tw-justify-center tw-items-center tw-my-3">
                   <span style="font-family: 'Unbounded', sans-serif"

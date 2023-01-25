@@ -1,4 +1,4 @@
-const countryList = [
+export const countryList = [
   'Afghanistan',
   'Åland Islands',
   'Albania',
@@ -249,5 +249,3 @@ const countryList = [
   'Zambia',
   'Zimbabwe',
 ];
-
-export {countryList};

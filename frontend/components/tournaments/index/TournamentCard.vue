@@ -46,7 +46,12 @@
 <script>
   export default {
     name: 'TournamentCard',
-    props: ['tournament'],
+    props: {
+      tournament: {
+        default: null,
+        type: Object,
+      },
+    },
   };
 </script>
 

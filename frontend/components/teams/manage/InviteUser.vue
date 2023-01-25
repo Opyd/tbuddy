@@ -61,7 +61,12 @@
   export default {
     name: 'InviteUser',
     components: {},
-    props: ['invitedUsernames'],
+    props: {
+      invitedUsernames: {
+        type: Array,
+        default: null,
+      },
+    },
     data: () => ({
       query: '',
       found: [],

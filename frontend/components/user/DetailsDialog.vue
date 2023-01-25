@@ -53,7 +53,12 @@
 
   export default {
     name: 'DetailsDialog',
-    props: ['userDetails'],
+    props: {
+      userDetails: {
+        type: Object,
+        default: null,
+      },
+    },
     data: () => ({
       countries: [],
       newFirstname: '',

@@ -85,10 +85,10 @@
             <div
               class="tw-w-full tw-flex tw-flex-col tw-justify-center tw-items-center">
               <div
-                v-for="user in team.invitedUsernames"
-                :key="user"
+                v-for="invitedUser in team.invitedUsernames"
+                :key="invitedUser"
                 class="tw-w-full tw-flex tw-justify-evenly tw-items-center">
-                <TeamMember :username="user" class="tw-w-5/6" />
+                <TeamMember :username="invitedUser" class="tw-w-5/6" />
                 <v-dialog
                   v-model="removeInvitedialog"
                   persistent

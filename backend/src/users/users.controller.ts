@@ -104,6 +104,12 @@ export class UsersController {
   }
 
   @UseGuards(AccessTokenGuard)
+  @Patch('leaveTeam')
+  leaveTeam(@Req() req: Request) {
+    return this.usersService.leaveTeam(req['user']);
+  }
+
+  @UseGuards(AccessTokenGuard)
   @Delete('msg/:index')
   deleteMsgAtIndex(@Req() req: Request, @Param('index') index: number) {
     return this.usersService.deleteMsgAtIndex(index, req.user['username']);

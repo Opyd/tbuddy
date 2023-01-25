@@ -82,7 +82,7 @@
                     class="mx-auto tw-w-1/2"
                     :to="`/tournaments/${slug}/manage`"
                     ><v-btn class="tw-w-full" color="primary"
-                      >Manage</v-btn
+                      >Manage <v-icon right>mdi-cog</v-icon></v-btn
                     ></NuxtLink
                   >
                 </v-card-actions>

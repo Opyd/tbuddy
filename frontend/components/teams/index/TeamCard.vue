@@ -38,7 +38,12 @@
 <script>
   export default {
     name: 'TeamCard',
-    props: ['item'],
+    props: {
+      item: {
+        default: null,
+        type: Object,
+      },
+    },
   };
 </script>
 

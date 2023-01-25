@@ -36,7 +36,12 @@
   export default {
     name: 'UserCard',
     components: {RoleIcon},
-    props: ['item'],
+    props: {
+      item: {
+        default: null,
+        type: Object,
+      },
+    },
   };
 </script>
 

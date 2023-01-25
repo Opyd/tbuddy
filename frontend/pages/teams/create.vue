@@ -11,6 +11,17 @@
         <a href="" @click.prevent="$router.back()"><v-btn>Go back</v-btn> </a>
       </v-card>
     </v-col>
+    <v-col
+      v-if="$auth.user.role === 'ORGANIZER'"
+      cols="12"
+      sm="8"
+      md="8"
+      lg="7">
+      <v-card outlined elevation="2" align="center" class="tw-p-10">
+        <p>You can't set up a team because you're the tournament organizer.</p>
+        <a href="" @click.prevent="$router.back()"><v-btn>Go back</v-btn> </a>
+      </v-card>
+    </v-col>
     <v-col v-else cols="12" sm="8" md="8" lg="7">
       <v-card outlined elevation="2" class="tw-p-5">
         <p class="md:tw-text-3xl tw-text-center sm:tw-text-xl xs:tw-text-sm">
@@ -158,7 +169,6 @@
           }
         } catch (e) {
           this.$toast.error('Something went wrong');
-          console.log(e.response.data);
         }
       },
 

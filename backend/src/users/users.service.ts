@@ -150,6 +150,38 @@ export class UsersService {
       .exec();
   }
 
+  async leaveTeam(reqUser: Express.User) {
+    const user = await this.userModel.findOne({
+      username: reqUser['username'],
+    });
+    if (!user) {
+      throw new BadRequestException('User not found');
+    }
+    if (user.currentTeam === null) {
+      throw new BadRequestException('User not in team');
+    }
+    const team = await this.teamService.findOneByTag(user.currentTeam);
+    if (!team) {
+      throw new BadRequestException("Team doesn't exists");
+    }
+    if (team.activeTournament !== null) {
+      throw new BadRequestException('Team is participating in tournament');
+    }
+    if (user.username === team.owner) {
+      throw new BadRequestException('You cant leave your own team');
+    }
+    team.members = team.members.filter((member) => member !== user.username);
+    team.events.push({
+      type: EventEnum.LEFT,
+      date: new Date(),
+      msg: `${user.username} left the team`,
+    });
+    user.currentTeam = null;
+    await team.save();
+    await user.save();
+    return { msg: 'Successfully left the team' };
+  }
+
   async remove(id: string) {
     return this.userModel.findByIdAndDelete(id).exec();
   }

@@ -42,7 +42,12 @@
 <script>
   export default {
     name: 'UserTeam',
-    props: ['team'],
+    props: {
+      team: {
+        type: Object,
+        default: null,
+      },
+    },
   };
 </script>
 

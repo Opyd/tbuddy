@@ -56,7 +56,10 @@
   export default {
     name: 'ActiveTournament',
     props: {
-      tournamentId: String,
+      tournamentId: {
+        type: String,
+        default: null,
+      },
     },
     data: () => ({
       tournament: {},

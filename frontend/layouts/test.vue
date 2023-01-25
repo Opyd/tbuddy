@@ -1,10 +1,10 @@
 <template>
-  <v-container> Elo </v-container>
+  <Nuxt />
 </template>
 
 <script>
   export default {
-    name: 'Index',
+    name: 'Test',
   };
 </script>
 

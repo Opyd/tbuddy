@@ -69,8 +69,14 @@
     name: 'UpcomingMatches',
     components: {},
     props: {
-      teamtag: String,
-      tournamentId: String,
+      teamtag: {
+        type: String,
+        default: null,
+      },
+      tournamentId: {
+        type: String,
+        default: null,
+      },
     },
     data: () => ({
       matches: [],

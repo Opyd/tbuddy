@@ -51,7 +51,20 @@
                   "
                   class="tw-mt-5 tw-flex tw-justify-center">
                   <NuxtLink :to="`${$route.params.tag}/manage`"
-                    ><v-btn color="primary">Manage</v-btn></NuxtLink
+                    ><v-btn color="primary"
+                      >Manage <v-icon right>mdi-cog</v-icon></v-btn
+                    ></NuxtLink
+                  >
+                </div>
+                <div
+                  v-if="
+                    $auth.user !== null &&
+                    $auth.user.username !== team.owner &&
+                    team.members.includes($auth.user.username)
+                  "
+                  class="tw-mt-5 tw-flex tw-justify-center">
+                  <v-btn color="error" @click="leaveTeam"
+                    >Leave <v-icon right>mdi-door-open</v-icon></v-btn
                   >
                 </div>
               </div>
@@ -178,6 +191,18 @@
       return {
         title: this.team.name,
       };
+    },
+
+    methods: {
+      async leaveTeam() {
+        try {
+          await this.$axios.patch('/users/leaveTeam');
+          this.$toast.success('You successfully left the team!');
+          await this.$router.push('/dashboard');
+        } catch (e) {
+          this.$toast.error(e.response.data.message);
+        }
+      },
     },
   };
 </script>

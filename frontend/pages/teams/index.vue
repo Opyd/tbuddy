@@ -1,5 +1,5 @@
 <template>
-  <v-main>
+  <v-container>
     <v-tooltip bottom>
       <template #activator="{on, attrs}">
         <v-btn dark fab color="indigo" v-bind="attrs" v-on="on">
@@ -64,7 +64,7 @@
         </v-row>
       </div>
     </div>
-  </v-main>
+  </v-container>
 </template>
 
 <script>

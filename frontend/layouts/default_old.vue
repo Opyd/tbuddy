@@ -2,9 +2,8 @@
   <v-app dark :style="$vuetify.theme.dark ? imageDark : image">
     <v-navigation-drawer
       v-model="drawer"
-      mini-variant
-      expand-on-hover
-      clipped
+      disable-resize-watcher
+      :clipped="clipped"
       fixed
       app>
       <v-list>
@@ -23,24 +22,14 @@
         </v-list-item>
       </v-list>
       <template v-if="loggedIn" #append>
-        <v-list-item @click="logout">
-          <v-list-item-action>
-            <v-icon>mdi-door-open</v-icon>
-          </v-list-item-action>
-          <v-list-item-content>
-            <v-list-item-title>Logout</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
+        <div class="pa-2">
+          <v-btn block @click="logout"> Logout </v-btn>
+        </div>
       </template>
     </v-navigation-drawer>
     <v-app-bar :clipped-left="clipped" fixed app>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-      <v-toolbar-title
-        ><v-icon left>mdi-trophy</v-icon>
-        <span style="font-family: 'Unbounded', sans-serif">{{
-          title
-        }}</span></v-toolbar-title
-      >
+      <v-toolbar-title>{{ title }}</v-toolbar-title>
       <v-spacer />
       <v-btn
         class="tw-mr-2"
@@ -60,19 +49,8 @@
       <div v-if="loggedIn">
         <nuxt-link :to="`/users/${$auth.user.username}`">
           <v-btn color="primary">
-            <v-icon
-              :left="
-                $vuetify.breakpoint.name !== 'sm' &&
-                $vuetify.breakpoint.name !== 'xs'
-              "
-              >mdi-account</v-icon
-            >
-            {{
-              $vuetify.breakpoint.name === 'sm' ||
-              $vuetify.breakpoint.name === 'xs'
-                ? ''
-                : 'My Account'
-            }}
+            <v-icon left>mdi-account</v-icon>
+            My Account
           </v-btn>
         </nuxt-link>
       </div>
@@ -82,7 +60,13 @@
         <Nuxt />
       </v-container>
     </v-main>
-    <v-footer :absolute="!fixed" app class="tw-justify-end">
+    <v-footer
+      :absolute="!fixed"
+      app
+      style="
+        background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2));
+      "
+      class="tw-justify-end">
       <span>Daniel Opyd &copy; {{ new Date().getFullYear() }}</span>
     </v-footer>
   </v-app>
@@ -96,8 +80,8 @@
     name: 'DefaultLayout',
     data() {
       return {
-        clipped: true,
-        drawer: true,
+        clipped: false,
+        drawer: false,
         fixed: false,
         image: {
           backgroundImage: `url(${waves})`,
@@ -160,3 +144,22 @@
     },
   };
 </script>
+
+<style>
+  #style-2::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0);
+    border-radius: 10px;
+    background-color: rgba(245, 245, 245, 0);
+  }
+
+  #style-2::-webkit-scrollbar {
+    width: 12px;
+    background-color: rgba(245, 245, 245, 0);
+  }
+
+  #style-2::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background-color: rgba(152, 147, 147, 0.5);
+  }
+</style>

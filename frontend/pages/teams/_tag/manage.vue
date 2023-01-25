@@ -168,7 +168,7 @@
     },
     head() {
       return {
-        title: 'Manage -' + this.team.name,
+        title: 'Manage - ' + this.team.name,
       };
     },
     methods: {

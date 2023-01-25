@@ -1,5 +1,5 @@
 <template>
-  <v-main>
+  <v-container>
     <div class="tw-w-full tw-flex tw-flex-col tw-justify-center">
       <div class="tw-w-full tw-flex tw-justify-center tw-mb-10">
         <v-badge bottom content="Players">
@@ -80,7 +80,7 @@
         </v-row>
       </div>
     </div>
-  </v-main>
+  </v-container>
 </template>
 
 <script>

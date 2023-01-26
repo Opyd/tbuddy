@@ -28,7 +28,7 @@
                     v-for="team in tournament.participants"
                     :key="team">
                     <v-row id="alternateColors">
-                      <v-col cols="10"
+                      <v-col :cols="tournament.started ? 10 : 6"
                         ><span>{{ team }}</span></v-col
                       >
                       <v-col cols="2"
@@ -38,6 +38,47 @@
                           </v-icon></nuxt-link
                         ></v-col
                       >
+                      <v-col v-if="!tournament.started" cols="4">
+                        <v-dialog
+                          v-model="removeDialog"
+                          persistent
+                          max-width="290">
+                          <template #activator="{on, attrs}">
+                            <v-btn
+                              color="error"
+                              fab
+                              x-small
+                              v-bind="attrs"
+                              v-on="on">
+                              <v-icon> mdi-minus </v-icon>
+                            </v-btn>
+                          </template>
+                          <v-card outlined elevation="2">
+                            <v-card-title class="text-h5">
+                              Remove team?
+                            </v-card-title>
+                            <v-card-text
+                              >Are you sure you want to remove
+                              <b>{{ team }}</b> from tournament?
+                            </v-card-text>
+                            <v-card-actions>
+                              <v-spacer></v-spacer>
+                              <v-btn
+                                color="green darken-1"
+                                text
+                                @click="removeDialog = false">
+                                Disagree
+                              </v-btn>
+                              <v-btn
+                                color="green darken-1"
+                                text
+                                @click="remove(team)">
+                                Agree
+                              </v-btn>
+                            </v-card-actions>
+                          </v-card>
+                        </v-dialog>
+                      </v-col>
                     </v-row>
                   </v-list-item>
                 </v-list>
@@ -164,6 +205,7 @@
       tournament: {},
       tab: null,
       selectedTeam: null,
+      removeDialog: false,
     }),
     async fetch() {
       try {
@@ -222,7 +264,7 @@
       async setWinner(stageNr, matchId) {
         try {
           const res = await this.$axios.patch(
-            `tournaments/${this.tournament._id}/match`,
+            `tournaments/match${this.tournament._id}`,
             {
               stageNr,
               matchId,
@@ -234,6 +276,20 @@
         } catch (e) {
           this.$toast.error(e.response.data.message);
         }
+      },
+      async remove(teamtag) {
+        try {
+          await this.$axios.patch(`tournaments/kick/${this.tournament._id}`, {
+            teamtag,
+          });
+          this.$toast.success('Successfully removed team');
+          this.tournament.participants = this.tournament.participants.filter(
+            team => team !== teamtag,
+          );
+        } catch (e) {
+          console.log(e.response);
+        }
+        this.removeDialog = false;
       },
     },
   };

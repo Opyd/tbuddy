@@ -1,7 +1,10 @@
 import {
   BadRequestException,
+  HttpCode,
+  HttpStatus,
   Injectable,
   NotFoundException,
+  UnauthorizedException,
 } from '@nestjs/common';
 import { CreateTournamentDto } from './dto/create-tournament.dto';
 import { InjectModel } from '@nestjs/mongoose';
@@ -14,6 +17,7 @@ import { MatchResultDto } from './dto/match-result.dto';
 import slugify from 'slugify';
 import { UpdateTournamentDto } from './dto/update-tournament.dto';
 import { EventEnum } from '../teams/schema/team-events-history.schema';
+import { KickFromTournamentDto } from './dto/kick-from-tournament.dto';
 
 @Injectable()
 export class TournamentsService {
@@ -103,6 +107,34 @@ export class TournamentsService {
       { new: true },
     );
     return team;
+  }
+
+  async kickFromTournament(
+    organizer: string,
+    tournamentId: string,
+    kickFromTournamentDto: KickFromTournamentDto,
+  ) {
+    const tournament = await this.tournamentModel.findById(tournamentId);
+    if (!tournament) {
+      throw new BadRequestException('Tournament doesnt exist');
+    }
+    const team = await this.teamsService.findOneByTag(
+      kickFromTournamentDto.teamtag,
+    );
+    if (!team) {
+      throw new BadRequestException('Team not found');
+    }
+    if (tournament.organizer !== organizer) {
+      throw new UnauthorizedException();
+    }
+    tournament.participants = tournament.participants.filter(
+      (team) => team !== kickFromTournamentDto.teamtag,
+    );
+    team.activeTournament = null;
+
+    await team.save();
+    await tournament.save();
+    return HttpStatus.OK;
   }
 
   async startTournament(organizer: Express.User, tournamentid: string) {

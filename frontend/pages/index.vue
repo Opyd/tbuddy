@@ -14,7 +14,7 @@
       <v-col cols="8" align="center">
         <span class="tw-font-bold tw-text-white tw-text-2xl">
           Experience the thrill of competitive gaming at the highest level with
-          our world-class esports tournaments.
+          community esports tournaments.
         </span>
       </v-col>
       <v-col cols="8" align="center">

@@ -16,6 +16,7 @@ import { CreateTournamentDto } from './dto/create-tournament.dto';
 import { ApiTags } from '@nestjs/swagger';
 import { MatchResultDto } from './dto/match-result.dto';
 import { UpdateTournamentDto } from './dto/update-tournament.dto';
+import { KickFromTournamentDto } from './dto/kick-from-tournament.dto';
 
 @ApiTags('tournaments')
 @Controller('tournaments')
@@ -50,6 +51,20 @@ export class TournamentsController {
     @Param('tournamentid') tournamentid: string,
   ) {
     return this.tournamentsService.joinTournament(req['user'], tournamentid);
+  }
+
+  @UseGuards(AccessTokenGuard)
+  @Patch('kick/:tournamentid')
+  async kickFromTournament(
+    @Req() req: Request,
+    @Param('tournamentid') tournamentid: string,
+    @Body() kickFromTournamentDto: KickFromTournamentDto,
+  ) {
+    return await this.tournamentsService.kickFromTournament(
+      req['user']['username'],
+      tournamentid,
+      kickFromTournamentDto,
+    );
   }
 
   /**
@@ -87,7 +102,7 @@ export class TournamentsController {
    * @param tournamentid {string}
    */
   @UseGuards(AccessTokenGuard)
-  @Patch(':tournamentid/match')
+  @Patch('match/:tournamentid')
   async setMatchResult(
     @Req() req: Request,
     @Body() matchResultDto: MatchResultDto,

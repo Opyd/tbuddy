@@ -170,8 +170,6 @@ export class TeamsService {
       JSON.stringify(team.invitedUsernames),
     );
 
-    console.log({ userInvites }, { usersInvitedByTeam });
-
     if (
       !userInvites.includes(team.tag) ||
       !usersInvitedByTeam.includes(user.username)

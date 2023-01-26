@@ -1,5 +1,5 @@
 <template>
-  <v-app dark :style="$vuetify.theme.dark ? imageDark : image">
+  <v-app :style="{backgroundImage: img, backgroundSize: 'cover'}">
     <v-navigation-drawer
       v-model="drawer"
       mini-variant
@@ -77,11 +77,8 @@
         </nuxt-link>
       </div>
     </v-app-bar>
-    <v-main>
-      <v-container>
-        <Nuxt />
-      </v-container>
-    </v-main>
+
+    <Nuxt />
     <v-footer
       color="transparent"
       inset
@@ -92,57 +89,56 @@
     </v-footer>
   </v-app>
 </template>
-
 <script>
+  import landingbg from 'assets/landingbg.jpg';
   import waves from 'assets/waves.svg';
   import wavesDark from 'assets/waves-dark.svg';
 
   export default {
-    name: 'DefaultLayout',
-    data() {
-      return {
-        clipped: true,
-        drawer: true,
-        fixed: false,
-        image: {
-          backgroundImage: `url(${waves})`,
-          backgroundSize: 'cover',
+    layout: 'landing',
+    data: () => ({
+      img: `url(${landingbg})`,
+      clipped: true,
+      drawer: false,
+      fixed: false,
+      image: {
+        backgroundImage: `url(${waves})`,
+        backgroundSize: 'cover',
+      },
+      imageDark: {
+        backgroundImage: `url(${wavesDark})`,
+        backgroundSize: 'cover',
+      },
+      user: '',
+      items: [
+        {
+          icon: 'mdi-apps',
+          title: 'Welcome',
+          to: '/',
         },
-        imageDark: {
-          backgroundImage: `url(${wavesDark})`,
-          backgroundSize: 'cover',
+        {
+          icon: 'mdi-view-dashboard',
+          title: 'Dashboard',
+          to: '/dashboard',
         },
-        user: '',
-        items: [
-          {
-            icon: 'mdi-apps',
-            title: 'Welcome',
-            to: '/',
-          },
-          {
-            icon: 'mdi-view-dashboard',
-            title: 'Dashboard',
-            to: '/dashboard',
-          },
-          {
-            icon: 'mdi-tournament',
-            title: 'Tournaments',
-            to: '/tournaments',
-          },
-          {
-            icon: 'mdi-account-group',
-            title: 'Teams',
-            to: '/teams',
-          },
-          {
-            icon: 'mdi-account-search',
-            title: 'Users',
-            to: '/users',
-          },
-        ],
-        title: 'TBuddy',
-      };
-    },
+        {
+          icon: 'mdi-tournament',
+          title: 'Tournaments',
+          to: '/tournaments',
+        },
+        {
+          icon: 'mdi-account-group',
+          title: 'Teams',
+          to: '/teams',
+        },
+        {
+          icon: 'mdi-account-search',
+          title: 'Users',
+          to: '/users',
+        },
+      ],
+      title: 'TBuddy',
+    }),
     computed: {
       loggedIn() {
         return this.$auth.loggedIn;
@@ -166,30 +162,4 @@
   };
 </script>
 
-<style>
-  .fade-enter-active,
-  .fade-leave-active {
-    transition: opacity 0.3s;
-  }
-
-  .fade-enter,
-  .fade-leave-to {
-    opacity: 0;
-  }
-  #style-2::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0);
-    border-radius: 10px;
-    background-color: rgba(245, 245, 245, 0);
-  }
-
-  #style-2::-webkit-scrollbar {
-    width: 12px;
-    background-color: rgba(245, 245, 245, 0);
-  }
-
-  #style-2::-webkit-scrollbar-thumb {
-    border-radius: 10px;
-    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-    background-color: rgba(152, 147, 147, 0.5);
-  }
-</style>
+<style></style>

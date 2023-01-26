@@ -139,7 +139,7 @@ export class TournamentsService {
     let matchesPerRound = participants.length / 2;
     while (stagesNr > 0) {
       const newStage = { finished: false, stageNr: stageCounter, matches: [] };
-      for (let i = 0; i < matchesPerRound / 2; i++) {
+      for (let i = 0; i < matchesPerRound; i++) {
         newStage.matches.push({
           teamA: null,
           teamB: null,
@@ -358,7 +358,7 @@ export class TournamentsService {
   }
 
   async getNewestTournament() {
-    return await this.tournamentModel.findOne().sort({ created_at: -1 }).exec();
+    return await this.tournamentModel.findOne().sort({ createdAt: -1 }).exec();
   }
   async getFinishedTournament() {
     return await this.tournamentModel

@@ -1,5 +1,5 @@
 <template>
-  <div class="tw-mt-5 tw-mb-5 tw-w-full tw-hover:tw-bg-amber-300">
+  <div class="tw-py-2 tw-h-10 tw-w-full tw-hover:tw-bg-amber-300">
     <div v-if="$fetchState.pending" class="tw-w-full">
       <v-skeleton-loader class="tw-w-full" type="list-item"></v-skeleton-loader>
     </div>
@@ -11,7 +11,7 @@
       style="text-decoration: none; color: inherit">
       <div class="tw-w-full tw-flex tw-justify-center tw-px-5">
         <div class="tw-w-1/3 tw-flex tw-justify-center tw-items-center">
-          <v-icon v-if="owner" color="#f59e0b">mdi-crown</v-icon>
+          <v-icon v-if="owner" color="#f59e0b">mdi-account-tie</v-icon>
           <v-icon v-else>mdi-account</v-icon>
         </div>
         <div class="tw-w-1/3 tw-flex tw-justify-center tw-items-center">

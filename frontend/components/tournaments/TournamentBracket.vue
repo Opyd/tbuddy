@@ -1,6 +1,4 @@
 <script>
-  // import TeamCell from '@/components/tournaments/TeamCell.vue';
-
   import TeamCell from '@/components/tournaments/TeamCell.vue';
 
   const defaultRounds = [256, 128, 64, 32, 16, 8, 4, 2, 1];
@@ -20,7 +18,7 @@
         type: Object,
         default: () => ({
           width: '100%',
-          height: '30px',
+          height: '50px',
           position: 'relative',
         }),
       },
@@ -36,6 +34,9 @@
         if (round === 2) return 'Final';
         if (round === 1) return 'Winner';
         else return `1 / ${round / 2}`;
+      },
+      log(log) {
+        console.log(log);
       },
     },
   };
@@ -70,6 +71,7 @@
                   $vuetify.theme.dark ? 'tw-border-white' : 'tw-border-black'
                 ">
               </TeamCell>
+
               <TeamCell
                 v-else
                 class="match__content tw-rounded"

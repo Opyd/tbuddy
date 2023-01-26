@@ -18,7 +18,7 @@
         class="tw-w-full"
         type="article, list-item-three-line"></v-skeleton-loader>
     </v-col>
-    <v-col v-if="!$fetchState.pending" md="12" sm="12">
+    <v-col v-if="!$fetchState.pending && tournament !== ''" md="12" sm="12">
       <v-row justify="center" no-gutters>
         <v-col cols="12" class="tw-flex tw-justify-center tw-items-center">
           <span class="tw-text-xl tw-text-center">{{ tournament.title }}</span>
@@ -42,6 +42,9 @@
           >
         </v-col>
       </v-row>
+    </v-col>
+    <v-col v-else md="12" sm="12" align="center">
+      <small><i>No new tournaments</i></small>
     </v-col>
   </v-card>
 </template>

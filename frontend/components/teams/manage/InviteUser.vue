@@ -106,6 +106,7 @@
           }
         } catch (e) {
           this.$toast.error('Something went wrong');
+          console.log(e.response);
         }
       },
       alreadyInvited(username) {

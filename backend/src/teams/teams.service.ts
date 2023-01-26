@@ -126,10 +126,10 @@ export class TeamsService {
     const user = await this.userService.findByUsername(inviteUserDto.username);
 
     const team = await this.teamModel.findOne({
-      teamtag: inviteUserDto.teamtag,
+      tag: inviteUserDto.teamtag,
     });
 
-    if (team.owner.toString() !== inviter) {
+    if (team.owner !== inviter) {
       throw new BadRequestException('You are not the owner');
     }
 
@@ -165,8 +165,12 @@ export class TeamsService {
       throw new BadRequestException('Not Found');
     }
 
-    const userInvites = JSON.stringify(user.invitesTags);
-    const usersInvitedByTeam = JSON.stringify(team.invitedUsernames);
+    const userInvites = JSON.parse(JSON.stringify(user.invitesTags));
+    const usersInvitedByTeam = JSON.parse(
+      JSON.stringify(team.invitedUsernames),
+    );
+
+    console.log({ userInvites }, { usersInvitedByTeam });
 
     if (
       !userInvites.includes(team.tag) ||

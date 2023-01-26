@@ -13,7 +13,7 @@
                 >Start the tournament</v-btn
               >
             </v-col>
-            <v-col cols="6" sm="6" md="3" lg="3">
+            <v-col cols="12" sm="6" md="3" lg="3">
               <v-card outlined elevation="2" class="fill-height">
                 <v-card-title>
                   <span
@@ -26,18 +26,19 @@
                   class="tw-max-h-52 tw-overflow-y-auto tw-overflow-x-hidden">
                   <v-list-item
                     v-for="team in tournament.participants"
-                    id="alternateColors"
                     :key="team">
-                    <v-col cols="10"
-                      ><span>{{ team }}</span></v-col
-                    >
-                    <v-col cols="2"
-                      ><nuxt-link :to="`/teams/${team}`"
-                        ><v-icon right small>
-                          mdi-open-in-new
-                        </v-icon></nuxt-link
-                      ></v-col
-                    >
+                    <v-row id="alternateColors">
+                      <v-col cols="10"
+                        ><span>{{ team }}</span></v-col
+                      >
+                      <v-col cols="2"
+                        ><nuxt-link :to="`/teams/${team}`"
+                          ><v-icon right small>
+                            mdi-open-in-new
+                          </v-icon></nuxt-link
+                        ></v-col
+                      >
+                    </v-row>
                   </v-list-item>
                 </v-list>
               </v-card>

@@ -90,9 +90,7 @@
   </v-app>
 </template>
 <script>
-  import landingbg from 'assets/landingbg.jpg';
-  import waves from 'assets/waves.svg';
-  import wavesDark from 'assets/waves-dark.svg';
+  import landingbg from 'assets/landingbg.webp';
 
   export default {
     layout: 'landing',
@@ -101,14 +99,6 @@
       clipped: true,
       drawer: false,
       fixed: false,
-      image: {
-        backgroundImage: `url(${waves})`,
-        backgroundSize: 'cover',
-      },
-      imageDark: {
-        backgroundImage: `url(${wavesDark})`,
-        backgroundSize: 'cover',
-      },
       user: '',
       items: [
         {

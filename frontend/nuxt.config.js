@@ -55,7 +55,7 @@ export default {
   modules: ['@nuxtjs/axios', '@nuxtjs/auth-next', 'vue-toastification/nuxt'],
 
   axios: {
-    baseURL: 'http://172.27.103.97:3100/api',
+    baseURL: 'http://172.27.109.73:3100/api',
   },
 
   auth: {
@@ -97,6 +97,7 @@ export default {
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
+    treeshake: true,
     theme: {
       dark: true,
       themes: {
@@ -115,6 +116,7 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+    analyze: true,
     postcss: {
       plugins: {
         tailwindcss: {},

@@ -3,6 +3,7 @@
     <v-form ref="form" v-model="valid" lazy-validation>
       <p class="tw-text-2xl tw-text-center tw-font-bold">Create new account</p>
       <v-text-field
+        id="username"
         v-model="username"
         :rules="usernameRules"
         label="Username"
@@ -11,14 +12,17 @@
       </v-text-field>
       <div class="tw-flex tw-flex-nowrap tw-w-full tw-justify-center tw-gap-10">
         <v-text-field
+          id="email"
           v-model="email"
           :rules="emailRules"
           label="E-mail"
+          type="email"
           required>
           <v-icon slot="prepend"> mdi-email </v-icon>
         </v-text-field>
 
         <v-text-field
+          id="repeatEmail"
           v-model="emailRepeated"
           :rules="emailRules"
           label="Repeat e-mail"
@@ -29,6 +33,7 @@
       </div>
       <div class="tw-flex tw-flex-nowrap tw-w-full tw-justify-center tw-gap-10">
         <v-text-field
+          id="password"
           v-model="password"
           :rules="passwordRules"
           label="Password"
@@ -39,6 +44,7 @@
         </v-text-field>
 
         <v-text-field
+          id="repeatPassword"
           v-model="passwordRepeated"
           label="Repeat password"
           required
@@ -48,7 +54,7 @@
           <v-icon slot="prepend"> mdi-lock </v-icon>
         </v-text-field>
       </div>
-      <v-checkbox v-model="checkbox" :rules="checkboxRules">
+      <v-checkbox id="terms" v-model="checkbox" :rules="checkboxRules">
         <template #label>
           <div>
             I agree to

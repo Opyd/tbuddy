@@ -11,7 +11,8 @@
     "lint:prettier": "prettier --check .",
     "lint": "yarn lint:js && yarn lint:prettier",
     "lintfix": "prettier --write --list-different . && yarn lint:js --fix",
-    "test": "jest"
+    "test": "jest",
+    "cypress:open": "cypress open"
   },
   "dependencies": {
     "@dicebear/collection": "^5.1.2",
@@ -37,6 +38,7 @@
     "autoprefixer": "^10.4.13",
     "babel-core": "7.0.0-bridge.0",
     "babel-jest": "^29.1.2",
+    "cypress": "^12.4.1",
     "eslint": "^8.24.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-jest": "^27.0.4",

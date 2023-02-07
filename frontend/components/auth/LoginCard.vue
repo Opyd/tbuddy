@@ -8,6 +8,7 @@
         Log in to existing account
       </p>
       <v-text-field
+        id="username"
         v-model="username"
         :rules="nameRules"
         label="Username"
@@ -16,6 +17,7 @@
       </v-text-field>
 
       <v-text-field
+        id="password"
         v-model="password"
         :rules="passwordRules"
         label="Password"
@@ -28,6 +30,7 @@
 
       <v-container class="d-flex flex-row justify-center">
         <v-btn
+          id="loginBtn"
           color="success"
           class="mr-4"
           @click="login"

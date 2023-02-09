@@ -125,7 +125,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/auth/auth.service.ts:11</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/auth/auth.service.ts:17</a></div>
                             </td>
                         </tr>
 
@@ -214,8 +214,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="109"
-                            class="link-to-prism">src/auth/auth.service.ts:109</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="113"
+                            class="link-to-prism">src/auth/auth.service.ts:113</a></div>
                 </td>
             </tr>
 
@@ -312,8 +312,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="85"
-                            class="link-to-prism">src/auth/auth.service.ts:85</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="89"
+                            class="link-to-prism">src/auth/auth.service.ts:89</a></div>
                 </td>
             </tr>
 
@@ -386,8 +386,8 @@ Sets user refreshToken to NULL</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="147"
-                            class="link-to-prism">src/auth/auth.service.ts:147</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="150"
+                            class="link-to-prism">src/auth/auth.service.ts:150</a></div>
                 </td>
             </tr>
 
@@ -443,7 +443,7 @@ Sets user refreshToken to NULL</p>
 
                     </div>
                     <div class="io-description">
-                        <p>accessToken</p>
+                        <p>tokens</p>
 
                     </div>
                 </td>
@@ -472,8 +472,8 @@ Sets user refreshToken to NULL</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="59"
-                            class="link-to-prism">src/auth/auth.service.ts:59</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="63"
+                            class="link-to-prism">src/auth/auth.service.ts:63</a></div>
                 </td>
             </tr>
 
@@ -517,7 +517,7 @@ Sets user refreshToken to NULL</p>
 
                     </div>
                     <div class="io-description">
-                        <p>refreshToken</p>
+                        <p>tokens</p>
 
                     </div>
                 </td>
@@ -546,8 +546,8 @@ Sets user refreshToken to NULL</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="24"
-                            class="link-to-prism">src/auth/auth.service.ts:24</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="29"
+                            class="link-to-prism">src/auth/auth.service.ts:29</a></div>
                 </td>
             </tr>
 
@@ -620,8 +620,8 @@ Sets user refreshToken to NULL</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="95"
-                            class="link-to-prism">src/auth/auth.service.ts:95</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="99"
+                            class="link-to-prism">src/auth/auth.service.ts:99</a></div>
                 </td>
             </tr>
 
@@ -698,6 +698,12 @@ import * as argon2 from &#x27;argon2&#x27;;
 import { AuthDto } from &#x27;./dto/auth.dto&#x27;;
 import { UserRoles } from &#x27;../users/schemas/user.schema&#x27;;
 
+/**
+ * @typedef {Object} Tokens
+ * @property {number} accessToken - Access Token
+ * @property {number} refreshToken - Refresh Token
+ */
+
 @Injectable()
 export class AuthService {
   constructor(
@@ -708,9 +714,8 @@ export class AuthService {
 
   /**
    * Creates new user
-   * @param createUserDto
-   * @returns {string} refreshToken
-   * @returns {string} accessToken
+   * @param {CreateUserDto} createUserDto
+   * @returns {Tokens} refreshToken
    */
   async signUp(createUserDto: CreateUserDto) {
     //Checking if user exists
@@ -743,9 +748,8 @@ export class AuthService {
 
   /**
    * Sign in method
-   * @param authDto
-   * @return{string} refreshToken
-   * @return{string} accessToken
+   * @param {AuthDto} authDto
+   * @return{Tokens} tokens
    */
   async signIn(authDto: AuthDto) {
     //Checking if user exists
@@ -771,7 +775,7 @@ export class AuthService {
   /**
    * Logout method
    * Sets user refreshToken to NULL
-   * @param userId
+   * @param {string} userId
    */
   async logout(userId: string) {
     //Sets refresh token to NULL
@@ -780,8 +784,8 @@ export class AuthService {
 
   /**
    * Function used to hash a refresh token and update it in user&#x27;s document
-   * @param userId
-   * @param refreshToken
+   * @param {string} userId
+   * @param {string} refreshToken
    */
   async updateRefreshToken(userId: string, refreshToken: string) {
     const hashedRefreshedToken &#x3D; await argon2.hash(refreshToken);
@@ -832,8 +836,7 @@ export class AuthService {
    * Updates user&#x27;s access Token
    * @param username
    * @param refreshToken
-   * @return{string} accessToken
-   * @return{string} refresToken
+   * @return{Tokens} tokens
    */
   async refreshTokens(username: string, refreshToken: string) {
     const user &#x3D; await this.userService.findByUsername(username);

@@ -15,8 +15,6 @@
     "cypress:open": "cypress open"
   },
   "dependencies": {
-    "@dicebear/collection": "^5.1.2",
-    "@dicebear/core": "^5.1.2",
     "@nuxtjs/auth-next": "5.0.0-1667386184.dfbbb54",
     "@nuxtjs/axios": "^5.13.6",
     "core-js": "^3.25.3",

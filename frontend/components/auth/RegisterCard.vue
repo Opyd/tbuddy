@@ -80,8 +80,7 @@
 </template>
 
 <script>
-  import {createAvatar} from '@dicebear/core';
-  import {bottts} from '@dicebear/collection';
+
 
   export default {
     name: 'RegisterCard',
@@ -132,14 +131,14 @@
 
       async register() {
         try {
-          const avatar = await createAvatar(bottts, {
-            seed: this.username,
-          }).toDataUri();
+          // const avatar = await createAvatar(bottts, {
+          //   seed: this.username,
+          // }).toDataUri();
           const res = await this.$axios.post('auth/signup', {
             username: this.username,
             password: this.password,
             email: this.email,
-            avatar,
+            avatar: 'A'
           });
           if (res.status === 201) {
             this.$toast.success('Successfully created an account');

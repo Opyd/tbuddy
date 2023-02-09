@@ -84,6 +84,10 @@
                             </li>
                             <li>
                                     <span class="modifier">Async</span>
+                                <a href="#deleteMsgAtIndex" >deleteMsgAtIndex</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
                                 <a href="#findAll" >findAll</a>
                             </li>
                             <li>
@@ -92,11 +96,23 @@
                             </li>
                             <li>
                                     <span class="modifier">Async</span>
+                                <a href="#findLikeUsername" >findLikeUsername</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
                                 <a href="#findLoggedUser" >findLoggedUser</a>
                             </li>
                             <li>
                                     <span class="modifier">Async</span>
                                 <a href="#findOne" >findOne</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#handleInvite" >handleInvite</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#leaveTeam" >leaveTeam</a>
                             </li>
                             <li>
                                     <span class="modifier">Async</span>
@@ -128,12 +144,12 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(userModel: <a href="../classes/User.html" target="_self">Model&lt;UserDocument&gt;</a>)</code>
+<code>constructor(userModel: <a href="../classes/User.html" target="_self">Model&lt;UserDocument&gt;</a>, teamService: <a href="../injectables/TeamsService.html" target="_self">TeamsService</a>)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">src/users/users.service.ts:10</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/users/users.service.ts:18</a></div>
                             </td>
                         </tr>
 
@@ -155,6 +171,18 @@
                                                   
                                                         <td>
                                                                         <code><a href="../classes/User.html" target="_self" >Model&lt;UserDocument&gt;</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>teamService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/TeamsService.html" target="_self" >TeamsService</a></code>
                                                         </td>
                                                   
                                                     <td>
@@ -198,8 +226,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="12"
-                            class="link-to-prism">src/users/users.service.ts:12</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="25"
+                            class="link-to-prism">src/users/users.service.ts:25</a></div>
                 </td>
             </tr>
 
@@ -251,6 +279,89 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
+                    <a name="deleteMsgAtIndex"></a>
+                    <span class="name">
+                        <span class="modifier">Async</span>
+                        <span ><b>deleteMsgAtIndex</b></span>
+                        <a href="#deleteMsgAtIndex"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>deleteMsgAtIndex(index: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, username: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="50"
+                            class="link-to-prism">src/users/users.service.ts:50</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>index</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>username</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>unknown</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
                     <a name="findAll"></a>
                     <span class="name">
                         <span class="modifier">Async</span>
@@ -269,8 +380,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="17"
-                            class="link-to-prism">src/users/users.service.ts:17</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="30"
+                            class="link-to-prism">src/users/users.service.ts:30</a></div>
                 </td>
             </tr>
 
@@ -301,15 +412,15 @@
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>findByUsername(username: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                    <code>findByUsername(username: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, populate?: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>)</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="32"
-                            class="link-to-prism">src/users/users.service.ts:32</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="104"
+                            class="link-to-prism">src/users/users.service.ts:104</a></div>
                 </td>
             </tr>
 
@@ -341,6 +452,18 @@
 
 
                                 </tr>
+                                <tr>
+                                    <td>populate</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                                    </td>
+
+                                    <td>
+                                        Yes
+                                    </td>
+
+
+                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -348,6 +471,89 @@
                     </div>
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="../classes/User.html" target="_self" >Promise&lt;UserDocument&gt;</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="findLikeUsername"></a>
+                    <span class="name">
+                        <span class="modifier">Async</span>
+                        <span ><b>findLikeUsername</b></span>
+                        <a href="#findLikeUsername"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>findLikeUsername(query: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, team?: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="119"
+                            class="link-to-prism">src/users/users.service.ts:119</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>query</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>team</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                                    </td>
+
+                                    <td>
+                                        Yes
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>unknown</code>
 
                     </div>
                     <div class="io-description">
@@ -379,8 +585,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="21"
-                            class="link-to-prism">src/users/users.service.ts:21</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="37"
+                            class="link-to-prism">src/users/users.service.ts:37</a></div>
                 </td>
             </tr>
 
@@ -450,8 +656,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="28"
-                            class="link-to-prism">src/users/users.service.ts:28</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="44"
+                            class="link-to-prism">src/users/users.service.ts:44</a></div>
                 </td>
             </tr>
 
@@ -503,6 +709,160 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
+                    <a name="handleInvite"></a>
+                    <span class="name">
+                        <span class="modifier">Async</span>
+                        <span ><b>handleInvite</b></span>
+                        <a href="#handleInvite"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>handleInvite(username: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, handleInviteDto: <a href="../classes/HandleInviteDto.html" target="_self">HandleInviteDto</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="64"
+                            class="link-to-prism">src/users/users.service.ts:64</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>username</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>handleInviteDto</td>
+                                    <td>
+                                                <code><a href="../classes/HandleInviteDto.html" target="_self" >HandleInviteDto</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>unknown</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="leaveTeam"></a>
+                    <span class="name">
+                        <span class="modifier">Async</span>
+                        <span ><b>leaveTeam</b></span>
+                        <a href="#leaveTeam"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>leaveTeam(reqUser: <a href="../classes/User.html" target="_self">Express.User</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="153"
+                            class="link-to-prism">src/users/users.service.ts:153</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>reqUser</td>
+                                    <td>
+                                                <code><a href="../classes/User.html" target="_self" >Express.User</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>unknown</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
                     <a name="remove"></a>
                     <span class="name">
                         <span class="modifier">Async</span>
@@ -521,8 +881,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="60"
-                            class="link-to-prism">src/users/users.service.ts:60</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="185"
+                            class="link-to-prism">src/users/users.service.ts:185</a></div>
                 </td>
             </tr>
 
@@ -592,8 +952,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="36"
-                            class="link-to-prism">src/users/users.service.ts:36</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="129"
+                            class="link-to-prism">src/users/users.service.ts:129</a></div>
                 </td>
             </tr>
 
@@ -675,8 +1035,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="50"
-                            class="link-to-prism">src/users/users.service.ts:50</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="143"
+                            class="link-to-prism">src/users/users.service.ts:143</a></div>
                 </td>
             </tr>
 
@@ -744,24 +1104,40 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@nestjs/common&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
+  BadRequestException,
+  forwardRef,
+  Inject,
+  Injectable,
+} from &#x27;@nestjs/common&#x27;;
 import { CreateUserDto } from &#x27;./dto/create-user.dto&#x27;;
 import { UpdateUserDto } from &#x27;./dto/update-user.dto&#x27;;
 import { InjectModel } from &#x27;@nestjs/mongoose&#x27;;
 import { User, UserDocument } from &#x27;./schemas/user.schema&#x27;;
 import { Model } from &#x27;mongoose&#x27;;
 import { UserUpdateSelfDto } from &#x27;./dto/user-update-self.dto&#x27;;
+import { TeamsService } from &#x27;../teams/teams.service&#x27;;
+import { HandleInviteDto } from &#x27;./dto/handle-invite.dto&#x27;;
+import { EventEnum } from &#x27;../teams/schema/team-events-history.schema&#x27;;
 
 @Injectable()
 export class UsersService {
-  constructor(@InjectModel(User.name) private userModel: Model&lt;UserDocument&gt;) {}
+  constructor(
+    @InjectModel(User.name) private userModel: Model&lt;UserDocument&gt;,
+    @Inject(forwardRef(() &#x3D;&gt; TeamsService))
+    private teamService: TeamsService,
+  ) {}
+
   async create(createUserDto: CreateUserDto) {
     const createdUser &#x3D; await new this.userModel(createUserDto);
     return createdUser.save();
   }
 
   async findAll(): Promise&lt;UserDocument[]&gt; {
-    return this.userModel.find().exec();
+    return this.userModel
+      .find()
+      .select({ refreshToken: 0, password: 0, _v: 0 })
+      .exec();
   }
 
   async findLoggedUser(username: string): Promise&lt;UserDocument&gt; {
@@ -772,11 +1148,88 @@ export class UsersService {
   }
 
   async findOne(id: string): Promise&lt;UserDocument&gt; {
-    return this.userModel.findById(id);
+    return this.userModel
+      .findById(id)
+      .select({ refreshToken: 0, password: 0, _v: 0 });
   }
 
-  async findByUsername(username: string): Promise&lt;UserDocument&gt; {
-    return this.userModel.findOne({ username }).exec();
+  async deleteMsgAtIndex(index: number, username: string) {
+    const user &#x3D; await this.userModel.findOne({ username });
+    if (!user) {
+      throw new BadRequestException();
+    }
+    if (user.inbox.length - 1 &lt; index) {
+      throw new BadRequestException(&#x27;Out of bounds index&#x27;);
+    }
+    const position &#x3D; &#x27;inbox.&#x27; + index;
+    await user.updateOne({ $unset: { [position]: 1 } });
+    await user.updateOne({ $pull: { inbox: null } });
+    return user;
+  }
+
+  async handleInvite(username: string, handleInviteDto: HandleInviteDto) {
+    const user &#x3D; await this.findByUsername(username);
+    if (user.currentTeam !&#x3D;&#x3D; null) {
+      throw new BadRequestException(&#x27;User already in team.&#x27;);
+    }
+    const team &#x3D; await this.teamService.findOneByTag(handleInviteDto.teamtag);
+    if (!team) {
+      throw new BadRequestException(&#x27;Team doesnt exists&#x27;);
+    }
+    //if user agrees
+    if (handleInviteDto.decision) {
+      await team
+        .updateOne({
+          $push: {
+            members: user.username,
+            events: {
+              type: EventEnum.JOINED,
+              date: Date.now(),
+              msg: &#x60;${user.username} joined the team&#x60;,
+            },
+          },
+          $pull: { invitedUsernames: user.username },
+        })
+        .exec();
+      await user
+        .updateOne({ $pull: { invitesTags: team.tag }, currentTeam: team.tag })
+        .select({ refreshToken: 0, password: 0, _v: 0 })
+        .exec();
+    }
+    //if user declines
+    if (!handleInviteDto.decision) {
+      await team.updateOne({
+        $pull: { invitedUsernames: user.username },
+      });
+      await user.updateOne({ $pull: { invitesTags: team.tag } }).exec();
+    }
+
+    return user;
+  }
+
+  async findByUsername(
+    username: string,
+    populate?: boolean,
+  ): Promise&lt;UserDocument&gt; {
+    if (populate) {
+      const user &#x3D; await this.userModel
+        .findOne({ username })
+        .populate(&#x27;invites&#x27;)
+        .exec();
+      return user;
+    }
+    const user &#x3D; await this.userModel.findOne({ username }).exec();
+    return user;
+  }
+
+  async findLikeUsername(query: string, team?: boolean) {
+    return this.userModel
+      .find({
+        username: new RegExp(&#x27;.*&#x27; + query + &#x27;.*&#x27;, &#x27;i&#x27;),
+        currentTeam: team ? { $in: [null, new RegExp(&#x27;.*&#x27;)] } : null,
+      })
+      .select({ username: 1, &#x27;details.preferredRoles&#x27;: 1, avatar: 1 })
+      .limit(10);
   }
 
   async update(
@@ -790,8 +1243,8 @@ export class UsersService {
 
   /**
    * Update function for changes to account made by user
-   * @param username
-   * @param userUpdateSelfDto
+   * @param {string} username
+   * @param {UserUpdateSelfDto} userUpdateSelfDto
    */
   async updateSelf(
     username: string,
@@ -801,6 +1254,38 @@ export class UsersService {
       .findOneAndUpdate({ username }, userUpdateSelfDto, { new: true })
       .select({ refreshToken: 0, password: 0, _v: 0 })
       .exec();
+  }
+
+  async leaveTeam(reqUser: Express.User) {
+    const user &#x3D; await this.userModel.findOne({
+      username: reqUser[&#x27;username&#x27;],
+    });
+    if (!user) {
+      throw new BadRequestException(&#x27;User not found&#x27;);
+    }
+    if (user.currentTeam &#x3D;&#x3D;&#x3D; null) {
+      throw new BadRequestException(&#x27;User not in team&#x27;);
+    }
+    const team &#x3D; await this.teamService.findOneByTag(user.currentTeam);
+    if (!team) {
+      throw new BadRequestException(&quot;Team doesn&#x27;t exists&quot;);
+    }
+    if (team.activeTournament !&#x3D;&#x3D; null) {
+      throw new BadRequestException(&#x27;Team is participating in tournament&#x27;);
+    }
+    if (user.username &#x3D;&#x3D;&#x3D; team.owner) {
+      throw new BadRequestException(&#x27;You cant leave your own team&#x27;);
+    }
+    team.members &#x3D; team.members.filter((member) &#x3D;&gt; member !&#x3D;&#x3D; user.username);
+    team.events.push({
+      type: EventEnum.LEFT,
+      date: new Date(),
+      msg: &#x60;${user.username} left the team&#x60;,
+    });
+    user.currentTeam &#x3D; null;
+    await team.save();
+    await user.save();
+    return { msg: &#x27;Successfully left the team&#x27; };
   }
 
   async remove(id: string) {

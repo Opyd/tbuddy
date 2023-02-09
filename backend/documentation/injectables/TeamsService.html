@@ -79,6 +79,11 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#checkIfTeamExists" >checkIfTeamExists</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
                                 <a href="#create" >create</a>
                             </li>
                             <li>
@@ -88,7 +93,31 @@
                                 <a href="#findOne" >findOne</a>
                             </li>
                             <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#findOneByTag" >findOneByTag</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#inviteUser" >inviteUser</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#isTeamOwnedByUser" >isTeamOwnedByUser</a>
+                            </li>
+                            <li>
                                 <a href="#remove" >remove</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#removeInvite" >removeInvite</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#removeUserFromTeam" >removeUserFromTeam</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#searchTeam" >searchTeam</a>
                             </li>
                             <li>
                                 <a href="#update" >update</a>
@@ -111,12 +140,12 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(teamModel: <a href="../classes/Team.html" target="_self">Model&lt;TeamDocument&gt;</a>)</code>
+<code>constructor(teamModel: <a href="../classes/Team.html" target="_self">Model&lt;TeamDocument&gt;</a>, userService: <a href="../injectables/UsersService.html" target="_self">UsersService</a>)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="9" class="link-to-prism">src/teams/teams.service.ts:9</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/teams/teams.service.ts:20</a></div>
                             </td>
                         </tr>
 
@@ -145,6 +174,18 @@
                                                     </td>
                                                     
                                                 </tr>
+                                                <tr>
+                                                        <td>userService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/UsersService.html" target="_self" >UsersService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
                                         </tbody>
                                     </table>
                             </div>
@@ -163,8 +204,80 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
+                    <a name="checkIfTeamExists"></a>
+                    <span class="name">
+                        <span class="modifier">Async</span>
+                        <span ><b>checkIfTeamExists</b></span>
+                        <a href="#checkIfTeamExists"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>checkIfTeamExists(tag: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="80"
+                            class="link-to-prism">src/teams/teams.service.ts:80</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>tag</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>unknown</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
                     <a name="create"></a>
                     <span class="name">
+                        <span class="modifier">Async</span>
                         <span ><b>create</b></span>
                         <a href="#create"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -172,15 +285,16 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>create(createTeamDto: <a href="../classes/CreateTeamDto.html" target="_self">CreateTeamDto</a>)</code>
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>create(createTeamDto: <a href="../classes/CreateTeamDto.html" target="_self">CreateTeamDto</a>)</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="11"
-                            class="link-to-prism">src/teams/teams.service.ts:11</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="27"
+                            class="link-to-prism">src/teams/teams.service.ts:27</a></div>
                 </td>
             </tr>
 
@@ -218,7 +332,7 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                        <b>Returns : </b>    <code>unknown</code>
 
                     </div>
                     <div class="io-description">
@@ -248,8 +362,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="15"
-                            class="link-to-prism">src/teams/teams.service.ts:15</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="44"
+                            class="link-to-prism">src/teams/teams.service.ts:44</a></div>
                 </td>
             </tr>
 
@@ -285,8 +399,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="19"
-                            class="link-to-prism">src/teams/teams.service.ts:19</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="56"
+                            class="link-to-prism">src/teams/teams.service.ts:56</a></div>
                 </td>
             </tr>
 
@@ -325,6 +439,231 @@
                     </div>
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="findOneByTag"></a>
+                    <span class="name">
+                        <span class="modifier">Async</span>
+                        <span ><b>findOneByTag</b></span>
+                        <a href="#findOneByTag"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>findOneByTag(tag: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="48"
+                            class="link-to-prism">src/teams/teams.service.ts:48</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>tag</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>unknown</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="inviteUser"></a>
+                    <span class="name">
+                        <span class="modifier">Async</span>
+                        <span ><b>inviteUser</b></span>
+                        <a href="#inviteUser"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>inviteUser(inviter: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, inviteUserDto: <a href="../classes/InviteUserDto.html" target="_self">InviteUserDto</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="125"
+                            class="link-to-prism">src/teams/teams.service.ts:125</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>inviter</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>inviteUserDto</td>
+                                    <td>
+                                                <code><a href="../classes/InviteUserDto.html" target="_self" >InviteUserDto</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>unknown</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isTeamOwnedByUser"></a>
+                    <span class="name">
+                        <span class="modifier">Async</span>
+                        <span ><b>isTeamOwnedByUser</b></span>
+                        <a href="#isTeamOwnedByUser"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>isTeamOwnedByUser(userId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="72"
+                            class="link-to-prism">src/teams/teams.service.ts:72</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>userId</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>unknown</code>
 
                     </div>
                     <div class="io-description">
@@ -354,8 +693,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="29"
-                            class="link-to-prism">src/teams/teams.service.ts:29</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="192"
+                            class="link-to-prism">src/teams/teams.service.ts:192</a></div>
                 </td>
             </tr>
 
@@ -407,6 +746,243 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
+                    <a name="removeInvite"></a>
+                    <span class="name">
+                        <span class="modifier">Async</span>
+                        <span ><b>removeInvite</b></span>
+                        <a href="#removeInvite"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>removeInvite(owner: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, username: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="161"
+                            class="link-to-prism">src/teams/teams.service.ts:161</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>owner</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>username</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>unknown</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="removeUserFromTeam"></a>
+                    <span class="name">
+                        <span class="modifier">Async</span>
+                        <span ><b>removeUserFromTeam</b></span>
+                        <a href="#removeUserFromTeam"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>removeUserFromTeam(owner: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, username: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="94"
+                            class="link-to-prism">src/teams/teams.service.ts:94</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>owner</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>username</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>unknown</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="searchTeam"></a>
+                    <span class="name">
+                        <span class="modifier">Async</span>
+                        <span ><b>searchTeam</b></span>
+                        <a href="#searchTeam"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>searchTeam(query: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="60"
+                            class="link-to-prism">src/teams/teams.service.ts:60</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>query</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>unknown</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
                     <a name="update"></a>
                     <span class="name">
                         <span ><b>update</b></span>
@@ -423,8 +999,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="23"
-                            class="link-to-prism">src/teams/teams.service.ts:23</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="88"
+                            class="link-to-prism">src/teams/teams.service.ts:88</a></div>
                 </td>
             </tr>
 
@@ -490,31 +1066,194 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@nestjs/common&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
+  BadRequestException,
+  forwardRef,
+  HttpException,
+  HttpStatus,
+  Inject,
+  Injectable,
+  NotFoundException,
+} from &#x27;@nestjs/common&#x27;;
 import { CreateTeamDto } from &#x27;./dto/create-team.dto&#x27;;
 import { UpdateTeamDto } from &#x27;./dto/update-team.dto&#x27;;
 import { InjectModel } from &#x27;@nestjs/mongoose&#x27;;
 import { Team, TeamDocument } from &#x27;./schema/team.schema&#x27;;
 import { Model } from &#x27;mongoose&#x27;;
+import { UsersService } from &#x27;../users/users.service&#x27;;
+import { InviteUserDto } from &#x27;./dto/invite-user.dto&#x27;;
+import { EventEnum } from &#x27;./schema/team-events-history.schema&#x27;;
 
 @Injectable()
 export class TeamsService {
-  constructor(@InjectModel(Team.name) private teamModel: Model&lt;TeamDocument&gt;) {}
-  create(createTeamDto: CreateTeamDto) {
-    return new this.teamModel(createTeamDto).save();
+  constructor(
+    @InjectModel(Team.name) private teamModel: Model&lt;TeamDocument&gt;,
+    @Inject(forwardRef(() &#x3D;&gt; UsersService))
+    private userService: UsersService,
+  ) {}
+
+  async create(createTeamDto: CreateTeamDto) {
+    const user &#x3D; await this.userService.findByUsername(createTeamDto.owner);
+    const team &#x3D; await new this.teamModel(createTeamDto).save();
+    await team
+      .updateOne({
+        $push: {
+          events: {
+            type: EventEnum.CREATED,
+            date: Date.now(),
+          },
+        },
+      })
+      .exec();
+    await user.updateOne({ currentTeam: team.tag }).exec();
+    return team;
   }
 
   findAll() {
     return this.teamModel.find({}).exec();
   }
 
+  async findOneByTag(tag: string) {
+    const team &#x3D; await this.teamModel.findOne({ tag }).exec();
+    if (!team) {
+      throw new NotFoundException();
+    }
+    return team;
+  }
+
   findOne(id: string) {
     return this.teamModel.findById(id).populate(&#x27;owner&#x27;).exec();
+  }
+
+  async searchTeam(query: string) {
+    return this.teamModel
+      .find({
+        $or: [
+          { name: new RegExp(&#x27;.*&#x27; + query + &#x27;.*&#x27;, &#x27;i&#x27;) },
+          { tag: new RegExp(&#x27;.*&#x27; + query + &#x27;.*&#x27;, &#x27;i&#x27;) },
+        ],
+      })
+      .select({ tag: 1, name: 1, icon: 1, color: 1, members: 1, owner: 1 })
+      .limit(10);
+  }
+
+  async isTeamOwnedByUser(userId: string) {
+    const team &#x3D; await this.teamModel.find({ owner: userId });
+    if (!team) {
+      return false;
+    }
+    return true;
+  }
+
+  async checkIfTeamExists(tag: string) {
+    const team &#x3D; await this.teamModel.findOne({ tag }).exec();
+
+    return {
+      exists: !!team,
+    };
   }
 
   update(id: string, updateTeamDto: UpdateTeamDto) {
     return this.teamModel
       .findByIdAndUpdate(id, updateTeamDto, { new: true })
+      .exec();
+  }
+
+  async removeUserFromTeam(owner: string, username: string) {
+    const team &#x3D; await this.teamModel.findOne({ owner: owner });
+    const user &#x3D; await this.userService.findByUsername(username);
+    if (!team || !user) {
+      throw new BadRequestException(&#x27;Not Found&#x27;);
+    }
+
+    if (user.currentTeam !&#x3D;&#x3D; team.tag) {
+      throw new BadRequestException(&#x27;User is not in team&#x27;);
+    }
+    await team
+      .updateOne({
+        $pull: { members: user.username },
+        $push: {
+          events: {
+            type: EventEnum.LEFT,
+            date: Date.now(),
+            msg: &#x60;${user.username} left the team&#x60;,
+          },
+        },
+      })
+      .exec();
+    await user.updateOne({
+      currentTeam: null,
+      $push: {
+        inbox: &#x60;You have been removed from ${team.tag}&#x60;,
+      },
+    });
+    return team;
+  }
+
+  async inviteUser(inviter: string, inviteUserDto: InviteUserDto) {
+    const user &#x3D; await this.userService.findByUsername(inviteUserDto.username);
+
+    const team &#x3D; await this.teamModel.findOne({
+      tag: inviteUserDto.teamtag,
+    });
+
+    if (team.owner !&#x3D;&#x3D; inviter) {
+      throw new BadRequestException(&#x27;You are not the owner&#x27;);
+    }
+
+    if (!user || !team) {
+      throw new BadRequestException(&#x27;Team or User doesnt exists&#x27;);
+    }
+    const userInvites &#x3D; JSON.stringify(user.invitesTags);
+    const usersInvitedByTeam &#x3D; JSON.stringify(team.invitedUsernames);
+
+    if (
+      userInvites.includes(team.tag) ||
+      usersInvitedByTeam.includes(user.username)
+    ) {
+      throw new BadRequestException(&#x27;Already invited&#x27;);
+    }
+
+    await user
+      .updateOne({
+        $push: {
+          invitesTags: team.tag,
+        },
+      })
+      .exec();
+    return await team
+      .updateOne({ $push: { invitedUsernames: user.username } }, { new: true })
+      .exec();
+  }
+
+  async removeInvite(owner: string, username: string) {
+    const team &#x3D; await this.teamModel.findOne({ owner: owner });
+    const user &#x3D; await this.userService.findByUsername(username);
+    if (!team || !user) {
+      throw new BadRequestException(&#x27;Not Found&#x27;);
+    }
+
+    const userInvites &#x3D; JSON.parse(JSON.stringify(user.invitesTags));
+    const usersInvitedByTeam &#x3D; JSON.parse(
+      JSON.stringify(team.invitedUsernames),
+    );
+
+    if (
+      !userInvites.includes(team.tag) ||
+      !usersInvitedByTeam.includes(user.username)
+    ) {
+      throw new BadRequestException(&#x27;Not invited&#x27;);
+    }
+
+    await user
+      .updateOne({
+        $pull: {
+          invitesTags: team.tag,
+        },
+      })
+      .exec();
+    return await team
+      .updateOne({ $pull: { invitedUsernames: user.username } }, { new: true })
       .exec();
   }
 

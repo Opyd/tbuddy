@@ -87,6 +87,9 @@
                                 <a href="#create" >create</a>
                             </li>
                             <li>
+                                <a href="#deleteMsgAtIndex" >deleteMsgAtIndex</a>
+                            </li>
+                            <li>
                                     <span class="modifier">Async</span>
                                 <a href="#findLogged" >findLogged</a>
                             </li>
@@ -94,7 +97,20 @@
                                 <a href="#findOne" >findOne</a>
                             </li>
                             <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#findOneByUsername" >findOneByUsername</a>
+                            </li>
+                            <li>
+                                <a href="#handleInvite" >handleInvite</a>
+                            </li>
+                            <li>
+                                <a href="#leaveTeam" >leaveTeam</a>
+                            </li>
+                            <li>
                                 <a href="#remove" >remove</a>
+                            </li>
+                            <li>
+                                <a href="#searchByUsername" >searchByUsername</a>
                             </li>
                             <li>
                                 <a href="#update" >update</a>
@@ -143,8 +159,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="33"
-                            class="link-to-prism">src/users/users.controller.ts:33</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="36"
+                            class="link-to-prism">src/users/users.controller.ts:36</a></div>
                 </td>
             </tr>
 
@@ -199,6 +215,94 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
+                    <a name="deleteMsgAtIndex"></a>
+                    <span class="name">
+                        <span ><b>deleteMsgAtIndex</b></span>
+                        <a href="#deleteMsgAtIndex"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>deleteMsgAtIndex(req: Request, index: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@UseGuards(AccessTokenGuard)<br />@Delete(&#x27;msg/:index&#x27;)<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="114"
+                            class="link-to-prism">src/users/users.controller.ts:114</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>req</td>
+                                    <td>
+                                            <code>Request</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>index</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
                     <a name="findLogged"></a>
                     <span class="name">
                         <span class="modifier">Async</span>
@@ -224,8 +328,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="44"
-                            class="link-to-prism">src/users/users.controller.ts:44</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="47"
+                            class="link-to-prism">src/users/users.controller.ts:47</a></div>
                 </td>
             </tr>
 
@@ -310,8 +414,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="54"
-                            class="link-to-prism">src/users/users.controller.ts:54</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="57"
+                            class="link-to-prism">src/users/users.controller.ts:57</a></div>
                 </td>
             </tr>
 
@@ -375,6 +479,257 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
+                    <a name="findOneByUsername"></a>
+                    <span class="name">
+                        <span class="modifier">Async</span>
+                        <span ><b>findOneByUsername</b></span>
+                        <a href="#findOneByUsername"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>findOneByUsername(username: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@Get(&#x27;name/:username&#x27;)<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="66"
+                            class="link-to-prism">src/users/users.controller.ts:66</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Return specified user&#39;s data</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>username</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <ul>
+<li>user&#39;s username</li>
+</ul>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>unknown</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="handleInvite"></a>
+                    <span class="name">
+                        <span ><b>handleInvite</b></span>
+                        <a href="#handleInvite"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>handleInvite(req: Request, handleInviteDto: <a href="../classes/HandleInviteDto.html" target="_self">HandleInviteDto</a>)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@UseGuards(AccessTokenGuard)<br />@Post(&#x27;handleinvite&#x27;)<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="79"
+                            class="link-to-prism">src/users/users.controller.ts:79</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>req</td>
+                                    <td>
+                                            <code>Request</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>handleInviteDto</td>
+                                    <td>
+                                                <code><a href="../classes/HandleInviteDto.html" target="_self" >HandleInviteDto</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="leaveTeam"></a>
+                    <span class="name">
+                        <span ><b>leaveTeam</b></span>
+                        <a href="#leaveTeam"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>leaveTeam(req: Request)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@UseGuards(AccessTokenGuard)<br />@Patch(&#x27;leaveTeam&#x27;)<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="108"
+                            class="link-to-prism">src/users/users.controller.ts:108</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>req</td>
+                                    <td>
+                                            <code>Request</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
                     <a name="remove"></a>
                     <span class="name">
                         <span ><b>remove</b></span>
@@ -398,8 +753,86 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="67"
-                            class="link-to-prism">src/users/users.controller.ts:67</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="125"
+                            class="link-to-prism">src/users/users.controller.ts:125</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Lets Admin remove user account</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>id</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="searchByUsername"></a>
+                    <span class="name">
+                        <span ><b>searchByUsername</b></span>
+                        <a href="#searchByUsername"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>searchByUsername(username: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, team: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@Get(&#x27;search/user&#x27;)<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="87"
+                            class="link-to-prism">src/users/users.controller.ts:87</a></div>
                 </td>
             </tr>
 
@@ -420,9 +853,21 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>id</td>
+                                    <td>username</td>
                                     <td>
                                                 <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>team</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
                                     </td>
 
                                     <td>
@@ -474,14 +919,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="60"
-                            class="link-to-prism">src/users/users.controller.ts:60</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="102"
+                            class="link-to-prism">src/users/users.controller.ts:102</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Allows user to modify his data</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -492,6 +939,7 @@
                                     <td>Name</td>
                                     <td>Type</td>
                                     <td>Optional</td>
+                                    <td>Description</td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -506,6 +954,12 @@
                                     </td>
 
 
+                                    <td>
+                                        <ul>
+<li>passed from request by AccessTokenGuard</li>
+</ul>
+
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>updateSelfDto</td>
@@ -518,6 +972,8 @@
                                     </td>
 
 
+                                    <td>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -549,6 +1005,8 @@
   Delete,
   UseGuards,
   Req,
+  NotFoundException,
+  Query,
 } from &#x27;@nestjs/common&#x27;;
 import { UsersService } from &#x27;./users.service&#x27;;
 import { CreateUserDto } from &#x27;./dto/create-user.dto&#x27;;
@@ -558,6 +1016,7 @@ import { Request } from &#x27;express&#x27;;
 import { ApiTags } from &#x27;@nestjs/swagger&#x27;;
 import { RolesGuard } from &#x27;../common/guards/roles.guard&#x27;;
 import { Roles } from &#x27;../common/decorators/roles.decorator&#x27;;
+import { HandleInviteDto } from &#x27;./dto/handle-invite.dto&#x27;;
 
 @ApiTags(&#x27;users&#x27;)
 @Controller(&#x27;users&#x27;)
@@ -567,7 +1026,7 @@ export class UsersController {
   /**
    * Creates user
    * @param {CreateUserDto} createUserDto
-   * @returns {UserDocument} user
+   * @returns {User} user
    *
    */
   @Post()
@@ -577,7 +1036,7 @@ export class UsersController {
 
   /**
    * Returns logged user&#x27;s data
-   * @returns {UserDocument} user data of the token owner
+   * @returns {User} user data of the token owner
    * @param req - from AccessTokenGuard
    */
   @UseGuards(AccessTokenGuard)
@@ -588,7 +1047,7 @@ export class UsersController {
 
   /**
    * Returns specified user&#x27;s data
-   * @returns {mongoose.document} - user data
+   * @returns {User} - user data
    * @param id {string} - ID of user
    */
   @Get(&#x27;:id&#x27;)
@@ -596,12 +1055,67 @@ export class UsersController {
     return this.usersService.findOne(id);
   }
 
+  /**
+   * Return specified user&#x27;s data
+   * @param username {string} - user&#x27;s username
+   */
+  @Get(&#x27;name/:username&#x27;)
+  async findOneByUsername(@Param(&#x27;username&#x27;) username: string) {
+    const user &#x3D; await this.usersService.findByUsername(username);
+    if (!user) {
+      throw new NotFoundException();
+    }
+    const cleared &#x3D; user.toObject();
+    delete cleared.refreshToken;
+    delete cleared.password;
+    return cleared;
+  }
+
+  @UseGuards(AccessTokenGuard)
+  @Post(&#x27;handleinvite&#x27;)
+  handleInvite(@Req() req: Request, @Body() handleInviteDto: HandleInviteDto) {
+    return this.usersService.handleInvite(
+      req.user[&#x27;username&#x27;],
+      handleInviteDto,
+    );
+  }
+
+  @Get(&#x27;search/user&#x27;)
+  searchByUsername(
+    @Query(&#x27;username&#x27;) username: string,
+    @Query(&#x27;team&#x27;) team: boolean,
+  ) {
+    // return { username, team };
+    return this.usersService.findLikeUsername(username, team);
+  }
+
+  /**
+   * Allows user to modify his data
+   * @param req - passed from request by AccessTokenGuard
+   * @param updateSelfDto
+   */
   @UseGuards(AccessTokenGuard)
   @Patch(&#x27;me&#x27;)
   update(@Req() req: Request, @Body() updateSelfDto: UserUpdateSelfDto) {
     return this.usersService.updateSelf(req.user[&#x27;username&#x27;], updateSelfDto);
   }
 
+  @UseGuards(AccessTokenGuard)
+  @Patch(&#x27;leaveTeam&#x27;)
+  leaveTeam(@Req() req: Request) {
+    return this.usersService.leaveTeam(req[&#x27;user&#x27;]);
+  }
+
+  @UseGuards(AccessTokenGuard)
+  @Delete(&#x27;msg/:index&#x27;)
+  deleteMsgAtIndex(@Req() req: Request, @Param(&#x27;index&#x27;) index: number) {
+    return this.usersService.deleteMsgAtIndex(index, req.user[&#x27;username&#x27;]);
+  }
+
+  /**
+   * Lets Admin remove user account
+   * @param id
+   */
   @Roles(&#x27;ADMIN&#x27;)
   @UseGuards(AccessTokenGuard, RolesGuard)
   @Delete(&#x27;:id&#x27;)

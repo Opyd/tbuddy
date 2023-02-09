@@ -99,13 +99,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/TeamsModule.html" data-type="entity-link" >TeamsModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#controllers-links-module-TeamsModule-9eb6d1aa800913d2ab32abb8f762af6b80e4fb45eca925a26f02e838d94f6d38d962b21a4e70f12dc25d9f4bc1c5b550e301bfe6bf63b105d70005d7fbb28d24"' : 'data-target="#xs-controllers-links-module-TeamsModule-9eb6d1aa800913d2ab32abb8f762af6b80e4fb45eca925a26f02e838d94f6d38d962b21a4e70f12dc25d9f4bc1c5b550e301bfe6bf63b105d70005d7fbb28d24"' }>
+                                            'data-target="#controllers-links-module-TeamsModule-099f6e3eb6f5bdf3b214b742aca1f0c99b9e1e601e024b3fad80572e3959a0c11b684007c787f5cae2cb5ea30eaf632b3fcf2380b477178b7a2de16250b29cd0"' : 'data-target="#xs-controllers-links-module-TeamsModule-099f6e3eb6f5bdf3b214b742aca1f0c99b9e1e601e024b3fad80572e3959a0c11b684007c787f5cae2cb5ea30eaf632b3fcf2380b477178b7a2de16250b29cd0"' }>
                                             <span class="icon ion-md-swap"></span>
                                             <span>Controllers</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="controllers-links-module-TeamsModule-9eb6d1aa800913d2ab32abb8f762af6b80e4fb45eca925a26f02e838d94f6d38d962b21a4e70f12dc25d9f4bc1c5b550e301bfe6bf63b105d70005d7fbb28d24"' :
-                                            'id="xs-controllers-links-module-TeamsModule-9eb6d1aa800913d2ab32abb8f762af6b80e4fb45eca925a26f02e838d94f6d38d962b21a4e70f12dc25d9f4bc1c5b550e301bfe6bf63b105d70005d7fbb28d24"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="controllers-links-module-TeamsModule-099f6e3eb6f5bdf3b214b742aca1f0c99b9e1e601e024b3fad80572e3959a0c11b684007c787f5cae2cb5ea30eaf632b3fcf2380b477178b7a2de16250b29cd0"' :
+                                            'id="xs-controllers-links-module-TeamsModule-099f6e3eb6f5bdf3b214b742aca1f0c99b9e1e601e024b3fad80572e3959a0c11b684007c787f5cae2cb5ea30eaf632b3fcf2380b477178b7a2de16250b29cd0"' }>
                                             <li class="link">
                                                 <a href="controllers/TeamsController.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >TeamsController</a>
                                             </li>
@@ -113,15 +113,46 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                     </li>
                                 <li class="chapter inner">
                                     <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                        'data-target="#injectables-links-module-TeamsModule-9eb6d1aa800913d2ab32abb8f762af6b80e4fb45eca925a26f02e838d94f6d38d962b21a4e70f12dc25d9f4bc1c5b550e301bfe6bf63b105d70005d7fbb28d24"' : 'data-target="#xs-injectables-links-module-TeamsModule-9eb6d1aa800913d2ab32abb8f762af6b80e4fb45eca925a26f02e838d94f6d38d962b21a4e70f12dc25d9f4bc1c5b550e301bfe6bf63b105d70005d7fbb28d24"' }>
+                                        'data-target="#injectables-links-module-TeamsModule-099f6e3eb6f5bdf3b214b742aca1f0c99b9e1e601e024b3fad80572e3959a0c11b684007c787f5cae2cb5ea30eaf632b3fcf2380b477178b7a2de16250b29cd0"' : 'data-target="#xs-injectables-links-module-TeamsModule-099f6e3eb6f5bdf3b214b742aca1f0c99b9e1e601e024b3fad80572e3959a0c11b684007c787f5cae2cb5ea30eaf632b3fcf2380b477178b7a2de16250b29cd0"' }>
                                         <span class="icon ion-md-arrow-round-down"></span>
                                         <span>Injectables</span>
                                         <span class="icon ion-ios-arrow-down"></span>
                                     </div>
-                                    <ul class="links collapse" ${ isNormalMode ? 'id="injectables-links-module-TeamsModule-9eb6d1aa800913d2ab32abb8f762af6b80e4fb45eca925a26f02e838d94f6d38d962b21a4e70f12dc25d9f4bc1c5b550e301bfe6bf63b105d70005d7fbb28d24"' :
-                                        'id="xs-injectables-links-module-TeamsModule-9eb6d1aa800913d2ab32abb8f762af6b80e4fb45eca925a26f02e838d94f6d38d962b21a4e70f12dc25d9f4bc1c5b550e301bfe6bf63b105d70005d7fbb28d24"' }>
+                                    <ul class="links collapse" ${ isNormalMode ? 'id="injectables-links-module-TeamsModule-099f6e3eb6f5bdf3b214b742aca1f0c99b9e1e601e024b3fad80572e3959a0c11b684007c787f5cae2cb5ea30eaf632b3fcf2380b477178b7a2de16250b29cd0"' :
+                                        'id="xs-injectables-links-module-TeamsModule-099f6e3eb6f5bdf3b214b742aca1f0c99b9e1e601e024b3fad80572e3959a0c11b684007c787f5cae2cb5ea30eaf632b3fcf2380b477178b7a2de16250b29cd0"' }>
                                         <li class="link">
                                             <a href="injectables/TeamsService.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >TeamsService</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </li>
+                            <li class="link">
+                                <a href="modules/TournamentsModule.html" data-type="entity-link" >TournamentsModule</a>
+                                    <li class="chapter inner">
+                                        <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
+                                            'data-target="#controllers-links-module-TournamentsModule-a111b962a8ca88a0ee714060ad413c976e29d3e43a03614123cd0d1e762765d82c12a19cfd322292afc68af707bf48519ed702d0e04822a0bbe866c3222ce85c"' : 'data-target="#xs-controllers-links-module-TournamentsModule-a111b962a8ca88a0ee714060ad413c976e29d3e43a03614123cd0d1e762765d82c12a19cfd322292afc68af707bf48519ed702d0e04822a0bbe866c3222ce85c"' }>
+                                            <span class="icon ion-md-swap"></span>
+                                            <span>Controllers</span>
+                                            <span class="icon ion-ios-arrow-down"></span>
+                                        </div>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="controllers-links-module-TournamentsModule-a111b962a8ca88a0ee714060ad413c976e29d3e43a03614123cd0d1e762765d82c12a19cfd322292afc68af707bf48519ed702d0e04822a0bbe866c3222ce85c"' :
+                                            'id="xs-controllers-links-module-TournamentsModule-a111b962a8ca88a0ee714060ad413c976e29d3e43a03614123cd0d1e762765d82c12a19cfd322292afc68af707bf48519ed702d0e04822a0bbe866c3222ce85c"' }>
+                                            <li class="link">
+                                                <a href="controllers/TournamentsController.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >TournamentsController</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                <li class="chapter inner">
+                                    <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
+                                        'data-target="#injectables-links-module-TournamentsModule-a111b962a8ca88a0ee714060ad413c976e29d3e43a03614123cd0d1e762765d82c12a19cfd322292afc68af707bf48519ed702d0e04822a0bbe866c3222ce85c"' : 'data-target="#xs-injectables-links-module-TournamentsModule-a111b962a8ca88a0ee714060ad413c976e29d3e43a03614123cd0d1e762765d82c12a19cfd322292afc68af707bf48519ed702d0e04822a0bbe866c3222ce85c"' }>
+                                        <span class="icon ion-md-arrow-round-down"></span>
+                                        <span>Injectables</span>
+                                        <span class="icon ion-ios-arrow-down"></span>
+                                    </div>
+                                    <ul class="links collapse" ${ isNormalMode ? 'id="injectables-links-module-TournamentsModule-a111b962a8ca88a0ee714060ad413c976e29d3e43a03614123cd0d1e762765d82c12a19cfd322292afc68af707bf48519ed702d0e04822a0bbe866c3222ce85c"' :
+                                        'id="xs-injectables-links-module-TournamentsModule-a111b962a8ca88a0ee714060ad413c976e29d3e43a03614123cd0d1e762765d82c12a19cfd322292afc68af707bf48519ed702d0e04822a0bbe866c3222ce85c"' }>
+                                        <li class="link">
+                                            <a href="injectables/TournamentsService.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >TournamentsService</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -130,13 +161,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/UsersModule.html" data-type="entity-link" >UsersModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#controllers-links-module-UsersModule-676961445f06dff5d442c338e6961e4b23813a921b6253fb95c9980a17dcc7d739627284d1279e488e117be656e7da3774f9dbe7265a452ee95e34f10ad8be84"' : 'data-target="#xs-controllers-links-module-UsersModule-676961445f06dff5d442c338e6961e4b23813a921b6253fb95c9980a17dcc7d739627284d1279e488e117be656e7da3774f9dbe7265a452ee95e34f10ad8be84"' }>
+                                            'data-target="#controllers-links-module-UsersModule-fdf4ab5df37a5a1c9aa39fafef9c57c1356809ec5e221e8a191722f1decfb5cb2af4a571e29bd93057c977427a55ebeb0ee496212dc16174f2df0f490a0e4341"' : 'data-target="#xs-controllers-links-module-UsersModule-fdf4ab5df37a5a1c9aa39fafef9c57c1356809ec5e221e8a191722f1decfb5cb2af4a571e29bd93057c977427a55ebeb0ee496212dc16174f2df0f490a0e4341"' }>
                                             <span class="icon ion-md-swap"></span>
                                             <span>Controllers</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="controllers-links-module-UsersModule-676961445f06dff5d442c338e6961e4b23813a921b6253fb95c9980a17dcc7d739627284d1279e488e117be656e7da3774f9dbe7265a452ee95e34f10ad8be84"' :
-                                            'id="xs-controllers-links-module-UsersModule-676961445f06dff5d442c338e6961e4b23813a921b6253fb95c9980a17dcc7d739627284d1279e488e117be656e7da3774f9dbe7265a452ee95e34f10ad8be84"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="controllers-links-module-UsersModule-fdf4ab5df37a5a1c9aa39fafef9c57c1356809ec5e221e8a191722f1decfb5cb2af4a571e29bd93057c977427a55ebeb0ee496212dc16174f2df0f490a0e4341"' :
+                                            'id="xs-controllers-links-module-UsersModule-fdf4ab5df37a5a1c9aa39fafef9c57c1356809ec5e221e8a191722f1decfb5cb2af4a571e29bd93057c977427a55ebeb0ee496212dc16174f2df0f490a0e4341"' }>
                                             <li class="link">
                                                 <a href="controllers/UsersController.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >UsersController</a>
                                             </li>
@@ -144,13 +175,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                     </li>
                                 <li class="chapter inner">
                                     <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                        'data-target="#injectables-links-module-UsersModule-676961445f06dff5d442c338e6961e4b23813a921b6253fb95c9980a17dcc7d739627284d1279e488e117be656e7da3774f9dbe7265a452ee95e34f10ad8be84"' : 'data-target="#xs-injectables-links-module-UsersModule-676961445f06dff5d442c338e6961e4b23813a921b6253fb95c9980a17dcc7d739627284d1279e488e117be656e7da3774f9dbe7265a452ee95e34f10ad8be84"' }>
+                                        'data-target="#injectables-links-module-UsersModule-fdf4ab5df37a5a1c9aa39fafef9c57c1356809ec5e221e8a191722f1decfb5cb2af4a571e29bd93057c977427a55ebeb0ee496212dc16174f2df0f490a0e4341"' : 'data-target="#xs-injectables-links-module-UsersModule-fdf4ab5df37a5a1c9aa39fafef9c57c1356809ec5e221e8a191722f1decfb5cb2af4a571e29bd93057c977427a55ebeb0ee496212dc16174f2df0f490a0e4341"' }>
                                         <span class="icon ion-md-arrow-round-down"></span>
                                         <span>Injectables</span>
                                         <span class="icon ion-ios-arrow-down"></span>
                                     </div>
-                                    <ul class="links collapse" ${ isNormalMode ? 'id="injectables-links-module-UsersModule-676961445f06dff5d442c338e6961e4b23813a921b6253fb95c9980a17dcc7d739627284d1279e488e117be656e7da3774f9dbe7265a452ee95e34f10ad8be84"' :
-                                        'id="xs-injectables-links-module-UsersModule-676961445f06dff5d442c338e6961e4b23813a921b6253fb95c9980a17dcc7d739627284d1279e488e117be656e7da3774f9dbe7265a452ee95e34f10ad8be84"' }>
+                                    <ul class="links collapse" ${ isNormalMode ? 'id="injectables-links-module-UsersModule-fdf4ab5df37a5a1c9aa39fafef9c57c1356809ec5e221e8a191722f1decfb5cb2af4a571e29bd93057c977427a55ebeb0ee496212dc16174f2df0f490a0e4341"' :
+                                        'id="xs-injectables-links-module-UsersModule-fdf4ab5df37a5a1c9aa39fafef9c57c1356809ec5e221e8a191722f1decfb5cb2af4a571e29bd93057c977427a55ebeb0ee496212dc16174f2df0f490a0e4341"' }>
                                         <li class="link">
                                             <a href="injectables/UsersService.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >UsersService</a>
                                         </li>
@@ -174,6 +205,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                     <a href="controllers/TeamsController.html" data-type="entity-link" >TeamsController</a>
                                 </li>
                                 <li class="link">
+                                    <a href="controllers/TournamentsController.html" data-type="entity-link" >TournamentsController</a>
+                                </li>
+                                <li class="link">
                                     <a href="controllers/UsersController.html" data-type="entity-link" >UsersController</a>
                                 </li>
                             </ul>
@@ -193,19 +227,49 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="classes/CreateTeamDto.html" data-type="entity-link" >CreateTeamDto</a>
                             </li>
                             <li class="link">
+                                <a href="classes/CreateTournamentDto.html" data-type="entity-link" >CreateTournamentDto</a>
+                            </li>
+                            <li class="link">
                                 <a href="classes/CreateUserDto.html" data-type="entity-link" >CreateUserDto</a>
                             </li>
                             <li class="link">
                                 <a href="classes/DetailsDto.html" data-type="entity-link" >DetailsDto</a>
                             </li>
                             <li class="link">
+                                <a href="classes/HandleInviteDto.html" data-type="entity-link" >HandleInviteDto</a>
+                            </li>
+                            <li class="link">
+                                <a href="classes/InviteUserDto.html" data-type="entity-link" >InviteUserDto</a>
+                            </li>
+                            <li class="link">
+                                <a href="classes/KickFromTournamentDto.html" data-type="entity-link" >KickFromTournamentDto</a>
+                            </li>
+                            <li class="link">
+                                <a href="classes/Match.html" data-type="entity-link" >Match</a>
+                            </li>
+                            <li class="link">
+                                <a href="classes/MatchResultDto.html" data-type="entity-link" >MatchResultDto</a>
+                            </li>
+                            <li class="link">
+                                <a href="classes/Stage.html" data-type="entity-link" >Stage</a>
+                            </li>
+                            <li class="link">
                                 <a href="classes/Team.html" data-type="entity-link" >Team</a>
+                            </li>
+                            <li class="link">
+                                <a href="classes/TeamEventsHistory.html" data-type="entity-link" >TeamEventsHistory</a>
                             </li>
                             <li class="link">
                                 <a href="classes/TeamHistory.html" data-type="entity-link" >TeamHistory</a>
                             </li>
                             <li class="link">
+                                <a href="classes/Tournament.html" data-type="entity-link" >Tournament</a>
+                            </li>
+                            <li class="link">
                                 <a href="classes/UpdateTeamDto.html" data-type="entity-link" >UpdateTeamDto</a>
+                            </li>
+                            <li class="link">
+                                <a href="classes/UpdateTournamentDto.html" data-type="entity-link" >UpdateTournamentDto</a>
                             </li>
                             <li class="link">
                                 <a href="classes/UpdateUserDto.html" data-type="entity-link" >UpdateUserDto</a>
@@ -245,6 +309,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                     <a href="injectables/TeamsService.html" data-type="entity-link" >TeamsService</a>
                                 </li>
                                 <li class="link">
+                                    <a href="injectables/TournamentsService.html" data-type="entity-link" >TournamentsService</a>
+                                </li>
+                                <li class="link">
                                     <a href="injectables/UsersService.html" data-type="entity-link" >UsersService</a>
                                 </li>
                                 <li class="link">
@@ -273,6 +340,15 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             <span class="icon ion-ios-arrow-down"></span>
                         </div>
                         <ul class="links collapse " ${ isNormalMode ? ' id="interfaces-links"' : 'id="xs-interfaces-links"' }>
+                            <li class="link">
+                                <a href="interfaces/MatchInterface.html" data-type="entity-link" >MatchInterface</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/StageInterface.html" data-type="entity-link" >StageInterface</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/TeamEventsInterface.html" data-type="entity-link" >TeamEventsInterface</a>
+                            </li>
                             <li class="link">
                                 <a href="interfaces/TeamHistoryInterface.html" data-type="entity-link" >TeamHistoryInterface</a>
                             </li>

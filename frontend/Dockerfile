@@ -10,7 +10,7 @@ RUN yarn install \
   --non-interactive \
   --production=false
 
-RUN yarn build
+RUN yarn generate
 
 RUN rm -rf node_modules && \
   NODE_ENV=production yarn install \
@@ -19,7 +19,7 @@ RUN rm -rf node_modules && \
   --non-interactive \
   --production=true
 
-FROM node:lts
+FROM node:16-alpine
 
 WORKDIR /app
 

@@ -27,17 +27,6 @@ export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
   /**
-   * Creates user
-   * @param {CreateUserDto} createUserDto
-   * @returns {User} user
-   *
-   */
-  @Post()
-  create(@Body() createUserDto: CreateUserDto) {
-    return this.usersService.create(createUserDto);
-  }
-
-  /**
    * Returns logged user's data
    * @returns {User} user data of the token owner
    * @param req - from AccessTokenGuard

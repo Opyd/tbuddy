@@ -69,14 +69,6 @@ export class TeamsService {
       .limit(10);
   }
 
-  async isTeamOwnedByUser(userId: string) {
-    const team = await this.teamModel.find({ owner: userId });
-    if (!team) {
-      return false;
-    }
-    return true;
-  }
-
   async checkIfTeamExists(tag: string) {
     const team = await this.teamModel.findOne({ tag }).exec();
 

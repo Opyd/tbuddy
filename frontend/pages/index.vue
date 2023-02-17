@@ -38,7 +38,7 @@
     </v-row>
     <v-row justify="center">
       <v-col cols="8" sm="8" md="4">
-        <v-card elevation="5" class="tw-p-3">
+        <v-card elevation="5" class="tw-p-3 fill-height">
           <v-row justify="center" no-gutters>
             <v-col
               align="center"
@@ -61,7 +61,7 @@
         </v-card>
       </v-col>
       <v-col cols="8" sm="8" md="4">
-        <v-card elevation="5" class="tw-p-3">
+        <v-card elevation="5" class="tw-p-3 fill-height">
           <v-row justify="center" no-gutters>
             <v-col
               align="center"
@@ -84,7 +84,7 @@
         </v-card>
       </v-col>
       <v-col cols="8" sm="8" md="4">
-        <v-card elevation="5" class="tw-p-3">
+        <v-card elevation="5" class="tw-p-3 fill-height">
           <v-row justify="center" no-gutters>
             <v-col
               align="center"

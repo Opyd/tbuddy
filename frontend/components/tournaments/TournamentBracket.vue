@@ -58,6 +58,17 @@
                 v-if="rounds.indexOf(round) < roundTournament.length"
                 class="match__content"
                 :style="matchStyle"
+                :winner="matchIndex % 2 === 0
+                    ? roundTournament[rounds.indexOf(round)].matches[
+                        Math.floor(matchIndex / 2)
+                      ].teamA === roundTournament[rounds.indexOf(round)].matches[
+                        Math.floor(matchIndex / 2)
+                      ].winner
+                    : roundTournament[rounds.indexOf(round)].matches[
+                        Math.floor(matchIndex / 2)
+                      ].teamB === roundTournament[rounds.indexOf(round)].matches[
+                        Math.floor(matchIndex / 2)
+                      ].winner"
                 :team-tag="
                   matchIndex % 2 === 0
                     ? roundTournament[rounds.indexOf(round)].matches[
@@ -76,6 +87,7 @@
                 v-else
                 class="match__content tw-rounded"
                 :style="matchStyle"
+                winner
                 :team-tag="
                   roundTournament[roundTournament.length - 1].matches[0].winner
                 " />

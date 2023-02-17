@@ -3,13 +3,13 @@ version: '3.7'
 services:
 
   tournament_nginx:
-      container_name: tournament_nginx
-      build: ./nginx
-      ports:
-      - '80:80'
-      depends_on:
-      - tournament_backend
-      - tournament_frontend
+    container_name: tournament_nginx
+    build: ./nginx
+    ports:
+    - '80:80'
+    depends_on:
+    - tournament_backend
+    - tournament_frontend
 
   tournament_backend:
     container_name: tournament_backend
@@ -29,8 +29,8 @@ services:
     build: 
       context: ./frontend
       dockerfile: Dockerfile
-    expose:
-     - "3000"    
+    ports:
+     - 3000:3000 
   
 
   tournament_db:
@@ -44,4 +44,4 @@ services:
     ports:
       - 27017:27017
     volumes:
-      - ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+      - ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro 

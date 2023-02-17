@@ -12,18 +12,28 @@ import { ApiTags } from '@nestjs/swagger';
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
+  /**
+   * Endpoint used to create new user account
+   * @param createUserDto
+   * @returns JWT tokens
+   */
   @Post('signup')
   signup(@Body() createUserDto: CreateUserDto) {
     return this.authService.signUp(createUserDto);
   }
 
+  /**
+   * Allows user to log in
+   * @param authDto
+   * @returns JWT Tokens
+   */
   @Post('signin')
   signin(@Body() authDto: AuthDto) {
     return this.authService.signIn(authDto);
   }
 
   /**
-   *
+   * Allows user to logout
    * @param req Extracting user object from request
    */
   @UseGuards(AccessTokenGuard)
@@ -31,6 +41,11 @@ export class AuthController {
   logout(@Req() req: Request) {
     this.authService.logout(req.user['sub']);
   }
+
+  /**
+   * Refreshes user's AccessToken using RefreshToken
+   * @param req
+   */
 
   @UseGuards(RefreshTokenGuard)
   @Post('refresh')

@@ -54,7 +54,7 @@ export class TournamentsController {
   }
 
   @UseGuards(AccessTokenGuard)
-  @Patch('kick/:tournamentid')
+  @Delete('kick/:tournamentid')
   async kickFromTournament(
     @Req() req: Request,
     @Param('tournamentid') tournamentid: string,

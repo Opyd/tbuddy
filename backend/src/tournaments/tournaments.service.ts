@@ -168,10 +168,10 @@ export class TournamentsService {
      */
 
     let stageCounter = 0;
-    let matchesPerRound = participants.length / 2;
+    let MATCHES_PER_ROUND = participants.length / 2;
     while (stagesNr > 0) {
       const newStage = { finished: false, stageNr: stageCounter, matches: [] };
-      for (let i = 0; i < matchesPerRound; i++) {
+      for (let i = 0; i < MATCHES_PER_ROUND; i++) {
         newStage.matches.push({
           teamA: null,
           teamB: null,
@@ -180,7 +180,7 @@ export class TournamentsService {
           finished: false,
         });
       }
-      matchesPerRound = matchesPerRound / 2;
+      MATCHES_PER_ROUND = MATCHES_PER_ROUND / 2;
       stages.push(newStage);
       stageCounter++;
       stagesNr--;

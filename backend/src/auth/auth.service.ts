@@ -8,13 +8,16 @@ import { AuthDto } from './dto/auth.dto';
 import { UserRoles } from '../users/schemas/user.schema';
 
 /**
- * @typedef {Object} Tokens
- * @property {number} accessToken - Access Token
- * @property {number} refreshToken - Refresh Token
+ * Service for AuthModule
  */
-
 @Injectable()
 export class AuthService {
+  /**
+   * Injecting required services
+   * @param userService
+   * @param jwtService
+   * @param configService
+   */
   constructor(
     private userService: UsersService,
     private jwtService: JwtService,

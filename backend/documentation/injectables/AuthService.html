@@ -62,6 +62,13 @@
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Service for AuthModule</p>
+
+            </p>
 
 
 
@@ -125,12 +132,14 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/auth/auth.service.ts:17</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/auth/auth.service.ts:14</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Injecting required services</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -214,8 +223,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="113"
-                            class="link-to-prism">src/auth/auth.service.ts:113</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="116"
+                            class="link-to-prism">src/auth/auth.service.ts:116</a></div>
                 </td>
             </tr>
 
@@ -312,8 +321,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="89"
-                            class="link-to-prism">src/auth/auth.service.ts:89</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="92"
+                            class="link-to-prism">src/auth/auth.service.ts:92</a></div>
                 </td>
             </tr>
 
@@ -386,8 +395,8 @@ Sets user refreshToken to NULL</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="150"
-                            class="link-to-prism">src/auth/auth.service.ts:150</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="153"
+                            class="link-to-prism">src/auth/auth.service.ts:153</a></div>
                 </td>
             </tr>
 
@@ -472,8 +481,8 @@ Sets user refreshToken to NULL</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="63"
-                            class="link-to-prism">src/auth/auth.service.ts:63</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="66"
+                            class="link-to-prism">src/auth/auth.service.ts:66</a></div>
                 </td>
             </tr>
 
@@ -546,8 +555,8 @@ Sets user refreshToken to NULL</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="29"
-                            class="link-to-prism">src/auth/auth.service.ts:29</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="32"
+                            class="link-to-prism">src/auth/auth.service.ts:32</a></div>
                 </td>
             </tr>
 
@@ -620,8 +629,8 @@ Sets user refreshToken to NULL</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="99"
-                            class="link-to-prism">src/auth/auth.service.ts:99</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="102"
+                            class="link-to-prism">src/auth/auth.service.ts:102</a></div>
                 </td>
             </tr>
 
@@ -699,13 +708,16 @@ import { AuthDto } from &#x27;./dto/auth.dto&#x27;;
 import { UserRoles } from &#x27;../users/schemas/user.schema&#x27;;
 
 /**
- * @typedef {Object} Tokens
- * @property {number} accessToken - Access Token
- * @property {number} refreshToken - Refresh Token
+ * Service for AuthModule
  */
-
 @Injectable()
 export class AuthService {
+  /**
+   * Injecting required services
+   * @param userService
+   * @param jwtService
+   * @param configService
+   */
   constructor(
     private userService: UsersService,
     private jwtService: JwtService,

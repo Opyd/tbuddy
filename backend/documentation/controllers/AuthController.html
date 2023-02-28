@@ -66,6 +66,13 @@
             </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Controller for AuthModule with all the endpoints</p>
+
+            </p>
 
 
 
@@ -139,14 +146,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="31"
-                            class="link-to-prism">src/auth/auth.controller.ts:31</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="48"
+                            class="link-to-prism">src/auth/auth.controller.ts:48</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Allows user to logout</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -220,14 +229,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="37"
-                            class="link-to-prism">src/auth/auth.controller.ts:37</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="58"
+                            class="link-to-prism">src/auth/auth.controller.ts:58</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Refreshes user&#39;s AccessToken using RefreshToken</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -296,14 +307,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="21"
-                            class="link-to-prism">src/auth/auth.controller.ts:21</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="38"
+                            class="link-to-prism">src/auth/auth.controller.ts:38</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Allows user to log in</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -339,7 +352,8 @@
 
                     </div>
                     <div class="io-description">
-                        
+                        <p>JWT Tokens</p>
+
                     </div>
                 </td>
             </tr>
@@ -372,14 +386,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="16"
-                            class="link-to-prism">src/auth/auth.controller.ts:16</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="28"
+                            class="link-to-prism">src/auth/auth.controller.ts:28</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Endpoint used to create new user account</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -415,7 +431,8 @@
 
                     </div>
                     <div class="io-description">
-                        
+                        <p>JWT tokens</p>
+
                     </div>
                 </td>
             </tr>
@@ -434,23 +451,40 @@ import { AccessTokenGuard } from &#x27;../common/guards/accessToken.guard&#x27;;
 import { RefreshTokenGuard } from &#x27;../common/guards/refreshToken.guard&#x27;;
 import { ApiTags } from &#x27;@nestjs/swagger&#x27;;
 
+/**
+ * Controller for AuthModule with all the endpoints
+ */
 @ApiTags(&#x27;auth&#x27;)
 @Controller(&#x27;auth&#x27;)
 export class AuthController {
+  /**
+   * Injecting service
+   * @param authService {AuthService}
+   */
   constructor(private readonly authService: AuthService) {}
 
+  /**
+   * Endpoint used to create new user account
+   * @param createUserDto
+   * @returns JWT tokens
+   */
   @Post(&#x27;signup&#x27;)
   signup(@Body() createUserDto: CreateUserDto) {
     return this.authService.signUp(createUserDto);
   }
 
+  /**
+   * Allows user to log in
+   * @param authDto
+   * @returns JWT Tokens
+   */
   @Post(&#x27;signin&#x27;)
   signin(@Body() authDto: AuthDto) {
     return this.authService.signIn(authDto);
   }
 
   /**
-   *
+   * Allows user to logout
    * @param req Extracting user object from request
    */
   @UseGuards(AccessTokenGuard)
@@ -459,6 +493,10 @@ export class AuthController {
     this.authService.logout(req.user[&#x27;sub&#x27;]);
   }
 
+  /**
+   * Refreshes user&#x27;s AccessToken using RefreshToken
+   * @param req
+   */
   @UseGuards(RefreshTokenGuard)
   @Post(&#x27;refresh&#x27;)
   refreshTokens(@Req() req: Request) {

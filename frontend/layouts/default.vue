@@ -34,7 +34,7 @@
       </template>
     </v-navigation-drawer>
     <v-app-bar :clipped-left="clipped" fixed app>
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
+      <v-app-bar-nav-icon aria-label="Navigation" @click.stop="drawer = !drawer" />
       <v-toolbar-title
         ><v-icon left>mdi-trophy</v-icon>
         <span style="font-family: 'Unbounded', sans-serif">{{
@@ -46,6 +46,7 @@
         class="tw-mr-2"
         rounded
         small
+        aria-label="theme"
         @click="$vuetify.theme.dark = !$vuetify.theme.dark">
         <v-icon>mdi-theme-light-dark</v-icon>
       </v-btn>
@@ -59,7 +60,7 @@
       </div>
       <div v-if="loggedIn">
         <nuxt-link :to="`/users/${$auth.user.username}`">
-          <v-btn color="primary">
+          <v-btn color="primary" aria-label="Account">
             <v-icon
               :left="
                 $vuetify.breakpoint.name !== 'sm' &&

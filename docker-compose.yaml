@@ -1,7 +1,5 @@
 version: '3.7'
-
 services:
-
   tournament_nginx:
     container_name: tournament_nginx
     build: ./nginx
@@ -10,7 +8,6 @@ services:
     depends_on:
     - tournament_backend
     - tournament_frontend
-
   tournament_backend:
     container_name: tournament_backend
     # Hostname jest bezpośrednio wykorzystany na froncie w nuxt.config
@@ -22,17 +19,15 @@ services:
       - ./backend/.env
     ports:
       - 3100:3100
-
-
+    depends_on:
+      - tournament_db
   tournament_frontend:
     container_name: tournament_frontend
     build: 
       context: ./frontend
       dockerfile: Dockerfile
     ports:
-     - 3000:3000 
-  
-
+     - 3000:3000
   tournament_db:
     container_name: tournament_db
     image: mongo

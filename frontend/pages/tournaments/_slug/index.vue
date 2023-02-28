@@ -102,7 +102,7 @@
                   class="tw-max-h-52 tw-overflow-y-auto tw-overflow-x-hidden">
                   <v-list-item
                     v-for="team in tournament.participants"
-                    id="alternateColors"
+                    :id="team"
                     :key="team">
                     <v-col cols="10"
                       ><span>{{ team }}</span></v-col

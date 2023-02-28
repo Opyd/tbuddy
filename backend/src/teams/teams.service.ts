@@ -180,8 +180,4 @@ export class TeamsService {
       .updateOne({ $pull: { invitedUsernames: user.username } }, { new: true })
       .exec();
   }
-
-  remove(id: string) {
-    return this.teamModel.findByIdAndRemove(id).exec();
-  }
 }

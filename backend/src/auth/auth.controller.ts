@@ -7,9 +7,16 @@ import { AccessTokenGuard } from '../common/guards/accessToken.guard';
 import { RefreshTokenGuard } from '../common/guards/refreshToken.guard';
 import { ApiTags } from '@nestjs/swagger';
 
+/**
+ * Controller for AuthModule with all the endpoints
+ */
 @ApiTags('auth')
 @Controller('auth')
 export class AuthController {
+  /**
+   * Injecting service
+   * @param authService {AuthService}
+   */
   constructor(private readonly authService: AuthService) {}
 
   /**
@@ -46,7 +53,6 @@ export class AuthController {
    * Refreshes user's AccessToken using RefreshToken
    * @param req
    */
-
   @UseGuards(RefreshTokenGuard)
   @Post('refresh')
   refreshTokens(@Req() req: Request) {

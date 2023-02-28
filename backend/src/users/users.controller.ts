@@ -12,7 +12,6 @@ import {
   Query,
 } from '@nestjs/common';
 import { UsersService } from './users.service';
-import { CreateUserDto } from './dto/create-user.dto';
 import { UserUpdateSelfDto } from './dto/user-update-self.dto';
 import { AccessTokenGuard } from '../common/guards/accessToken.guard';
 import { Request } from 'express';
@@ -21,9 +20,16 @@ import { RolesGuard } from '../common/guards/roles.guard';
 import { Roles } from '../common/decorators/roles.decorator';
 import { HandleInviteDto } from './dto/handle-invite.dto';
 
+/**
+ * Controller for Users Module, for endpoints specific to user's actions
+ */
 @ApiTags('users')
 @Controller('users')
 export class UsersController {
+  /**
+   * Injecting service
+   * @param usersService {UsersService}
+   */
   constructor(private readonly usersService: UsersService) {}
 
   /**
@@ -63,6 +69,11 @@ export class UsersController {
     return cleared;
   }
 
+  /**
+   * Allows user to accept/decline invite
+   * @param req
+   * @param handleInviteDto {HandleInviteDto}
+   */
   @UseGuards(AccessTokenGuard)
   @Post('handleinvite')
   handleInvite(@Req() req: Request, @Body() handleInviteDto: HandleInviteDto) {
@@ -72,12 +83,16 @@ export class UsersController {
     );
   }
 
+  /**
+   * Used for searching users
+   * @param username {String}
+   * @param team {String} - if present, will look for user that are also in teams
+   */
   @Get('search/user')
   searchByUsername(
     @Query('username') username: string,
     @Query('team') team: boolean,
   ) {
-    // return { username, team };
     return this.usersService.findLikeUsername(username, team);
   }
 
@@ -92,26 +107,24 @@ export class UsersController {
     return this.usersService.updateSelf(req.user['username'], updateSelfDto);
   }
 
+  /**
+   * Allows user to leave the team
+   * @param req
+   */
   @UseGuards(AccessTokenGuard)
   @Patch('leaveTeam')
   leaveTeam(@Req() req: Request) {
     return this.usersService.leaveTeam(req['user']);
   }
 
+  /**
+   * Deletes msg from user's inbox
+   * @param req
+   * @param index {number}
+   */
   @UseGuards(AccessTokenGuard)
   @Delete('msg/:index')
   deleteMsgAtIndex(@Req() req: Request, @Param('index') index: number) {
     return this.usersService.deleteMsgAtIndex(index, req.user['username']);
-  }
-
-  /**
-   * Lets Admin remove user account
-   * @param id
-   */
-  @Roles('ADMIN')
-  @UseGuards(AccessTokenGuard, RolesGuard)
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.usersService.remove(id);
   }
 }

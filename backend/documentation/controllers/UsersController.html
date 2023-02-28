@@ -66,6 +66,13 @@
             </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Controller for Users Module, for endpoints specific to user&#39;s actions</p>
+
+            </p>
 
 
 
@@ -83,9 +90,6 @@
                 <tr>
                     <td class="col-md-4">
                         <ul class="index-list">
-                            <li>
-                                <a href="#create" >create</a>
-                            </li>
                             <li>
                                 <a href="#deleteMsgAtIndex" >deleteMsgAtIndex</a>
                             </li>
@@ -105,9 +109,6 @@
                             </li>
                             <li>
                                 <a href="#leaveTeam" >leaveTeam</a>
-                            </li>
-                            <li>
-                                <a href="#remove" >remove</a>
                             </li>
                             <li>
                                 <a href="#searchByUsername" >searchByUsername</a>
@@ -136,85 +137,6 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="create"></a>
-                    <span class="name">
-                        <span ><b>create</b></span>
-                        <a href="#create"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-<code>create(createUserDto: <a href="../classes/CreateUserDto.html" target="_self">CreateUserDto</a>)</code>
-                </td>
-            </tr>
-
-            <tr>
-                <td class="col-md-4">
-                    <b>Decorators : </b>
-                    <br />
-                    <code>@Post()<br /></code>
-                </td>
-            </tr>
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="36"
-                            class="link-to-prism">src/users/users.controller.ts:36</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-description"><p>Creates user</p>
-</div>
-
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>createUserDto</td>
-                                    <td>
-                                                <code><a href="../classes/CreateUserDto.html" target="_self" >CreateUserDto</a></code>
-                                    </td>
-
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
-
-                    </div>
-                    <div class="io-description">
-                        <p>user</p>
-
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
                     <a name="deleteMsgAtIndex"></a>
                     <span class="name">
                         <span ><b>deleteMsgAtIndex</b></span>
@@ -238,14 +160,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="114"
-                            class="link-to-prism">src/users/users.controller.ts:114</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="127"
+                            class="link-to-prism">src/users/users.controller.ts:127</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Deletes msg from user&#39;s inbox</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -328,8 +252,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="47"
-                            class="link-to-prism">src/users/users.controller.ts:47</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="42"
+                            class="link-to-prism">src/users/users.controller.ts:42</a></div>
                 </td>
             </tr>
 
@@ -414,8 +338,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="57"
-                            class="link-to-prism">src/users/users.controller.ts:57</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="52"
+                            class="link-to-prism">src/users/users.controller.ts:52</a></div>
                 </td>
             </tr>
 
@@ -504,8 +428,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="66"
-                            class="link-to-prism">src/users/users.controller.ts:66</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="61"
+                            class="link-to-prism">src/users/users.controller.ts:61</a></div>
                 </td>
             </tr>
 
@@ -597,6 +521,8 @@
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Allows user to accept/decline invite</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -677,14 +603,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="108"
-                            class="link-to-prism">src/users/users.controller.ts:108</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="116"
+                            class="link-to-prism">src/users/users.controller.ts:116</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Allows user to leave the team</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -702,84 +630,6 @@
                                     <td>req</td>
                                     <td>
                                             <code>Request</code>
-                                    </td>
-
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
-
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="remove"></a>
-                    <span class="name">
-                        <span ><b>remove</b></span>
-                        <a href="#remove"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-<code>remove(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
-                </td>
-            </tr>
-
-            <tr>
-                <td class="col-md-4">
-                    <b>Decorators : </b>
-                    <br />
-                    <code>@Roles(&#x27;ADMIN&#x27;)<br />@UseGuards(AccessTokenGuard, RolesGuard)<br />@Delete(&#x27;:id&#x27;)<br /></code>
-                </td>
-            </tr>
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="125"
-                            class="link-to-prism">src/users/users.controller.ts:125</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-description"><p>Lets Admin remove user account</p>
-</div>
-
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>id</td>
-                                    <td>
-                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
                                     </td>
 
                                     <td>
@@ -831,14 +681,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="87"
-                            class="link-to-prism">src/users/users.controller.ts:87</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="92"
+                            class="link-to-prism">src/users/users.controller.ts:92</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Used for searching users</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -849,6 +701,7 @@
                                     <td>Name</td>
                                     <td>Type</td>
                                     <td>Optional</td>
+                                    <td>Description</td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -863,6 +716,8 @@
                                     </td>
 
 
+                                    <td>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>team</td>
@@ -875,6 +730,12 @@
                                     </td>
 
 
+                                    <td>
+                                        <ul>
+<li>if present, will look for user that are also in teams</li>
+</ul>
+
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -919,8 +780,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="102"
-                            class="link-to-prism">src/users/users.controller.ts:102</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="106"
+                            class="link-to-prism">src/users/users.controller.ts:106</a></div>
                 </td>
             </tr>
 
@@ -1009,7 +870,6 @@
   Query,
 } from &#x27;@nestjs/common&#x27;;
 import { UsersService } from &#x27;./users.service&#x27;;
-import { CreateUserDto } from &#x27;./dto/create-user.dto&#x27;;
 import { UserUpdateSelfDto } from &#x27;./dto/user-update-self.dto&#x27;;
 import { AccessTokenGuard } from &#x27;../common/guards/accessToken.guard&#x27;;
 import { Request } from &#x27;express&#x27;;
@@ -1018,21 +878,17 @@ import { RolesGuard } from &#x27;../common/guards/roles.guard&#x27;;
 import { Roles } from &#x27;../common/decorators/roles.decorator&#x27;;
 import { HandleInviteDto } from &#x27;./dto/handle-invite.dto&#x27;;
 
+/**
+ * Controller for Users Module, for endpoints specific to user&#x27;s actions
+ */
 @ApiTags(&#x27;users&#x27;)
 @Controller(&#x27;users&#x27;)
 export class UsersController {
-  constructor(private readonly usersService: UsersService) {}
-
   /**
-   * Creates user
-   * @param {CreateUserDto} createUserDto
-   * @returns {User} user
-   *
+   * Injecting service
+   * @param usersService {UsersService}
    */
-  @Post()
-  create(@Body() createUserDto: CreateUserDto) {
-    return this.usersService.create(createUserDto);
-  }
+  constructor(private readonly usersService: UsersService) {}
 
   /**
    * Returns logged user&#x27;s data
@@ -1071,6 +927,11 @@ export class UsersController {
     return cleared;
   }
 
+  /**
+   * Allows user to accept/decline invite
+   * @param req
+   * @param handleInviteDto {HandleInviteDto}
+   */
   @UseGuards(AccessTokenGuard)
   @Post(&#x27;handleinvite&#x27;)
   handleInvite(@Req() req: Request, @Body() handleInviteDto: HandleInviteDto) {
@@ -1080,12 +941,16 @@ export class UsersController {
     );
   }
 
+  /**
+   * Used for searching users
+   * @param username {String}
+   * @param team {String} - if present, will look for user that are also in teams
+   */
   @Get(&#x27;search/user&#x27;)
   searchByUsername(
     @Query(&#x27;username&#x27;) username: string,
     @Query(&#x27;team&#x27;) team: boolean,
   ) {
-    // return { username, team };
     return this.usersService.findLikeUsername(username, team);
   }
 
@@ -1100,27 +965,25 @@ export class UsersController {
     return this.usersService.updateSelf(req.user[&#x27;username&#x27;], updateSelfDto);
   }
 
+  /**
+   * Allows user to leave the team
+   * @param req
+   */
   @UseGuards(AccessTokenGuard)
   @Patch(&#x27;leaveTeam&#x27;)
   leaveTeam(@Req() req: Request) {
     return this.usersService.leaveTeam(req[&#x27;user&#x27;]);
   }
 
+  /**
+   * Deletes msg from user&#x27;s inbox
+   * @param req
+   * @param index {number}
+   */
   @UseGuards(AccessTokenGuard)
   @Delete(&#x27;msg/:index&#x27;)
   deleteMsgAtIndex(@Req() req: Request, @Param(&#x27;index&#x27;) index: number) {
     return this.usersService.deleteMsgAtIndex(index, req.user[&#x27;username&#x27;]);
-  }
-
-  /**
-   * Lets Admin remove user account
-   * @param id
-   */
-  @Roles(&#x27;ADMIN&#x27;)
-  @UseGuards(AccessTokenGuard, RolesGuard)
-  @Delete(&#x27;:id&#x27;)
-  remove(@Param(&#x27;id&#x27;) id: string) {
-    return this.usersService.remove(id);
   }
 }
 </code></pre>

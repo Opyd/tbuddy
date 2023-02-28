@@ -38,8 +38,6 @@ Docker will build required images and set up containers for you.
 
 ![Torunament Page](https://i.imgur.com/KuiIFK9.png)
 
-![Dashboard Page](https://i.imgur.com/EsTUGDM.png)
-
 
 ## Authors
 

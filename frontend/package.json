@@ -1,6 +1,7 @@
 {
-  "name": "frontend",
+  "name": "tbuddy_frontend",
   "version": "1.0.0",
+  "author": "Daniel Opyd",
   "private": true,
   "scripts": {
     "dev": "nuxt --port 5050",

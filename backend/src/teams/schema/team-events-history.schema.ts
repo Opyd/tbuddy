@@ -1,4 +1,5 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+import { ApiProperty } from '@nestjs/swagger';
 import mongoose, { Document } from 'mongoose';
 
 export enum EventEnum {
@@ -14,12 +15,13 @@ export enum EventEnum {
 
 @Schema({ _id: false })
 export class TeamEventsHistory extends Document {
+  @ApiProperty()
   @Prop({ required: true, types: EventEnum })
   type: EventEnum;
-
+  @ApiProperty()
   @Prop()
   date: Date;
-
+  @ApiProperty()
   @Prop()
   msg: string;
 }

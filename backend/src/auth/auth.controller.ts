@@ -5,7 +5,7 @@ import { AuthDto } from './dto/auth.dto';
 import { Request } from 'express';
 import { AccessTokenGuard } from '../common/guards/accessToken.guard';
 import { RefreshTokenGuard } from '../common/guards/refreshToken.guard';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 
 /**
  * Controller for AuthModule with all the endpoints
@@ -43,6 +43,7 @@ export class AuthController {
    * Allows user to logout
    * @param req Extracting user object from request
    */
+  @ApiBearerAuth()
   @UseGuards(AccessTokenGuard)
   @Get('logout')
   logout(@Req() req: Request) {
@@ -53,6 +54,7 @@ export class AuthController {
    * Refreshes user's AccessToken using RefreshToken
    * @param req
    */
+  @ApiBearerAuth()
   @UseGuards(RefreshTokenGuard)
   @Post('refresh')
   refreshTokens(@Req() req: Request) {

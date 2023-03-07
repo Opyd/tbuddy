@@ -15,26 +15,37 @@ import { ApiHideProperty, ApiProduces, ApiProperty } from '@nestjs/swagger';
 import { PlayerRoles } from '../schemas/user-details';
 
 export class DetailsDto {
+  @ApiProperty({
+    required: false,
+  })
   @IsOptional()
   @IsString()
   firstname: string;
 
+  @ApiProperty({
+    required: false,
+  })
   @IsOptional()
   @IsString()
   country: string;
 
-  @IsOptional()
-  @IsString()
-  avatar: string;
-
+  @ApiProperty({
+    required: false,
+  })
   @IsOptional()
   @IsString()
   about: string;
 
+  @ApiProperty({
+    required: false,
+  })
   @IsOptional()
   @IsEnum(PlayerRoles, { each: true })
   preferredRoles: PlayerRoles[];
 
+  @ApiProperty({
+    required: false,
+  })
   @IsOptional()
   @IsBoolean()
   lookingForTeam: boolean;
@@ -56,7 +67,9 @@ export class CreateUserDto {
   @IsString()
   password: string;
 
-  @ApiProperty()
+  @ApiProperty({
+    description: "Base64 representation of user's avatar",
+  })
   @IsString()
   avatar: string;
 
@@ -64,7 +77,10 @@ export class CreateUserDto {
   @IsEmpty()
   refreshToken: string;
 
-  @ApiProperty()
+  @ApiProperty({
+    description: "User's current team tag",
+    default: null,
+  })
   @IsEmpty()
   currentTeam: string;
 

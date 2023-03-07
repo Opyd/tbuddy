@@ -57,7 +57,7 @@ export default {
 
   axios: {
     baseURL: 'http://localhost/api',
-    browserBaseURL: 'http://localhost/api'
+    browserBaseURL: 'http://localhost/api',
   },
 
   auth: {

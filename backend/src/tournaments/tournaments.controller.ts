@@ -13,7 +13,7 @@ import { TournamentsService } from './tournaments.service';
 import { AccessTokenGuard } from '../common/guards/accessToken.guard';
 import { Request } from 'express';
 import { CreateTournamentDto } from './dto/create-tournament.dto';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { MatchResultDto } from './dto/match-result.dto';
 import { UpdateTournamentDto } from './dto/update-tournament.dto';
 import { KickFromTournamentDto } from './dto/kick-from-tournament.dto';
@@ -36,6 +36,7 @@ export class TournamentsController {
    * @param createTournamentDto - basic info about tournaments
    * @returns {Tournament} new Tournament document
    */
+  @ApiBearerAuth()
   @UseGuards(AccessTokenGuard)
   @Post()
   async create(
@@ -51,6 +52,7 @@ export class TournamentsController {
    * @param tournamentid {String} - tournament id
    * @returns {Tournament} updated tournament document
    */
+  @ApiBearerAuth()
   @UseGuards(AccessTokenGuard)
   @Post('join/:tournamentid')
   async joinTournaments(
@@ -66,6 +68,7 @@ export class TournamentsController {
    * @param tournamentid {Number}
    * @param kickFromTournamentDto {KickFromTournamentDto}
    */
+  @ApiBearerAuth()
   @UseGuards(AccessTokenGuard)
   @Delete('kick/:tournamentid')
   async kickFromTournament(
@@ -85,6 +88,7 @@ export class TournamentsController {
    * @param req {Request}
    * @param tournamentid {String}
    */
+  @ApiBearerAuth()
   @UseGuards(AccessTokenGuard)
   @Patch('start/:tournamentid')
   async startTournament(
@@ -100,6 +104,7 @@ export class TournamentsController {
    * @param tournamentid {String}
    * @param updateTournamentDto {UpdateTournamentDto}
    */
+  @ApiBearerAuth()
   @UseGuards(AccessTokenGuard)
   @Patch('description/:tournamentid')
   async changeDescription(
@@ -120,6 +125,7 @@ export class TournamentsController {
    * @param matchResultDto {MatchResultDto}
    * @param tournamentid {string}
    */
+  @ApiBearerAuth()
   @UseGuards(AccessTokenGuard)
   @Patch('match/:tournamentid')
   async setMatchResult(

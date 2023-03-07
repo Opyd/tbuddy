@@ -15,11 +15,19 @@ import {
 import { TeamsService } from './teams.service';
 import { CreateTeamDto } from './dto/create-team.dto';
 import { UpdateTeamDto } from './dto/update-team.dto';
-import { ApiTags } from '@nestjs/swagger';
+import {
+  ApiBadRequestResponse,
+  ApiBearerAuth,
+  ApiCreatedResponse,
+  ApiForbiddenResponse,
+  ApiResponse,
+  ApiTags,
+} from '@nestjs/swagger';
 import { Request } from 'express';
 import { AccessTokenGuard } from '../common/guards/accessToken.guard';
 import { InviteUserDto } from './dto/invite-user.dto';
 import { UsersService } from '../users/users.service';
+import { Team, TeamSchema } from './schema/team.schema';
 
 /**
  * Collection of teams specific endpoints
@@ -42,6 +50,11 @@ export class TeamsController {
    * @param req {Request}
    * @param createTeamDto {CreateTeamDto}
    */
+  @ApiBearerAuth()
+  @ApiCreatedResponse({
+    description: 'Returns created team object',
+    type: Team,
+  })
   @UseGuards(AccessTokenGuard)
   @Post()
   async create(@Req() req: Request, @Body() createTeamDto: CreateTeamDto) {
@@ -108,6 +121,7 @@ export class TeamsController {
    * @param req {Request}
    * @param inviteUserDto {InviteUserDto}
    */
+  @ApiBearerAuth()
   @UseGuards(AccessTokenGuard)
   @Post('invite')
   inviteUserToTeam(@Req() req: Request, @Body() inviteUserDto: InviteUserDto) {
@@ -119,6 +133,7 @@ export class TeamsController {
    * @param id {String}
    * @param updateTeamDto {UpdateTeamDto}
    */
+  @ApiBearerAuth()
   @UseGuards(AccessTokenGuard)
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateTeamDto: UpdateTeamDto) {
@@ -130,6 +145,7 @@ export class TeamsController {
    * @param req {Request}
    * @param username {String}
    */
+  @ApiBearerAuth()
   @UseGuards(AccessTokenGuard)
   @Get('removeuser/:username')
   removeUserFromTeam(@Req() req: Request, @Param('username') username: string) {
@@ -141,6 +157,7 @@ export class TeamsController {
    * @param req {Request}
    * @param username {String}
    */
+  @ApiBearerAuth()
   @UseGuards(AccessTokenGuard)
   @Get('removeinvite/:username')
   removeInvite(@Req() req: Request, @Param('username') username: string) {

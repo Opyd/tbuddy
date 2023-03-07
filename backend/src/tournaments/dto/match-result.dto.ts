@@ -17,7 +17,9 @@ export class MatchResultDto {
   @IsNotEmpty()
   winner: string;
 
-  @ApiProperty()
+  @ApiProperty({
+    description: 'Note about match',
+  })
   @IsString()
   @IsNotEmpty()
   result: string;

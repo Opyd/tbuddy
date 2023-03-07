@@ -15,7 +15,7 @@ import { UsersService } from './users.service';
 import { UserUpdateSelfDto } from './dto/user-update-self.dto';
 import { AccessTokenGuard } from '../common/guards/accessToken.guard';
 import { Request } from 'express';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { RolesGuard } from '../common/guards/roles.guard';
 import { Roles } from '../common/decorators/roles.decorator';
 import { HandleInviteDto } from './dto/handle-invite.dto';
@@ -37,6 +37,7 @@ export class UsersController {
    * @returns {User} user data of the token owner
    * @param req - from AccessTokenGuard
    */
+  @ApiBearerAuth()
   @UseGuards(AccessTokenGuard)
   @Get('me')
   async findLogged(@Req() req: Request) {
@@ -74,6 +75,7 @@ export class UsersController {
    * @param req
    * @param handleInviteDto {HandleInviteDto}
    */
+  @ApiBearerAuth()
   @UseGuards(AccessTokenGuard)
   @Post('handleinvite')
   handleInvite(@Req() req: Request, @Body() handleInviteDto: HandleInviteDto) {
@@ -101,6 +103,7 @@ export class UsersController {
    * @param req - passed from request by AccessTokenGuard
    * @param updateSelfDto
    */
+  @ApiBearerAuth()
   @UseGuards(AccessTokenGuard)
   @Patch('me')
   update(@Req() req: Request, @Body() updateSelfDto: UserUpdateSelfDto) {
@@ -111,6 +114,7 @@ export class UsersController {
    * Allows user to leave the team
    * @param req
    */
+  @ApiBearerAuth()
   @UseGuards(AccessTokenGuard)
   @Patch('leaveTeam')
   leaveTeam(@Req() req: Request) {
@@ -122,6 +126,7 @@ export class UsersController {
    * @param req
    * @param index {number}
    */
+  @ApiBearerAuth()
   @UseGuards(AccessTokenGuard)
   @Delete('msg/:index')
   deleteMsgAtIndex(@Req() req: Request, @Param('index') index: number) {

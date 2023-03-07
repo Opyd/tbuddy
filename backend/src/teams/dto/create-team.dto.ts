@@ -13,11 +13,16 @@ export class CreateTeamDto {
   @IsString()
   name: string;
 
-  @ApiProperty()
+  @ApiProperty({
+    description: 'Icon in format mdi-xxx',
+  })
   @IsString()
   icon: string;
 
-  @ApiProperty()
+  @ApiProperty({
+    minimum: 4,
+    maximum: 4,
+  })
   @IsNotEmpty()
   @IsString()
   @Length(4, 4)

@@ -20,6 +20,7 @@ import {
   ApiBearerAuth,
   ApiCreatedResponse,
   ApiForbiddenResponse,
+  ApiOkResponse,
   ApiResponse,
   ApiTags,
 } from '@nestjs/swagger';
@@ -74,6 +75,10 @@ export class TeamsController {
   /**
    * Returns all teams
    */
+  @ApiOkResponse({
+    description: 'Returns all teams',
+    type: [Team],
+  })
   @Get()
   findAll() {
     return this.teamsService.findAll();
@@ -83,6 +88,9 @@ export class TeamsController {
    * Returns specific team by tag
    * @param tag {String}
    */
+  @ApiOkResponse({
+    type: Team,
+  })
   @Get('tag/:tag')
   findByTag(@Param('tag') tag: string) {
     return this.teamsService.findOneByTag(tag);
@@ -93,6 +101,9 @@ export class TeamsController {
    * @param tag {String}
    * @return {boolean} exists
    */
+  @ApiOkResponse({
+    description: 'Returns true if team was found, false if not',
+  })
   @Get('exists/:tag')
   checkIfTeamExists(@Param('tag') tag: string) {
     return this.teamsService.checkIfTeamExists(tag);
@@ -102,6 +113,10 @@ export class TeamsController {
    * Returns team by id
    * @param id {String}
    */
+  @ApiOkResponse({
+    description: 'Returns team',
+    type: Team,
+  })
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.teamsService.findOne(id);
@@ -121,6 +136,10 @@ export class TeamsController {
    * @param req {Request}
    * @param inviteUserDto {InviteUserDto}
    */
+  @ApiCreatedResponse({
+    description: 'Returns updated team',
+    type: Team,
+  })
   @ApiBearerAuth()
   @UseGuards(AccessTokenGuard)
   @Post('invite')
@@ -133,6 +152,10 @@ export class TeamsController {
    * @param id {String}
    * @param updateTeamDto {UpdateTeamDto}
    */
+  @ApiCreatedResponse({
+    description: 'Returns updated team',
+    type: Team,
+  })
   @ApiBearerAuth()
   @UseGuards(AccessTokenGuard)
   @Patch(':id')
@@ -145,6 +168,9 @@ export class TeamsController {
    * @param req {Request}
    * @param username {String}
    */
+  @ApiOkResponse({
+    type: Team,
+  })
   @ApiBearerAuth()
   @UseGuards(AccessTokenGuard)
   @Get('removeuser/:username')

@@ -52,8 +52,19 @@
       <div v-if="!loggedIn">
         <nuxt-link to="/auth">
           <v-btn color="primary">
-            <v-icon left>mdi-login</v-icon>
-            Login
+            <v-icon
+              :left="
+                $vuetify.breakpoint.name !== 'sm' &&
+                $vuetify.breakpoint.name !== 'xs'
+              "
+            >mdi-login</v-icon
+            >
+            {{
+              $vuetify.breakpoint.name === 'sm' ||
+              $vuetify.breakpoint.name === 'xs'
+                ? ''
+                : 'Login'
+            }}
           </v-btn>
         </nuxt-link>
       </div>

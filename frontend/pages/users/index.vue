@@ -63,7 +63,7 @@
               </div>
               <div id="style-2" class="tw-max-h-96 tw-overflow-y-auto">
                 <UserCard
-                  v-for="user in results"
+                  v-for="user in filtered"
                   :key="user.username"
                   :item="user"
                   class="tw-my-1" />

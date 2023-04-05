@@ -2,13 +2,15 @@
   <v-container>
     <v-tooltip bottom>
       <template #activator="{on, attrs}">
+        <NuxtLink
+          to="/teams/create"
+          style="text-decoration: none; color: inherit"
+        >
         <v-btn dark fab color="indigo" v-bind="attrs" v-on="on">
-          <NuxtLink
-            to="/teams/create"
-            style="text-decoration: none; color: inherit"
-            ><v-icon dark> mdi-plus </v-icon></NuxtLink
-          >
+          <v-icon dark> mdi-plus </v-icon>
         </v-btn>
+        </NuxtLink
+        >
       </template>
       <span>Create new team</span>
     </v-tooltip>

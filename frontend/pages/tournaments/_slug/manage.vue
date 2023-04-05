@@ -264,7 +264,7 @@
       async setWinner(stageNr, matchId) {
         try {
           const res = await this.$axios.patch(
-            `tournaments/match${this.tournament._id}`,
+            `tournaments/match/${this.tournament._id}`,
             {
               stageNr,
               matchId,

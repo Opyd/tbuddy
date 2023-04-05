@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-card v-if="$fetchState.pending" outlined elevation="2" loading></v-card>
-    <v-card outlined elevation="2" :style="teamTag!==null ? winner ? 'border-right: 6px solid green' : 'border-right: 6px solid yellow' : ''"  else>
+    <v-card outlined elevation="2" :style="teamTag!==null ? winner ? 'border-right: 6px solid green' : 'border-right: 6px solid red' : ''"  else>
       <v-row align="center">
         <v-col cols="3" align="start">
           <v-avatar rounded max-height="40px" :color="team.color">

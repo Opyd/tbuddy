@@ -2,13 +2,15 @@
   <v-container>
     <v-tooltip bottom>
       <template #activator="{on, attrs}">
+        <NuxtLink
+          to="/tournaments/create"
+          style="text-decoration: none; color: inherit"
+        >
         <v-btn dark fab color="indigo" v-bind="attrs" v-on="on">
-          <NuxtLink
-            to="/tournaments/create"
-            style="text-decoration: none; color: inherit"
-            ><v-icon dark> mdi-plus </v-icon></NuxtLink
-          >
+          <v-icon dark> mdi-plus </v-icon>
         </v-btn>
+        </NuxtLink
+        >
       </template>
       <span>Create new tournament</span>
     </v-tooltip>

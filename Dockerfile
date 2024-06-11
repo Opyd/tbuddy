@@ -2,7 +2,7 @@ FROM node:16-alpine as builder
 
 WORKDIR /app
 
-COPY frontend .
+COPY . .
 
 RUN yarn install \
   --prefer-offline \

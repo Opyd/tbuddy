@@ -56,8 +56,8 @@ export default {
   modules: ['@nuxtjs/axios', '@nuxtjs/auth-next', 'vue-toastification/nuxt'],
 
   axios: {
-    baseURL: 'http://localhost/api',
-    browserBaseURL: 'http://localhost/api',
+    baseURL: process.env.BASE_URL,
+    browserBaseURL: process.env.BASE_URL,
   },
 
   auth: {

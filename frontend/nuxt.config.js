@@ -1,4 +1,5 @@
 import colors from 'vuetify/es5/util/colors';
+import process from "~/.eslintrc";
 
 export default {
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
@@ -56,8 +57,8 @@ export default {
   modules: ['@nuxtjs/axios', '@nuxtjs/auth-next', 'vue-toastification/nuxt'],
 
   axios: {
-    baseURL: 'http://localhost/api',
-    browserBaseURL: 'http://localhost/api',
+    baseURL: process.env.BASE_URL,
+    browserBaseURL: process.env.BASE_URL,
   },
 
   auth: {

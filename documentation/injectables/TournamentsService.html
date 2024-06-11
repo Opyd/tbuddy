@@ -1,0 +1,1668 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>backend documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href=".." class="navbar-brand">backend documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content injectable">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li>Injectables</li>
+  <li >TournamentsService</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/tournaments/tournaments.service.ts</code>
+        </p>
+
+
+
+
+
+            <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#changeDescription" >changeDescription</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#create" >create</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#findAll" >findAll</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#findTournamentById" >findTournamentById</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#findTournamentBySlug" >findTournamentBySlug</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#getFinishedTournament" >getFinishedTournament</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#getNewestTournament" >getNewestTournament</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#getTeamMatches" >getTeamMatches</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#joinTournament" >joinTournament</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#kickFromTournament" >kickFromTournament</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#searchTournament" >searchTournament</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#setMatchResult" >setMatchResult</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#startTournament" >startTournament</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+            <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(tournamentModel: <a href="../classes/Tournament.html" target="_self">Model&lt;TournamentDocument&gt;</a>, userService: <a href="UsersService.html" target="_self">UsersService</a>, teamsService: <a href="TeamsService.html" target="_self">TeamsService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/tournaments/tournaments.service.ts:23</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>tournamentModel</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../classes/Tournament.html" target="_self" >Model&lt;TournamentDocument&gt;</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>userService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="UsersService.html" target="_self" >UsersService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>teamsService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="TeamsService.html" target="_self" >TeamsService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+            <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="changeDescription"></a>
+                    <span class="name">
+                        <span class="modifier">Async</span>
+                        <span ><b>changeDescription</b></span>
+                        <a href="#changeDescription"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>changeDescription(organizer: <a href="../classes/User.html" target="_self">Express.User</a>, tournamentid: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, updateTournamentDto: <a href="../classes/UpdateTournamentDto.html" target="_self">UpdateTournamentDto</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="369"
+                            class="link-to-prism">src/tournaments/tournaments.service.ts:369</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>organizer</td>
+                                    <td>
+                                                <code><a href="../classes/User.html" target="_self" >Express.User</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>tournamentid</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>updateTournamentDto</td>
+                                    <td>
+                                                <code><a href="../classes/UpdateTournamentDto.html" target="_self" >UpdateTournamentDto</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>unknown</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="create"></a>
+                    <span class="name">
+                        <span class="modifier">Async</span>
+                        <span ><b>create</b></span>
+                        <a href="#create"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>create(user: <a href="../classes/User.html" target="_self">Express.User</a>, createTournamentDto: <a href="../classes/CreateTournamentDto.html" target="_self">CreateTournamentDto</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="31"
+                            class="link-to-prism">src/tournaments/tournaments.service.ts:31</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>user</td>
+                                    <td>
+                                                <code><a href="../classes/User.html" target="_self" >Express.User</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>createTournamentDto</td>
+                                    <td>
+                                                <code><a href="../classes/CreateTournamentDto.html" target="_self" >CreateTournamentDto</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>unknown</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="findAll"></a>
+                    <span class="name">
+                        <span class="modifier">Async</span>
+                        <span ><b>findAll</b></span>
+                        <a href="#findAll"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>findAll()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="69"
+                            class="link-to-prism">src/tournaments/tournaments.service.ts:69</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>unknown</code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="findTournamentById"></a>
+                    <span class="name">
+                        <span class="modifier">Async</span>
+                        <span ><b>findTournamentById</b></span>
+                        <a href="#findTournamentById"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>findTournamentById(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="53"
+                            class="link-to-prism">src/tournaments/tournaments.service.ts:53</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>id</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>unknown</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="findTournamentBySlug"></a>
+                    <span class="name">
+                        <span class="modifier">Async</span>
+                        <span ><b>findTournamentBySlug</b></span>
+                        <a href="#findTournamentBySlug"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>findTournamentBySlug(slug: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="61"
+                            class="link-to-prism">src/tournaments/tournaments.service.ts:61</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>slug</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>unknown</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getFinishedTournament"></a>
+                    <span class="name">
+                        <span class="modifier">Async</span>
+                        <span ><b>getFinishedTournament</b></span>
+                        <a href="#getFinishedTournament"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getFinishedTournament()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="395"
+                            class="link-to-prism">src/tournaments/tournaments.service.ts:395</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>unknown</code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getNewestTournament"></a>
+                    <span class="name">
+                        <span class="modifier">Async</span>
+                        <span ><b>getNewestTournament</b></span>
+                        <a href="#getNewestTournament"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getNewestTournament()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="392"
+                            class="link-to-prism">src/tournaments/tournaments.service.ts:392</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>unknown</code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getTeamMatches"></a>
+                    <span class="name">
+                        <span class="modifier">Async</span>
+                        <span ><b>getTeamMatches</b></span>
+                        <a href="#getTeamMatches"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getTeamMatches(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, tag: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="329"
+                            class="link-to-prism">src/tournaments/tournaments.service.ts:329</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>id</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>tag</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>unknown</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="joinTournament"></a>
+                    <span class="name">
+                        <span class="modifier">Async</span>
+                        <span ><b>joinTournament</b></span>
+                        <a href="#joinTournament"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>joinTournament(user: <a href="../classes/User.html" target="_self">Express.User</a>, tournamentid: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="73"
+                            class="link-to-prism">src/tournaments/tournaments.service.ts:73</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>user</td>
+                                    <td>
+                                                <code><a href="../classes/User.html" target="_self" >Express.User</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>tournamentid</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>unknown</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="kickFromTournament"></a>
+                    <span class="name">
+                        <span class="modifier">Async</span>
+                        <span ><b>kickFromTournament</b></span>
+                        <a href="#kickFromTournament"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>kickFromTournament(organizer: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, tournamentId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, kickFromTournamentDto: <a href="../classes/KickFromTournamentDto.html" target="_self">KickFromTournamentDto</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="112"
+                            class="link-to-prism">src/tournaments/tournaments.service.ts:112</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>organizer</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>tournamentId</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>kickFromTournamentDto</td>
+                                    <td>
+                                                <code><a href="../classes/KickFromTournamentDto.html" target="_self" >KickFromTournamentDto</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>unknown</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="searchTournament"></a>
+                    <span class="name">
+                        <span class="modifier">Async</span>
+                        <span ><b>searchTournament</b></span>
+                        <a href="#searchTournament"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>searchTournament(query: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="402"
+                            class="link-to-prism">src/tournaments/tournaments.service.ts:402</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>query</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>unknown</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setMatchResult"></a>
+                    <span class="name">
+                        <span class="modifier">Async</span>
+                        <span ><b>setMatchResult</b></span>
+                        <a href="#setMatchResult"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>setMatchResult(tournamentid: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, organizer: <a href="../classes/User.html" target="_self">Express.User</a>, matchResultDto: <a href="../classes/MatchResultDto.html" target="_self">MatchResultDto</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="207"
+                            class="link-to-prism">src/tournaments/tournaments.service.ts:207</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>tournamentid</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>organizer</td>
+                                    <td>
+                                                <code><a href="../classes/User.html" target="_self" >Express.User</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>matchResultDto</td>
+                                    <td>
+                                                <code><a href="../classes/MatchResultDto.html" target="_self" >MatchResultDto</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>unknown</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="startTournament"></a>
+                    <span class="name">
+                        <span class="modifier">Async</span>
+                        <span ><b>startTournament</b></span>
+                        <a href="#startTournament"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>startTournament(organizer: <a href="../classes/User.html" target="_self">Express.User</a>, tournamentid: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="140"
+                            class="link-to-prism">src/tournaments/tournaments.service.ts:140</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>organizer</td>
+                                    <td>
+                                                <code><a href="../classes/User.html" target="_self" >Express.User</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>tournamentid</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>unknown</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
+  BadRequestException,
+  HttpCode,
+  HttpStatus,
+  Injectable,
+  NotFoundException,
+  UnauthorizedException,
+} from &#x27;@nestjs/common&#x27;;
+import { CreateTournamentDto } from &#x27;./dto/create-tournament.dto&#x27;;
+import { InjectModel } from &#x27;@nestjs/mongoose&#x27;;
+import { Model } from &#x27;mongoose&#x27;;
+import { Tournament, TournamentDocument } from &#x27;./schemas/tournament.schema&#x27;;
+import { UsersService } from &#x27;../users/users.service&#x27;;
+import { TeamsService } from &#x27;../teams/teams.service&#x27;;
+import { UserRoles } from &#x27;../users/schemas/user.schema&#x27;;
+import { MatchResultDto } from &#x27;./dto/match-result.dto&#x27;;
+import slugify from &#x27;slugify&#x27;;
+import { UpdateTournamentDto } from &#x27;./dto/update-tournament.dto&#x27;;
+import { EventEnum } from &#x27;../teams/schema/team-events-history.schema&#x27;;
+import { KickFromTournamentDto } from &#x27;./dto/kick-from-tournament.dto&#x27;;
+
+@Injectable()
+export class TournamentsService {
+  constructor(
+    @InjectModel(Tournament.name)
+    private tournamentModel: Model&lt;TournamentDocument&gt;,
+
+    private userService: UsersService,
+    private teamsService: TeamsService,
+  ) {}
+  async create(user: Express.User, createTournamentDto: CreateTournamentDto) {
+    const organizer &#x3D; await this.userService.findByUsername(user[&#x27;username&#x27;]);
+
+    if (organizer.currentTeam !&#x3D;&#x3D; null) {
+      throw new BadRequestException(&#x27;User is in team&#x27;);
+    }
+
+    const { title, description, nrOfTeams } &#x3D; createTournamentDto;
+
+    const slug: string &#x3D; slugify(title) + Math.floor(Math.random() * 90 + 10);
+
+    await organizer.update({ role: UserRoles.ORGANIZER }).exec();
+
+    return await new this.tournamentModel({
+      title,
+      slug,
+      description,
+      nrOfTeams,
+      organizer: organizer.username,
+    }).save();
+  }
+
+  async findTournamentById(id: string) {
+    const tournament &#x3D; await this.tournamentModel.findById(id).exec();
+    if (!tournament) {
+      throw new NotFoundException();
+    }
+    return tournament;
+  }
+
+  async findTournamentBySlug(slug: string) {
+    const tournament &#x3D; await this.tournamentModel.findOne({ slug }).exec();
+    if (!tournament) {
+      throw new NotFoundException();
+    }
+    return tournament;
+  }
+
+  async findAll() {
+    return await this.tournamentModel.find({}).exec();
+  }
+
+  async joinTournament(user: Express.User, tournamentid: string) {
+    const teamOwner &#x3D; await this.userService.findByUsername(user[&#x27;username&#x27;]);
+
+    if (teamOwner.currentTeam &#x3D;&#x3D;&#x3D; null) {
+      throw new BadRequestException(&#x27;User not in team&#x27;);
+    }
+    const team &#x3D; await this.teamsService.findOneByTag(teamOwner.currentTeam);
+
+    if (!team) {
+      throw new BadRequestException(&#x27;Team doesnt exists&#x27;);
+    }
+
+    // if (team.members.length + 1 &lt; 5) {
+    //   throw new BadRequestException(&#x27;Not enough members&#x27;);
+    // }
+
+    if (team.owner !&#x3D;&#x3D; teamOwner.username) {
+      throw new BadRequestException(&#x27;Users is not the teams owner&#x27;);
+    }
+
+    const tournament &#x3D; await this.findTournamentById(tournamentid);
+
+    if (!tournament) {
+      throw new BadRequestException(&#x27;Tournament doesnt exists&#x27;);
+    }
+
+    if (tournament.participants?.includes(team.tag)) {
+      throw new BadRequestException(&#x27;Team already participates&#x27;);
+    }
+
+    await team.updateOne({ activeTournament: tournament._id }).exec();
+
+    await tournament.updateOne(
+      { $push: { participants: team.tag } },
+      { new: true },
+    );
+    return team;
+  }
+
+  async kickFromTournament(
+    organizer: string,
+    tournamentId: string,
+    kickFromTournamentDto: KickFromTournamentDto,
+  ) {
+    const tournament &#x3D; await this.tournamentModel.findById(tournamentId);
+    if (!tournament) {
+      throw new BadRequestException(&#x27;Tournament doesnt exist&#x27;);
+    }
+    const team &#x3D; await this.teamsService.findOneByTag(
+      kickFromTournamentDto.teamtag,
+    );
+    if (!team) {
+      throw new BadRequestException(&#x27;Team not found&#x27;);
+    }
+    if (tournament.organizer !&#x3D;&#x3D; organizer) {
+      throw new UnauthorizedException();
+    }
+    tournament.participants &#x3D; tournament.participants.filter(
+      (team) &#x3D;&gt; team !&#x3D;&#x3D; kickFromTournamentDto.teamtag,
+    );
+    team.activeTournament &#x3D; null;
+
+    await team.save();
+    await tournament.save();
+    return HttpStatus.OK;
+  }
+
+  async startTournament(organizer: Express.User, tournamentid: string) {
+    const tournament &#x3D; await this.findTournamentById(tournamentid);
+    if (!tournament) {
+      throw new BadRequestException(&#x27;Tournament doesnt exists&#x27;);
+    }
+    if (tournament.started) {
+      throw new BadRequestException(&#x27;Tournament already started&#x27;);
+    }
+    const user &#x3D; await this.userService.findByUsername(organizer[&#x27;username&#x27;]);
+
+    if (user.username !&#x3D;&#x3D; tournament.organizer) {
+      throw new BadRequestException(&#x27;User is not a tournament organizer&#x27;);
+    }
+
+    if (!(tournament.participants.length &#x3D;&#x3D;&#x3D; tournament.nrOfTeams)) {
+      throw new BadRequestException(&#x27;Not enough teams&#x27;);
+    }
+
+    let stagesNr &#x3D; Math.log(tournament.participants.length) / Math.log(2);
+
+    const stages &#x3D; [];
+
+    const participants &#x3D; tournament.participants.sort(
+      () &#x3D;&gt; Math.random() - 0.5,
+    );
+
+    /**
+     * Creates whole bracket with empty matches, used later for transferring winners to next stage
+     */
+
+    let stageCounter &#x3D; 0;
+    let MATCHES_PER_ROUND &#x3D; participants.length / 2;
+    while (stagesNr &gt; 0) {
+      const newStage &#x3D; { finished: false, stageNr: stageCounter, matches: [] };
+      for (let i &#x3D; 0; i &lt; MATCHES_PER_ROUND; i++) {
+        newStage.matches.push({
+          teamA: null,
+          teamB: null,
+          winner: null,
+          result: null,
+          finished: false,
+        });
+      }
+      MATCHES_PER_ROUND &#x3D; MATCHES_PER_ROUND / 2;
+      stages.push(newStage);
+      stageCounter++;
+      stagesNr--;
+    }
+
+    const firstStage &#x3D; [];
+
+    for (let i &#x3D; 0; i &lt; participants.length; i +&#x3D; 2) {
+      firstStage.push({
+        teamA: participants[i],
+        teamB: participants[i + 1],
+        winner: null,
+        result: null,
+        finished: false,
+      });
+    }
+
+    stages[0].matches &#x3D; firstStage;
+
+    await tournament.updateOne({ stages, started: true }, { new: true }).exec();
+    return tournament;
+  }
+
+  async setMatchResult(
+    tournamentid: string,
+    organizer: Express.User,
+    matchResultDto: MatchResultDto,
+  ) {
+    const tournament &#x3D; await this.findTournamentById(tournamentid);
+    if (!tournament) {
+      throw new BadRequestException(&#x27;Tournament doesnt exists&#x27;);
+    }
+    if (!tournament.started) {
+      throw new BadRequestException(&#x27;Tournament didnt start&#x27;);
+    }
+    const user &#x3D; await this.userService.findByUsername(organizer[&#x27;username&#x27;]);
+
+    if (user.username !&#x3D;&#x3D; tournament.organizer) {
+      throw new BadRequestException(&#x27;User is not a tournament organizer&#x27;);
+    }
+
+    if (tournament.finished) {
+      throw new BadRequestException(&#x27;Tournament ended&#x27;);
+    }
+
+    const { stageNr, winner, result, matchId } &#x3D; matchResultDto;
+
+    if (stageNr &gt; 0 &amp;&amp; !tournament.stages[stageNr - 1].finished) {
+      throw new BadRequestException(&#x27;Previous stage is not yet finished&#x27;);
+    }
+
+    let matchIndex &#x3D; 0;
+    const matches &#x3D; tournament.stages[stageNr].matches;
+
+    /**
+     * Looks for a match that will be updated
+     */
+    let teamAtag &#x3D; &#x27;&#x27;;
+    let teamBtag &#x3D; &#x27;&#x27;;
+    matches.map((match, index) &#x3D;&gt; {
+      if (match[&#x27;id&#x27;] &#x3D;&#x3D;&#x3D; matchId) {
+        matchIndex &#x3D; index;
+        if (match.teamA !&#x3D;&#x3D; winner &amp;&amp; match.teamB !&#x3D;&#x3D; winner) {
+          throw new BadRequestException(&#x27;Invalid winner&#x27;);
+        }
+        teamAtag &#x3D; match.teamA;
+        teamBtag &#x3D; match.teamB;
+        match.winner &#x3D; winner;
+        match.result &#x3D; result;
+        match.finished &#x3D; true;
+      }
+    });
+
+    tournament.stages[stageNr].matches &#x3D; matches;
+
+    /**
+     * Moves winner to next round
+     */
+
+    if (stageNr &lt; tournament.stages.length - 1) {
+      const nextStage &#x3D; stageNr + 1;
+      const nextRoundMatchIndex &#x3D; Math.floor(matchIndex / 2);
+      const team &#x3D; matchIndex % 2 &#x3D;&#x3D;&#x3D; 0 ? &#x27;teamA&#x27; : &#x27;teamB&#x27;;
+      tournament.stages[nextStage].matches[nextRoundMatchIndex][team] &#x3D; winner;
+    }
+
+    /**
+     * Marks stage as finished, if every match has been finished
+     */
+
+    let allFinishedFlag &#x3D; true;
+    tournament.stages[stageNr].matches.forEach((match) &#x3D;&gt; {
+      if (!match.finished) allFinishedFlag &#x3D; false;
+    });
+
+    tournament.stages[stageNr].finished &#x3D; allFinishedFlag;
+
+    const teamA &#x3D; await this.teamsService.findOneByTag(teamAtag);
+    const teamB &#x3D; await this.teamsService.findOneByTag(teamBtag);
+    const winnerTeam &#x3D; teamA.tag &#x3D;&#x3D;&#x3D; winner ? teamA : teamB;
+    const loserTeam &#x3D; teamA.tag !&#x3D;&#x3D; winner ? teamA : teamB;
+
+    if (stageNr &#x3D;&#x3D;&#x3D; tournament.stages.length - 1) {
+      tournament.finished &#x3D; tournament.stages[stageNr].finished;
+      winnerTeam.events.push({
+        type: EventEnum.TOURNAMENT_WIN,
+        date: new Date(),
+        msg: &#x60;Team won &quot;${tournament.title}&quot; tournament!&#x60;,
+      });
+    }
+
+    /**
+     * Adding matches to teams&#x27; history
+     */
+
+    winnerTeam.history.push({
+      opponent: loserTeam.tag,
+      result: &#x27;win&#x27;,
+      date: new Date(),
+      matchId: matchId,
+    });
+
+    loserTeam.history.push({
+      opponent: winnerTeam.tag,
+      result: &#x27;loss&#x27;,
+      date: new Date(),
+      matchId: matchId,
+    });
+
+    loserTeam.events.push({
+      type: EventEnum.TOURNAMENT_DROPPED,
+      date: new Date(),
+      msg: &#x60;Team dropped out from &quot;${tournament.title}&quot; in stage ${
+        stageNr + 1
+      } &#x60;,
+    });
+
+    await winnerTeam.save();
+    await loserTeam.save();
+
+    await tournament.save();
+
+    return tournament;
+  }
+
+  async getTeamMatches(id: string, tag: string) {
+    const tournament &#x3D; await this.findTournamentById(id);
+    if (!tournament) {
+      throw new BadRequestException(&#x27;Tournament doesnt exists&#x27;);
+    }
+    if (!tournament.started) {
+      throw new BadRequestException(&#x27;Tournament didnt start&#x27;);
+    }
+    const team &#x3D; await this.teamsService.findOneByTag(tag);
+    if (!team) {
+      throw new BadRequestException(&#x27;Team doesnt exists&#x27;);
+    }
+    if (team.activeTournament !&#x3D;&#x3D; tournament._id.toString()) {
+      throw new BadRequestException(
+        &#x27;Team doesnt participate in this tournament&#x27;,
+      );
+    }
+    const opponents &#x3D; [];
+    tournament.stages.forEach((stage) &#x3D;&gt; {
+      stage.matches.forEach((match) &#x3D;&gt; {
+        if (match.teamA &#x3D;&#x3D;&#x3D; team.tag || match.teamB &#x3D;&#x3D;&#x3D; team.tag) {
+          if (match.finished !&#x3D;&#x3D; true) {
+            opponents.push(
+              team.tag &#x3D;&#x3D;&#x3D; match.teamA ? match.teamB : match.teamA,
+            );
+          }
+        }
+      });
+    });
+    const opponentsObjects &#x3D; [];
+    for (let i &#x3D; 0; i &lt; opponents.length; i++) {
+      if (opponents[i] &#x3D;&#x3D;&#x3D; &#x27;&#x27;) {
+        continue;
+      }
+      const team &#x3D; await this.teamsService.findOneByTag(opponents[i]);
+      opponentsObjects.push(team);
+    }
+    return opponentsObjects;
+  }
+
+  async changeDescription(
+    organizer: Express.User,
+    tournamentid: string,
+    updateTournamentDto: UpdateTournamentDto,
+  ) {
+    const tournament &#x3D; await this.findTournamentById(tournamentid);
+    if (!tournament) {
+      throw new BadRequestException(&#x27;Tournament doesnt exists&#x27;);
+    }
+    if (tournament.started) {
+      throw new BadRequestException(&#x27;Tournament already started&#x27;);
+    }
+    const user &#x3D; await this.userService.findByUsername(organizer[&#x27;username&#x27;]);
+
+    if (user.username !&#x3D;&#x3D; tournament.organizer) {
+      throw new BadRequestException(&#x27;User is not a tournament organizer&#x27;);
+    }
+
+    tournament.description &#x3D; updateTournamentDto.description;
+    await tournament.save();
+    return tournament;
+  }
+
+  async getNewestTournament() {
+    return await this.tournamentModel.findOne().sort({ createdAt: -1 }).exec();
+  }
+  async getFinishedTournament() {
+    return await this.tournamentModel
+      .findOne({ finished: true })
+      .sort({ created_at: -1 })
+      .exec();
+  }
+
+  async searchTournament(query: string) {
+    return this.tournamentModel
+      .find({
+        title: new RegExp(&#x27;.*&#x27; + query + &#x27;.*&#x27;, &#x27;i&#x27;),
+      })
+      .select({
+        title: 1,
+        organizer: 1,
+        slug: 1,
+        finished: 1,
+        started: 1,
+        participants: 1,
+        nrOfTeams: 1,
+      });
+  }
+}
+</code></pre>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
+            var COMPODOC_CURRENT_PAGE_URL = 'TournamentsService.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

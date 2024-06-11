@@ -1,47 +1,51 @@
 
-# TBuddy
+# Esport Tournaments Platform - Backend
 
-## Engineering thesis
-
-A web application that allows users to create community gaming tournaments and the teams that will then participate in them.
+An online platform that allows players to organize and participate in community tournaments in the game League of Legends.
 
 
 
+## Environment Variables
 
-## Tech Stack
+To run this project, you will need to add the following environment variables to your .env file
 
+`JWT_ACCESS_SECRET`
 
-**Client:** Nuxt 2, Vue 2, TailwindCSS, Vuetify
+`JWT_REFRESH_SECRET`
 
-**Server:** Node.js, NestJS, Mongoose
-
-**Database:** MongoDB 
-
-**Tests:** Cypress
-
-**Deployment:** Nginx, Docker
+`MONGODB_URI`
 
 
+## Run Locally
 
-
-## Deployment with Docker
-
-To deploy this project using Docker run
+Clone the project
 
 ```bash
-  docker-compose up
+  git clone https://github.com/Opyd/praca_inz
 ```
-Docker will build required images and set up containers for you.
 
+Go to the project directory
 
-## Screenshots
+```bash
+  cd praca_inz/backend
+```
 
-![Torunament Page](https://i.imgur.com/KuiIFK9.png)
-![Dashboard](https://i.imgur.com/ghchrQl.png)
-![Performance](https://i.imgur.com/IoWYZve.png)
+Install dependencies
 
+```bash
+  npm install
+```
 
-## Authors
+Start the server
 
-- [Daniel Opyd](https://www.github.com/Opyd)
+```bash
+# development
+$ npm run start
+
+# watch mode
+$ npm run start:dev
+
+# production mode
+$ npm run start:prod
+```
 
